@@ -77,9 +77,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Free Training — Build Your Personal Brand" },
-      { name: "description", content: "A free 30-minute training on building your personal brand, growing an audience, and monetizing your content." },
-      { property: "og:title", content: "Free Training — Build Your Personal Brand" },
+      { title: "Laura Mercedes — Build Your Personal Brand" },
+      { name: "description", content: "A free 30-minute training on building your personal brand, growing an audience, and monetizing your content — by Laura Mercedes." },
+      { property: "og:title", content: "Laura Mercedes — Build Your Personal Brand" },
       { property: "og:description", content: "Grow your audience. Monetize your brand. Create freedom." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -89,7 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" },
     ],
   }),
 

@@ -5,71 +5,112 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-serif: "Fraunces", "Playfair Display", ui-serif, Georgia, serif;
+  --font-serif: "Cormorant Garamond", "Playfair Display", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-cream: var(--cream);
-  --color-ink: var(--ink);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-border: var(--border);
-  --color-primary: var(--primary);
+  --color-background:        var(--background);
+  --color-foreground:        var(--foreground);
+  --color-cream:             var(--cream);
+  --color-cream2:            var(--cream2);
+  --color-ink:               var(--ink);
+  --color-wine:              var(--wine);
+  --color-rose:              var(--rose);
+  --color-muted-fg:          var(--muted-fg);
+  --color-border:            var(--border);
+  --color-primary:           var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-muted:             var(--muted);
+  --color-muted-foreground:  var(--muted-foreground);
+  --color-accent:            var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
 }
 
 :root {
-  --background: oklch(0.96 0.012 80);
-  --foreground: oklch(0.18 0.02 40);
-  --cream: oklch(0.96 0.012 80);
-  --ink: oklch(0.14 0.015 40);
-  --muted: oklch(0.92 0.015 80);
-  --muted-foreground: oklch(0.45 0.02 40);
-  --accent: oklch(0.9 0.05 20);
-  --accent-foreground: oklch(0.18 0.02 40);
-  --primary: oklch(0.88 0.06 15);
-  --primary-foreground: oklch(0.18 0.02 40);
-  --border: oklch(0.85 0.02 60);
+  --background:          #FAF8F4;
+  --foreground:          #1A1209;
+  --cream:               #FAF8F4;
+  --cream2:              #F2ECE3;
+  --ink:                 #1A1209;
+  --wine:                #2B0F16;
+  --rose:                #C86068;
+  --muted-fg:            #7A6D65;
+  --border:              rgba(26,18,9,0.10);
+  --primary:             #2B0F16;
+  --primary-foreground:  #FAF8F4;
+  --muted:               #F2ECE3;
+  --muted-foreground:    #7A6D65;
+  --accent:              #F2ECE3;
+  --accent-foreground:   #1A1209;
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
+  *, *::before, *::after { border-color: var(--border); box-sizing: border-box; }
   html, body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--background);
+    color: var(--foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
   h1, h2, h3 {
     font-family: var(--font-serif);
-    font-weight: 500;
-    letter-spacing: -0.02em;
+    font-weight: 600;
+    letter-spacing: -0.015em;
   }
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-thumb { background: rgba(26,18,9,.15); border-radius: 2px; }
 }
 
-@utility eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
+/* ── Utilities ──────────────────────────────────────────── */
 @utility serif-italic {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
 }
 
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@utility pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 13px;
+  border-radius: 9999px;
+  background: rgba(200,96,104,0.10);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #C86068;
+}
+
+/* ── Animations ─────────────────────────────────────────── */
 @keyframes marquee {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to   { transform: translateX(-50%); }
 }
-.animate-marquee {
-  animation: marquee 40s linear infinite;
+.animate-marquee        { animation: marquee 22s linear infinite; }
+.animate-marquee-reverse{ animation: marquee 22s linear infinite reverse; }
+
+@keyframes scroll-line {
+  0%,100% { height: 18px; opacity: .18; }
+  50%      { height: 30px; opacity: .35; }
+}
+.animate-scroll-line { animation: scroll-line 1.6s ease-in-out infinite; }
+
+/* ── Reveal on scroll ───────────────────────────────────── */
+.rv    { opacity: 0; transform: translateY(20px); transition: opacity .65s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.16,1,.3,1); }
+.rv.on { opacity: 1; transform: none; }
+.d1 { transition-delay: .1s; }
+.d2 { transition-delay: .2s; }
+.d3 { transition-delay: .3s; }
+.d4 { transition-delay: .4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
