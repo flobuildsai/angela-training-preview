@@ -189,46 +189,37 @@ function HomePage() {
       {/* HERO */}
       <section
         aria-labelledby="hero-heading"
-        className="relative bg-[color:var(--wine)] text-[color:var(--cream)] pt-32 pb-36 sm:pt-40 sm:pb-44 overflow-hidden grain"
+        className="relative bg-[color:var(--wine)] text-[color:var(--cream)] pt-24 pb-28 sm:pt-28 sm:pb-32 overflow-hidden grain"
       >
         {/* radial glow */}
         <div className="absolute inset-0 hero-glow pointer-events-none" aria-hidden="true" />
         <div className="relative mx-auto max-w-[820px] px-6 text-center">
-          <div className="rv mx-auto h-px w-16 bg-[color:var(--rose)]/60 mb-6" aria-hidden="true" />
           <p className="rv eyebrow text-[color:var(--cream)]/60">The Creator Business System</p>
           <h1
             id="hero-heading"
-            className="rv d1 mt-6 font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.03] tracking-tight headline-measure-wide mx-auto"
+            className="rv d1 mt-5 font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.03] tracking-tight headline-measure-wide mx-auto"
           >
             Everyone teaches you how to get views.{" "}
             <span className="serif-italic text-[color:var(--rose)]">We show you how to turn them into a business.</span>
           </h1>
-          <p className="rv d2 mt-8 text-base sm:text-lg text-[color:var(--cream)]/75 max-w-[620px] mx-auto leading-relaxed">
-            Your own digital product. Your own audience. Your own business. Not brand deals you have to chase. Not someone else's course you resell.
+          <p className="rv d2 mt-5 text-base sm:text-lg text-[color:var(--cream)]/75 max-w-[620px] mx-auto leading-relaxed">
+            Your own digital product. Your own audience. Your own business.
           </p>
-          <div className="rv d3 mt-10 flex flex-col items-center gap-3">
-            <a
-              href="#pricing"
-              className="inline-flex items-center px-8 py-4 rounded-full bg-[color:var(--rose)] text-[color:var(--cream)] text-sm font-semibold tracking-[0.15em] uppercase hover:opacity-90 transition"
-            >
-              Get Instant Access
-            </a>
-            <p className="text-xs text-[color:var(--cream)]/60 tracking-wide">
-              Instant access. Lifetime. 30-day guarantee.
-            </p>
-          </div>
-          <div className="rv d4 mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-[color:var(--cream)]/55 tracking-wide">
-            {["3M+ monthly views", "39K community", "Marbella / Dubai", "Built from zero"].map((t, i, a) => (
-              <span key={t} className="flex items-center gap-6">
-                {t}
-                {i < a.length - 1 && <span className="h-px w-6 bg-[color:var(--cream)]/25" />}
-              </span>
-            ))}
-          </div>
         </div>
-        {/* video card overlaps next section */}
-        <div className="rv d4 relative mx-auto max-w-4xl px-6 mt-16 -mb-24 sm:-mb-32">
+        {/* video visible above the fold */}
+        <div className="rv d3 relative mx-auto max-w-4xl px-6 mt-10 sm:mt-12">
           <VideoBlock videoId="hero-1" label="Video 1 · Start here" />
+        </div>
+        <div className="rv d4 mt-10 flex flex-col items-center gap-3 px-6">
+          <a
+            href="#pricing"
+            className="inline-flex items-center px-8 py-4 rounded-full bg-[color:var(--rose)] text-[color:var(--cream)] text-sm font-semibold tracking-[0.15em] uppercase hover:opacity-90 transition"
+          >
+            Get Instant Access
+          </a>
+          <p className="text-xs text-[color:var(--cream)]/60 tracking-wide">
+            Instant access. Lifetime. 30-day guarantee.
+          </p>
         </div>
       </section>
 
