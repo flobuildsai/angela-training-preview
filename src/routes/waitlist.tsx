@@ -25,21 +25,22 @@ function WaitlistPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[color:var(--wine)] text-[color:var(--cream)] grid place-items-center py-24">
+    <main className="min-h-screen bg-background text-foreground grid place-items-center py-24">
       <div className="mx-auto max-w-xl px-6 text-center">
-        <Link to="/" className="text-xs tracking-[0.2em] uppercase text-[color:var(--cream)]/60 hover:text-[color:var(--cream)]">
+        <Link to="/" className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground hover:text-foreground transition">
           ← Zurück
         </Link>
-        <p className="mt-10 eyebrow text-[color:var(--rose)]">DACH Launch</p>
-        <h1 className="mt-5 font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight leading-[1.05]">
-          Creating Society kommt bald <span className="serif-italic text-[color:var(--rose)]">auf Deutsch.</span>
+        <p className="mt-10 text-[10px] uppercase tracking-[0.38em] text-muted-foreground">DACH Launch</p>
+        <h1 className="mt-5 font-serif text-4xl sm:text-6xl md:text-7xl leading-[0.95]">
+          Creating Society kommt bald
+          <span className="font-serif-italic block text-muted-foreground mt-2">auf Deutsch.</span>
         </h1>
-        <p className="mt-6 text-[color:var(--cream)]/75 leading-relaxed">
+        <p className="mt-8 text-sm sm:text-base text-muted-foreground leading-relaxed">
           Das komplette System — Positionierung, Reichweite, Angebot, Verkauf — in deiner Sprache. Trag dich ein, dann bekommst du als Erste Bescheid, wenn wir öffnen.
         </p>
 
         {done ? (
-          <p className="mt-10 serif-italic text-xl text-[color:var(--rose)]">Danke — du bist auf der Liste.</p>
+          <p className="mt-10 font-serif-italic text-2xl text-foreground">Danke — du bist auf der Liste.</p>
         ) : (
           <form onSubmit={onSubmit} className="mt-10 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <input
@@ -47,11 +48,11 @@ function WaitlistPage() {
               type="email"
               name="email"
               placeholder="deine@email.de"
-              className="flex-1 rounded-full bg-white/10 border border-white/20 px-5 py-3 text-[color:var(--cream)] placeholder:text-[color:var(--cream)]/40 focus:outline-none focus:border-[color:var(--rose)]"
+              className="flex-1 rounded-full bg-card border border-border px-5 py-3 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground/60 transition"
             />
             <button
               type="submit"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[color:var(--rose)] text-[color:var(--cream)] text-sm font-semibold tracking-[0.15em] uppercase hover:opacity-90 transition"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-foreground text-background text-[10px] uppercase tracking-[0.28em] hover:opacity-90 transition"
             >
               Auf die Warteliste
             </button>
