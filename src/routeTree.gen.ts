@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as WaitlistRouteImport } from './routes/waitlist'
+import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ApplyRouteImport } from './routes/apply'
 import { Route as IndexRouteImport } from './routes/index'
@@ -23,6 +24,11 @@ const WelcomeRoute = WelcomeRouteImport.update({
 const WaitlistRoute = WaitlistRouteImport.update({
   id: '/waitlist',
   path: '/waitlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizRoute = QuizRouteImport.update({
+  id: '/quiz',
+  path: '/quiz',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutRoute = CheckoutRouteImport.update({
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/apply': typeof ApplyRoute
   '/checkout': typeof CheckoutRoute
+  '/quiz': typeof QuizRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/apply': typeof ApplyRoute
   '/checkout': typeof CheckoutRoute
+  '/quiz': typeof QuizRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
 }
@@ -60,21 +68,30 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/apply': typeof ApplyRoute
   '/checkout': typeof CheckoutRoute
+  '/quiz': typeof QuizRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/apply' | '/checkout' | '/waitlist' | '/welcome'
+  fullPaths: '/' | '/apply' | '/checkout' | '/quiz' | '/waitlist' | '/welcome'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/apply' | '/checkout' | '/waitlist' | '/welcome'
-  id: '__root__' | '/' | '/apply' | '/checkout' | '/waitlist' | '/welcome'
+  to: '/' | '/apply' | '/checkout' | '/quiz' | '/waitlist' | '/welcome'
+  id:
+    | '__root__'
+    | '/'
+    | '/apply'
+    | '/checkout'
+    | '/quiz'
+    | '/waitlist'
+    | '/welcome'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApplyRoute: typeof ApplyRoute
   CheckoutRoute: typeof CheckoutRoute
+  QuizRoute: typeof QuizRoute
   WaitlistRoute: typeof WaitlistRoute
   WelcomeRoute: typeof WelcomeRoute
 }
@@ -93,6 +110,13 @@ declare module '@tanstack/react-router' {
       path: '/waitlist'
       fullPath: '/waitlist'
       preLoaderRoute: typeof WaitlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz': {
+      id: '/quiz'
+      path: '/quiz'
+      fullPath: '/quiz'
+      preLoaderRoute: typeof QuizRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout': {
@@ -123,6 +147,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApplyRoute: ApplyRoute,
   CheckoutRoute: CheckoutRoute,
+  QuizRoute: QuizRoute,
   WaitlistRoute: WaitlistRoute,
   WelcomeRoute: WelcomeRoute,
 }
