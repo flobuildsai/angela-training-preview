@@ -1,5 +1,5 @@
 import { useState } from "react";
-import posterImg from "@/assets/cs-video-poster.jpg";
+import posterImg from "@/assets/video-poster.jpg";
 
 interface VideoBlockProps {
   videoId: string;
@@ -15,12 +15,12 @@ export function VideoBlock({ videoId, label, poster = posterImg }: VideoBlockPro
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <p className="text-center text-[10px] uppercase tracking-[0.38em] text-muted-foreground mb-4">{label}</p>
+      <p className="text-center eyebrow text-[color:var(--muted-fg)] mb-4">{label}</p>
       <button
         type="button"
         onClick={() => setPlaying(true)}
         aria-label={`Play ${label}`}
-        className="group relative block w-full overflow-hidden rounded-md border border-border focus:outline-none focus:ring-1 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
+        className="group relative block w-full overflow-hidden rounded-2xl shadow-[0_30px_80px_-30px_rgba(26,18,9,0.35)] focus:outline-none focus:ring-2 focus:ring-[color:var(--rose)] focus:ring-offset-4 focus:ring-offset-[color:var(--background)]"
         style={{ aspectRatio: "16 / 9" }}
       >
         <img
@@ -29,22 +29,22 @@ export function VideoBlock({ videoId, label, poster = posterImg }: VideoBlockPro
           className="absolute inset-0 h-full w-full object-cover"
           data-video-id={videoId}
         />
-        <div className="absolute inset-0 bg-black/40 transition-colors group-hover:bg-black/25" />
+        <div className="absolute inset-0 bg-[color:var(--ink)]/25 transition-colors group-hover:bg-[color:var(--ink)]/15" />
         <span className="absolute inset-0 grid place-items-center">
-          <span className="grid h-20 w-20 sm:h-24 sm:w-24 place-items-center rounded-full border border-foreground/60 bg-black/20 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
-            <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7 fill-foreground" aria-hidden="true">
+          <span className="grid h-20 w-20 place-items-center rounded-full bg-[color:var(--cream)]/95 shadow-lg transition-transform group-hover:scale-105 sm:h-24 sm:w-24">
+            <svg viewBox="0 0 24 24" className="ml-1 h-8 w-8 fill-[color:var(--wine)]" aria-hidden="true">
               <path d="M8 5v14l11-7z" />
             </svg>
           </span>
         </span>
         {playing && (
-          <div className="absolute inset-0 grid place-items-center bg-black/75 text-foreground text-sm">
+          <div className="absolute inset-0 grid place-items-center bg-[color:var(--ink)]/60 text-[color:var(--cream)] text-sm">
             {/* TODO: embed player here */}
             Video player loads here
           </div>
         )}
       </button>
-      <p className="mt-3 text-center text-[10px] uppercase tracking-[0.38em] text-muted-foreground/60">Click to unmute</p>
+      <p className="mt-3 text-center text-xs tracking-wide text-[color:var(--muted-fg)]">Click to unmute</p>
     </div>
   );
 }

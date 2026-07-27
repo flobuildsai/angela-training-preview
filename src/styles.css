@@ -5,39 +5,43 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-serif: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+  --font-serif: "Cormorant Garamond", "Playfair Display", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
   --color-background:        var(--background);
   --color-foreground:        var(--foreground);
-  --color-card:              var(--card);
-  --color-card-foreground:   var(--card-foreground);
+  --color-cream:             var(--cream);
+  --color-cream2:            var(--cream2);
+  --color-ink:               var(--ink);
+  --color-wine:              var(--wine);
+  --color-rose:              var(--rose);
+  --color-muted-fg:          var(--muted-fg);
+  --color-border:            var(--border);
+  --color-primary:           var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
   --color-muted:             var(--muted);
   --color-muted-foreground:  var(--muted-foreground);
   --color-accent:            var(--accent);
-  --color-accent-foreground: var(--foreground);
-  --color-border:            var(--border);
-  --color-input:             var(--input);
-  --color-ring:              var(--ring);
-  --color-primary:           var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --radius: 1rem;
+  --color-accent-foreground: var(--accent-foreground);
+  --color-ring:              var(--rose);
 }
 
 :root {
-  --background:          oklch(0.03 0 0);
-  --foreground:          oklch(0.985 0 0);
-  --card:                oklch(0.08 0 0);
-  --card-foreground:     oklch(0.985 0 0);
-  --muted:               oklch(0.14 0 0);
-  --muted-foreground:    oklch(0.62 0 0);
-  --accent:              oklch(0.16 0 0);
-  --border:              oklch(1 0 0 / 12%);
-  --input:               oklch(1 0 0 / 10%);
-  --ring:                oklch(0.985 0 0);
-  --primary:             oklch(0.985 0 0);
-  --primary-foreground:  oklch(0.05 0 0);
-  --radius:              1rem;
+  --background:          #FAF8F4;
+  --foreground:          #1A1209;
+  --cream:               #FAF8F4;
+  --cream2:              #F2ECE3;
+  --ink:                 #1A1209;
+  --wine:                #2B0F16;
+  --rose:                #C86068;
+  --muted-fg:            #7A6D65;
+  --border:              rgba(26,18,9,0.10);
+  --primary:             #2B0F16;
+  --primary-foreground:  #FAF8F4;
+  --muted:               #F2ECE3;
+  --muted-foreground:    #7A6D65;
+  --accent:              #F2ECE3;
+  --accent-foreground:   #1A1209;
 }
 
 @layer base {
@@ -46,36 +50,74 @@
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
     overflow-x: hidden;
     scroll-behavior: smooth;
   }
   h1, h2, h3 {
     font-family: var(--font-serif);
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    font-weight: 600;
+    letter-spacing: -0.015em;
   }
   a:focus-visible, button:focus-visible, [role="button"]:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
-    outline: 1px solid var(--ring);
+    outline: 2px solid var(--rose);
     outline-offset: 3px;
     border-radius: 4px;
   }
   ::-webkit-scrollbar { width: 3px; }
-  ::-webkit-scrollbar-thumb { background: oklch(1 0 0 / 15%); border-radius: 2px; }
+  ::-webkit-scrollbar-thumb { background: rgba(26,18,9,.15); border-radius: 2px; }
 }
 
-/* ── Typography helpers ─────────────────────────────────── */
-.font-serif {
-  font-family: "Cormorant Garamond", "Times New Roman", Georgia, serif;
-  letter-spacing: -0.01em;
+/* ── Utilities ──────────────────────────────────────────── */
+@utility serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
   font-weight: 400;
 }
-.font-serif-italic {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-style: italic;
-  font-weight: 300;
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@utility pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 13px;
+  border-radius: 9999px;
+  background: rgba(200,96,104,0.10);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #C86068;
+}
+
+@utility headline-measure {
+  max-width: 14ch;
+}
+@utility headline-measure-wide {
+  max-width: 22ch;
+}
+
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.85'/></svg>");
+  }
+}
+
+@utility hero-glow {
+  background: radial-gradient(ellipse at 50% 30%, rgba(200,96,104,0.22), transparent 60%);
 }
 
 /* ── Animations ─────────────────────────────────────────── */
@@ -83,23 +125,12 @@
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-.animate-marquee        { animation: marquee 40s linear infinite; }
-.animate-marquee-reverse{ animation: marquee 40s linear infinite reverse; }
-
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes slow-zoom {
-  from { transform: scale(1.08); }
-  to   { transform: scale(1); }
-}
-.animate-fade-up   { animation: fade-up 1s ease-out both; }
-.animate-slow-zoom { animation: slow-zoom 6s ease-out both; }
+.animate-marquee        { animation: marquee 22s linear infinite; }
+.animate-marquee-reverse{ animation: marquee 22s linear infinite reverse; }
 
 @keyframes scroll-line {
   0%,100% { height: 18px; opacity: .18; }
-  50%     { height: 30px; opacity: .35; }
+  50%      { height: 30px; opacity: .35; }
 }
 .animate-scroll-line { animation: scroll-line 1.6s ease-in-out infinite; }
 

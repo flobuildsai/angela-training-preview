@@ -21,7 +21,7 @@ function ApplyPage() {
     e.preventDefault();
     setPending(true);
     const formData = new FormData(e.currentTarget);
-    // TODO: POST application to real endpoint
+    // TODO: POST application to real endpoint (e.g. /api/public/apply)
     await new Promise((r) => setTimeout(r, 600));
     console.log("application", Object.fromEntries(formData));
     setPending(false);
@@ -30,17 +30,16 @@ function ApplyPage() {
 
   if (submitted) {
     return (
-      <main className="min-h-screen bg-background text-foreground py-24 grid place-items-center">
+      <main className="min-h-screen bg-[color:var(--cream)] py-24 grid place-items-center">
         <div className="max-w-lg px-6 text-center">
-          <p className="text-[10px] uppercase tracking-[0.38em] text-muted-foreground">Received</p>
-          <h1 className="mt-5 font-serif text-5xl sm:text-6xl leading-[0.95]">
-            Thank
-            <span className="font-serif-italic block text-muted-foreground mt-2">you.</span>
+          <p className="eyebrow text-[color:var(--rose)]">Received</p>
+          <h1 className="mt-5 font-serif text-5xl tracking-tight text-[color:var(--wine)]">
+            Thank you.
           </h1>
-          <p className="mt-6 text-muted-foreground leading-relaxed">
+          <p className="mt-5 text-[color:var(--muted-fg)] leading-relaxed">
             We read every application ourselves. If it's a fit for this cohort, you'll hear from us within 48 hours with next steps.
           </p>
-          <Link to="/" className="mt-10 inline-flex items-center px-8 py-4 rounded-full bg-foreground text-background text-[10px] uppercase tracking-[0.28em] hover:opacity-90 transition">
+          <Link to="/" className="mt-10 inline-flex items-center px-8 py-4 rounded-full bg-[color:var(--wine)] text-[color:var(--cream)] text-sm font-semibold tracking-[0.15em] uppercase hover:opacity-90 transition">
             Back to home
           </Link>
         </div>
@@ -48,38 +47,37 @@ function ApplyPage() {
     );
   }
 
-  const field = "mt-2 w-full rounded-md border border-border bg-card px-4 py-3 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-foreground/60 transition";
+  const field = "mt-2 w-full rounded-lg border border-[color:var(--border)] bg-white px-4 py-3 text-[color:var(--ink)] focus:outline-none focus:border-[color:var(--rose)]";
 
   return (
-    <main className="min-h-screen bg-background text-foreground py-16 sm:py-24">
+    <main className="min-h-screen bg-[color:var(--cream)] py-16 sm:py-24">
       <div className="mx-auto max-w-2xl px-6">
-        <Link to="/" className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground hover:text-foreground transition">← Back</Link>
-        <p className="mt-8 text-[10px] uppercase tracking-[0.38em] text-muted-foreground">The Inner Circle</p>
-        <h1 className="mt-5 font-serif text-4xl sm:text-6xl leading-[0.95]">
-          Apply to
-          <span className="font-serif-italic block text-muted-foreground mt-2">work with us.</span>
+        <Link to="/" className="text-xs tracking-[0.2em] uppercase text-[color:var(--muted-fg)] hover:text-[color:var(--wine)]">← Back</Link>
+        <p className="mt-8 eyebrow text-[color:var(--rose)]">The Inner Circle</p>
+        <h1 className="mt-4 font-serif text-4xl sm:text-5xl tracking-tight text-[color:var(--wine)]">
+          Apply to <span className="serif-italic text-[color:var(--rose)]">work with us.</span>
         </h1>
-        <p className="mt-6 text-sm sm:text-base text-muted-foreground leading-relaxed">
+        <p className="mt-5 text-[color:var(--muted-fg)] leading-relaxed">
           12 weeks. Small cohort. We build your offer with you. Answer honestly — we'd rather say no than take the wrong person.
         </p>
 
         <form onSubmit={onSubmit} className="mt-12 space-y-6">
           <div className="grid sm:grid-cols-2 gap-6">
             <label className="block text-sm">
-              <span className="text-foreground">First name</span>
+              <span className="text-[color:var(--ink)] font-medium">First name</span>
               <input required name="firstName" className={field} />
             </label>
             <label className="block text-sm">
-              <span className="text-foreground">Email</span>
+              <span className="text-[color:var(--ink)] font-medium">Email</span>
               <input required type="email" name="email" className={field} />
             </label>
           </div>
           <label className="block text-sm">
-            <span className="text-foreground">Instagram handle</span>
+            <span className="text-[color:var(--ink)] font-medium">Instagram handle</span>
             <input required name="instagram" placeholder="@yourhandle" className={field} />
           </label>
           <label className="block text-sm">
-            <span className="text-foreground">Where are you right now?</span>
+            <span className="text-[color:var(--ink)] font-medium">Where are you right now?</span>
             <select required name="stage" className={field} defaultValue="">
               <option value="" disabled>Select one…</option>
               <option value="zero">Starting from zero</option>
@@ -88,11 +86,11 @@ function ApplyPage() {
             </select>
           </label>
           <label className="block text-sm">
-            <span className="text-foreground">What do you want to be true in 12 weeks?</span>
+            <span className="text-[color:var(--ink)] font-medium">What do you want to be true in 12 weeks?</span>
             <textarea required name="goal" rows={5} className={field} />
           </label>
           <label className="block text-sm">
-            <span className="text-foreground">Are you able to invest $3,997?</span>
+            <span className="text-[color:var(--ink)] font-medium">Are you able to invest $3,997?</span>
             <select required name="invest" className={field} defaultValue="">
               <option value="" disabled>Select one…</option>
               <option value="yes">Yes</option>
@@ -104,7 +102,7 @@ function ApplyPage() {
           <button
             type="submit"
             disabled={pending}
-            className="mt-4 inline-flex items-center justify-center px-8 py-4 rounded-full bg-foreground text-background text-[10px] uppercase tracking-[0.28em] hover:opacity-90 transition disabled:opacity-60"
+            className="mt-4 inline-flex items-center justify-center px-8 py-4 rounded-full bg-[color:var(--wine)] text-[color:var(--cream)] text-sm font-semibold tracking-[0.15em] uppercase hover:opacity-90 transition disabled:opacity-60"
           >
             {pending ? "Sending…" : "Submit application"}
           </button>
