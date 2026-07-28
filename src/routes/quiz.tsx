@@ -121,9 +121,10 @@ const t = {
   belief: {
     h: { de: "Du brauchst keine 100.000 Follower.", en: "You don't need 100,000 followers." },
     body: {
-      de: (f: number) => `Reichweite ist heute interessenbasiert – Reels werden vor allem Leuten gezeigt, die dir NICHT folgen. Das heißt: Auch bei ${f.toLocaleString("de-DE")} Followern kann dein Content morgen 50.000 Fremde erreichen. Das eigentliche Problem ist nicht Reichweite. Es ist, dass am anderen Ende nichts zum Kaufen steht.`,
-      en: (f: number) => `Reach is interest-based now — Reels are shown mostly to people who DON'T follow you. Which means: even at ${f.toLocaleString("en-US")} followers, your content can reach 50,000 strangers tomorrow. The real problem isn't reach. It's that there's nothing to buy on the other end.`,
+      de: (f: number) => `Reichweite ist heute interessenbasiert – Reels laufen vor allem bei Leuten, die dir NICHT folgen. Auch mit ${f.toLocaleString("de-DE")} Followern kann dein Content morgen 50.000 Fremde erreichen. Das Problem ist nicht Reichweite, sondern dass am anderen Ende nichts zum Kaufen steht.`,
+      en: (f: number) => `Reach is interest-based now — Reels are shown mostly to people who DON'T follow you. Even at ${f.toLocaleString("en-US")} followers, your content can reach 50,000 strangers tomorrow. The problem isn't reach, it's that there's nothing to buy on the other end.`,
     },
+
     cta: { de: "Okay – zeig mir meine Rechnung →", en: "Okay — show me my numbers →" },
   },
 
