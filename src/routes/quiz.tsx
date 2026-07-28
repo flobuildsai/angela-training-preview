@@ -686,12 +686,14 @@ function StepBelief() {
   const { L, next, followers } = useFunnel();
   return (
     <div className="space-y-8">
+      <FounderCard compact />
       <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-[color:var(--wine)] leading-[1.05]">
         {t.belief.h[L]}
       </h2>
       <p className="text-lg text-[color:var(--ink)] leading-relaxed">
         {t.belief.body[L](followers)}
       </p>
+
       <PrimaryCTA onClick={next}>{t.belief.cta[L]}</PrimaryCTA>
     </div>
   );
