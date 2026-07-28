@@ -568,6 +568,7 @@ function StepPosting() {
   const { L, set, next } = useFunnel();
   return (
     <ChoiceStep
+      n={2}
       q={t.step1.q[L]}
       options={t.step1.a.map((o) => ({ key: o.key, label: o[L] }))}
       onPick={(k: string) => { set("postingStatus", k as PostingStatus); setTimeout(next, 150); }}
@@ -578,6 +579,7 @@ function StepFace() {
   const { L, set, next } = useFunnel();
   return (
     <ChoiceStep
+      n={3}
       q={t.step2.q[L]}
       options={t.step2.a.map((o) => ({ key: o.key, label: o[L] }))}
       onPick={(k: string) => { set("faceMode", k as FaceMode); setTimeout(next, 150); }}
@@ -589,6 +591,7 @@ function StepSkill() {
   const [reassure, setReassure] = useState(false);
   return (
     <ChoiceStep
+      n={4}
       q={t.step3.q[L]}
       options={t.step3.a.map((o) => ({ key: o.key, label: o[L] }))}
       onPick={(k: string) => {
@@ -610,6 +613,7 @@ function StepTime() {
   const { L, set, next } = useFunnel();
   return (
     <ChoiceStep
+      n={5}
       q={t.step4.q[L]}
       options={t.step4.a.map((o) => ({ key: o.key, label: o[L] }))}
       onPick={(k: string) => { set("hoursPerWeek", k); setTimeout(next, 150); }}
@@ -620,9 +624,10 @@ function StepReadiness() {
   const { L, set, next } = useFunnel();
   return (
     <ChoiceStep
+      n={6}
       q={t.step5.q[L]}
       options={t.step5.a.map((o) => ({ key: o.key, label: o[L] }))}
-      onPick={(k: string) => { set("readiness", k); setTimeout(next, 150); }}
+      onPick={(k: string) => { set("readiness", k); set("price", k === "ready" ? 297 : 197); setTimeout(next, 150); }}
     />
   );
 }
