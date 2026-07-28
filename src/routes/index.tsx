@@ -1,33 +1,30 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import portraitImg from "@/assets/laura-call.jpg";
-import mentorImg from "@/assets/mentor.jpg";
+import heroImg from "@/assets/laura-call.jpg";
+import lauraImg from "@/assets/mentor.jpg";
+import proofA from "@/assets/opportunity.jpg";
+import proofB from "@/assets/hero.jpg";
+import proofC from "@/assets/avatar.jpg";
 import { CalendlyEmbed } from "@/components/CalendlyEmbed";
 import { trackEvent } from "@/lib/track";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Creating Society — Aus deinem Wissen ein Angebot machen" },
+      { title: "Creating Society — Aus Content wird ein Unternehmen" },
       {
         name: "description",
         content:
-          "Für Frauen, die aus Wissen, Erfahrung oder einer Idee ein digitales Angebot entwickeln, testen und verkaufen wollen. Kostenloses Strategiegespräch, 30 Minuten.",
+          "Creating Society hilft Frauen dabei, mit Content Aufmerksamkeit aufzubauen – und daraus eine eigene Marke, ein starkes Angebot und ein profitables Business zu entwickeln.",
       },
       {
         property: "og:title",
-        content: "Creating Society — Aus deinem Wissen ein Angebot machen",
+        content: "Creating Society — Aus Content wird ein Unternehmen",
       },
       {
         property: "og:description",
         content:
-          "Du brauchst keine perfekte Idee. Du brauchst ein Angebot, das jemand wirklich kaufen will. Kostenloses Strategiegespräch buchen.",
+          "Für Frauen, die nicht nur posten, sondern etwas Eigenes aufbauen wollen. Kostenloses Strategiegespräch buchen.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -40,141 +37,68 @@ export const Route = createFileRoute("/")({
 // Inhalte
 // ─────────────────────────────────────────────────────────────
 
-const problemStatements = [
-  "Du weißt, dass du mehr kannst – aber nicht, welches Angebot daraus werden soll.",
-  "Du konsumierst Business-Content – aber triffst keine klare Entscheidung.",
-  "Du willst unabhängig werden – aber dein Plan bleibt in Notizen, Tabs und offenen Gedanken.",
+const ownership = [
+  "Deine Positionierung.",
+  "Deine Community.",
+  "Dein Angebot.",
+  "Deine Kunden.",
+  "Dein Unternehmen.",
 ];
 
-const beliefs = [
-  "Du brauchst zuerst ein Problem, das wichtig genug ist.",
-  "Du brauchst ein Angebot, das klar genug ist.",
-  "Du brauchst einen Weg, Menschen darauf aufmerksam zu machen.",
-  "Und du brauchst den Mut, es zu verkaufen, bevor es perfekt ist.",
+// Austauschbare Proof-Slots — echte Assets später hier ersetzen.
+const proofSlots = [
+  { label: "Property Circle — Landingpage", img: proofA, span: "sm:col-span-7", ratio: "4 / 3" },
+  { label: "Organischer Content", img: proofB, span: "sm:col-span-5", ratio: "3 / 4" },
+  { label: "Kampagne / Paid Marketing", img: proofC, span: "sm:col-span-5", ratio: "1 / 1" },
+  { label: "Anfragen & Leads", img: null, span: "sm:col-span-7", ratio: "16 / 10" },
 ];
 
-const phases = [
+const build = [
   {
     index: "01",
-    name: "Position",
-    body: "Wir finden heraus, wem du helfen kannst, welches Problem relevant ist und warum Menschen dir zuhören sollten.",
-    result: "Eine klare Positionierung, die nicht austauschbar ist.",
+    title: "Wofür du stehen willst.",
+    body: "Wir entwickeln eine klare Positionierung, die zu dir passt und die andere Menschen sofort verstehen.",
   },
   {
     index: "02",
-    name: "Package",
-    body: "Wir verwandeln dein Wissen in ein Angebot, das verständlich, relevant und kaufbar ist.",
-    result: "Ein Angebot, das du erklären und verkaufen kannst.",
+    title: "Content, der etwas für dich aufbaut.",
+    body: "Du entwickelst Formate und Botschaften, die Aufmerksamkeit erzeugen, Vertrauen schaffen und Nachfrage aufbauen.",
   },
   {
     index: "03",
-    name: "Attract",
-    body: "Wir entwickeln einen realistischen Weg, die richtigen Menschen zu erreichen – auch ohne große Community.",
-    result: "Ein klares System für Sichtbarkeit und Nachfrage.",
+    title: "Ein Angebot, das Menschen wirklich kaufen wollen.",
+    body: "Wir finden heraus, was du sinnvoll verkaufen kannst – basierend auf deinen Fähigkeiten, deiner Erfahrung und dem Bedarf deiner Zielgruppe.",
   },
   {
     index: "04",
-    name: "Convert",
-    body: "Wir bauen deinen Weg vom Interesse zum Gespräch und vom Gespräch zur Kundin.",
-    result: "Ein einfacher Verkaufsprozess ohne komplizierten Funnel.",
+    title: "Einen Weg vom Zuschauer zum Kunden.",
+    body: "Du lernst, wie Content, Angebot und Vertrieb zusammenspielen – organisch und, wenn es für dein Geschäftsmodell sinnvoll ist, zusätzlich über Paid Marketing.",
   },
 ];
 
-const program = [
-  {
-    index: "01",
-    title: "Persönliche Strategie",
-    body: "Wir starten bei deiner Situation: Erfahrung, Fähigkeiten, Zeit. Daraus entsteht ein Plan, der zu dir passt.",
-  },
-  {
-    index: "02",
-    title: "Wöchentliche Umsetzung",
-    body: "Jede Woche eine Entscheidung, ein Schritt, ein sichtbares Ergebnis. Kein Aufschieben in „irgendwann“.",
-  },
-  {
-    index: "03",
-    title: "Direktes Feedback",
-    body: "Auf dein Angebot, deine Worte, deine Verkaufsgespräche. Ehrlich statt nett.",
-  },
-  {
-    index: "04",
-    title: "Klare Vorlagen und Systeme",
-    body: "Struktur für Positionierung, Angebot, Content und Verkauf – damit du nicht bei null anfängst.",
-  },
+const future = [
+  "… wofür du bekannt werden willst.",
+  "… welchen Content du produzieren musst.",
+  "… welche Menschen du erreichen möchtest.",
+  "… was du ihnen anbieten kannst.",
+  "… wie aus Zuschauern Interessenten werden.",
+  "… und wie daraus ein Unternehmen entsteht, das wirklich dir gehört.",
 ];
 
-const forYou = [
-  "du Wissen, Erfahrung oder Fähigkeiten mitbringst",
-  "du ein eigenes digitales Business aufbauen willst",
-  "du noch keine fertige Geschäftsidee hast",
-  "du fünf bis zehn fokussierte Stunden pro Woche investieren kannst",
-  "du Feedback annimmst und wirklich umsetzt",
-];
-
-const notForYou = [
-  "du schnelles Geld ohne Arbeit suchst",
-  "du ein fertiges Done-for-you-Business erwartest",
-  "du keine Gespräche mit potenziellen Kundinnen führen willst",
-  "du nur Follower statt Kunden willst",
-  "du garantierte Umsätze erwartest",
-];
-
-const timeline = [
-  { weeks: "Woche 1–2", title: "Positionierung und Zielgruppe" },
-  { weeks: "Woche 3–4", title: "Angebot und eigene Methode" },
-  { weeks: "Woche 5–6", title: "Preis, Messaging und Struktur" },
-  { weeks: "Woche 7–8", title: "Salespage und Verkaufsprozess" },
-  { weeks: "Woche 9–10", title: "Content, Outreach, erste Gespräche" },
-  { weeks: "Woche 11–12", title: "Markttest, Feedback, Optimierung" },
+const qualify = [
+  "du bereits Content machst, aber daraus kaum oder unregelmäßig Geld entsteht.",
+  "du starten möchtest, aber noch nicht weißt, wofür du stehen oder was du anbieten kannst.",
+  "du nicht dauerhaft von Kooperationen und Marken abhängig sein willst.",
+  "du bereit bist, sichtbar zu werden und konsequent umzusetzen.",
+  "du nicht nur einen Account, sondern ein echtes Business aufbauen möchtest.",
 ];
 
 const callAgenda = [
-  {
-    index: "01",
-    title: "Ausgangssituation",
-    body: "Erfahrung, Fähigkeiten, bestehende Ideen, verfügbare Zeit – und woran es aktuell hakt.",
-  },
-  {
-    index: "02",
-    title: "Potenzial",
-    body: "Mögliche Zielgruppen, relevante Probleme und Angebotsmodelle, die zu dir passen könnten.",
-  },
-  {
-    index: "03",
-    title: "Entscheidung",
-    body: "Wenn Creating Society passt, erklären wir dir, wie eine Zusammenarbeit aussieht. Wenn nicht, sagen wir das offen.",
-  },
-];
-
-const faqs = [
-  {
-    q: "Brauche ich bereits eine Geschäftsidee?",
-    a: "Nein. Im Strategiegespräch prüfen wir, welche deiner Erfahrungen oder Fähigkeiten sich für ein konkretes Angebot eignen könnten.",
-  },
-  {
-    q: "Brauche ich eine große Reichweite?",
-    a: "Nein. Reichweite verstärkt ein gutes Angebot, sie ersetzt es nicht. Am Anfang sind Kontakte, Gespräche und fokussierter Content oft wirksamer als große Zahlen.",
-  },
-  {
-    q: "Muss ich bereits selbstständig sein?",
-    a: "Nein. Viele starten angestellt und bauen ihr Business strukturiert nebenberuflich auf.",
-  },
-  {
-    q: "Wie viel Zeit sollte ich einplanen?",
-    a: "Fünf bis zehn fokussierte Stunden pro Woche. Mit weniger ist Fortschritt möglich, aber langsamer.",
-  },
-  {
-    q: "Ist das ein Selbstlernkurs?",
-    a: "Nein. Wir arbeiten mit dir: Calls, Feedback und gemeinsame Entscheidungen. Die Inhalte geben nur die Struktur.",
-  },
-  {
-    q: "Garantiert ihr bestimmte Umsätze?",
-    a: "Nein. Umsatz hängt von Angebot, Markt und Umsetzung ab. Wir versprechen keine Zahlen, sondern eine belastbare Grundlage.",
-  },
-  {
-    q: "Was passiert nach dem Strategiegespräch?",
-    a: "Wenn es passt, erklären wir dir die nächsten Schritte. Es gibt keinen Checkout auf dieser Seite und keinen künstlichen Entscheidungsdruck.",
-  },
+  "wo du aktuell stehst",
+  "welche Positionierung zu dir passen könnte",
+  "welches Angebot du entwickeln kannst",
+  "wie Content für dich Aufmerksamkeit und Kunden gewinnen kann",
+  "ob Creating Society der richtige nächste Schritt für dich ist",
 ];
 
 // ── Hooks ─────────────────────────────────────────────────────
@@ -206,20 +130,6 @@ function useScrolled() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   return past;
-}
-
-function useScrollProgress() {
-  const [p, setP] = useState(0);
-  useEffect(() => {
-    const onScroll = () => {
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      setP(h > 0 ? Math.min(1, window.scrollY / h) : 0);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  return p;
 }
 
 function useBookingVisible() {
@@ -254,14 +164,12 @@ function CtaButton({
 }: {
   source: string;
   children: React.ReactNode;
-  tone?: "wine" | "cream" | "outline";
+  tone?: "wine" | "cream";
   className?: string;
 }) {
   const tones = {
     wine: "bg-[color:var(--wine)] text-[color:var(--cream)] hover:opacity-90",
     cream: "bg-[color:var(--cream)] text-[color:var(--wine)] hover:opacity-90",
-    outline:
-      "border border-current text-current hover:bg-[color:var(--wine)] hover:text-[color:var(--cream)] hover:border-transparent",
   } as const;
 
   return (
@@ -269,7 +177,7 @@ function CtaButton({
       type="button"
       onClick={() => scrollToCall(source)}
       className={
-        "inline-flex items-center justify-center rounded-full px-8 py-4 text-[0.7rem] font-semibold uppercase tracking-[0.16em] transition " +
+        "inline-flex items-center justify-center rounded-full px-7 py-3.5 text-[0.68rem] font-semibold uppercase tracking-[0.16em] transition sm:px-9 sm:py-4 " +
         tones[tone] +
         " " +
         className
@@ -280,24 +188,15 @@ function CtaButton({
   );
 }
 
-function Eyebrow({ children, muted = false }: { children: React.ReactNode; muted?: boolean }) {
-  return (
-    <p className={"eyebrow " + (muted ? "text-[color:var(--cream)]/55" : "text-[color:var(--rose)]")}>
-      {children}
-    </p>
-  );
-}
-
 // ── Seite ─────────────────────────────────────────────────────
 function HomePage() {
   useReveal();
   const past = useScrolled();
-  const progress = useScrollProgress();
   const bookingVisible = useBookingVisible();
 
   return (
     <>
-      {/* Sticky Header */}
+      {/* Header */}
       <header
         className={
           "fixed inset-x-0 top-0 z-40 transition-all duration-500 " +
@@ -308,530 +207,494 @@ function HomePage() {
       >
         <div
           className={
-            "mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 transition-all duration-500 sm:px-6 " +
+            "mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 transition-all duration-500 sm:px-8 " +
             (past ? "py-3.5" : "py-5 sm:py-7")
           }
         >
-          <Link
-            to="/"
-            className="min-w-0 truncate font-serif text-xl tracking-tight text-[color:var(--ink)] sm:text-2xl"
-          >
+          <a href="#top" className="font-serif text-xl tracking-tight text-[color:var(--ink)] sm:text-2xl">
             Creating <span className="serif-italic">Society</span>
-          </Link>
-          <nav className="flex shrink-0 items-center gap-7">
-            {[
-              { href: "#method", label: "Die Methode" },
-              { href: "#program", label: "Das Programm" },
-              { href: "#about", label: "Über Laura" },
-              { href: "#faq", label: "FAQ" },
-            ].map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="hidden text-[0.82rem] font-medium text-[color:var(--ink)]/70 transition hover:text-[color:var(--ink)] lg:inline"
-              >
-                {l.label}
-              </a>
-            ))}
-            <CtaButton source="header" className="px-6 py-3 text-[0.62rem]">
-              Strategiegespräch
-            </CtaButton>
-          </nav>
+          </a>
+          <div className="flex items-center gap-8">
+            <nav className="hidden items-center gap-7 md:flex">
+              {[
+                { href: "#society", label: "Creating Society" },
+                { href: "#laura", label: "Laura" },
+                { href: "#call", label: "Gespräch" },
+              ].map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  className="text-[0.78rem] tracking-wide text-[color:var(--muted-fg)] transition hover:text-[color:var(--ink)]"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+            <button
+              type="button"
+              onClick={() => scrollToCall("header")}
+              className="rounded-full border border-[color:var(--ink)]/20 px-5 py-2.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--ink)] transition hover:bg-[color:var(--wine)] hover:text-[color:var(--cream)] sm:px-6"
+            >
+              Strategiegespräch buchen
+            </button>
+          </div>
         </div>
-        <div
-          className="h-[2px] origin-left bg-[color:var(--rose)] transition-transform duration-150"
-          style={{ transform: `scaleX(${progress})` }}
-        />
       </header>
 
-      <main className="overflow-x-hidden bg-[color:var(--cream)] text-[color:var(--ink)]">
-        {/* ── HERO ───────────────────────────────────────────── */}
-        <section className="relative pt-32 pb-20 sm:pt-40 md:pb-28">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[70vh] bg-[radial-gradient(70%_60%_at_20%_10%,color-mix(in_oklab,var(--rose)_16%,transparent),transparent_70%)]"
-          />
-          <div className="mx-auto max-w-6xl px-5 sm:px-6">
-            <div className="rv">
-              <Eyebrow>Für Frauen, die aus ihrem Wissen ein eigenes Business machen wollen</Eyebrow>
-            </div>
-
-            <h1 className="rv d1 mt-7 max-w-[16ch] font-serif text-[2.6rem] leading-[0.98] tracking-[-0.03em] sm:text-6xl md:text-7xl lg:text-[5.6rem]">
-              Du brauchst keine perfekte Idee.
-            </h1>
-
-            <div className="mt-8 grid gap-10 md:mt-10 md:grid-cols-12 md:items-start md:gap-10">
-              <div className="md:col-span-7 lg:col-span-6">
-                <p className="rv d1 font-serif text-[2rem] leading-[1.06] tracking-[-0.02em] text-[color:var(--wine)] sm:text-5xl md:text-[3.4rem]">
-                  Du brauchst{" "}
-                  <span className="serif-italic text-[color:var(--rose)]">
-                    ein Angebot, das jemand wirklich kaufen will.
-                  </span>
+      <main id="top" className="bg-[color:var(--background)]">
+        {/* ── Hero ─────────────────────────────────────────── */}
+        <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40 md:pt-48 md:pb-32">
+          <div className="pointer-events-none absolute inset-0 hero-glow" aria-hidden="true" />
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="grid gap-12 md:grid-cols-12 md:items-end md:gap-10">
+              <div className="rv md:col-span-7">
+                <p className="eyebrow text-[color:var(--rose)]">Creating Society</p>
+                <h1 className="mt-7 font-serif text-[3rem] leading-[0.94] tracking-tight text-[color:var(--ink)] sm:text-7xl lg:text-[5.75rem]">
+                  Aus Content wird
+                  <br />
+                  <span className="serif-italic">ein Unternehmen.</span>
+                </h1>
+                <p className="mt-8 max-w-xl text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)] sm:text-lg">
+                  Creating Society hilft Frauen dabei, mit Content Aufmerksamkeit aufzubauen – und
+                  daraus eine eigene Marke, ein starkes Angebot und ein profitables Business zu
+                  entwickeln.
                 </p>
-
-                <p className="rv d2 mt-8 max-w-xl text-[0.98rem] leading-[1.75] text-[color:var(--muted-fg)] sm:text-base">
-                  Creating Society hilft dir, aus deinen Fähigkeiten, Erfahrungen oder Interessen
-                  ein digitales Angebot zu entwickeln, es am Markt zu testen und daraus ein echtes
-                  Business aufzubauen – auch ohne große Reichweite oder fertigen Plan.
-                </p>
-
-                <div className="rv d3 mt-10 flex flex-col items-start gap-4">
-                  <CtaButton source="hero" className="w-full sm:w-auto">
-                    Meine Business-Idee prüfen lassen
-                  </CtaButton>
-                  <p className="text-[0.72rem] tracking-[0.08em] text-[color:var(--muted-fg)]">
-                    Kostenloses Strategiegespräch · 30 Minuten · Persönliche Potenzialanalyse
-                  </p>
+                <div className="mt-9">
+                  <CtaButton source="hero">Strategiegespräch buchen</CtaButton>
                 </div>
-
-                <p className="rv d4 mt-10 max-w-md border-l border-[color:var(--rose)]/50 pl-5 font-serif text-lg italic leading-snug text-[color:var(--ink)]/80 sm:text-xl">
-                  Für Frauen mit Wissen, Erfahrung oder einer Idee, die endlich konkret werden soll.
+                <p className="mt-6 max-w-md text-sm leading-relaxed text-[color:var(--muted-fg)]">
+                  Wir schauen gemeinsam, wo du heute stehst, was du aufbauen kannst und ob Creating
+                  Society der richtige Weg für dich ist.
                 </p>
               </div>
 
-              <div className="relative md:col-span-5 md:-mb-16 lg:col-span-6 lg:-mr-10">
-                <div className="grain relative overflow-hidden rounded-[2px] soft-shadow">
+              <div className="rv d2 md:col-span-5">
+                <div className="grain relative overflow-hidden rounded-[2px]">
                   <img
-                    src={portraitImg}
+                    src={heroImg}
                     alt="Laura, Gründerin von Creating Society"
-                    className="aspect-[4/5] w-full object-cover md:aspect-[3/4]"
-                    loading="eager"
+                    className="h-full w-full object-cover"
+                    style={{ aspectRatio: "4 / 5" }}
                   />
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 bg-[linear-gradient(to_top,color-mix(in_oklab,var(--wine)_45%,transparent),transparent_55%)]"
-                  />
-                  <p className="absolute bottom-6 left-6 right-6 font-serif text-xl leading-tight text-[color:var(--cream)] sm:text-2xl">
-                    Laura — <span className="serif-italic">Gründerin</span>
-                  </p>
                 </div>
+                <p className="mt-5 max-w-xs text-[0.8rem] leading-relaxed text-[color:var(--muted-fg)]">
+                  Für Frauen, die nicht nur posten, sondern etwas Eigenes aufbauen wollen.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── PROBLEM ────────────────────────────────────────── */}
-        <section
-          aria-labelledby="problem-title"
-          className="border-t border-[color:var(--border)] bg-[color:var(--cream2)] py-24 md:py-36"
-        >
-          <div className="mx-auto max-w-6xl px-5 sm:px-6">
-            <div className="max-w-3xl">
-              <h2
-                id="problem-title"
-                className="rv font-serif text-[2.2rem] leading-[1.02] tracking-[-0.02em] sm:text-5xl md:text-6xl"
-              >
-                Du hast wahrscheinlich schon mehr als genug Ideen.
-              </h2>
-              <p className="rv d1 mt-6 text-base leading-[1.75] text-[color:var(--muted-fg)]">
-                Was dir fehlt, ist nicht Motivation. Es ist Klarheit darüber, welches Problem du
-                lösen, was du verkaufen und wie du damit starten sollst.
-              </p>
-            </div>
-
-            <div className="mt-16 md:mt-24">
-              {problemStatements.map((s, i) => (
-                <div
-                  key={s}
-                  className={
-                    "rv d" +
-                    (i + 1) +
-                    " border-t border-[color:var(--border)] py-9 md:grid md:grid-cols-12 md:gap-8 md:py-12"
-                  }
-                >
-                  <span className="font-serif text-2xl text-[color:var(--rose)] md:col-span-2 md:text-3xl">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p className="mt-3 font-serif text-[1.55rem] leading-[1.2] tracking-[-0.01em] md:col-span-10 md:mt-0 md:text-[2.3rem]">
-                    {s}
+        {/* ── Identifikation ───────────────────────────────── */}
+        <section className="border-t border-[color:var(--border)] py-24 md:py-40">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="grid gap-10 md:grid-cols-12">
+              <div className="rv md:col-span-7 md:col-start-2">
+                <p className="font-serif text-[2rem] leading-[1.12] text-[color:var(--ink)] sm:text-[2.75rem]">
+                  Vielleicht weißt du längst,
+                  <br />
+                  wie Content funktioniert.
+                </p>
+                <div className="mt-10 space-y-5 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)] sm:text-lg">
+                  <p>
+                    Du kennst Reels. Du kennst Trends. Du weißt, wie man ein Video aufnimmt,
+                    schneidet und veröffentlicht.
+                  </p>
+                  <p>Vielleicht hattest du sogar schon Reichweite.</p>
+                  <p className="text-[color:var(--ink)]">
+                    Aber du weißt nicht, wie daraus ein echtes Business entstehen soll.
+                  </p>
+                  <p>Oder du stehst noch ganz am Anfang.</p>
+                  <p>
+                    Du siehst jeden Tag Frauen, die mit Content Marken, Produkte und Unternehmen
+                    aufbauen. Und du fragst dich:
                   </p>
                 </div>
-              ))}
-              <div className="border-t border-[color:var(--border)]" />
+              </div>
             </div>
-
-            <p className="rv mt-14 max-w-2xl font-serif text-2xl italic leading-snug text-[color:var(--wine)] md:text-3xl">
-              Creating Society bringt deine Idee aus dem Kopf in den Markt.
+            <p className="rv d2 mt-16 font-serif text-[2.6rem] leading-[0.98] tracking-tight text-[color:var(--ink)] sm:text-7xl lg:text-[6rem]">
+              „Warum eigentlich <span className="serif-italic">nicht ich?</span>“
             </p>
           </div>
         </section>
 
-        {/* ── BELIEF SHIFT (dunkel) ──────────────────────────── */}
+        {/* ── VSL ──────────────────────────────────────────── */}
         <section
-          aria-labelledby="belief-title"
-          className="grain relative bg-[color:var(--wine)] py-24 text-[color:var(--cream)] md:py-36"
+          aria-labelledby="vsl-title"
+          className="border-t border-[color:var(--border)] bg-[color:var(--cream2)] py-24 md:py-32"
         >
-          <div className="mx-auto max-w-6xl px-5 sm:px-6">
-            <div className="rv">
-              <Eyebrow muted>Perspektivwechsel</Eyebrow>
-            </div>
-            <h2
-              id="belief-title"
-              className="rv d1 mt-6 max-w-[18ch] font-serif text-[2.4rem] leading-[1.02] tracking-[-0.02em] sm:text-6xl md:text-7xl"
-            >
-              Du brauchst nicht zuerst Reichweite.
-            </h2>
-
-            <div className="mt-14 grid gap-px border-t border-[color:var(--cream)]/15 sm:grid-cols-2 md:mt-20">
-              {beliefs.map((b, i) => (
-                <p
-                  key={b}
-                  className={
-                    "rv d" +
-                    (i + 1) +
-                    " border-b border-[color:var(--cream)]/15 py-8 pr-6 font-serif text-[1.4rem] leading-[1.25] sm:text-[1.7rem] md:py-12 md:text-[2rem]"
-                  }
-                >
-                  <span className="mr-4 align-super text-xs tracking-widest text-[color:var(--rose)]">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  {b}
-                </p>
-              ))}
-            </div>
-
-            <p className="rv mt-16 max-w-3xl font-serif text-[1.8rem] italic leading-[1.15] text-[color:var(--cream)] sm:text-4xl md:mt-24 md:text-5xl">
-              Ein Business entsteht nicht durch Nachdenken. Es entsteht durch Entscheidungen.
-            </p>
-          </div>
-        </section>
-
-        {/* ── METHODE ────────────────────────────────────────── */}
-        <section
-          id="method"
-          aria-labelledby="method-title"
-          className="scroll-mt-24 py-24 md:py-36"
-        >
-          <div className="mx-auto max-w-6xl px-5 sm:px-6">
-            <div className="rv max-w-2xl">
-              <Eyebrow>Die Society Method</Eyebrow>
-              <h2
-                id="method-title"
-                className="mt-6 font-serif text-[2.2rem] leading-[1.02] tracking-[-0.02em] sm:text-5xl md:text-6xl"
-              >
-                Vier Phasen. Ein Angebot, das trägt.
-              </h2>
-            </div>
-
-            <div className="mt-16 md:mt-24">
-              {phases.map((p, i) => (
-                <article
-                  key={p.index}
-                  className={
-                    "rv d" +
-                    ((i % 4) + 1) +
-                    " grid gap-6 border-t border-[color:var(--border)] py-10 md:grid-cols-12 md:gap-10 md:py-14"
-                  }
-                >
-                  <div className="md:col-span-4">
-                    <span className="eyebrow text-[color:var(--rose)]">{p.index}</span>
-                    <h3 className="mt-3 font-serif text-3xl tracking-[-0.02em] md:text-[2.6rem]">
-                      {p.name}
-                    </h3>
-                  </div>
-                  <div className="md:col-span-8">
-                    <p className="max-w-2xl text-[1.05rem] leading-[1.7] text-[color:var(--ink)]/85 md:text-xl">
-                      {p.body}
-                    </p>
-                    <p className="mt-6 border-l border-[color:var(--rose)] pl-5 text-sm leading-relaxed text-[color:var(--muted-fg)]">
-                      <span className="eyebrow mr-2 text-[color:var(--rose)]">Ergebnis</span>
-                      <span className="font-serif text-lg italic text-[color:var(--ink)]">
-                        {p.result}
-                      </span>
-                    </p>
-                  </div>
-                </article>
-              ))}
-              <div className="border-t border-[color:var(--border)]" />
-            </div>
-
-            <div className="rv mt-14">
-              <CtaButton source="method" tone="outline">
-                Herausfinden, was ich verkaufen könnte
-              </CtaButton>
-            </div>
-          </div>
-        </section>
-
-        {/* ── PROGRAMM ───────────────────────────────────────── */}
-        <section
-          id="program"
-          aria-labelledby="program-title"
-          className="scroll-mt-24 border-y border-[color:var(--border)] bg-[color:var(--cream2)] py-24 md:py-36"
-        >
-          <div className="mx-auto max-w-6xl px-5 sm:px-6">
+          <div className="mx-auto max-w-5xl px-5 sm:px-8">
             <div className="rv max-w-3xl">
               <h2
-                id="program-title"
-                className="font-serif text-[2.2rem] leading-[1.02] tracking-[-0.02em] sm:text-5xl md:text-6xl"
+                id="vsl-title"
+                className="font-serif text-[2.1rem] leading-[1.08] text-[color:var(--ink)] sm:text-[3.25rem]"
               >
-                Kein Kurs, den du irgendwann fertig ansehen sollst.
+                Was wäre möglich, wenn hinter deinem Content endlich ein Business stehen würde?
               </h2>
-              <p className="mt-6 text-base leading-[1.75] text-[color:var(--muted-fg)]">
-                Wir arbeiten mit dir an deinem echten Angebot, deiner Positionierung und deinem
-                Verkaufsprozess.
+              <p className="mt-7 max-w-2xl text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
+                Laura zeigt dir, warum Reichweite allein nicht reicht – und wie aus Content,
+                Vertrauen und einem eigenen Angebot ein echtes Unternehmen entstehen kann.
               </p>
             </div>
 
-            <div className="mt-16 grid gap-px sm:grid-cols-2 md:mt-24">
-              {program.map((b, i) => (
+            {/* TODO: Video hier ersetzen (Vimeo / YouTube / Wistia / eigenes <video>) */}
+            <div
+              className="rv d2 group relative mt-12 grid place-items-center overflow-hidden rounded-[2px] bg-[color:var(--wine)]"
+              style={{ aspectRatio: "16 / 9" }}
+            >
+              <div className="grain absolute inset-0 opacity-90" aria-hidden="true" />
+              <div className="relative flex flex-col items-center">
+                <span className="grid h-16 w-16 place-items-center rounded-full border border-[color:var(--cream)]/40 transition group-hover:border-[color:var(--cream)] sm:h-20 sm:w-20">
+                  <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6 fill-[color:var(--cream)]" aria-hidden="true">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+                <span className="mt-5 eyebrow text-[color:var(--cream)]/70">Video ansehen</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Belief Shift ─────────────────────────────────── */}
+        <section className="bg-[color:var(--wine)] py-28 text-[color:var(--cream)] md:py-40">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="rv max-w-4xl">
+              <p className="font-serif text-[2.4rem] leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
+                Content ist nicht dein Business.
+              </p>
+              <div className="mt-14 space-y-6 font-serif text-[1.6rem] leading-snug text-[color:var(--cream)]/85 sm:text-4xl">
+                <p>Content erzeugt Aufmerksamkeit.</p>
+                <p>Deine Personal Brand schafft Vertrauen.</p>
+                <p>Dein Angebot macht daraus Umsatz.</p>
+                <p className="text-[color:var(--cream)]">
+                  Creating Society <span className="serif-italic">verbindet alle drei.</span>
+                </p>
+              </div>
+              <p className="mt-14 text-sm tracking-wide text-[color:var(--cream)]/55">
+                Nicht mehr posten, ohne zu wissen, wofür.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Problemvertiefung ────────────────────────────── */}
+        <section className="py-24 md:py-40">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="grid gap-14 md:grid-cols-12 md:gap-16">
+              <div className="rv md:col-span-6">
+                <p className="font-serif text-[2rem] leading-[1.1] text-[color:var(--ink)] sm:text-[2.9rem]">
+                  Views bezahlen keine Rechnungen.
+                  <br />
+                  Follower sind noch keine Kunden.
+                </p>
+                <p className="mt-8 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
+                  Und eine Kooperation bedeutet meistens, dass du deine Reichweite nutzt, um das
+                  Unternehmen eines anderen aufzubauen.
+                </p>
+              </div>
+              <div className="rv d2 space-y-5 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)] md:col-span-5 md:col-start-8">
+                <p>Vielleicht bekommst du Produkte zugeschickt.</p>
+                <p>Vielleicht wird ein Video gut ausgespielt.</p>
+                <p>Vielleicht verdienst du sogar gelegentlich Geld mit einer Zusammenarbeit.</p>
+                <p className="text-[color:var(--ink)]">
+                  Aber sobald die Kampagne vorbei ist, beginnt alles wieder von vorne.
+                </p>
+                <p>
+                  Neuer Content. Neue Reichweite. Neue Hoffnung auf die nächste Anfrage.
+                </p>
+              </div>
+            </div>
+
+            <p className="rv mt-20 max-w-3xl font-serif text-[1.7rem] leading-snug text-[color:var(--ink)] sm:text-[2.4rem]">
+              Das Problem ist nicht, dass Content nicht funktioniert. Das Problem ist, dass hinter
+              deinem Content noch nichts steht,{" "}
+              <span className="serif-italic">das dir gehört.</span>
+            </p>
+
+            <ul className="rv d2 mt-16 border-t border-[color:var(--border)]">
+              {ownership.map((item) => (
+                <li
+                  key={item}
+                  className="border-b border-[color:var(--border)] py-5 font-serif text-2xl text-[color:var(--ink)] sm:py-6 sm:text-3xl"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* ── Proof ────────────────────────────────────────── */}
+        <section
+          aria-labelledby="proof-title"
+          className="border-t border-[color:var(--border)] bg-[color:var(--cream2)] py-24 md:py-36"
+        >
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="rv max-w-3xl">
+              <h2
+                id="proof-title"
+                className="font-serif text-[2.1rem] leading-[1.08] text-[color:var(--ink)] sm:text-[3.25rem]"
+              >
+                Laura hat nicht nur Reichweite aufgebaut.
+              </h2>
+              <div className="mt-8 space-y-5 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
+                <p>
+                  Sie hat Content genutzt, um Nachfrage für ein eigenes Angebot und ein echtes
+                  Geschäftsmodell zu erzeugen.
+                </p>
+                <p>
+                  Mit Property Circle hat Laura Expertise, organischen Content, Paid Marketing und
+                  ein klares Angebot miteinander verbunden.
+                </p>
+                <p className="text-[color:var(--ink)]">
+                  Nicht posten, um einfach nur sichtbar zu sein. Posten, um etwas aufzubauen.
+                </p>
+              </div>
+            </div>
+
+            {/* Austauschbare Proof-Slots */}
+            <div className="rv d2 mt-14 grid grid-cols-1 gap-4 sm:grid-cols-12 sm:gap-5">
+              {proofSlots.map((slot) => (
+                <figure key={slot.label} className={"min-w-0 " + slot.span}>
+                  <div
+                    className="grain relative overflow-hidden rounded-[2px] bg-[color:var(--cream)] ring-1 ring-[color:var(--border)]"
+                    style={{ aspectRatio: slot.ratio }}
+                  >
+                    {slot.img ? (
+                      <img src={slot.img} alt={slot.label} className="h-full w-full object-cover" />
+                    ) : (
+                      <div className="grid h-full w-full place-items-center px-6 text-center">
+                        <span className="eyebrow text-[color:var(--muted-fg)]">Proof-Slot</span>
+                      </div>
+                    )}
+                  </div>
+                  <figcaption className="mt-3 text-[0.72rem] uppercase tracking-[0.16em] text-[color:var(--muted-fg)]">
+                    {slot.label}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Was wir gemeinsam aufbauen ───────────────────── */}
+        <section id="society" aria-labelledby="build-title" className="py-24 md:py-40">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <h2
+              id="build-title"
+              className="rv max-w-2xl font-serif text-[2.4rem] leading-[1.04] tracking-tight text-[color:var(--ink)] sm:text-6xl"
+            >
+              Was wir gemeinsam <span className="serif-italic">aufbauen.</span>
+            </h2>
+
+            <div className="mt-16 border-t border-[color:var(--border)]">
+              {build.map((b, i) => (
                 <div
                   key={b.index}
                   className={
-                    "rv d" +
-                    (i + 1) +
-                    " border-t border-[color:var(--border)] py-9 pr-0 sm:pr-10 md:py-12"
+                    "rv grid gap-4 border-b border-[color:var(--border)] py-10 md:grid-cols-12 md:gap-10 md:py-14 " +
+                    (i === 1 ? "d1" : i === 2 ? "d2" : i === 3 ? "d3" : "")
                   }
                 >
-                  <span className="eyebrow text-[color:var(--rose)]">{b.index}</span>
-                  <h3 className="mt-3 font-serif text-[1.7rem] leading-tight tracking-[-0.01em] md:text-[2.1rem]">
+                  <div className="md:col-span-2">
+                    <span className="font-serif text-3xl text-[color:var(--rose)] sm:text-4xl">
+                      {b.index}
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-2xl leading-snug text-[color:var(--ink)] sm:text-[2rem] md:col-span-5">
                     {b.title}
                   </h3>
-                  <p className="mt-4 max-w-md text-[0.95rem] leading-[1.7] text-[color:var(--muted-fg)]">
+                  <p className="text-[0.98rem] leading-relaxed text-[color:var(--muted-fg)] md:col-span-5">
                     {b.body}
                   </p>
                 </div>
               ))}
             </div>
 
-            <p className="rv mt-16 max-w-3xl border-t border-[color:var(--border)] pt-10 font-serif text-2xl italic leading-snug text-[color:var(--wine)] md:text-[2.2rem]">
-              Du sollst nach zwölf Wochen nicht nur mehr wissen. Du sollst etwas besitzen, das du
-              tatsächlich anbieten kannst.
+            <p className="rv mt-14 max-w-2xl font-serif text-[1.7rem] leading-snug text-[color:var(--ink)] sm:text-[2.2rem]">
+              Kein Content um des Contents willen.
+              <br />
+              <span className="serif-italic">Ein Business hinter deiner Sichtbarkeit.</span>
             </p>
           </div>
         </section>
 
-        {/* ── ABLAUF ─────────────────────────────────────────── */}
-        <section aria-labelledby="timeline-title" className="py-24 md:py-32">
-          <div className="mx-auto max-w-6xl px-5 sm:px-6">
-            <div className="rv max-w-xl">
-              <Eyebrow>Der Ablauf</Eyebrow>
-              <h2
-                id="timeline-title"
-                className="mt-6 font-serif text-[2rem] leading-[1.05] tracking-[-0.02em] sm:text-4xl md:text-5xl"
-              >
-                Zwölf Wochen, klar getaktet.
-              </h2>
-            </div>
-            <ol className="mt-14 grid gap-px sm:grid-cols-2 lg:grid-cols-3">
-              {timeline.map((t) => (
-                <li
-                  key={t.weeks}
-                  className="rv border-t border-[color:var(--border)] py-7 pr-6"
-                >
-                  <span className="eyebrow text-[color:var(--rose)]">{t.weeks}</span>
-                  <p className="mt-3 font-serif text-xl leading-snug md:text-2xl">{t.title}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        {/* ── FÜR WEN ────────────────────────────────────────── */}
-        <section
-          aria-labelledby="fit-title"
-          className="grain bg-[color:var(--wine)] py-24 text-[color:var(--cream)] md:py-32"
-        >
-          <div className="mx-auto max-w-6xl px-5 sm:px-6">
-            <h2
-              id="fit-title"
-              className="rv max-w-[20ch] font-serif text-[2.2rem] leading-[1.03] tracking-[-0.02em] sm:text-5xl md:text-6xl"
-            >
-              Passt das zu dir?
+        {/* ── Zukunft ──────────────────────────────────────── */}
+        <section className="bg-[color:var(--wine)] py-28 text-[color:var(--cream)] md:py-40">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <h2 className="rv font-serif text-[2.4rem] leading-[1.04] tracking-tight sm:text-6xl">
+              Stell dir vor, du wüsstest <span className="serif-italic">genau …</span>
             </h2>
-            <div className="mt-14 grid gap-14 md:grid-cols-2 md:gap-20">
-              <div className="rv d1">
-                <p className="eyebrow text-[color:var(--rose)]">Richtig für dich, wenn</p>
-                <ul className="mt-7 space-y-5">
-                  {forYou.map((f) => (
-                    <li
-                      key={f}
-                      className="border-b border-[color:var(--cream)]/12 pb-5 font-serif text-xl leading-snug md:text-2xl"
-                    >
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="rv d2">
-                <p className="eyebrow text-[color:var(--cream)]/45">Nicht richtig, wenn</p>
-                <ul className="mt-7 space-y-5">
-                  {notForYou.map((f) => (
-                    <li
-                      key={f}
-                      className="border-b border-[color:var(--cream)]/12 pb-5 text-[0.98rem] leading-relaxed text-[color:var(--cream)]/55"
-                    >
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="rv mt-14">
-              <CtaButton source="fit" tone="cream">
-                Prüfen, ob Creating Society zu mir passt
-              </CtaButton>
-            </div>
+            <ul className="rv d2 mt-14 max-w-3xl space-y-5 font-serif text-[1.35rem] leading-snug text-[color:var(--cream)]/85 sm:text-[2rem]">
+              {future.map((f) => (
+                <li key={f}>{f}</li>
+              ))}
+            </ul>
+            <p className="rv d3 mt-14 max-w-xl text-[color:var(--cream)]/60">
+              Nicht irgendwann. Sondern mit einem klaren Plan, den du tatsächlich umsetzen kannst.
+            </p>
           </div>
         </section>
 
-        {/* ── LAURA ──────────────────────────────────────────── */}
-        <section
-          id="about"
-          aria-labelledby="about-title"
-          className="scroll-mt-24 py-24 md:py-36"
-        >
-          <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-6 md:grid-cols-12 md:items-center md:gap-16">
-            <div className="rv relative md:col-span-5">
-              <div className="grain overflow-hidden rounded-[2px] soft-shadow">
-                <img
-                  src={mentorImg}
-                  alt="Laura im Gespräch"
-                  className="aspect-[4/5] w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-            <div className="rv d1 md:col-span-7">
-              <Eyebrow>Über Laura</Eyebrow>
+        {/* ── Qualifizierung ───────────────────────────────── */}
+        <section aria-labelledby="fit-title" className="py-24 md:py-36">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="grid gap-12 md:grid-cols-12 md:gap-16">
               <h2
-                id="about-title"
-                className="mt-6 font-serif text-[2.3rem] leading-[1.02] tracking-[-0.02em] sm:text-5xl md:text-[4rem]"
+                id="fit-title"
+                className="rv font-serif text-[2.1rem] leading-[1.06] text-[color:var(--ink)] sm:text-[3rem] md:col-span-5"
               >
-                Ich wollte nie nur <span className="serif-italic">Reichweite</span>.
+                Creating Society ist für dich, <span className="serif-italic">wenn …</span>
               </h2>
-              <div className="mt-8 space-y-5 text-[1.02rem] leading-[1.8] text-[color:var(--ink)]/85">
-                <p>Ich wollte etwas Eigenes.</p>
-                <p>
-                  Etwas, das nicht davon abhängt, ob eine Marke zusagt, ein Algorithmus mich
-                  ausspielt oder eine Plattform ihre Regeln ändert.
-                </p>
-                <p className="font-serif text-2xl italic leading-snug text-[color:var(--wine)]">
-                  Genau deshalb gibt es Creating Society.
-                </p>
-                <p>
-                  Ich helfe Frauen dabei, aus dem, was sie bereits wissen, können oder erlebt haben,
-                  ein klares Angebot und ein echtes Business zu entwickeln.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── GESPRÄCH ───────────────────────────────────────── */}
-        <section
-          aria-labelledby="agenda-title"
-          className="border-y border-[color:var(--border)] bg-[color:var(--cream2)] py-24 md:py-32"
-        >
-          <div className="mx-auto max-w-6xl px-5 sm:px-6">
-            <div className="rv max-w-2xl">
-              <Eyebrow>Das Strategiegespräch</Eyebrow>
-              <h2
-                id="agenda-title"
-                className="mt-6 font-serif text-[2rem] leading-[1.05] tracking-[-0.02em] sm:text-4xl md:text-5xl"
-              >
-                Dreißig Minuten, in denen es konkret wird.
-              </h2>
-            </div>
-            <div className="mt-14 grid gap-px md:grid-cols-3">
-              {callAgenda.map((c, i) => (
-                <div
-                  key={c.index}
-                  className={
-                    "rv d" + (i + 1) + " border-t border-[color:var(--border)] py-8 pr-8"
-                  }
-                >
-                  <span className="eyebrow text-[color:var(--rose)]">{c.index}</span>
-                  <h3 className="mt-3 font-serif text-2xl md:text-[1.8rem]">{c.title}</h3>
-                  <p className="mt-4 text-[0.95rem] leading-[1.7] text-[color:var(--muted-fg)]">
-                    {c.body}
+              <div className="rv d2 md:col-span-6 md:col-start-7">
+                <ul className="border-t border-[color:var(--border)]">
+                  {qualify.map((q) => (
+                    <li
+                      key={q}
+                      className="border-b border-[color:var(--border)] py-5 text-[1.02rem] leading-relaxed text-[color:var(--ink)]"
+                    >
+                      {q}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-10">
+                  <CtaButton source="qualify">Herausfinden, was ich aufbauen kann</CtaButton>
+                  <p className="mt-5 max-w-md text-sm leading-relaxed text-[color:var(--muted-fg)]">
+                    Im Gespräch schauen wir auf deine Ausgangslage und prüfen, ob Creating Society
+                    zu deinem Ziel passt.
                   </p>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* ── FAQ ────────────────────────────────────────────── */}
-        <section id="faq" aria-labelledby="faq-title" className="scroll-mt-24 py-24 md:py-32">
-          <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-6 md:grid-cols-12">
-            <div className="md:col-span-4">
-              <h2
-                id="faq-title"
-                className="rv font-serif text-[2rem] leading-[1.05] tracking-[-0.02em] sm:text-4xl md:text-5xl"
-              >
-                Häufige <span className="serif-italic">Fragen</span>
-              </h2>
-            </div>
-            <div className="rv d1 md:col-span-8">
-              <Accordion type="single" collapsible className="w-full">
-                {faqs.map((f, i) => (
-                  <AccordionItem key={f.q} value={"faq-" + i}>
-                    <AccordionTrigger className="text-left font-serif text-xl leading-snug hover:no-underline md:text-2xl">
-                      {f.q}
-                    </AccordionTrigger>
-                    <AccordionContent className="max-w-2xl text-[0.95rem] leading-[1.75] text-[color:var(--muted-fg)]">
-                      {f.a}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
+        {/* ── Laura ────────────────────────────────────────── */}
+        <section
+          id="laura"
+          aria-labelledby="laura-title"
+          className="border-t border-[color:var(--border)] bg-[color:var(--cream2)] py-24 md:py-36"
+        >
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="grid gap-12 md:grid-cols-12 md:items-start md:gap-16">
+              <div className="rv md:col-span-5">
+                <div className="grain relative overflow-hidden rounded-[2px]">
+                  <img
+                    src={lauraImg}
+                    alt="Laura, Gründerin von Creating Society, im Porträt"
+                    className="h-full w-full object-cover"
+                    style={{ aspectRatio: "4 / 5" }}
+                  />
+                </div>
+              </div>
+              <div className="rv d2 md:col-span-6 md:col-start-7">
+                <h2
+                  id="laura-title"
+                  className="font-serif text-[2rem] leading-[1.08] text-[color:var(--ink)] sm:text-[2.9rem]"
+                >
+                  Ich glaube nicht, dass du einfach mehr posten musst.
+                </h2>
+                <blockquote className="mt-8 space-y-5 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
+                  <p>Ich glaube, du musst wissen, was dein Content für dich aufbauen soll.</p>
+                  <p>
+                    Ich habe selbst erlebt, wie aus Expertise, organischer Reichweite, einem klaren
+                    Angebot und gezieltem Marketing ein profitables Geschäftsmodell entstehen kann.
+                  </p>
+                  <p>Genau deshalb habe ich Creating Society gegründet.</p>
+                  <p className="text-[color:var(--ink)]">
+                    Nicht, damit Frauen einfach bessere Creatorinnen werden. Sondern damit sie
+                    lernen, mit Content etwas Eigenes aufzubauen.
+                  </p>
+                </blockquote>
+                <div className="mt-8">
+                  <p className="font-serif text-2xl text-[color:var(--ink)]">Laura</p>
+                  <p className="mt-1 text-sm text-[color:var(--muted-fg)]">
+                    Gründerin von Creating Society
+                  </p>
+                </div>
+                <p className="mt-10 text-sm tracking-wide text-[color:var(--muted-fg)]">
+                  Content ist der Anfang. Nicht das Geschäftsmodell.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* ── CALENDLY ───────────────────────────────────────── */}
+        {/* ── Call ─────────────────────────────────────────── */}
         <section
           id="call"
           aria-labelledby="call-title"
-          className="grain scroll-mt-20 bg-[color:var(--wine)] py-24 text-[color:var(--cream)] md:py-32"
+          className="scroll-mt-20 bg-[color:var(--wine)] py-24 text-[color:var(--cream)] md:py-36"
         >
-          <div className="mx-auto max-w-5xl px-5 sm:px-6">
-            <div className="rv max-w-3xl">
-              <Eyebrow muted>Kostenloses Strategiegespräch</Eyebrow>
-              <h2
-                id="call-title"
-                className="mt-6 font-serif text-[2.2rem] leading-[1.03] tracking-[-0.02em] sm:text-5xl md:text-6xl"
-              >
-                Vielleicht fehlt dir nicht die Idee.{" "}
-                <span className="serif-italic text-[color:var(--rose)]">
-                  Vielleicht fehlt dir nur die richtige Struktur.
-                </span>
-              </h2>
-              <p className="mt-7 text-base leading-[1.75] text-[color:var(--cream)]/70">
-                Im kostenlosen Strategiegespräch schauen wir uns an, welche Fähigkeiten, Erfahrungen
-                oder Themen sich bei dir in ein klares Angebot übersetzen lassen könnten.
-              </p>
-              <p className="mt-8 font-serif text-xl italic md:text-2xl">
-                Wähle einen Termin und lass uns deine Idee konkret machen.
-              </p>
-            </div>
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="grid gap-12 md:grid-cols-12 md:gap-16">
+              <div className="rv md:col-span-6">
+                <h2
+                  id="call-title"
+                  className="font-serif text-[2.1rem] leading-[1.06] sm:text-[3rem]"
+                >
+                  Du brauchst nicht noch mehr gespeicherte Content-Tipps.
+                </h2>
+                <p className="mt-7 text-[1.02rem] leading-relaxed text-[color:var(--cream)]/70">
+                  Du brauchst Klarheit darüber, was du aufbauen kannst – und einen Plan, wie du es
+                  umsetzt.
+                </p>
+                <p className="mt-10 text-sm uppercase tracking-[0.16em] text-[color:var(--cream)]/50">
+                  Im Strategiegespräch schauen wir uns gemeinsam an:
+                </p>
+                <ul className="mt-6 border-t border-[color:var(--cream)]/15">
+                  {callAgenda.map((a) => (
+                    <li
+                      key={a}
+                      className="border-b border-[color:var(--cream)]/15 py-4 text-[1.02rem] text-[color:var(--cream)]/85"
+                    >
+                      {a}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-10">
+                  <CtaButton source="call_section" tone="cream">
+                    Kostenloses Strategiegespräch buchen
+                  </CtaButton>
+                </div>
+                <p className="mt-6 max-w-md text-sm leading-relaxed text-[color:var(--cream)]/55">
+                  Das Gespräch dauert ungefähr 30 bis 45 Minuten. Die Zusammenarbeit ist nicht für
+                  jede Person geeignet. Im Gespräch prüfen wir gemeinsam, ob deine Ziele und
+                  Creating Society zueinander passen.
+                </p>
+              </div>
 
-            <div className="rv d1 mt-12">
-              <CalendlyEmbed />
+              <div className="rv d2 md:col-span-6">
+                <CalendlyEmbed />
+              </div>
             </div>
-
-            <p className="rv mt-8 text-[0.72rem] tracking-[0.08em] text-[color:var(--cream)]/55">
-              Kostenlos · 30 Minuten · Persönlich · Kein künstlicher Verkaufsdruck
-            </p>
-            <p className="rv mt-4 text-sm text-[color:var(--cream)]/50">
-              Lieber schriftlich?{" "}
-              <Link to="/apply" className="underline underline-offset-4 hover:opacity-80">
-                Bewerbung ausfüllen
-              </Link>
-            </p>
           </div>
         </section>
 
-        {/* ── FOOTER ─────────────────────────────────────────── */}
-        <footer className="border-t border-[color:var(--border)] py-12">
-          <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-            <p className="font-serif text-lg">
-              Creating <span className="serif-italic">Society</span>
+        {/* ── Closing ──────────────────────────────────────── */}
+        <section className="py-24 text-center md:py-32">
+          <div className="mx-auto max-w-4xl px-5 sm:px-8">
+            <p className="rv font-serif text-[2.4rem] leading-[1.02] tracking-tight text-[color:var(--ink)] sm:text-6xl">
+              Mach nicht nur Content.
+              <br />
+              <span className="serif-italic">Bau etwas Eigenes.</span>
             </p>
-            <p className="text-xs text-[color:var(--muted-fg)]">
-              © {new Date().getFullYear()} Creating Society
-            </p>
+            <p className="rv d2 mt-8 eyebrow text-[color:var(--muted-fg)]">Creating Society</p>
+          </div>
+        </section>
+
+        {/* ── Footer ───────────────────────────────────────── */}
+        <footer className="border-t border-[color:var(--border)] py-10">
+          <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 text-sm text-[color:var(--muted-fg)] sm:flex-row sm:items-center sm:justify-between sm:px-8">
+            <p className="font-serif text-base text-[color:var(--ink)]">Creating Society</p>
+            <nav className="flex flex-wrap items-center gap-6">
+              <a href="/impressum" className="transition hover:text-[color:var(--ink)]">
+                Impressum
+              </a>
+              <a href="/datenschutz" className="transition hover:text-[color:var(--ink)]">
+                Datenschutz
+              </a>
+            </nav>
           </div>
         </footer>
       </main>
@@ -843,9 +706,13 @@ function HomePage() {
           (bookingVisible ? "translate-y-full" : "translate-y-0")
         }
       >
-        <CtaButton source="sticky_mobile" className="w-full">
-          Strategiegespräch sichern
-        </CtaButton>
+        <button
+          type="button"
+          onClick={() => scrollToCall("mobile_bar")}
+          className="w-full rounded-full bg-[color:var(--wine)] px-6 py-3.5 text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--cream)]"
+        >
+          Meine Möglichkeiten besprechen
+        </button>
       </div>
     </>
   );
