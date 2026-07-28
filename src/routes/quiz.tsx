@@ -330,7 +330,7 @@ function QuizPage() {
 // ─────────────────────────── Layout ───────────────────────────
 function FunnelLayout({ children }: { children: ReactNode }) {
   const { currentStep, back, L, setLang } = useFunnel();
-  const progress = ((currentStep + 1) / TOTAL_STEPS) * 100;
+  const progress = currentStep === 0 ? 0 : (currentStep / (TOTAL_STEPS - 1)) * 100;
 
   return (
     <main className="min-h-screen bg-[color:var(--cream)] pb-24">
