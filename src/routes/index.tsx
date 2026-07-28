@@ -360,7 +360,7 @@ function HomePage() {
               Du brauchst keine perfekte Idee.
             </h1>
 
-            <div className="mt-8 grid gap-10 md:mt-12 md:grid-cols-12 md:items-end md:gap-8">
+            <div className="mt-8 grid gap-10 md:mt-10 md:grid-cols-12 md:items-start md:gap-10">
               <div className="md:col-span-7 lg:col-span-6">
                 <p className="rv d1 font-serif text-[2rem] leading-[1.06] tracking-[-0.02em] text-[color:var(--wine)] sm:text-5xl md:text-[3.4rem]">
                   Du brauchst{" "}
