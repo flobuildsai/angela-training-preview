@@ -213,7 +213,7 @@ function CtaButton({
   className?: string;
 }) {
   const tones = {
-    rose: "bg-[color:var(--rose)] text-[color:var(--cream)]",
+    rose: "bg-[color:var(--cream)] text-[color:var(--wine)]",
     wine: "bg-[color:var(--wine)] text-[color:var(--cream)]",
     cream: "bg-[color:var(--cream)] text-[color:var(--wine)]",
   } as const;
