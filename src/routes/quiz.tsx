@@ -260,7 +260,7 @@ interface FunnelCtx extends FunnelState {
   setLang: (l: Lang) => void;
 }
 
-const TOTAL_STEPS = 12; // 0..11
+const TOTAL_STEPS = 13; // 0..12
 
 const Ctx = createContext<FunnelCtx | null>(null);
 const useFunnel = () => {
