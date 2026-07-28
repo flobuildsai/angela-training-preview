@@ -24,17 +24,26 @@ const t = {
   wordmark: { de: "Creating Society", en: "Creating Society" },
   back: { de: "← Zurück", en: "← Back" },
 
-  hero: {
-    eyebrow: { de: "Ein neuer Weg, mit Content Geld zu verdienen", en: "A new way to make money with content" },
-    h1a: { de: "Mach aus deinem Content ein Einkommen.", en: "Turn your content into an income." },
-    h1b: { de: "Ohne eine Million Follower.", en: "Without a million followers." },
+  start: {
+    trust: { de: "von Laura · 3 Mio. monatliche Views", en: "by Laura · 3M monthly views" },
+    h1: { de: "Wie viel könntest du mit deinem Content verdienen?", en: "How much could you earn with your content?" },
     sub: {
-      de: "Die meisten glauben, man braucht riesige Reichweite, um online Geld zu verdienen. Stimmt nicht. Du brauchst ein eigenes Produkt und die richtigen 1.000 Menschen. In 2 Minuten zeige ich dir, wie das bei dir aussehen könnte.",
-      en: "Most people think you need huge reach to make money online. You don't. You need your own product and the right 1,000 people. In 2 minutes I'll show you what that could look like for you.",
+      de: "Beantworte 6 kurze Fragen und du bekommst deine persönliche Rechnung – und deinen 12-Wochen-Plan.",
+      en: "Answer 6 quick questions and get your personal numbers — plus your 12-week plan.",
     },
+    cta: { de: "Los geht's →", en: "Let's go →" },
+    micro: { de: "2 Minuten · kostenlos · keine Anmeldung", en: "2 minutes · free · no signup" },
+  },
+
+  qlabel: {
+    de: (n: number) => `Frage ${n} von 6`,
+    en: (n: number) => `Question ${n} of 6`,
+  },
+
+  hero: {
     diary: {
-      de: "Ich hatte irgendwann 3 Millionen Views im Monat – und habe damit fast nichts verdient. Brand Deals, die Wochen dauerten und einmal zahlten. Eine wachsende Community und ein leeres Konto. Was alles verändert hat: ein eigenes Produkt statt mehr Reichweite. Genau das rechne ich dir jetzt für deine Situation durch.",
-      en: "At some point I had 3 million views a month — and made almost nothing from it. Brand deals that took weeks and paid once. A growing audience and an empty bank account. What changed everything: my own product instead of more reach. That's exactly what I'll calculate for your situation now.",
+      de: "Ich hatte irgendwann 3 Millionen Views im Monat – und habe damit fast nichts verdient. Brand Deals, die Wochen dauerten und einmal zahlten. Eine wachsende Community und ein leeres Konto. Was alles verändert hat: ein eigenes Produkt statt mehr Reichweite.",
+      en: "At some point I had 3 million views a month — and made almost nothing from it. Brand deals that took weeks and paid once. A growing audience and an empty bank account. What changed everything: my own product instead of more reach.",
     },
     signature: { de: "— Laura", en: "— Laura" },
     reframeLeft: {
@@ -46,10 +55,14 @@ const t = {
       en: "What works: Small audience → your own product → predictable sales",
     },
     followersLabel: { de: "Wie viele Follower hast du gerade?", en: "How many followers do you have right now?" },
+    followersHint: {
+      de: "Ehrliche Zahl reicht – wir rechnen gleich damit. 0 ist auch okay.",
+      en: "An honest number is fine — we'll calculate with it in a second. 0 is okay too.",
+    },
     followersPh: { de: "z.B. 1200", en: "e.g. 1200" },
-    cta: { de: "Zeig mir, was möglich ist →", en: "Show me what's possible →" },
-    micro: { de: "2 Minuten · Keine Anmeldung · Auf deine Zahlen gerechnet", en: "2 minutes · No signup · Based on your numbers" },
+    cta: { de: "Weiter →", en: "Continue →" },
   },
+
 
   step1: {
     q: { de: "Wo stehst du gerade?", en: "Where are you right now?" },
@@ -108,14 +121,20 @@ const t = {
   belief: {
     h: { de: "Du brauchst keine 100.000 Follower.", en: "You don't need 100,000 followers." },
     body: {
-      de: (f: number) => `Reichweite ist heute interessenbasiert – Reels werden vor allem Leuten gezeigt, die dir NICHT folgen. Das heißt: Auch bei ${f.toLocaleString("de-DE")} Followern kann dein Content morgen 50.000 Fremde erreichen. Das eigentliche Problem ist nicht Reichweite. Es ist, dass am anderen Ende nichts zum Kaufen steht.`,
-      en: (f: number) => `Reach is interest-based now — Reels are shown mostly to people who DON'T follow you. Which means: even at ${f.toLocaleString("en-US")} followers, your content can reach 50,000 strangers tomorrow. The real problem isn't reach. It's that there's nothing to buy on the other end.`,
+      de: (f: number) => `Reichweite ist heute interessenbasiert – Reels laufen vor allem bei Leuten, die dir NICHT folgen. Auch mit ${f.toLocaleString("de-DE")} Followern kann dein Content morgen 50.000 Fremde erreichen. Das Problem ist nicht Reichweite, sondern dass am anderen Ende nichts zum Kaufen steht.`,
+      en: (f: number) => `Reach is interest-based now — Reels are shown mostly to people who DON'T follow you. Even at ${f.toLocaleString("en-US")} followers, your content can reach 50,000 strangers tomorrow. The problem isn't reach, it's that there's nothing to buy on the other end.`,
     },
+
     cta: { de: "Okay – zeig mir meine Rechnung →", en: "Okay — show me my numbers →" },
   },
 
   calc: {
     h: { de: "Deine Rechnung.", en: "Your numbers." },
+    explainer: {
+      de: "So funktioniert die Rechnung: dein Produktpreis × Käuferinnen pro Monat. Spiel mit den Reglern.",
+      en: "The math is simple: your product price × buyers per month. Play with the sliders.",
+    },
+
     price: { de: "Preis deines Produkts", en: "Your product price" },
     buyers: { de: "Käuferinnen pro Monat", en: "Buyers per month" },
     perMonth: { de: "/Monat", en: "/month" },
@@ -241,7 +260,7 @@ interface FunnelCtx extends FunnelState {
   setLang: (l: Lang) => void;
 }
 
-const TOTAL_STEPS = 12; // 0..11
+const TOTAL_STEPS = 13; // 0..12
 
 const Ctx = createContext<FunnelCtx | null>(null);
 const useFunnel = () => {
@@ -311,7 +330,7 @@ function QuizPage() {
 // ─────────────────────────── Layout ───────────────────────────
 function FunnelLayout({ children }: { children: ReactNode }) {
   const { currentStep, back, L, setLang } = useFunnel();
-  const progress = ((currentStep + 1) / TOTAL_STEPS) * 100;
+  const progress = currentStep === 0 ? 0 : (currentStep / (TOTAL_STEPS - 1)) * 100;
 
   return (
     <main className="min-h-screen bg-[color:var(--cream)] pb-24">
@@ -343,7 +362,7 @@ function FunnelLayout({ children }: { children: ReactNode }) {
 
       {/* Back */}
       <div className="max-w-2xl mx-auto px-5 sm:px-6 mt-6 min-h-[24px]">
-        {currentStep > 0 && currentStep !== 11 && (
+        {currentStep > 0 && currentStep !== 12 && (
           <button
             onClick={back}
             className="text-xs tracking-[0.2em] uppercase text-[color:var(--muted-fg)] hover:text-[color:var(--wine)] transition"
@@ -371,19 +390,21 @@ function FunnelLayout({ children }: { children: ReactNode }) {
 function StepRouter() {
   const { currentStep } = useFunnel();
   switch (currentStep) {
-    case 0: return <StepHero />;
-    case 1: return <StepPosting />;
-    case 2: return <StepFace />;
-    case 3: return <StepSkill />;
-    case 4: return <StepTime />;
-    case 5: return <StepReadiness />;
-    case 6: return <StepAnalysis />;
-    case 7: return <StepBelief />;
-    case 8: return <StepCalculator />;
-    case 9: return <StepRoadmap />;
-    case 10: return <StepLead />;
-    case 11: return <StepResult />;
+    case 0: return <StepStart />;
+    case 1: return <StepFollowers />;
+    case 2: return <StepPosting />;
+    case 3: return <StepFace />;
+    case 4: return <StepSkill />;
+    case 5: return <StepTime />;
+    case 6: return <StepReadiness />;
+    case 7: return <StepAnalysis />;
+    case 8: return <StepBelief />;
+    case 9: return <StepCalculator />;
+    case 10: return <StepRoadmap />;
+    case 11: return <StepLead />;
+    case 12: return <StepResult />;
     default: return null;
+
   }
 }
 
@@ -420,89 +441,119 @@ function PrimaryCTA({ children, onClick, full = true }: { children: ReactNode; o
 }
 
 // ─────────────────────────── Steps ───────────────────────────
-function StepHero() {
-  const { L, set, next, followers } = useFunnel();
-  const [val, setVal] = useState<string>(followers ? String(followers) : "");
-  const H = t.hero;
-
+function StepLabel({ n }: { n: number }) {
+  const { L } = useFunnel();
   return (
-    <div className="space-y-10">
-      <div>
-        <p className="eyebrow text-[color:var(--rose)]">{H.eyebrow[L]}</p>
-        <h1 className="mt-5 font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight text-[color:var(--wine)] leading-[1.05]">
-          {H.h1a[L]}<br />
-          <span className="serif-italic text-[color:var(--rose)]">{H.h1b[L]}</span>
-        </h1>
-        <p className="mt-6 text-[color:var(--muted-fg)] leading-relaxed">{H.sub[L]}</p>
-      </div>
+    <p className="text-[11px] uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
+      {t.qlabel[L](n)}
+    </p>
+  );
+}
 
-      {/* Diary block */}
-      <div className="rounded-2xl bg-[color:var(--cream2)] p-6 sm:p-8">
-        <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-full bg-[color:var(--wine)] text-[color:var(--cream)] grid place-items-center font-serif text-2xl">L</div>
-          <div>
-            <p className="font-serif text-lg text-[color:var(--wine)]">Laura</p>
-            <p className="text-xs tracking-[0.15em] uppercase text-[color:var(--muted-fg)]">Creating Society</p>
-          </div>
-        </div>
-        <p className="mt-5 text-[color:var(--ink)] leading-relaxed serif-italic text-lg">
-          {H.diary[L]}
-        </p>
-        <p className="mt-3 text-sm text-[color:var(--muted-fg)]">{H.signature[L]}</p>
-      </div>
-
-      {/* Reframe cards */}
-      <div className="grid sm:grid-cols-2 gap-4">
-        <div className="rounded-2xl bg-[color:var(--cream2)] p-6 border border-[color:var(--border)]">
-          <p className="text-[color:var(--muted-fg)] line-through leading-relaxed">{H.reframeLeft[L]}</p>
-        </div>
-        <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)] border-l-4 border-l-[color:var(--rose)]">
-          <p className="text-[color:var(--ink)] leading-relaxed">{H.reframeRight[L]}</p>
+function FounderCard({ compact = false }: { compact?: boolean }) {
+  const { L } = useFunnel();
+  return (
+    <div className={`rounded-2xl bg-[color:var(--cream2)] ${compact ? "p-5 sm:p-6" : "p-6 sm:p-8"}`}>
+      <div className="flex items-center gap-4">
+        <div className="w-12 h-12 rounded-full bg-[color:var(--wine)] text-[color:var(--cream)] grid place-items-center font-serif text-xl">L</div>
+        <div>
+          <p className="font-serif text-lg text-[color:var(--wine)]">Laura</p>
+          <p className="text-xs tracking-[0.15em] uppercase text-[color:var(--muted-fg)]">Creating Society</p>
         </div>
       </div>
+      <p className="mt-4 text-[color:var(--ink)] leading-relaxed serif-italic text-base sm:text-lg">
+        {t.hero.diary[L]}
+      </p>
+      <p className="mt-3 text-sm text-[color:var(--muted-fg)]">{t.hero.signature[L]}</p>
+    </div>
+  );
+}
 
-      {/* Input */}
-      <div className="pt-2">
-        <label className="block">
-          <span className="eyebrow text-[color:var(--wine)]">{H.followersLabel[L]}</span>
-          <input
-            type="number"
-            inputMode="numeric"
-            min={0}
-            value={val}
-            onChange={(e) => setVal(e.target.value)}
-            placeholder={H.followersPh[L]}
-            className="mt-3 w-full bg-transparent border-b-2 border-[color:var(--wine)]/30 text-3xl sm:text-4xl font-serif text-[color:var(--wine)] py-3 focus:outline-none focus:border-[color:var(--rose)] placeholder:text-[color:var(--wine)]/25"
-            style={{ fontSize: "clamp(1.75rem, 6vw, 2.5rem)" }}
-          />
-        </label>
-        <div className="mt-6">
-          <PrimaryCTA onClick={() => {
-            const n = Math.max(0, parseInt(val || "0", 10) || 0);
-            set("followers", n);
-            next();
-          }}>
-            {H.cta[L]}
-          </PrimaryCTA>
-          <p className="mt-3 text-xs text-center text-[color:var(--muted-fg)] tracking-wider">{H.micro[L]}</p>
-        </div>
+function ReframeCards() {
+  const { L } = useFunnel();
+  return (
+    <div className="grid sm:grid-cols-2 gap-3">
+      <div className="rounded-xl bg-[color:var(--cream2)] p-4 border border-[color:var(--border)]">
+        <p className="text-sm text-[color:var(--muted-fg)] line-through leading-relaxed">{t.hero.reframeLeft[L]}</p>
+      </div>
+      <div className="rounded-xl bg-white p-4 border border-[color:var(--border)] border-l-4 border-l-[color:var(--rose)]">
+        <p className="text-sm text-[color:var(--ink)] leading-relaxed">{t.hero.reframeRight[L]}</p>
       </div>
     </div>
   );
 }
 
+// ─────────────────────────── Steps ───────────────────────────
+function StepStart() {
+  const { L, next } = useFunnel();
+  const S = t.start;
+  return (
+    <div className="pt-10 sm:pt-16 text-center max-w-xl mx-auto">
+      <div className="flex items-center justify-center gap-3">
+        <div className="w-10 h-10 rounded-full bg-[color:var(--wine)] text-[color:var(--cream)] grid place-items-center font-serif text-base">L</div>
+        <p className="text-xs sm:text-sm text-[color:var(--muted-fg)]">{S.trust[L]}</p>
+      </div>
+
+      <h1 className="mt-8 font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight text-[color:var(--wine)] leading-[1.05]">
+        {S.h1[L]}
+      </h1>
+      <p className="mt-6 text-base sm:text-lg text-[color:var(--muted-fg)] leading-relaxed">{S.sub[L]}</p>
+
+      <div className="mt-10">
+        <PrimaryCTA onClick={next}>{S.cta[L]}</PrimaryCTA>
+        <p className="mt-3 text-xs text-[color:var(--muted-fg)] tracking-wider">{S.micro[L]}</p>
+      </div>
+    </div>
+  );
+}
+
+function StepFollowers() {
+  const { L, set, next, followers } = useFunnel();
+  const [val, setVal] = useState<string>(followers ? String(followers) : "");
+  const H = t.hero;
+
+  return (
+    <div className="space-y-6">
+      <StepLabel n={1} />
+      <QuestionHead>{H.followersLabel[L]}</QuestionHead>
+      <p className="text-[color:var(--muted-fg)] leading-relaxed">{H.followersHint[L]}</p>
+
+      <input
+        type="number"
+        inputMode="numeric"
+        min={0}
+        value={val}
+        onChange={(e) => setVal(e.target.value)}
+        placeholder={H.followersPh[L]}
+        className="w-full bg-transparent border-b-2 border-[color:var(--wine)]/30 font-serif text-[color:var(--wine)] py-3 focus:outline-none focus:border-[color:var(--rose)] placeholder:text-[color:var(--wine)]/25"
+        style={{ fontSize: "clamp(1.75rem, 6vw, 2.5rem)" }}
+      />
+
+      <PrimaryCTA onClick={() => {
+        set("followers", Math.max(0, parseInt(val || "0", 10) || 0));
+        next();
+      }}>
+        {H.cta[L]}
+      </PrimaryCTA>
+    </div>
+  );
+}
+
+
 function ChoiceStep<T extends string>({
-  q, options, onPick, extra,
+  n, q, options, onPick, extra,
 }: {
+  n: number;
   q: string;
   options: { key: string; label: string }[];
   onPick: (k: T) => void;
   extra?: ReactNode;
 }) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
+      <StepLabel n={n} />
       <QuestionHead>{q}</QuestionHead>
-      <div className="space-y-3">
+      <div className="space-y-3 pt-2">
         {options.map((o) => (
           <BigChoice key={o.key} label={o.label} onClick={() => onPick(o.key as T)} />
         ))}
@@ -512,10 +563,12 @@ function ChoiceStep<T extends string>({
   );
 }
 
+
 function StepPosting() {
   const { L, set, next } = useFunnel();
   return (
     <ChoiceStep
+      n={2}
       q={t.step1.q[L]}
       options={t.step1.a.map((o) => ({ key: o.key, label: o[L] }))}
       onPick={(k: string) => { set("postingStatus", k as PostingStatus); setTimeout(next, 150); }}
@@ -526,6 +579,7 @@ function StepFace() {
   const { L, set, next } = useFunnel();
   return (
     <ChoiceStep
+      n={3}
       q={t.step2.q[L]}
       options={t.step2.a.map((o) => ({ key: o.key, label: o[L] }))}
       onPick={(k: string) => { set("faceMode", k as FaceMode); setTimeout(next, 150); }}
@@ -537,6 +591,7 @@ function StepSkill() {
   const [reassure, setReassure] = useState(false);
   return (
     <ChoiceStep
+      n={4}
       q={t.step3.q[L]}
       options={t.step3.a.map((o) => ({ key: o.key, label: o[L] }))}
       onPick={(k: string) => {
@@ -558,6 +613,7 @@ function StepTime() {
   const { L, set, next } = useFunnel();
   return (
     <ChoiceStep
+      n={5}
       q={t.step4.q[L]}
       options={t.step4.a.map((o) => ({ key: o.key, label: o[L] }))}
       onPick={(k: string) => { set("hoursPerWeek", k); setTimeout(next, 150); }}
@@ -568,9 +624,10 @@ function StepReadiness() {
   const { L, set, next } = useFunnel();
   return (
     <ChoiceStep
+      n={6}
       q={t.step5.q[L]}
       options={t.step5.a.map((o) => ({ key: o.key, label: o[L] }))}
-      onPick={(k: string) => { set("readiness", k); setTimeout(next, 150); }}
+      onPick={(k: string) => { set("readiness", k); set("price", k === "ready" ? 297 : 197); setTimeout(next, 150); }}
     />
   );
 }
@@ -629,12 +686,14 @@ function StepBelief() {
   const { L, next, followers } = useFunnel();
   return (
     <div className="space-y-8">
+      <FounderCard compact />
       <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-[color:var(--wine)] leading-[1.05]">
         {t.belief.h[L]}
       </h2>
       <p className="text-lg text-[color:var(--ink)] leading-relaxed">
         {t.belief.body[L](followers)}
       </p>
+
       <PrimaryCTA onClick={next}>{t.belief.cta[L]}</PrimaryCTA>
     </div>
   );
@@ -651,6 +710,9 @@ function StepCalculator() {
       <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-[color:var(--wine)]">
         {t.calc.h[L]}
       </h2>
+
+      <p className="text-[color:var(--muted-fg)] leading-relaxed">{t.calc.explainer[L]}</p>
+
 
       <div className="rounded-2xl bg-white p-6 sm:p-8 shadow-sm border border-[color:var(--border)] space-y-8">
         {/* Price */}
@@ -703,10 +765,12 @@ function StepRoadmap() {
 
   return (
     <div className="space-y-8">
+      <ReframeCards />
       <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-[color:var(--wine)]">
         {t.roadmap.h[L]}
       </h2>
       {intro && <p className="text-lg text-[color:var(--ink)] leading-relaxed">{intro}</p>}
+
 
       <div className="relative pl-8 space-y-8 border-l-2 border-[color:var(--rose)]/25">
         {t.roadmap.rows.map((r, i) => (
