@@ -439,76 +439,104 @@ function PrimaryCTA({ children, onClick, full = true }: { children: ReactNode; o
 }
 
 // ─────────────────────────── Steps ───────────────────────────
-function StepHero() {
+function StepLabel({ n }: { n: number }) {
+  const { L } = useFunnel();
+  return (
+    <p className="text-[11px] uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
+      {t.qlabel[L](n)}
+    </p>
+  );
+}
+
+function FounderCard({ compact = false }: { compact?: boolean }) {
+  const { L } = useFunnel();
+  return (
+    <div className={`rounded-2xl bg-[color:var(--cream2)] ${compact ? "p-5 sm:p-6" : "p-6 sm:p-8"}`}>
+      <div className="flex items-center gap-4">
+        <div className="w-12 h-12 rounded-full bg-[color:var(--wine)] text-[color:var(--cream)] grid place-items-center font-serif text-xl">L</div>
+        <div>
+          <p className="font-serif text-lg text-[color:var(--wine)]">Laura</p>
+          <p className="text-xs tracking-[0.15em] uppercase text-[color:var(--muted-fg)]">Creating Society</p>
+        </div>
+      </div>
+      <p className="mt-4 text-[color:var(--ink)] leading-relaxed serif-italic text-base sm:text-lg">
+        {t.hero.diary[L]}
+      </p>
+      <p className="mt-3 text-sm text-[color:var(--muted-fg)]">{t.hero.signature[L]}</p>
+    </div>
+  );
+}
+
+function ReframeCards() {
+  const { L } = useFunnel();
+  return (
+    <div className="grid sm:grid-cols-2 gap-3">
+      <div className="rounded-xl bg-[color:var(--cream2)] p-4 border border-[color:var(--border)]">
+        <p className="text-sm text-[color:var(--muted-fg)] line-through leading-relaxed">{t.hero.reframeLeft[L]}</p>
+      </div>
+      <div className="rounded-xl bg-white p-4 border border-[color:var(--border)] border-l-4 border-l-[color:var(--rose)]">
+        <p className="text-sm text-[color:var(--ink)] leading-relaxed">{t.hero.reframeRight[L]}</p>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────── Steps ───────────────────────────
+function StepStart() {
+  const { L, next } = useFunnel();
+  const S = t.start;
+  return (
+    <div className="pt-10 sm:pt-16 text-center max-w-xl mx-auto">
+      <div className="flex items-center justify-center gap-3">
+        <div className="w-10 h-10 rounded-full bg-[color:var(--wine)] text-[color:var(--cream)] grid place-items-center font-serif text-base">L</div>
+        <p className="text-xs sm:text-sm text-[color:var(--muted-fg)]">{S.trust[L]}</p>
+      </div>
+
+      <h1 className="mt-8 font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight text-[color:var(--wine)] leading-[1.05]">
+        {S.h1[L]}
+      </h1>
+      <p className="mt-6 text-base sm:text-lg text-[color:var(--muted-fg)] leading-relaxed">{S.sub[L]}</p>
+
+      <div className="mt-10">
+        <PrimaryCTA onClick={next}>{S.cta[L]}</PrimaryCTA>
+        <p className="mt-3 text-xs text-[color:var(--muted-fg)] tracking-wider">{S.micro[L]}</p>
+      </div>
+    </div>
+  );
+}
+
+function StepFollowers() {
   const { L, set, next, followers } = useFunnel();
   const [val, setVal] = useState<string>(followers ? String(followers) : "");
   const H = t.hero;
 
   return (
-    <div className="space-y-10">
-      <div>
-        <p className="eyebrow text-[color:var(--rose)]">{H.eyebrow[L]}</p>
-        <h1 className="mt-5 font-serif text-4xl sm:text-5xl md:text-6xl tracking-tight text-[color:var(--wine)] leading-[1.05]">
-          {H.h1a[L]}<br />
-          <span className="serif-italic text-[color:var(--rose)]">{H.h1b[L]}</span>
-        </h1>
-        <p className="mt-6 text-[color:var(--muted-fg)] leading-relaxed">{H.sub[L]}</p>
-      </div>
+    <div className="space-y-6">
+      <StepLabel n={1} />
+      <QuestionHead>{H.followersLabel[L]}</QuestionHead>
+      <p className="text-[color:var(--muted-fg)] leading-relaxed">{H.followersHint[L]}</p>
 
-      {/* Diary block */}
-      <div className="rounded-2xl bg-[color:var(--cream2)] p-6 sm:p-8">
-        <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-full bg-[color:var(--wine)] text-[color:var(--cream)] grid place-items-center font-serif text-2xl">L</div>
-          <div>
-            <p className="font-serif text-lg text-[color:var(--wine)]">Laura</p>
-            <p className="text-xs tracking-[0.15em] uppercase text-[color:var(--muted-fg)]">Creating Society</p>
-          </div>
-        </div>
-        <p className="mt-5 text-[color:var(--ink)] leading-relaxed serif-italic text-lg">
-          {H.diary[L]}
-        </p>
-        <p className="mt-3 text-sm text-[color:var(--muted-fg)]">{H.signature[L]}</p>
-      </div>
+      <input
+        type="number"
+        inputMode="numeric"
+        min={0}
+        value={val}
+        onChange={(e) => setVal(e.target.value)}
+        placeholder={H.followersPh[L]}
+        className="w-full bg-transparent border-b-2 border-[color:var(--wine)]/30 font-serif text-[color:var(--wine)] py-3 focus:outline-none focus:border-[color:var(--rose)] placeholder:text-[color:var(--wine)]/25"
+        style={{ fontSize: "clamp(1.75rem, 6vw, 2.5rem)" }}
+      />
 
-      {/* Reframe cards */}
-      <div className="grid sm:grid-cols-2 gap-4">
-        <div className="rounded-2xl bg-[color:var(--cream2)] p-6 border border-[color:var(--border)]">
-          <p className="text-[color:var(--muted-fg)] line-through leading-relaxed">{H.reframeLeft[L]}</p>
-        </div>
-        <div className="rounded-2xl bg-white p-6 border border-[color:var(--border)] border-l-4 border-l-[color:var(--rose)]">
-          <p className="text-[color:var(--ink)] leading-relaxed">{H.reframeRight[L]}</p>
-        </div>
-      </div>
-
-      {/* Input */}
-      <div className="pt-2">
-        <label className="block">
-          <span className="eyebrow text-[color:var(--wine)]">{H.followersLabel[L]}</span>
-          <input
-            type="number"
-            inputMode="numeric"
-            min={0}
-            value={val}
-            onChange={(e) => setVal(e.target.value)}
-            placeholder={H.followersPh[L]}
-            className="mt-3 w-full bg-transparent border-b-2 border-[color:var(--wine)]/30 text-3xl sm:text-4xl font-serif text-[color:var(--wine)] py-3 focus:outline-none focus:border-[color:var(--rose)] placeholder:text-[color:var(--wine)]/25"
-            style={{ fontSize: "clamp(1.75rem, 6vw, 2.5rem)" }}
-          />
-        </label>
-        <div className="mt-6">
-          <PrimaryCTA onClick={() => {
-            const n = Math.max(0, parseInt(val || "0", 10) || 0);
-            set("followers", n);
-            next();
-          }}>
-            {H.cta[L]}
-          </PrimaryCTA>
-          <p className="mt-3 text-xs text-center text-[color:var(--muted-fg)] tracking-wider">{H.micro[L]}</p>
-        </div>
-      </div>
+      <PrimaryCTA onClick={() => {
+        set("followers", Math.max(0, parseInt(val || "0", 10) || 0));
+        next();
+      }}>
+        {H.cta[L]}
+      </PrimaryCTA>
     </div>
   );
 }
+
 
 function ChoiceStep<T extends string>({
   q, options, onPick, extra,
