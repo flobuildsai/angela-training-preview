@@ -1,11 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import lauraImg from "@/assets/mentor.jpg";
 import proofA from "@/assets/opportunity.jpg";
 import proofB from "@/assets/hero.jpg";
 import proofC from "@/assets/avatar.jpg";
-import { CalendlyEmbed } from "@/components/CalendlyEmbed";
 import { trackEvent } from "@/lib/track";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
