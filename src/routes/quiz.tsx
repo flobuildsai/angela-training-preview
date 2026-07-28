@@ -130,6 +130,11 @@ const t = {
 
   calc: {
     h: { de: "Deine Rechnung.", en: "Your numbers." },
+    explainer: {
+      de: "So funktioniert die Rechnung: dein Produktpreis × Käuferinnen pro Monat. Spiel mit den Reglern.",
+      en: "The math is simple: your product price × buyers per month. Play with the sliders.",
+    },
+
     price: { de: "Preis deines Produkts", en: "Your product price" },
     buyers: { de: "Käuferinnen pro Monat", en: "Buyers per month" },
     perMonth: { de: "/Monat", en: "/month" },
