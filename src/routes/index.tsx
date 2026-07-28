@@ -708,7 +708,7 @@ function HomePage() {
       <div
         className={
           "fixed inset-x-0 bottom-0 z-40 border-t border-[color:var(--border)] bg-[color:var(--cream)]/95 p-3 backdrop-blur-xl transition-transform duration-300 md:hidden " +
-          (bookingVisible ? "translate-y-full" : "translate-y-0")
+          (past && !bookingVisible ? "translate-y-0" : "translate-y-full")
         }
       >
         <button
