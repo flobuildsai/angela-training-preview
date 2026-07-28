@@ -711,6 +711,9 @@ function StepCalculator() {
         {t.calc.h[L]}
       </h2>
 
+      <p className="text-[color:var(--muted-fg)] leading-relaxed">{t.calc.explainer[L]}</p>
+
+
       <div className="rounded-2xl bg-white p-6 sm:p-8 shadow-sm border border-[color:var(--border)] space-y-8">
         {/* Price */}
         <div>
