@@ -765,10 +765,12 @@ function StepRoadmap() {
 
   return (
     <div className="space-y-8">
+      <ReframeCards />
       <h2 className="font-serif text-4xl sm:text-5xl tracking-tight text-[color:var(--wine)]">
         {t.roadmap.h[L]}
       </h2>
       {intro && <p className="text-lg text-[color:var(--ink)] leading-relaxed">{intro}</p>}
+
 
       <div className="relative pl-8 space-y-8 border-l-2 border-[color:var(--rose)]/25">
         {t.roadmap.rows.map((r, i) => (
