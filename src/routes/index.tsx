@@ -448,33 +448,40 @@ function HomePage() {
       {/* Sticky Header */}
       <header
         className={
-          "fixed inset-x-0 top-0 z-40 transition-all duration-300 " +
+          "fixed inset-x-0 top-0 z-40 transition-all duration-500 " +
           (past
-            ? "border-b border-[color:var(--border)] bg-[color:var(--cream)]/90 text-[color:var(--ink)] backdrop-blur-md"
-            : "bg-transparent text-[color:var(--ink)]")
+            ? "border-b border-[color:var(--border)] bg-[color:var(--cream)]/85 text-[color:var(--ink)] backdrop-blur-xl"
+            : "border-b border-transparent bg-transparent text-[color:var(--ink)]")
         }
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <Link to="/" className="font-serif text-xl tracking-tight">
+        <div
+          className={
+            "mx-auto flex max-w-6xl items-center justify-between px-6 transition-all duration-500 " +
+            (past ? "py-3.5" : "py-6")
+          }
+        >
+          <Link to="/" className="font-serif text-lg tracking-tight sm:text-xl">
             Creating <span className="serif-italic">Society</span>
           </Link>
-          <nav className="flex items-center gap-7">
-            <a href="#method" className="hidden text-[0.68rem] uppercase tracking-[0.2em] opacity-70 hover:opacity-100 lg:inline">
-              Die Methode
-            </a>
-            <a href="#program" className="hidden text-[0.68rem] uppercase tracking-[0.2em] opacity-70 hover:opacity-100 lg:inline">
-              Das Programm
-            </a>
-            <a href="#about" className="hidden text-[0.68rem] uppercase tracking-[0.2em] opacity-70 hover:opacity-100 lg:inline">
-              Über Laura
-            </a>
-            <a href="#faq" className="hidden text-[0.68rem] uppercase tracking-[0.2em] opacity-70 hover:opacity-100 lg:inline">
-              FAQ
-            </a>
+          <nav className="flex items-center gap-8">
+            {[
+              { href: "#method", label: "Die Methode" },
+              { href: "#program", label: "Das Programm" },
+              { href: "#about", label: "Über Laura" },
+              { href: "#faq", label: "FAQ" },
+            ].map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="hidden text-[0.7rem] tracking-[0.14em] text-[color:var(--muted-fg)] transition-colors hover:text-[color:var(--wine)] lg:inline"
+              >
+                {l.label}
+              </a>
+            ))}
             <button
               type="button"
               onClick={() => scrollToCall("header")}
-              className="hidden rounded-full bg-[color:var(--wine)] px-5 py-2.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--cream)] transition hover:opacity-90 sm:inline-flex"
+              className="hidden rounded-full border border-[color:var(--wine)] px-5 py-2.5 text-[0.64rem] font-medium tracking-[0.14em] text-[color:var(--wine)] transition-colors duration-300 hover:bg-[color:var(--wine)] hover:text-[color:var(--cream)] sm:inline-flex"
             >
               Strategiegespräch buchen
             </button>
@@ -488,39 +495,41 @@ function HomePage() {
           aria-labelledby="hero-title"
           className="relative overflow-hidden bg-[color:var(--cream)]"
         >
-          <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 pb-20 pt-32 md:pb-28 md:pt-40 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+          <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 pb-24 pt-36 md:pb-32 md:pt-44 lg:grid-cols-[1.02fr_0.98fr] lg:gap-24">
             <div className="rv">
-              <Eyebrow>12-Wochen Done-with-you Coaching</Eyebrow>
+              <p className="eyebrow rule-label text-[color:var(--muted-fg)]">
+                12-Wochen Done-with-you Coaching
+              </p>
               <h1
                 id="hero-title"
-                className="mt-6 font-serif text-[2.6rem] leading-[1.05] tracking-tight text-[color:var(--wine)] sm:text-6xl lg:text-7xl"
+                className="mt-8 font-serif text-[2.75rem] leading-[1.02] tracking-[-0.025em] text-[color:var(--wine)] sm:text-6xl lg:text-[4.25rem]"
               >
-                Baue ein digitales Business, das wirklich dir gehört.
-                <span className="mt-4 block serif-italic text-[1.5rem] leading-snug text-[color:var(--rose)] sm:text-3xl lg:text-4xl">
-                  Nicht nur eine weitere Idee, die in deinen Notizen bleibt.
-                </span>
+                Baue ein digitales Business, das{" "}
+                <span className="serif-italic text-[color:var(--rose)]">wirklich dir gehört.</span>
               </h1>
-              <p className="mt-8 max-w-xl text-base leading-relaxed text-[color:var(--muted-fg)] sm:text-lg">
+              <p className="mt-8 max-w-lg text-[1.0625rem] leading-[1.75] text-[color:var(--muted-fg)]">
                 Creating Society hilft dir, aus deiner Erfahrung oder deinen Fähigkeiten ein klares
                 digitales Angebot zu entwickeln, es am Markt zu testen und deine ersten Kundinnen zu
                 gewinnen – auch ohne große Reichweite oder fertige Geschäftsidee.
               </p>
 
-              <div className="mt-10 flex flex-col items-start gap-4">
+              <div className="mt-11 flex flex-col items-start gap-5">
                 <CtaButton source="hero" className="w-full sm:w-auto">
                   Kostenloses Strategiegespräch buchen
                 </CtaButton>
-                <p className="text-[0.7rem] uppercase tracking-[0.16em] text-[color:var(--muted-fg)]">
-                  Kostenlos · 30 Minuten · Persönliche Potenzialanalyse
-                </p>
-                <p className="mt-2 max-w-md border-l border-[color:var(--border)] pl-4 text-sm leading-relaxed text-[color:var(--muted-fg)]">
-                  Für Frauen, die bereit sind, aus ihrem Wissen ein echtes Business aufzubauen.
-                </p>
+                <ul className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.72rem] tracking-[0.1em] text-[color:var(--muted-fg)]">
+                  {["Kostenlos", "30 Minuten", "Persönliche Potenzialanalyse"].map((t, i) => (
+                    <li key={t} className="flex items-center gap-3">
+                      {i > 0 && <span className="h-1 w-1 rounded-full bg-[color:var(--rose)]/60" />}
+                      {t}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 
             <div className="rv d1 relative">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[2px]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[3px] soft-shadow">
                 <img
                   src={portraitImg}
                   alt="Laura, Gründerin von Creating Society"
@@ -528,9 +537,13 @@ function HomePage() {
                   loading="eager"
                 />
               </div>
+              <p className="mt-5 max-w-xs border-l border-[color:var(--border)] pl-4 text-[0.8rem] leading-relaxed text-[color:var(--muted-fg)]">
+                Für Frauen, die bereit sind, aus ihrem Wissen ein echtes Business aufzubauen.
+              </p>
             </div>
           </div>
         </section>
+
 
         {/* ── 2. PROBLEM ──────────────────────────────────── */}
         <section
