@@ -541,17 +541,19 @@ function StepFollowers() {
 
 
 function ChoiceStep<T extends string>({
-  q, options, onPick, extra,
+  n, q, options, onPick, extra,
 }: {
+  n: number;
   q: string;
   options: { key: string; label: string }[];
   onPick: (k: T) => void;
   extra?: ReactNode;
 }) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
+      <StepLabel n={n} />
       <QuestionHead>{q}</QuestionHead>
-      <div className="space-y-3">
+      <div className="space-y-3 pt-2">
         {options.map((o) => (
           <BigChoice key={o.key} label={o.label} onClick={() => onPick(o.key as T)} />
         ))}
@@ -560,6 +562,7 @@ function ChoiceStep<T extends string>({
     </div>
   );
 }
+
 
 function StepPosting() {
   const { L, set, next } = useFunnel();
