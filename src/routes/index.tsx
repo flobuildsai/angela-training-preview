@@ -439,17 +439,18 @@ function HomePage() {
                 id="proof-title"
                 className="font-serif text-[2.1rem] leading-[1.08] text-[color:var(--ink)] sm:text-[3.25rem]"
               >
-                Laura hat nicht nur Reichweite aufgebaut.
+                Ich habe nicht nur Reichweite aufgebaut.
               </h2>
               <div className="mt-8 space-y-5 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
                 <p>
-                  Sie hat Content genutzt, um Nachfrage für ein eigenes Angebot und ein echtes
+                  Ich habe Content genutzt, um Nachfrage für ein eigenes Angebot und ein echtes
                   Geschäftsmodell zu erzeugen.
                 </p>
                 <p>
-                  Mit Property Circle hat Laura Expertise, organischen Content, Paid Marketing und
+                  Mit Property Circle habe ich Expertise, organischen Content, Paid Marketing und
                   ein klares Angebot miteinander verbunden.
                 </p>
+
                 <p className="text-[color:var(--ink)]">
                   Nicht posten, um einfach nur sichtbar zu sein. Posten, um etwas aufzubauen.
                 </p>
