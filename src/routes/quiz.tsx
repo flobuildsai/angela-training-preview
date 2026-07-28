@@ -390,19 +390,21 @@ function FunnelLayout({ children }: { children: ReactNode }) {
 function StepRouter() {
   const { currentStep } = useFunnel();
   switch (currentStep) {
-    case 0: return <StepHero />;
-    case 1: return <StepPosting />;
-    case 2: return <StepFace />;
-    case 3: return <StepSkill />;
-    case 4: return <StepTime />;
-    case 5: return <StepReadiness />;
-    case 6: return <StepAnalysis />;
-    case 7: return <StepBelief />;
-    case 8: return <StepCalculator />;
-    case 9: return <StepRoadmap />;
-    case 10: return <StepLead />;
-    case 11: return <StepResult />;
+    case 0: return <StepStart />;
+    case 1: return <StepFollowers />;
+    case 2: return <StepPosting />;
+    case 3: return <StepFace />;
+    case 4: return <StepSkill />;
+    case 5: return <StepTime />;
+    case 6: return <StepReadiness />;
+    case 7: return <StepAnalysis />;
+    case 8: return <StepBelief />;
+    case 9: return <StepCalculator />;
+    case 10: return <StepRoadmap />;
+    case 11: return <StepLead />;
+    case 12: return <StepResult />;
     default: return null;
+
   }
 }
 
