@@ -233,7 +233,12 @@ function HomePage() {
             <button
               type="button"
               onClick={() => scrollToCall("header")}
-              className="rounded-full border border-[color:var(--ink)]/20 px-5 py-2.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--ink)] transition hover:bg-[color:var(--wine)] hover:text-[color:var(--cream)] sm:px-6"
+              className={
+                "rounded-full border border-[color:var(--ink)]/20 px-5 py-2.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--ink)] transition hover:bg-[color:var(--wine)] hover:text-[color:var(--cream)] sm:px-6 " +
+                (past ? "opacity-100" : "pointer-events-none opacity-0")
+              }
+              aria-hidden={!past}
+              tabIndex={past ? 0 : -1}
             >
               Strategiegespräch buchen
             </button>
@@ -243,47 +248,46 @@ function HomePage() {
 
       <main id="top" className="bg-[color:var(--background)]">
         {/* ── Hero ─────────────────────────────────────────── */}
-        <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40 md:pt-48 md:pb-32">
+        <section className="relative overflow-hidden pt-36 pb-16 sm:pt-44 md:pt-52 md:pb-24">
           <div className="pointer-events-none absolute inset-0 hero-glow" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <div className="grid gap-12 md:grid-cols-12 md:items-end md:gap-10">
-              <div className="rv md:col-span-7">
-                <p className="eyebrow text-[color:var(--rose)]">Creating Society</p>
-                <h1 className="mt-7 font-serif text-[3rem] leading-[0.94] tracking-tight text-[color:var(--ink)] sm:text-7xl lg:text-[5.75rem]">
-                  Aus Content wird
-                  <br />
-                  <span className="serif-italic">ein Unternehmen.</span>
-                </h1>
-                <p className="mt-8 max-w-xl text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)] sm:text-lg">
-                  Creating Society hilft Frauen dabei, mit Content Aufmerksamkeit aufzubauen – und
-                  daraus eine eigene Marke, ein starkes Angebot und ein profitables Business zu
-                  entwickeln.
-                </p>
-                <div className="mt-9">
-                  <CtaButton source="hero">Strategiegespräch buchen</CtaButton>
-                </div>
-                <p className="mt-6 max-w-md text-sm leading-relaxed text-[color:var(--muted-fg)]">
-                  Wir schauen gemeinsam, wo du heute stehst, was du aufbauen kannst und ob Creating
-                  Society der richtige Weg für dich ist.
-                </p>
-              </div>
-
-              <div className="rv d2 md:col-span-5">
-                <div className="grain relative overflow-hidden rounded-[2px]">
-                  <img
-                    src={heroImg}
-                    alt="Laura, Gründerin von Creating Society"
-                    className="h-full w-full object-cover"
-                    style={{ aspectRatio: "4 / 5" }}
-                  />
-                </div>
-                <p className="mt-5 max-w-xs text-[0.8rem] leading-relaxed text-[color:var(--muted-fg)]">
-                  Für Frauen, die nicht nur posten, sondern etwas Eigenes aufbauen wollen.
-                </p>
+            <div className="rv max-w-4xl">
+              <p className="eyebrow text-[color:var(--rose)]">Creating Society</p>
+              <h1 className="mt-8 font-serif text-[3.1rem] leading-[0.92] tracking-tight text-[color:var(--ink)] sm:text-7xl lg:text-[6.5rem]">
+                Aus Content wird
+                <br />
+                <span className="serif-italic">ein Unternehmen.</span>
+              </h1>
+              <p className="mt-10 max-w-lg text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
+                Ich helfe Frauen dabei, mit Content Aufmerksamkeit aufzubauen – und daraus eine
+                eigene Marke, ein Angebot und ein Business zu entwickeln.
+              </p>
+              <div className="mt-10">
+                <CtaButton source="hero">Strategiegespräch buchen</CtaButton>
               </div>
             </div>
           </div>
         </section>
+
+        {/* ── Ruhiges Editorial-Bild ───────────────────────── */}
+        <section className="pb-20 md:pb-28">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="rv d1 grid gap-6 md:grid-cols-12 md:items-end">
+              <figure className="grain relative overflow-hidden rounded-[2px] md:col-span-8">
+                <img
+                  src={heroImg}
+                  alt="Laura, Gründerin von Creating Society, an ihrem Schreibtisch"
+                  className="h-full w-full object-cover"
+                  style={{ aspectRatio: "16 / 10" }}
+                />
+              </figure>
+              <p className="max-w-xs text-[0.85rem] leading-relaxed text-[color:var(--muted-fg)] md:col-span-4 md:pb-2">
+                Für Frauen, die nicht nur posten, sondern etwas Eigenes aufbauen wollen.
+              </p>
+            </div>
+          </div>
+        </section>
+
 
         {/* ── Identifikation ───────────────────────────────── */}
         <section className="border-t border-[color:var(--border)] py-24 md:py-40">
