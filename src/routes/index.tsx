@@ -134,29 +134,6 @@ function useScrolled() {
   return past;
 }
 
-function useBookingVisible() {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = document.getElementById("call");
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        setVisible(entry.isIntersecting);
-        if (entry.isIntersecting) trackEvent("call_section_view");
-      },
-      { threshold: 0.15 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-  return visible;
-}
-
-function scrollToCall(source: string) {
-  trackEvent("call_cta_click", { source });
-  document.getElementById("call")?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
 // ── Bausteine ─────────────────────────────────────────────────
 function CtaButton({
   source,
@@ -175,9 +152,9 @@ function CtaButton({
   } as const;
 
   return (
-    <button
-      type="button"
-      onClick={() => scrollToCall(source)}
+    <Link
+      to="/call"
+      onClick={() => trackEvent("call_cta_click", { source })}
       className={
         "inline-flex items-center justify-center rounded-full px-7 py-3.5 text-[0.68rem] font-semibold uppercase tracking-[0.16em] transition sm:px-9 sm:py-4 " +
         tones[tone] +
@@ -186,9 +163,10 @@ function CtaButton({
       }
     >
       {children}
-    </button>
+    </Link>
   );
 }
+
 
 // ── Seite ─────────────────────────────────────────────────────
 function HomePage() {
