@@ -210,9 +210,9 @@ function HomePage() {
                 </a>
               ))}
             </nav>
-            <button
-              type="button"
-              onClick={() => scrollToCall("header")}
+            <Link
+              to="/call"
+              onClick={() => trackEvent("call_cta_click", { source: "header" })}
               className={
                 "rounded-full border border-[color:var(--ink)]/20 px-5 py-2.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--ink)] transition hover:bg-[color:var(--wine)] hover:text-[color:var(--cream)] sm:px-6 " +
                 (past ? "opacity-100" : "pointer-events-none opacity-0")
@@ -221,7 +221,8 @@ function HomePage() {
               tabIndex={past ? 0 : -1}
             >
               Strategiegespräch buchen
-            </button>
+            </Link>
+
           </div>
         </div>
       </header>
