@@ -362,7 +362,7 @@ function FunnelLayout({ children }: { children: ReactNode }) {
 
       {/* Back */}
       <div className="max-w-2xl mx-auto px-5 sm:px-6 mt-6 min-h-[24px]">
-        {currentStep > 0 && currentStep !== 11 && (
+        {currentStep > 0 && currentStep !== 12 && (
           <button
             onClick={back}
             className="text-xs tracking-[0.2em] uppercase text-[color:var(--muted-fg)] hover:text-[color:var(--wine)] transition"
