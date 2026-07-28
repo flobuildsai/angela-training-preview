@@ -92,13 +92,6 @@ const qualify = [
   "du nicht nur einen Account, sondern ein echtes Business aufbauen möchtest.",
 ];
 
-const callAgenda = [
-  "wo du aktuell stehst",
-  "welche Positionierung zu dir passen könnte",
-  "welches Angebot du entwickeln kannst",
-  "wie Content für dich Aufmerksamkeit und Kunden gewinnen kann",
-  "ob Creating Society der richtige nächste Schritt für dich ist",
-];
 
 // VSL-Sektion: auf true setzen, sobald das Video verfügbar ist.
 const VSL_VISIBLE = false;
