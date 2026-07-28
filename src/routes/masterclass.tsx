@@ -10,7 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/masterclass")({
   component: HomePage,
 });
 
