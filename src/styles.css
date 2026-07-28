@@ -88,12 +88,12 @@
   align-items: center;
   padding: 5px 13px;
   border-radius: 9999px;
-  background: rgba(200,96,104,0.10);
+  background: rgba(17,17,17,0.06);
   font-size: 0.6rem;
   font-weight: 600;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: #C86068;
+  color: #111111;
 }
 
 @utility headline-measure {
