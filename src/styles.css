@@ -117,7 +117,7 @@
 }
 
 @utility hero-glow {
-  background: radial-gradient(ellipse at 50% 30%, rgba(200,96,104,0.22), transparent 60%);
+  background: radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.10), transparent 62%);
 }
 
 /* ── Animations ─────────────────────────────────────────── */
