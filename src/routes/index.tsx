@@ -213,7 +213,7 @@ function CtaButton({
   className?: string;
 }) {
   const tones = {
-    rose: "bg-[color:var(--rose)] text-[color:var(--cream)]",
+    rose: "bg-[color:var(--cream)] text-[color:var(--wine)]",
     wine: "bg-[color:var(--wine)] text-[color:var(--cream)]",
     cream: "bg-[color:var(--cream)] text-[color:var(--wine)]",
   } as const;
@@ -332,7 +332,7 @@ function CallLandingPage() {
             <div className="rv d2 relative">
               <div
                 className="pointer-events-none absolute -inset-8 rounded-[2rem] opacity-70"
-                style={{ background: "radial-gradient(ellipse at 60% 40%, rgba(200,96,104,0.35), transparent 65%)" }}
+                style={{ background: "radial-gradient(ellipse at 60% 40%, rgba(255,255,255,0.14), transparent 65%)" }}
                 aria-hidden="true"
               />
               <img
