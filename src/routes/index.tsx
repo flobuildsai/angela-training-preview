@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import heroImg from "@/assets/laura-call.jpg";
 import lauraImg from "@/assets/mentor.jpg";
 import proofA from "@/assets/opportunity.jpg";
 import proofB from "@/assets/hero.jpg";
@@ -11,15 +10,15 @@ import { trackEvent } from "@/lib/track";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Creating Society — Aus Content wird ein Unternehmen" },
+      { title: "Creating Society — Bau ein Business aus deinem Content" },
       {
         name: "description",
         content:
-          "Creating Society hilft Frauen dabei, mit Content Aufmerksamkeit aufzubauen – und daraus eine eigene Marke, ein starkes Angebot und ein profitables Business zu entwickeln.",
+          "Creating Society hilft Frauen dabei, mit Content Aufmerksamkeit aufzubauen – und daraus eine eigene Marke, ein Angebot und ein Business zu entwickeln.",
       },
       {
         property: "og:title",
-        content: "Creating Society — Aus Content wird ein Unternehmen",
+        content: "Creating Society — Bau ein Business aus deinem Content",
       },
       {
         property: "og:description",
@@ -100,6 +99,9 @@ const callAgenda = [
   "wie Content für dich Aufmerksamkeit und Kunden gewinnen kann",
   "ob Creating Society der richtige nächste Schritt für dich ist",
 ];
+
+// VSL-Sektion: auf true setzen, sobald das Video verfügbar ist.
+const VSL_VISIBLE = false;
 
 // ── Hooks ─────────────────────────────────────────────────────
 function useReveal() {
@@ -254,13 +256,13 @@ function HomePage() {
             <div className="rv max-w-4xl">
               <p className="eyebrow text-[color:var(--rose)]">Creating Society</p>
               <h1 className="mt-8 font-serif text-[3.1rem] leading-[0.92] tracking-tight text-[color:var(--ink)] sm:text-7xl lg:text-[6.5rem]">
-                Aus Content wird
+                Werde nicht nur gesehen.
                 <br />
-                <span className="serif-italic">ein Unternehmen.</span>
+                <span className="serif-italic">Bau etwas Eigenes daraus.</span>
               </h1>
               <p className="mt-10 max-w-lg text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
-                Ich helfe Frauen dabei, mit Content Aufmerksamkeit aufzubauen – und daraus eine
-                eigene Marke, ein Angebot und ein Business zu entwickeln.
+                Ich helfe Frauen, aus Content ein Business aufzubauen – ohne großes Publikum, ohne
+                fertige Idee.
               </p>
               <div className="mt-10">
                 <CtaButton source="hero">Strategiegespräch buchen</CtaButton>
@@ -268,26 +270,6 @@ function HomePage() {
             </div>
           </div>
         </section>
-
-        {/* ── Ruhiges Editorial-Bild ───────────────────────── */}
-        <section className="pb-20 md:pb-28">
-          <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <div className="rv d1 grid gap-6 md:grid-cols-12 md:items-end">
-              <figure className="grain relative overflow-hidden rounded-[2px] md:col-span-8">
-                <img
-                  src={heroImg}
-                  alt="Laura, Gründerin von Creating Society, an ihrem Schreibtisch"
-                  className="h-full w-full object-cover"
-                  style={{ aspectRatio: "16 / 10" }}
-                />
-              </figure>
-              <p className="max-w-xs text-[0.85rem] leading-relaxed text-[color:var(--muted-fg)] md:col-span-4 md:pb-2">
-                Für Frauen, die nicht nur posten, sondern etwas Eigenes aufbauen wollen.
-              </p>
-            </div>
-          </div>
-        </section>
-
 
         {/* ── Identifikation ───────────────────────────────── */}
         <section className="border-t border-[color:var(--border)] py-24 md:py-40">
@@ -322,42 +304,42 @@ function HomePage() {
           </div>
         </section>
 
-        {/* ── VSL ──────────────────────────────────────────── */}
-        <section
-          aria-labelledby="vsl-title"
-          className="border-t border-[color:var(--border)] bg-[color:var(--cream2)] py-24 md:py-32"
-        >
-          <div className="mx-auto max-w-5xl px-5 sm:px-8">
-            <div className="rv max-w-3xl">
-              <h2
-                id="vsl-title"
-                className="font-serif text-[2.1rem] leading-[1.08] text-[color:var(--ink)] sm:text-[3.25rem]"
-              >
-                Was wäre möglich, wenn hinter deinem Content endlich ein Business stehen würde?
-              </h2>
-              <p className="mt-7 max-w-2xl text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
-                Laura zeigt dir, warum Reichweite allein nicht reicht – und wie aus Content,
-                Vertrauen und einem eigenen Angebot ein echtes Unternehmen entstehen kann.
-              </p>
-            </div>
+        {VSL_VISIBLE && (
+          <section
+            aria-labelledby="vsl-title"
+            className="border-t border-[color:var(--border)] bg-[color:var(--cream2)] py-24 md:py-32"
+          >
+            <div className="mx-auto max-w-5xl px-5 sm:px-8">
+              <div className="rv max-w-3xl">
+                <h2
+                  id="vsl-title"
+                  className="font-serif text-[2.1rem] leading-[1.08] text-[color:var(--ink)] sm:text-[3.25rem]"
+                >
+                  Was wäre möglich, wenn hinter deinem Content endlich ein Business stehen würde?
+                </h2>
+                <p className="mt-7 max-w-2xl text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
+                  Laura zeigt dir, warum Reichweite allein nicht reicht – und wie aus Content,
+                  Vertrauen und einem eigenen Angebot ein echtes Unternehmen entstehen kann.
+                </p>
+              </div>
 
-            {/* TODO: Video hier ersetzen (Vimeo / YouTube / Wistia / eigenes <video>) */}
-            <div
-              className="rv d2 group relative mt-12 grid place-items-center overflow-hidden rounded-[2px] bg-[color:var(--wine)]"
-              style={{ aspectRatio: "16 / 9" }}
-            >
-              <div className="grain absolute inset-0 opacity-90" aria-hidden="true" />
-              <div className="relative flex flex-col items-center">
-                <span className="grid h-16 w-16 place-items-center rounded-full border border-[color:var(--cream)]/40 transition group-hover:border-[color:var(--cream)] sm:h-20 sm:w-20">
-                  <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6 fill-[color:var(--cream)]" aria-hidden="true">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </span>
-                <span className="mt-5 eyebrow text-[color:var(--cream)]/70">Video ansehen</span>
+              <div
+                className="rv d2 group relative mt-12 grid place-items-center overflow-hidden rounded-[2px] bg-[color:var(--wine)]"
+                style={{ aspectRatio: "16 / 9" }}
+              >
+                <div className="grain absolute inset-0 opacity-90" aria-hidden="true" />
+                <div className="relative flex flex-col items-center">
+                  <span className="grid h-16 w-16 place-items-center rounded-full border border-[color:var(--cream)]/40 transition group-hover:border-[color:var(--cream)] sm:h-20 sm:w-20">
+                    <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6 fill-[color:var(--cream)]" aria-hidden="true">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </span>
+                  <span className="mt-5 eyebrow text-[color:var(--cream)]/70">Video ansehen</span>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* ── Belief Shift ─────────────────────────────────── */}
         <section className="bg-[color:var(--wine)] py-28 text-[color:var(--cream)] md:py-40">
@@ -716,7 +698,7 @@ function HomePage() {
           onClick={() => scrollToCall("mobile_bar")}
           className="w-full rounded-full bg-[color:var(--wine)] px-6 py-3.5 text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--cream)]"
         >
-          Meine Möglichkeiten besprechen
+          Kostenloses Strategiegespräch buchen
         </button>
       </div>
     </>
