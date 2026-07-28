@@ -1,11 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import lauraImg from "@/assets/mentor.jpg";
 import proofA from "@/assets/opportunity.jpg";
 import proofB from "@/assets/hero.jpg";
 import proofC from "@/assets/avatar.jpg";
-import { CalendlyEmbed } from "@/components/CalendlyEmbed";
 import { trackEvent } from "@/lib/track";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -92,13 +92,6 @@ const qualify = [
   "du nicht nur einen Account, sondern ein echtes Business aufbauen möchtest.",
 ];
 
-const callAgenda = [
-  "wo du aktuell stehst",
-  "welche Positionierung zu dir passen könnte",
-  "welches Angebot du entwickeln kannst",
-  "wie Content für dich Aufmerksamkeit und Kunden gewinnen kann",
-  "ob Creating Society der richtige nächste Schritt für dich ist",
-];
 
 // VSL-Sektion: auf true setzen, sobald das Video verfügbar ist.
 const VSL_VISIBLE = false;
@@ -134,29 +127,6 @@ function useScrolled() {
   return past;
 }
 
-function useBookingVisible() {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = document.getElementById("call");
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        setVisible(entry.isIntersecting);
-        if (entry.isIntersecting) trackEvent("call_section_view");
-      },
-      { threshold: 0.15 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-  return visible;
-}
-
-function scrollToCall(source: string) {
-  trackEvent("call_cta_click", { source });
-  document.getElementById("call")?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
 // ── Bausteine ─────────────────────────────────────────────────
 function CtaButton({
   source,
@@ -175,9 +145,9 @@ function CtaButton({
   } as const;
 
   return (
-    <button
-      type="button"
-      onClick={() => scrollToCall(source)}
+    <Link
+      to="/call"
+      onClick={() => trackEvent("call_cta_click", { source })}
       className={
         "inline-flex items-center justify-center rounded-full px-7 py-3.5 text-[0.68rem] font-semibold uppercase tracking-[0.16em] transition sm:px-9 sm:py-4 " +
         tones[tone] +
@@ -186,15 +156,16 @@ function CtaButton({
       }
     >
       {children}
-    </button>
+    </Link>
   );
 }
+
 
 // ── Seite ─────────────────────────────────────────────────────
 function HomePage() {
   useReveal();
   const past = useScrolled();
-  const bookingVisible = useBookingVisible();
+  
 
   return (
     <>
@@ -232,9 +203,9 @@ function HomePage() {
                 </a>
               ))}
             </nav>
-            <button
-              type="button"
-              onClick={() => scrollToCall("header")}
+            <Link
+              to="/call"
+              onClick={() => trackEvent("call_cta_click", { source: "header" })}
               className={
                 "rounded-full border border-[color:var(--ink)]/20 px-5 py-2.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--ink)] transition hover:bg-[color:var(--wine)] hover:text-[color:var(--cream)] sm:px-6 " +
                 (past ? "opacity-100" : "pointer-events-none opacity-0")
@@ -243,7 +214,8 @@ function HomePage() {
               tabIndex={past ? 0 : -1}
             >
               Strategiegespräch buchen
-            </button>
+            </Link>
+
           </div>
         </div>
       </header>
@@ -607,56 +579,35 @@ function HomePage() {
           </div>
         </section>
 
-        {/* ── Call ─────────────────────────────────────────── */}
+        {/* ── Call CTA ─────────────────────────────────────── */}
         <section
           id="call"
           aria-labelledby="call-title"
           className="scroll-mt-20 bg-[color:var(--wine)] py-24 text-[color:var(--cream)] md:py-36"
         >
-          <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <div className="grid gap-12 md:grid-cols-12 md:gap-16">
-              <div className="rv md:col-span-6">
-                <h2
-                  id="call-title"
-                  className="font-serif text-[2.1rem] leading-[1.06] sm:text-[3rem]"
-                >
-                  Du brauchst nicht noch mehr gespeicherte Content-Tipps.
-                </h2>
-                <p className="mt-7 text-[1.02rem] leading-relaxed text-[color:var(--cream)]/70">
-                  Du brauchst Klarheit darüber, was du aufbauen kannst – und einen Plan, wie du es
-                  umsetzt.
-                </p>
-                <p className="mt-10 text-sm uppercase tracking-[0.16em] text-[color:var(--cream)]/50">
-                  Im Strategiegespräch schauen wir uns gemeinsam an:
-                </p>
-                <ul className="mt-6 border-t border-[color:var(--cream)]/15">
-                  {callAgenda.map((a) => (
-                    <li
-                      key={a}
-                      className="border-b border-[color:var(--cream)]/15 py-4 text-[1.02rem] text-[color:var(--cream)]/85"
-                    >
-                      {a}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-10">
-                  <CtaButton source="call_section" tone="cream">
-                    Kostenloses Strategiegespräch buchen
-                  </CtaButton>
-                </div>
-                <p className="mt-6 max-w-md text-sm leading-relaxed text-[color:var(--cream)]/55">
-                  Das Gespräch dauert ungefähr 30 bis 45 Minuten. Die Zusammenarbeit ist nicht für
-                  jede Person geeignet. Im Gespräch prüfen wir gemeinsam, ob deine Ziele und
-                  Creating Society zueinander passen.
-                </p>
-              </div>
-
-              <div className="rv d2 md:col-span-6">
-                <CalendlyEmbed />
-              </div>
+          <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
+            <h2
+              id="call-title"
+              className="rv font-serif text-[2.1rem] leading-[1.06] sm:text-[3rem]"
+            >
+              Du brauchst nicht noch mehr gespeicherte Content-Tipps.
+            </h2>
+            <p className="rv d2 mx-auto mt-7 max-w-xl text-[1.02rem] leading-relaxed text-[color:var(--cream)]/70">
+              Du brauchst Klarheit darüber, was du aufbauen kannst – und einen Plan, wie du es
+              umsetzt.
+            </p>
+            <div className="rv d3 mt-10">
+              <CtaButton source="call_section" tone="cream">
+                Kostenloses Strategiegespräch buchen
+              </CtaButton>
             </div>
+            <p className="rv d4 mx-auto mt-6 max-w-md text-sm leading-relaxed text-[color:var(--cream)]/55">
+              Ungefähr 30 bis 45 Minuten. Im Gespräch prüfen wir gemeinsam, ob deine Ziele und
+              Creating Society zueinander passen.
+            </p>
           </div>
         </section>
+
 
         {/* ── Closing ──────────────────────────────────────── */}
         <section className="py-24 text-center md:py-32">
@@ -690,17 +641,18 @@ function HomePage() {
       <div
         className={
           "fixed inset-x-0 bottom-0 z-40 border-t border-[color:var(--border)] bg-[color:var(--cream)]/95 p-3 backdrop-blur-xl transition-transform duration-300 md:hidden " +
-          (past && !bookingVisible ? "translate-y-0" : "translate-y-full")
+          (past ? "translate-y-0" : "translate-y-full")
         }
       >
-        <button
-          type="button"
-          onClick={() => scrollToCall("mobile_bar")}
-          className="w-full rounded-full bg-[color:var(--wine)] px-6 py-3.5 text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--cream)]"
+        <Link
+          to="/call"
+          onClick={() => trackEvent("call_cta_click", { source: "mobile_bar" })}
+          className="block w-full rounded-full bg-[color:var(--wine)] px-6 py-3.5 text-center text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--cream)]"
         >
           Kostenloses Strategiegespräch buchen
-        </button>
+        </Link>
       </div>
+
     </>
   );
 }

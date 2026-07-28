@@ -14,6 +14,7 @@ import { Route as WaitlistRouteImport } from './routes/waitlist'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as MasterclassRouteImport } from './routes/masterclass'
 import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as CallRouteImport } from './routes/call'
 import { Route as ApplyRouteImport } from './routes/apply'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -42,6 +43,11 @@ const CheckoutRoute = CheckoutRouteImport.update({
   path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CallRoute = CallRouteImport.update({
+  id: '/call',
+  path: '/call',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApplyRoute = ApplyRouteImport.update({
   id: '/apply',
   path: '/apply',
@@ -56,6 +62,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/apply': typeof ApplyRoute
+  '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
   '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/apply': typeof ApplyRoute
+  '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
   '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/apply': typeof ApplyRoute
+  '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
   '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/apply'
+    | '/call'
     | '/checkout'
     | '/masterclass'
     | '/quiz'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/apply'
+    | '/call'
     | '/checkout'
     | '/masterclass'
     | '/quiz'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/apply'
+    | '/call'
     | '/checkout'
     | '/masterclass'
     | '/quiz'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApplyRoute: typeof ApplyRoute
+  CallRoute: typeof CallRoute
   CheckoutRoute: typeof CheckoutRoute
   MasterclassRoute: typeof MasterclassRoute
   QuizRoute: typeof QuizRoute
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/call': {
+      id: '/call'
+      path: '/call'
+      fullPath: '/call'
+      preLoaderRoute: typeof CallRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/apply': {
       id: '/apply'
       path: '/apply'
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApplyRoute: ApplyRoute,
+  CallRoute: CallRoute,
   CheckoutRoute: CheckoutRoute,
   MasterclassRoute: MasterclassRoute,
   QuizRoute: QuizRoute,
