@@ -24,17 +24,26 @@ const t = {
   wordmark: { de: "Creating Society", en: "Creating Society" },
   back: { de: "← Zurück", en: "← Back" },
 
-  hero: {
-    eyebrow: { de: "Ein neuer Weg, mit Content Geld zu verdienen", en: "A new way to make money with content" },
-    h1a: { de: "Mach aus deinem Content ein Einkommen.", en: "Turn your content into an income." },
-    h1b: { de: "Ohne eine Million Follower.", en: "Without a million followers." },
+  start: {
+    trust: { de: "von Laura · 3 Mio. monatliche Views", en: "by Laura · 3M monthly views" },
+    h1: { de: "Wie viel könntest du mit deinem Content verdienen?", en: "How much could you earn with your content?" },
     sub: {
-      de: "Die meisten glauben, man braucht riesige Reichweite, um online Geld zu verdienen. Stimmt nicht. Du brauchst ein eigenes Produkt und die richtigen 1.000 Menschen. In 2 Minuten zeige ich dir, wie das bei dir aussehen könnte.",
-      en: "Most people think you need huge reach to make money online. You don't. You need your own product and the right 1,000 people. In 2 minutes I'll show you what that could look like for you.",
+      de: "Beantworte 6 kurze Fragen und du bekommst deine persönliche Rechnung – und deinen 12-Wochen-Plan.",
+      en: "Answer 6 quick questions and get your personal numbers — plus your 12-week plan.",
     },
+    cta: { de: "Los geht's →", en: "Let's go →" },
+    micro: { de: "2 Minuten · kostenlos · keine Anmeldung", en: "2 minutes · free · no signup" },
+  },
+
+  qlabel: {
+    de: (n: number) => `Frage ${n} von 6`,
+    en: (n: number) => `Question ${n} of 6`,
+  },
+
+  hero: {
     diary: {
-      de: "Ich hatte irgendwann 3 Millionen Views im Monat – und habe damit fast nichts verdient. Brand Deals, die Wochen dauerten und einmal zahlten. Eine wachsende Community und ein leeres Konto. Was alles verändert hat: ein eigenes Produkt statt mehr Reichweite. Genau das rechne ich dir jetzt für deine Situation durch.",
-      en: "At some point I had 3 million views a month — and made almost nothing from it. Brand deals that took weeks and paid once. A growing audience and an empty bank account. What changed everything: my own product instead of more reach. That's exactly what I'll calculate for your situation now.",
+      de: "Ich hatte irgendwann 3 Millionen Views im Monat – und habe damit fast nichts verdient. Brand Deals, die Wochen dauerten und einmal zahlten. Eine wachsende Community und ein leeres Konto. Was alles verändert hat: ein eigenes Produkt statt mehr Reichweite.",
+      en: "At some point I had 3 million views a month — and made almost nothing from it. Brand deals that took weeks and paid once. A growing audience and an empty bank account. What changed everything: my own product instead of more reach.",
     },
     signature: { de: "— Laura", en: "— Laura" },
     reframeLeft: {
@@ -46,10 +55,14 @@ const t = {
       en: "What works: Small audience → your own product → predictable sales",
     },
     followersLabel: { de: "Wie viele Follower hast du gerade?", en: "How many followers do you have right now?" },
+    followersHint: {
+      de: "Ehrliche Zahl reicht – wir rechnen gleich damit. 0 ist auch okay.",
+      en: "An honest number is fine — we'll calculate with it in a second. 0 is okay too.",
+    },
     followersPh: { de: "z.B. 1200", en: "e.g. 1200" },
-    cta: { de: "Zeig mir, was möglich ist →", en: "Show me what's possible →" },
-    micro: { de: "2 Minuten · Keine Anmeldung · Auf deine Zahlen gerechnet", en: "2 minutes · No signup · Based on your numbers" },
+    cta: { de: "Weiter →", en: "Continue →" },
   },
+
 
   step1: {
     q: { de: "Wo stehst du gerade?", en: "Where are you right now?" },
