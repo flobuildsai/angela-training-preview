@@ -11,8 +11,23 @@ import {
 } from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/masterclass")({
+  head: () => ({
+    meta: [
+      { title: "Masterclass — Creating Society" },
+      {
+        name: "description",
+        content:
+          "The creator business system by Laura. Position, attention, offer, convert — build a digital product that's yours.",
+      },
+      { property: "og:title", content: "Masterclass — Creating Society" },
+      { property: "og:description", content: "The creator business system by Laura. Build what's yours." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: HomePage,
 });
+
 
 // ─────────────────────────────────────────────────────────────
 // SOCIAL PROOF DATA
