@@ -124,7 +124,7 @@ function StickyHeader({ solid }: { solid: boolean }) {
       }
     >
       <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="font-serif text-xl tracking-tight">
+        <Link to="/masterclass" className="font-serif text-xl tracking-tight">
           Creating <span className="serif-italic">Society</span>
         </Link>
         <nav className="flex items-center gap-6">
