@@ -586,56 +586,35 @@ function HomePage() {
           </div>
         </section>
 
-        {/* ── Call ─────────────────────────────────────────── */}
+        {/* ── Call CTA ─────────────────────────────────────── */}
         <section
           id="call"
           aria-labelledby="call-title"
           className="scroll-mt-20 bg-[color:var(--wine)] py-24 text-[color:var(--cream)] md:py-36"
         >
-          <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <div className="grid gap-12 md:grid-cols-12 md:gap-16">
-              <div className="rv md:col-span-6">
-                <h2
-                  id="call-title"
-                  className="font-serif text-[2.1rem] leading-[1.06] sm:text-[3rem]"
-                >
-                  Du brauchst nicht noch mehr gespeicherte Content-Tipps.
-                </h2>
-                <p className="mt-7 text-[1.02rem] leading-relaxed text-[color:var(--cream)]/70">
-                  Du brauchst Klarheit darüber, was du aufbauen kannst – und einen Plan, wie du es
-                  umsetzt.
-                </p>
-                <p className="mt-10 text-sm uppercase tracking-[0.16em] text-[color:var(--cream)]/50">
-                  Im Strategiegespräch schauen wir uns gemeinsam an:
-                </p>
-                <ul className="mt-6 border-t border-[color:var(--cream)]/15">
-                  {callAgenda.map((a) => (
-                    <li
-                      key={a}
-                      className="border-b border-[color:var(--cream)]/15 py-4 text-[1.02rem] text-[color:var(--cream)]/85"
-                    >
-                      {a}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-10">
-                  <CtaButton source="call_section" tone="cream">
-                    Kostenloses Strategiegespräch buchen
-                  </CtaButton>
-                </div>
-                <p className="mt-6 max-w-md text-sm leading-relaxed text-[color:var(--cream)]/55">
-                  Das Gespräch dauert ungefähr 30 bis 45 Minuten. Die Zusammenarbeit ist nicht für
-                  jede Person geeignet. Im Gespräch prüfen wir gemeinsam, ob deine Ziele und
-                  Creating Society zueinander passen.
-                </p>
-              </div>
-
-              <div className="rv d2 md:col-span-6">
-                <CalendlyEmbed />
-              </div>
+          <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
+            <h2
+              id="call-title"
+              className="rv font-serif text-[2.1rem] leading-[1.06] sm:text-[3rem]"
+            >
+              Du brauchst nicht noch mehr gespeicherte Content-Tipps.
+            </h2>
+            <p className="rv d2 mx-auto mt-7 max-w-xl text-[1.02rem] leading-relaxed text-[color:var(--cream)]/70">
+              Du brauchst Klarheit darüber, was du aufbauen kannst – und einen Plan, wie du es
+              umsetzt.
+            </p>
+            <div className="rv d3 mt-10">
+              <CtaButton source="call_section" tone="cream">
+                Kostenloses Strategiegespräch buchen
+              </CtaButton>
             </div>
+            <p className="rv d4 mx-auto mt-6 max-w-md text-sm leading-relaxed text-[color:var(--cream)]/55">
+              Ungefähr 30 bis 45 Minuten. Im Gespräch prüfen wir gemeinsam, ob deine Ziele und
+              Creating Society zueinander passen.
+            </p>
           </div>
         </section>
+
 
         {/* ── Closing ──────────────────────────────────────── */}
         <section className="py-24 text-center md:py-32">
