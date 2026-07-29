@@ -273,10 +273,10 @@ function HomePage() {
               <h1 className="font-serif text-[3rem] font-semibold leading-[1.02] tracking-[-0.02em] text-[color:var(--ink)] sm:text-[4.4rem] lg:text-[5.2rem]">
                 Verdiene 10.000&nbsp;€ im Monat mit Content.
               </h1>
-              <p className="serif-italic mt-4 mb-8 text-[1.35rem] leading-[1.25] text-[color:var(--ink)] sm:mt-5 sm:mb-10 sm:text-[1.85rem] lg:text-[2.1rem]">
+              <p className="serif-italic mt-6 mb-10 text-[1.35rem] leading-[1.25] text-[color:var(--ink)] sm:mt-8 sm:mb-12 sm:text-[1.85rem] lg:text-[2.1rem]">
                 Ohne große Reichweite. Ohne fertige Idee.
               </p>
-              <p className="mb-10 max-w-md text-[1.02rem] leading-[1.75] text-[color:var(--muted-fg)] sm:mb-12">
+              <p className="mb-12 max-w-md text-[1.02rem] leading-[1.75] text-[color:var(--muted-fg)] sm:mb-14">
                 Die meisten denken, du brauchst zehntausende Follower, bevor du mit Content Geld
                 verdienen kannst. Brauchst du nicht. Ich zeige dir, wie du dein eigenes Offer baust
                 und deine ersten zahlenden Kundinnen gewinnst, in den nächsten 12 Wochen.
