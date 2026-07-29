@@ -1,45 +1,45 @@
 ## Ziel
 
-Eine neue, deutschsprachige Landingpage auf `/`, deren einziges Ziel eine Call-Buchung ist — gebaut für Traffic, der direkt aus einem Instagram-Reel kommt. Die aktuelle VSL-Homepage bleibt vollständig erhalten und zieht auf `/masterclass` um.
+Die Startseite (`/`) wirkt oben zu leer, die zwei grauen Boxen unter dem Hero passen nicht zum editorialen Look, und der Button ist seit dem letzten Schritt burgunderrot statt schwarz. Das wird zurück auf die ruhige Schwarz-Weiß-Linie gebracht.
 
-Design bleibt exakt das bestehende System (wine, cream, cream2, rose, ink, Cormorant Garamond + Inter, pill/eyebrow/serif-italic, .rv Reveals, grain, hero-glow). Keine neue Palette, keine neuen Fonts. Optik orientiert sich am premium-editorialen Look, aber komplett eigenständig aufgebaut.
+## 1. Akzentfarbe zurück auf Schwarz
 
-## Routen-Umbau
+- Der Token `--wine-accent` (aktuell `#722F37`) wird wieder auf Near-Black (`#0E0E0E`) gesetzt.
+- Damit sind alle primären CTA-Buttons (Startseite, Call-Seite, Masterclass) wieder schwarz mit weißer Schrift, ohne dass jede Datei einzeln angefasst werden muss.
+- Die Eyebrow über der Headline verliert die rote Farbe und wird in gedecktem Grau (`--muted-fg`) gesetzt, damit oben nur ein Farbton dominiert: Schwarz auf Weiß.
+
+## 2. Hero: weniger Weißraum, klarer Rhythmus
+
+- Der leere Platzhalter-Block unter dem Hero (`h-40` auf Mobile) wird entfernt. Er ist der Hauptgrund für die große leere Fläche im Screenshot.
+- Die Mindesthöhe wird von 88/90vh auf ca. 78vh (mobil) bzw. 82vh (Desktop) reduziert, sodass der Hero die erste Ansicht füllt, aber nicht künstlich streckt.
+- Abstände innerhalb des Hero werden zu einer klaren Staffel: Eyebrow → Headline (enger), Headline → kursive Subline (mittel), Subline → Fließtext (mittel), Fließtext → Button (etwas größer). Statt vieler großer Sprünge entsteht ein ruhiger Absatzfluss.
+- Der Fließtext bekommt eine etwas breitere Textspalte, damit er nicht in viele kurze Zeilen bricht.
+- Unter dem Button eine feine, kleine Zeile in Grau („Kostenlos und unverbindlich, 30 bis 45 Minuten“), damit der Hero unten nicht abrupt endet.
+
+## 3. Reframe-Block: Boxen raus, Typografie rein
+
+Die zwei Karten mit Rahmen, grauer Fläche und Ring werden ersetzt durch eine editoriale Gegenüberstellung im Stil der restlichen Seite:
 
 ```text
-src/routes/index.tsx      -> Inhalt wandert nach masterclass.tsx (Pfad-String angepasst)
-src/routes/masterclass.tsx -> bisherige VSL-Homepage, unverändert bis auf head() + Route-Pfad
-src/routes/index.tsx      -> NEU: Call-Booking-Landingpage (Deutsch)
+─────────────────────────────────────────────
+WAS ALLE DENKEN            WAS WIRKLICH FUNKTIONIERT
+Viral gehen, Follower      Eigenes Angebot bauen,
+sammeln, auf Brand         Content, der verkauft,
+Deals hoffen               erste Kundinnen in 12 Wochen
+─────────────────────────────────────────────
 ```
 
-Interne Links, die vorher auf `/` als VSL zeigten (Header-Logo, Footer, /checkout- und /welcome-Rückwege), werden geprüft und auf das richtige Ziel gesetzt. `src/routeTree.gen.ts` wird nicht angefasst — der Generator übernimmt.
+- Zwei Spalten, getrennt nur durch eine Haarlinie (auf Mobile untereinander mit Trennlinie dazwischen), keine Kacheln, kein Grau-Hintergrund, kein Ring.
+- Linke Spalte in Grau und weiterhin durchgestrichen, rechte Spalte in Schwarz und in Serif-Schrift, damit der Kontrast über Typografie statt über Boxen entsteht.
+- Pfeile werden durch Kommas bzw. dezente Trennzeichen ersetzt, damit die Zeilen mobil nicht unschön umbrechen.
+- Sektionsabstände oben/unten angeglichen an die übrigen Sektionen (ruhiger, aber nicht leer).
 
-## Aufbau der neuen Startseite (alles Deutsch)
+## 4. Feinschliff
 
-1. **Sticky Header** — Wortmarke „Creating Society“ links, rechts ein Button „Call buchen“ (scrollt zum Calendly-Anker). Auf Mobile nur der Button.
-2. **Hero, above the fold** — kleine rose Eyebrow, große serifige Headline mit kursivem Akzent, ein Satz Subheadline, primärer CTA „Kostenloses Strategiegespräch buchen“, darunter eine Mikro-Zeile (kostenlos · 30 Min · Zoom). Rechts/darunter Porträtbild mit weichem Glow und Grain-Overlay. Radiale Rose-Glow-Ebene wie im bestehenden System.
-3. **Zahlen-Leiste** — vier Kennzahlen, hairline-getrennt, auf wine-Hintergrund. Wird als eine `stats`-Konstante oben in der Datei definiert und zunächst mit klar markierten Platzhalterzahlen befüllt, damit du sie in einer Zeile durch die echten ersetzen kannst.
-4. **„Kommt dir das bekannt vor?“** — drei bis vier Schmerzpunkte als asymmetrisches Karten-Raster, nicht mittig, mit großen Randziffern.
-5. **Der Weg** — drei Schritte (Positionierung → Reichweite → Angebot & Verkauf) als versetzte Blöcke mit Trennlinien statt Boxen.
-6. **Für wen / nicht für wen** — zwei kontrastierende Spalten, qualifiziert vor dem Call und hebt die Call-Qualität.
-7. **Was im Call passiert** — drei nummerierte Punkte plus expliziter Satz, dass es kein Verkaufsgespräch mit Druck ist. Direkt darunter zweiter CTA.
-8. **Proof-Sektion** — `testimonials`-Array bleibt vorerst leer und die Sektion rendert nur, wenn Einträge existieren (gleiche Schutzlogik wie auf der VSL-Seite, damit nichts Erfundenes live geht).
-9. **Über Laura** — Bild plus editorialer Fließtext, kurze Version der Story.
-10. **FAQ** — Accordion mit fünf typischen Einwänden (Kosten, Zeit, Follower-Anzahl, Nische, was danach passiert).
-11. **Booking-Sektion mit Anker `#call`** — wine-Hintergrund, Headline, kurze Reassurance-Liste, darunter das bestehende `CalendlyEmbed`-Component inline eingebettet.
-12. **Footer** — schlicht, mit Link zur Masterclass-Seite (`/masterclass`) und zum Quiz.
-13. **Mobile Sticky Bottom Bar** — unter `md` sichtbar, ein Button „Call buchen“, scrollt zu `#call`; blendet aus, sobald die Booking-Sektion im Viewport ist.
+- Prüfung der Übergänge Hero → Reframe → Belief-Shift, damit die Abstände zwischen den ersten drei Sektionen gleichmäßig wirken.
+- Kontrolle auf Mobile (402px) und Desktop, dass der Hero ohne Scrollen vollständig lesbar ist und der Reframe-Block knapp darunter beginnt.
 
-## Technische Details
+## Nicht Teil dieser Änderung
 
-- Alle CTA-Klicks laufen über den bestehenden `trackEvent`-Stub aus `src/lib/track.ts` (`call_cta_click`, `call_section_view`, `calendly_view`).
-- `CalendlyEmbed` wird wiederverwendet; die URL kommt weiterhin aus `src/config/calendly.ts`. Das Component bleibt Platzhalter — echtes Widget-Script erst, wenn du den finalen Link gibst.
-- Ein neues Porträt-/Editorial-Asset wird generiert, falls die vorhandenen `mentor.jpg` / `opportunity.jpg` nicht passen; sonst Wiederverwendung.
-- Eigene `head()`-Metadaten auf beiden Routen: neue deutsche Titel/Description für `/`, die bisherigen englischen wandern mit nach `/masterclass`.
-- Jede Sektion bekommt `aria-labelledby`, Bilder Alt-Texte, genau ein `h1`.
-- Reveal-Hook und Scroll-Progress-Logik werden aus der bestehenden Seite als geteiltes Hilfsmodul genutzt statt dupliziert.
-- Getestet an 375px, 768px und 1440px per Browser-Screenshots.
-
-## Was ich nicht anfasse
-
-`/quiz`, `/apply`, `/waitlist`, `/checkout`, `/welcome` und `src/styles.css` (bis auf eventuell eine ergänzende Utility, falls nötig).
+- Copy der übrigen Sektionen, Methode, Programm, FAQ, Laura-Sektion bleiben unverändert.
+- Routen `/masterclass`, `/call`, `/apply` und die Legal-Seiten bleiben strukturell unverändert (übernehmen nur automatisch den schwarzen Button).
