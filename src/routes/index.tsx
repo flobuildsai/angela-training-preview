@@ -4,6 +4,7 @@ import lauraImg from "@/assets/mentor.jpg";
 import proofA from "@/assets/opportunity.jpg";
 import proofB from "@/assets/hero.jpg";
 import proofC from "@/assets/avatar.jpg";
+import logoDark from "@/assets/logo-dark.png";
 import { trackEvent } from "@/lib/track";
 
 
@@ -184,8 +185,8 @@ function HomePage() {
             (past ? "py-3.5" : "py-5 sm:py-7")
           }
         >
-          <a href="#top" className="font-serif text-xl tracking-tight text-[color:var(--ink)] sm:text-2xl">
-            Creating <span className="serif-italic">Society</span>
+          <a href="#top" className="flex items-center">
+            <img src={logoDark} alt="thecreatingsociety" className="h-4 w-auto sm:h-5" />
           </a>
           <div className="flex items-center gap-8">
             <nav className="hidden items-center gap-7 md:flex">
@@ -203,20 +204,8 @@ function HomePage() {
                 </a>
               ))}
             </nav>
-            <Link
-              to="/call"
-              onClick={() => trackEvent("call_cta_click", { source: "header" })}
-              className={
-                "rounded-full border border-[color:var(--ink)]/20 px-5 py-2.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--ink)] transition hover:bg-[color:var(--wine)] hover:text-[color:var(--cream)] sm:px-6 " +
-                (past ? "opacity-100" : "pointer-events-none opacity-0")
-              }
-              aria-hidden={!past}
-              tabIndex={past ? 0 : -1}
-            >
-              Strategiegespräch buchen
-            </Link>
-
           </div>
+
         </div>
       </header>
 
@@ -624,7 +613,7 @@ function HomePage() {
         {/* ── Footer ───────────────────────────────────────── */}
         <footer className="border-t border-[color:var(--border)] py-10">
           <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 text-sm text-[color:var(--muted-fg)] sm:flex-row sm:items-center sm:justify-between sm:px-8">
-            <p className="font-serif text-base text-[color:var(--ink)]">Creating Society</p>
+            <img src={logoDark} alt="thecreatingsociety" className="h-4 w-auto" />
             <nav className="flex flex-wrap items-center gap-6">
               <a href="/impressum" className="transition hover:text-[color:var(--ink)]">
                 Impressum
@@ -637,21 +626,8 @@ function HomePage() {
         </footer>
       </main>
 
-      {/* Mobile Sticky CTA */}
-      <div
-        className={
-          "fixed inset-x-0 bottom-0 z-40 border-t border-[color:var(--border)] bg-[color:var(--cream)]/95 p-3 backdrop-blur-xl transition-transform duration-300 md:hidden " +
-          (past ? "translate-y-0" : "translate-y-full")
-        }
-      >
-        <Link
-          to="/call"
-          onClick={() => trackEvent("call_cta_click", { source: "mobile_bar" })}
-          className="block w-full rounded-full bg-[color:var(--wine)] px-6 py-3.5 text-center text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--cream)]"
-        >
-          Kostenloses Strategiegespräch buchen
-        </Link>
-      </div>
+
+
 
     </>
   );
