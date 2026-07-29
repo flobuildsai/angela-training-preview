@@ -24,6 +24,16 @@ export const Route = createFileRoute("/datenschutz")({
   component: DatenschutzPage,
 });
 
+const rights = [
+  "Recht auf Auskunft (Art. 15 DSGVO)",
+  "Recht auf Berichtigung (Art. 16 DSGVO)",
+  "Recht auf Löschung (Art. 17 DSGVO)",
+  "Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)",
+  "Recht auf Datenübertragbarkeit (Art. 20 DSGVO)",
+  "Recht auf Widerspruch (Art. 21 DSGVO)",
+  "Recht auf Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)",
+];
+
 function DatenschutzPage() {
   return (
     <main className="bg-[color:var(--background)]">
@@ -47,6 +57,9 @@ function DatenschutzPage() {
           <h1 className="mt-6 font-serif text-[2.4rem] leading-[1.04] text-[color:var(--ink)] sm:text-[3.2rem]">
             Datenschutzerklärung
           </h1>
+          <p className="mt-6 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
+            Stand: Juli 2026
+          </p>
 
           <div className="mt-14 space-y-12 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
             <div className="border-t border-[color:var(--border)] pt-8">
@@ -58,30 +71,35 @@ function DatenschutzPage() {
                 Datenschutz-Grundverordnung (DSGVO) ist:
               </p>
               <p className="mt-4">
-                [Name]
+                WYLD Society GmbH
                 <br />
-                [Anschrift]
+                Marktplatz 16
                 <br />
-                E-Mail: [E-Mail-Adresse]
+                93167 Falkenstein
+                <br />
+                Deutschland
+                <br />
+                E-Mail:{" "}
+                <a
+                  href="mailto:info@wyldsociety.io"
+                  className="text-[color:var(--ink)] underline underline-offset-4"
+                >
+                  info@wyldsociety.io
+                </a>
               </p>
             </div>
 
             <div className="border-t border-[color:var(--border)] pt-8">
               <h2 className="font-serif text-xl text-[color:var(--ink)] sm:text-2xl">
-                2. Erhebung und Speicherung personenbezogener Daten beim Besuch der Website
+                2. Hosting und technische Bereitstellung
               </h2>
               <p className="mt-4">
-                Beim Aufruf dieser Website werden durch den Browser automatisch Informationen an
-                den Server übermittelt und vorübergehend in sogenannten Server-Logfiles
-                gespeichert. Erfasst werden dabei insbesondere IP-Adresse, Datum und Uhrzeit des
-                Zugriffs, aufgerufene Seite, übertragene Datenmenge, Referrer-URL sowie Browsertyp
-                und Betriebssystem.
-              </p>
-              <p className="mt-4">
-                Diese Daten dienen der technischen Bereitstellung, Stabilität und Sicherheit der
-                Website. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO; das berechtigte Interesse
-                liegt in einem sicheren und störungsfreien Betrieb der Website. Die Logfiles werden
-                nach [Speicherdauer] gelöscht.
+                Diese Website wird über Lovable Cloud bereitgestellt. Beim Aufruf der Seite werden
+                technisch notwendige Daten (insbesondere IP-Adresse, Datum und Uhrzeit des
+                Zugriffs, aufgerufene Seite, Browsertyp und Betriebssystem) automatisch in
+                Server-Logfiles verarbeitet, um die Auslieferung der Seite sowie einen sicheren und
+                störungsfreien Betrieb zu ermöglichen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f
+                DSGVO.
               </p>
             </div>
 
@@ -98,60 +116,67 @@ function DatenschutzPage() {
               <p className="mt-4">
                 Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, da die Verarbeitung zur
                 Durchführung vorvertraglicher Maßnahmen auf deine Anfrage hin erforderlich ist.
-              </p>
-              <p className="mt-4">
-                Dabei kann es zu einer Übermittlung personenbezogener Daten in die USA kommen. Die
-                Übermittlung wird auf die von der Europäischen Kommission erlassenen
-                Standardvertragsklauseln gestützt. Weitere Informationen findest du in der
-                Datenschutzerklärung von Calendly.
+                Dabei kann es zu einer Übermittlung personenbezogener Daten in die USA kommen; die
+                Übermittlung wird auf die Standardvertragsklauseln der Europäischen Kommission
+                gestützt.
               </p>
             </div>
 
             <div className="border-t border-[color:var(--border)] pt-8">
               <h2 className="font-serif text-xl text-[color:var(--ink)] sm:text-2xl">
-                4. Kontaktaufnahme per E-Mail
+                4. Bewerbung und Kontaktaufnahme
               </h2>
               <p className="mt-4">
-                Wenn du uns per E-Mail kontaktierst, werden deine Angaben zur Bearbeitung der
-                Anfrage und für mögliche Anschlussfragen gespeichert. Rechtsgrundlage ist Art. 6
-                Abs. 1 lit. b DSGVO, sofern die Anfrage mit einem Vertrag oder dessen Anbahnung
-                zusammenhängt, ansonsten Art. 6 Abs. 1 lit. f DSGVO. Die Daten werden gelöscht,
-                sobald sie für den Zweck nicht mehr erforderlich sind und keine gesetzlichen
-                Aufbewahrungspflichten entgegenstehen.
+                Wenn du dich über ein Formular auf dieser Website bewirbst oder uns per E-Mail
+                kontaktierst, verarbeiten wir die von dir angegebenen Daten (z. B. Name,
+                E-Mail-Adresse, Instagram-Handle, Angaben zu deinem Vorhaben) ausschließlich, um
+                deine Anfrage zu bearbeiten und dich gegebenenfalls in das Programm aufzunehmen.
+                Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO sowie unser berechtigtes Interesse
+                an der Bearbeitung von Anfragen nach Art. 6 Abs. 1 lit. f DSGVO.
               </p>
             </div>
 
             <div className="border-t border-[color:var(--border)] pt-8">
               <h2 className="font-serif text-xl text-[color:var(--ink)] sm:text-2xl">
-                5. Deine Rechte als betroffene Person
+                5. Speicherdauer
+              </h2>
+              <p className="mt-4">
+                Wir speichern deine Daten so lange, wie es für die Bearbeitung deiner Anfrage und
+                für die Dauer der Zusammenarbeit erforderlich ist. Auf Wunsch löschen wir deine
+                Daten jederzeit, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+              </p>
+            </div>
+
+            <div className="border-t border-[color:var(--border)] pt-8">
+              <h2 className="font-serif text-xl text-[color:var(--ink)] sm:text-2xl">
+                6. Deine Rechte als betroffene Person
               </h2>
               <p className="mt-4">Dir stehen gegenüber uns folgende Rechte zu:</p>
               <ul className="mt-6 border-t border-[color:var(--border)]">
-                {[
-                  "Recht auf Auskunft über die verarbeiteten Daten (Art. 15 DSGVO)",
-                  "Recht auf Berichtigung unrichtiger Daten (Art. 16 DSGVO)",
-                  "Recht auf Löschung (Art. 17 DSGVO)",
-                  "Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)",
-                  "Recht auf Datenübertragbarkeit (Art. 20 DSGVO)",
-                  "Recht auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)",
-                  "Recht auf Beschwerde bei einer Datenschutz-Aufsichtsbehörde (Art. 77 DSGVO)",
-                ].map((r) => (
+                {rights.map((r) => (
                   <li key={r} className="border-b border-[color:var(--border)] py-4">
                     {r}
                   </li>
                 ))}
               </ul>
               <p className="mt-6">
-                Zur Ausübung deiner Rechte genügt eine Nachricht an [E-Mail-Adresse].
+                Zur Ausübung deiner Rechte genügt eine Nachricht an{" "}
+                <a
+                  href="mailto:info@wyldsociety.io"
+                  className="text-[color:var(--ink)] underline underline-offset-4"
+                >
+                  info@wyldsociety.io
+                </a>
+                .
               </p>
             </div>
 
             <div className="border-t border-[color:var(--border)] pt-8">
               <h2 className="font-serif text-xl text-[color:var(--ink)] sm:text-2xl">
-                6. Aktualität dieser Datenschutzerklärung
+                7. Aktualität dieser Datenschutzerklärung
               </h2>
               <p className="mt-4">
-                Diese Datenschutzerklärung ist aktuell gültig und hat den Stand [Monat Jahr]. Durch
+                Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Juli 2026. Durch
                 die Weiterentwicklung der Website oder geänderte gesetzliche Vorgaben kann eine
                 Anpassung erforderlich werden.
               </p>
