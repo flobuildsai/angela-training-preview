@@ -326,9 +326,9 @@ function HomePage() {
                 </p>
               </div>
               <div className="border-t border-[color:var(--border)] py-8 md:border-t-0 md:border-l md:py-10 md:pl-12">
-                <p className="eyebrow text-[color:var(--ink)]">Was wirklich funktioniert</p>
+              <p className="eyebrow text-[color:var(--ink)]">Was wirklich funktioniert</p>
                 <p className="mt-4 font-serif text-[1.5rem] leading-[1.25] text-[color:var(--ink)] sm:text-[1.75rem]">
-                  Eigenes Angebot bauen, Content der verkauft, erste Kundinnen in 12 Wochen.
+                  Eigenes Angebot bauen. Content, der verkauft. Zuschauer in zahlende Kundinnen verwandeln.
                 </p>
               </div>
             </div>
