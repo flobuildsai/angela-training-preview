@@ -7,10 +7,13 @@ import proofCAsset from "@/assets/laura-mykonos.jpg.asset.json";
 import proofDAsset from "@/assets/laura-villa.jpg.asset.json";
 
 const lauraImg = lauraPortrait.url;
-const proofA = proofAAsset.url;
-const proofB = proofBAsset.url;
-const proofC = proofCAsset.url;
-const proofD = proofDAsset.url;
+const lifestyleShots = [
+  { src: proofAAsset.url, alt: "Laura beim Arbeiten" },
+  { src: proofBAsset.url, alt: "Laura unterwegs" },
+  { src: proofCAsset.url, alt: "Laura auf Mykonos" },
+  { src: proofDAsset.url, alt: "Blick von der Villa" },
+];
+
 
 import logoDark from "@/assets/logo-dark.png";
 import { trackEvent } from "@/lib/track";
@@ -89,11 +92,13 @@ const faqs = [
 
 
 // Editorial-Collage — echte Aufnahmen.
-const proofSlots = [
-  { label: "Arbeiten von überall", img: proofA, span: "sm:col-span-7", ratio: "4 / 3" },
-  { label: "Unterwegs", img: proofB, span: "sm:col-span-5", ratio: "3 / 4" },
-  { label: "Zwischen zwei Calls", img: proofC, span: "sm:col-span-5", ratio: "1 / 1" },
-  { label: "Der Blick, für den es sich lohnt", img: proofD, span: "sm:col-span-7", ratio: "16 / 10" },
+const proofSlots: { label: string; img: string | null; span: string; ratio: string }[] = [
+  // img später einfach mit importiertem Screenshot befüllen
+  { label: "Follower-Wachstum", img: null, span: "sm:col-span-7", ratio: "4 / 3" },
+  { label: "Anfragen & Leads", img: null, span: "sm:col-span-5", ratio: "3 / 4" },
+  { label: "Sales & Umsätze", img: null, span: "sm:col-span-7", ratio: "4 / 3" },
+  { label: "Content-Performance", img: null, span: "sm:col-span-5", ratio: "1 / 1" },
+
 ];
 
 
@@ -436,11 +441,12 @@ function HomePage() {
                   Geschäftsmodell zu erzeugen.
                 </p>
                 <p>
-                  Mit Property Circle habe ich Expertise, organischen Content, Paid Marketing und
-                  ein klares Angebot miteinander verbunden.
+                  Ich habe Content genutzt, um in kurzer Zeit Follower, Anfragen und zahlende
+                  Kundinnen zu gewinnen — organisch, ohne großes Startpublikum.
                 </p>
 
                 <p className="text-[color:var(--ink)]">
+
                   Nicht posten, um einfach nur sichtbar zu sein. Posten, um etwas aufzubauen.
                 </p>
               </div>
@@ -458,9 +464,12 @@ function HomePage() {
                       <img src={slot.img} alt={slot.label} className="h-full w-full object-cover" />
                     ) : (
                       <div className="grid h-full w-full place-items-center px-6 text-center">
-                        <span className="eyebrow text-[color:var(--muted-fg)]">Proof-Slot</span>
+                        <span className="eyebrow text-[color:var(--muted-fg)]">
+                          Screenshot folgt
+                        </span>
                       </div>
                     )}
+
                   </div>
                   <figcaption className="mt-3 text-[0.72rem] uppercase tracking-[0.16em] text-[color:var(--muted-fg)]">
                     {slot.label}
@@ -665,8 +674,22 @@ function HomePage() {
                 </p>
               </div>
             </div>
+
+            {/* Editorial-Bildleiste */}
+            <div className="rv d3 mt-16 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+              {lifestyleShots.map((s) => (
+                <div
+                  key={s.src}
+                  className="grain relative overflow-hidden rounded-[2px] ring-1 ring-[color:var(--border)]"
+                  style={{ aspectRatio: "3 / 4" }}
+                >
+                  <img src={s.src} alt={s.alt} className="h-full w-full object-cover" />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
+
 
         {/* ── FAQ ──────────────────────────────────────────── */}
         <section aria-labelledby="faq-title" className="py-24 md:py-40">
@@ -747,12 +770,13 @@ function HomePage() {
           <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 text-sm text-[color:var(--muted-fg)] sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <img src={logoDark} alt="thecreatingsociety" className="h-4 w-auto shrink-0 self-start object-contain" />
             <nav className="flex flex-wrap items-center gap-6">
-              <a href="/impressum" className="transition hover:text-[color:var(--ink)]">
+              <Link to="/impressum" className="transition hover:text-[color:var(--ink)]">
                 Impressum
-              </a>
-              <a href="/datenschutz" className="transition hover:text-[color:var(--ink)]">
+              </Link>
+              <Link to="/datenschutz" className="transition hover:text-[color:var(--ink)]">
                 Datenschutz
-              </a>
+              </Link>
+
             </nav>
           </div>
         </footer>

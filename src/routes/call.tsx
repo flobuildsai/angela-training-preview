@@ -144,12 +144,13 @@ function CallPage() {
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 text-sm text-[color:var(--muted-fg)] sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <img src={logoDark} alt="thecreatingsociety" className="h-4 w-auto shrink-0 self-start object-contain" />
           <nav className="flex flex-wrap items-center gap-6">
-            <a href="/impressum" className="transition hover:text-[color:var(--ink)]">
+            <Link to="/impressum" className="transition hover:text-[color:var(--ink)]">
               Impressum
-            </a>
-            <a href="/datenschutz" className="transition hover:text-[color:var(--ink)]">
+            </Link>
+            <Link to="/datenschutz" className="transition hover:text-[color:var(--ink)]">
               Datenschutz
-            </a>
+            </Link>
+
           </nav>
         </div>
       </footer>
