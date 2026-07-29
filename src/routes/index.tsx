@@ -263,53 +263,55 @@ function HomePage() {
 
       <main id="top" className="bg-[color:var(--background)]">
         {/* ── Hero ─────────────────────────────────────────── */}
-        <section className="relative mb-28 flex min-h-[88vh] flex-col justify-center overflow-hidden pt-16 pb-12 sm:mb-8 sm:min-h-[90vh] sm:pt-24 sm:pb-16 md:pt-32 md:pb-20">
+        <section className="relative flex min-h-[78vh] flex-col justify-center overflow-hidden pt-14 pb-14 sm:min-h-[82vh] sm:pt-24 sm:pb-20 md:pt-28">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-3xl">
-              <p className="eyebrow mb-8 text-[color:var(--wine-accent)]">
+              <p className="eyebrow mb-6 text-[color:var(--muted-fg)]">
                 Business Coaching für Frauen
               </p>
               <h1 className="font-serif text-[3rem] font-semibold leading-[1.02] tracking-[-0.02em] text-[color:var(--ink)] sm:text-[4.4rem] lg:text-[5.2rem]">
                 Verdiene 10.000&nbsp;€ im Monat mit Content.
               </h1>
-              <p className="serif-italic mt-6 mb-10 text-[1.35rem] leading-[1.25] text-[color:var(--ink)] sm:mt-8 sm:mb-12 sm:text-[1.85rem] lg:text-[2.1rem]">
+              <p className="serif-italic mt-5 text-[1.35rem] leading-[1.25] text-[color:var(--ink)] sm:mt-6 sm:text-[1.85rem] lg:text-[2.1rem]">
                 Ohne große Reichweite. Ohne fertige Idee.
               </p>
-              <p className="mb-12 max-w-md text-[1.02rem] leading-[1.75] text-[color:var(--muted-fg)] sm:mb-14">
+              <p className="mt-7 max-w-xl text-[1.02rem] leading-[1.7] text-[color:var(--muted-fg)] sm:mt-8">
                 Die meisten denken, du brauchst zehntausende Follower, bevor du mit Content Geld
                 verdienen kannst. Brauchst du nicht. Ich zeige dir, wie du dein eigenes Offer baust
                 und deine ersten zahlenden Kundinnen gewinnst, in den nächsten 12 Wochen.
               </p>
-              <div>
+              <div className="mt-10 sm:mt-12">
                 <CtaButton source="hero" className="w-full sm:w-auto">
                   Strategiegespräch buchen
                 </CtaButton>
+                <p className="mt-4 text-[0.8rem] tracking-wide text-[color:var(--muted-fg)]">
+                  Kostenlos und unverbindlich, 30 bis 45 Minuten.
+                </p>
               </div>
             </div>
           </div>
         </section>
-
-        <div className="h-40 sm:h-0" aria-hidden="true" />
 
         {/* ── Reframe ──────────────────────────────────────── */}
-        <section className="pt-12 pb-16 md:pt-16 md:pb-24">
+        <section className="pb-20 md:pb-28">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <div className="rv grid gap-4 md:grid-cols-2 md:gap-6">
-              <div className="grain rounded-[2px] border border-[color:var(--border)] bg-[color:var(--cream2)] p-6 sm:p-8">
+            <div className="rv grid border-t border-[color:var(--border)] md:grid-cols-2">
+              <div className="py-8 md:py-10 md:pr-12">
                 <p className="eyebrow text-[color:var(--muted-fg)]">Was alle denken</p>
-                <p className="mt-4 text-[1.05rem] leading-relaxed text-[color:var(--muted-fg)] line-through">
-                  Viral gehen → Follower sammeln → auf Brand Deals hoffen
+                <p className="mt-4 text-[1.05rem] leading-relaxed text-[color:var(--muted-fg)] line-through decoration-[color:var(--muted-fg)]/45">
+                  Viral gehen, Follower sammeln, auf Brand Deals hoffen
                 </p>
               </div>
-              <div className="grain rounded-[2px] border border-[color:var(--border)] bg-[color:var(--cream)] p-6 ring-1 ring-[color:var(--wine-accent)]/10 sm:p-8">
+              <div className="border-t border-[color:var(--border)] py-8 md:border-t-0 md:border-l md:py-10 md:pl-12">
                 <p className="eyebrow text-[color:var(--ink)]">Was wirklich funktioniert</p>
-                <p className="mt-4 text-[1.05rem] font-medium leading-relaxed text-[color:var(--ink)]">
-                  Eigenes Offer bauen → Content, der verkauft → erste Kundinnen in 12 Wochen
+                <p className="mt-4 font-serif text-[1.5rem] leading-[1.25] text-[color:var(--ink)] sm:text-[1.75rem]">
+                  Eigenes Angebot bauen, Content der verkauft, erste Kundinnen in 12 Wochen.
                 </p>
               </div>
             </div>
           </div>
         </section>
+
 
 
         {VSL_VISIBLE && (
