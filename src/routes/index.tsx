@@ -308,38 +308,6 @@ function HomePage() {
           </div>
         </section>
 
-        {/* ── Identifikation ───────────────────────────────── */}
-        <section className="border-t border-[color:var(--border)] py-24 md:py-40">
-          <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <div className="grid gap-10 md:grid-cols-12">
-              <div className="rv md:col-span-7 md:col-start-2">
-                <p className="font-serif text-[2rem] leading-[1.12] text-[color:var(--ink)] sm:text-[2.75rem]">
-                  Vielleicht weißt du längst,
-                  <br />
-                  wie Content funktioniert.
-                </p>
-                <div className="mt-10 space-y-5 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)] sm:text-lg">
-                  <p>
-                    Du kennst Reels. Du kennst Trends. Du weißt, wie man ein Video aufnimmt,
-                    schneidet und veröffentlicht.
-                  </p>
-                  <p>Vielleicht hattest du sogar schon Reichweite.</p>
-                  <p className="text-[color:var(--ink)]">
-                    Aber du weißt nicht, wie daraus ein echtes Business entstehen soll.
-                  </p>
-                  <p>Oder du stehst noch ganz am Anfang.</p>
-                  <p>
-                    Du siehst jeden Tag Frauen, die mit Content Marken, Produkte und Unternehmen
-                    aufbauen. Und du fragst dich:
-                  </p>
-                </div>
-              </div>
-            </div>
-            <p className="rv d2 mt-16 font-serif text-[2.6rem] leading-[0.98] tracking-tight text-[color:var(--ink)] sm:text-7xl lg:text-[6rem]">
-              „Warum eigentlich <span className="serif-italic">nicht ich?</span>“
-            </p>
-          </div>
-        </section>
 
         {VSL_VISIBLE && (
           <section
@@ -720,6 +688,38 @@ function HomePage() {
           </div>
         </section>
 
+        {/* ── Identifikation ───────────────────────────────── */}
+        <section className="border-t border-[color:var(--border)] py-24 md:py-40">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="grid gap-10 md:grid-cols-12">
+              <div className="rv md:col-span-7 md:col-start-2">
+                <p className="font-serif text-[2rem] leading-[1.12] text-[color:var(--ink)] sm:text-[2.75rem]">
+                  Vielleicht weißt du längst,
+                  <br />
+                  wie Content funktioniert.
+                </p>
+                <div className="mt-10 space-y-5 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)] sm:text-lg">
+                  <p>
+                    Du kennst Reels. Du kennst Trends. Du weißt, wie man ein Video aufnimmt,
+                    schneidet und veröffentlicht.
+                  </p>
+                  <p>Vielleicht hattest du sogar schon Reichweite.</p>
+                  <p className="text-[color:var(--ink)]">
+                    Aber du weißt nicht, wie daraus ein echtes Business entstehen soll.
+                  </p>
+                  <p>Oder du stehst noch ganz am Anfang.</p>
+                  <p>
+                    Du siehst jeden Tag Frauen, die mit Content Marken, Produkte und Unternehmen
+                    aufbauen. Und du fragst dich:
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p className="rv d2 mt-16 font-serif text-[2.6rem] leading-[0.98] tracking-tight text-[color:var(--ink)] sm:text-7xl lg:text-[6rem]">
+              „Warum eigentlich <span className="serif-italic">nicht ich?“</span>
+            </p>
+          </div>
+        </section>
 
         {/* ── FAQ ──────────────────────────────────────────── */}
         <section aria-labelledby="faq-title" className="py-24 md:py-40">
