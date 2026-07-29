@@ -263,22 +263,24 @@ function HomePage() {
 
       <main id="top" className="bg-[color:var(--background)]">
         {/* ── Hero ─────────────────────────────────────────── */}
-        <section className="relative overflow-hidden pt-36 pb-16 sm:pt-44 md:pt-52 md:pb-20">
+        <section className="relative overflow-hidden pt-32 pb-12 sm:pt-44 md:pt-52 md:pb-20">
           <div className="pointer-events-none absolute inset-0 hero-glow" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-4xl">
-              <h1 className="font-serif text-[3.1rem] leading-[0.92] tracking-tight text-[color:var(--ink)] sm:text-7xl lg:text-[6.5rem]">
-                Verdiene 10.000 € im Monat mit Content.
+              <h1 className="font-serif text-[2.35rem] leading-[0.99] tracking-tight text-[color:var(--ink)] sm:text-6xl lg:text-[5.5rem]">
+                Verdiene 10.000&nbsp;€ im Monat mit Content.
                 <br />
                 <span className="serif-italic">Ohne große Reichweite. Ohne fertige Idee.</span>
               </h1>
-              <p className="mt-10 max-w-lg text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
+              <p className="mt-8 max-w-lg text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)] sm:mt-10">
                 Die meisten denken, du brauchst zehntausende Follower, bevor du mit Content Geld
                 verdienen kannst. Brauchst du nicht. Ich zeige dir, wie du dein eigenes Offer baust
                 und deine ersten zahlenden Kundinnen gewinnst — in den nächsten 12 Wochen.
               </p>
-              <div className="mt-10">
-                <CtaButton source="hero">Strategiegespräch buchen</CtaButton>
+              <div className="mt-8 sm:mt-10">
+                <CtaButton source="hero" className="w-full sm:w-auto">
+                  Strategiegespräch buchen
+                </CtaButton>
               </div>
             </div>
           </div>
