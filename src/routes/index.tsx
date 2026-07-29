@@ -292,9 +292,6 @@ function HomePage() {
         <section className="relative flex min-h-[78vh] flex-col justify-center overflow-hidden pt-14 pb-14 sm:min-h-[82vh] sm:pt-24 sm:pb-20 md:pt-28">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-3xl">
-              <p className="eyebrow mb-6 text-[color:var(--muted-fg)]">
-                Business Coaching für Frauen
-              </p>
               <h1 className="font-serif text-[3rem] font-semibold leading-[1.02] tracking-[-0.02em] text-[color:var(--ink)] sm:text-[4.4rem] lg:text-[5.2rem]">
                 Verdiene 10.000&nbsp;€ im Monat mit Content.
               </h1>
