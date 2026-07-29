@@ -14,6 +14,7 @@
   --color-cream2:            var(--cream2);
   --color-ink:               var(--ink);
   --color-wine:              var(--wine);
+  --color-wine-accent:       var(--wine-accent);
   --color-rose:              var(--rose);
   --color-muted-fg:          var(--muted-fg);
   --color-border:            var(--border);
@@ -23,7 +24,7 @@
   --color-muted-foreground:  var(--muted-foreground);
   --color-accent:            var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-ring:              var(--rose);
+  --color-ring:              var(--wine-accent);
 }
 
 :root {
@@ -33,6 +34,7 @@
   --cream2:              #F7F6F4;
   --ink:                 #101010;
   --wine:                #0E0E0E;
+  --wine-accent:         #722F37;
   --rose:                #94897A;
   --muted-fg:            #6E6E6E;
   --border:              rgba(17,17,17,0.08);

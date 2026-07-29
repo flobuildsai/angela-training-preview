@@ -192,8 +192,8 @@ function CtaButton({
   className?: string;
 }) {
   const tones = {
-    wine: "bg-[color:var(--wine)] text-[color:var(--cream)] hover:opacity-90",
-    cream: "bg-[color:var(--cream)] text-[color:var(--wine)] hover:opacity-90",
+    wine: "bg-[color:var(--wine-accent)] text-[color:var(--cream)] hover:opacity-90",
+    cream: "bg-[color:var(--cream)] text-[color:var(--ink)] hover:opacity-90",
   } as const;
 
   return (
@@ -201,7 +201,7 @@ function CtaButton({
       to="/call"
       onClick={() => trackEvent("call_cta_click", { source })}
       className={
-        "inline-flex items-center justify-center rounded-full px-7 py-3.5 text-[0.68rem] font-semibold uppercase tracking-[0.16em] transition sm:px-9 sm:py-4 " +
+        "inline-flex items-center justify-center whitespace-nowrap rounded-full px-7 py-3.5 text-[0.68rem] font-semibold uppercase tracking-[0.16em] transition sm:px-9 sm:py-4 " +
         tones[tone] +
         " " +
         className
@@ -263,22 +263,24 @@ function HomePage() {
 
       <main id="top" className="bg-[color:var(--background)]">
         {/* ── Hero ─────────────────────────────────────────── */}
-        <section className="relative mb-40 flex min-h-[100vh] flex-col justify-center overflow-hidden pt-32 pb-36 sm:mb-12 sm:min-h-[90vh] sm:pt-44 sm:pb-28 md:pt-52 md:pb-36">
-          <div className="pointer-events-none absolute inset-0 hero-glow" aria-hidden="true" />
+        <section className="relative mb-28 flex min-h-[88vh] flex-col justify-center overflow-hidden pt-16 pb-12 sm:mb-8 sm:min-h-[90vh] sm:pt-24 sm:pb-16 md:pt-32 md:pb-20">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-3xl">
-              <h1 className="font-serif text-[2.35rem] font-normal leading-[1.05] tracking-[-0.02em] text-[color:var(--ink)] sm:text-[3.6rem] lg:text-[4.6rem]">
+              <p className="eyebrow mb-8 text-[color:var(--wine-accent)]">
+                Business Coaching für Frauen
+              </p>
+              <h1 className="font-serif text-[3rem] font-semibold leading-[1.02] tracking-[-0.02em] text-[color:var(--ink)] sm:text-[4.4rem] lg:text-[5.2rem]">
                 Verdiene 10.000&nbsp;€ im Monat mit Content.
               </h1>
-              <p className="serif-italic mt-4 text-[1.25rem] leading-[1.3] text-[color:var(--ink)] sm:mt-5 sm:text-[1.75rem] lg:text-[2.1rem]">
+              <p className="serif-italic mt-6 mb-10 text-[1.35rem] leading-[1.25] text-[color:var(--ink)] sm:mt-8 sm:mb-12 sm:text-[1.85rem] lg:text-[2.1rem]">
                 Ohne große Reichweite. Ohne fertige Idee.
               </p>
-              <p className="mt-7 max-w-md text-[0.98rem] leading-[1.75] text-[color:var(--muted-fg)] sm:mt-9">
+              <p className="mb-12 max-w-md text-[1.02rem] leading-[1.75] text-[color:var(--muted-fg)] sm:mb-14">
                 Die meisten denken, du brauchst zehntausende Follower, bevor du mit Content Geld
                 verdienen kannst. Brauchst du nicht. Ich zeige dir, wie du dein eigenes Offer baust
                 und deine ersten zahlenden Kundinnen gewinnst, in den nächsten 12 Wochen.
               </p>
-              <div className="mt-9 sm:mt-11">
+              <div>
                 <CtaButton source="hero" className="w-full sm:w-auto">
                   Strategiegespräch buchen
                 </CtaButton>
@@ -287,7 +289,7 @@ function HomePage() {
           </div>
         </section>
 
-        <div className="h-48 sm:h-0" aria-hidden="true" />
+        <div className="h-40 sm:h-0" aria-hidden="true" />
 
         {/* ── Reframe ──────────────────────────────────────── */}
         <section className="pt-12 pb-16 md:pt-16 md:pb-24">
@@ -299,7 +301,7 @@ function HomePage() {
                   Viral gehen → Follower sammeln → auf Brand Deals hoffen
                 </p>
               </div>
-              <div className="grain rounded-[2px] border border-[color:var(--border)] bg-[color:var(--cream)] p-6 ring-1 ring-[color:var(--wine)]/10 sm:p-8">
+              <div className="grain rounded-[2px] border border-[color:var(--border)] bg-[color:var(--cream)] p-6 ring-1 ring-[color:var(--wine-accent)]/10 sm:p-8">
                 <p className="eyebrow text-[color:var(--ink)]">Was wirklich funktioniert</p>
                 <p className="mt-4 text-[1.05rem] font-medium leading-relaxed text-[color:var(--ink)]">
                   Eigenes Offer bauen → Content, der verkauft → erste Kundinnen in 12 Wochen
