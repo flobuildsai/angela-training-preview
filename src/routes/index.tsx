@@ -462,12 +462,12 @@ function HomePage() {
               </h2>
               <div className="mt-8 space-y-5 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
                 <p>
-                  Ich habe Content genutzt, um Nachfrage für ein eigenes Angebot und ein echtes
-                  Geschäftsmodell zu erzeugen.
-                </p>
-                <p>
                   Ich habe Content genutzt, um in kurzer Zeit Follower, Anfragen und zahlende
                   Kundinnen zu gewinnen, organisch, ohne großes Startpublikum.
+                </p>
+                <p>
+                  Millionen Views, Reichweite weit über meine Follower hinaus, und dahinter ein
+                  eigenes Angebot, das daraus ein echtes Geschäftsmodell macht.
                 </p>
 
                 <p className="text-[color:var(--ink)]">
