@@ -188,6 +188,26 @@ function useScrolled() {
   return past;
 }
 
+function useShowStickyCta() {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const el = document.getElementById("belief-shift");
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShow(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -10% 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return show;
+}
+
 
 
 // ── Bausteine ─────────────────────────────────────────────────
