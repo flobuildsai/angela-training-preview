@@ -631,7 +631,39 @@ function HomePage() {
           </div>
         </section>
 
+        {/* ── FAQ ──────────────────────────────────────────── */}
+        <section aria-labelledby="faq-title" className="py-24 md:py-40">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <p className="rv eyebrow text-[color:var(--rose)]">Häufige Fragen</p>
+            <h2
+              id="faq-title"
+              className="rv mt-6 max-w-3xl font-serif text-[2.4rem] leading-[1.04] tracking-tight text-[color:var(--ink)] sm:text-6xl"
+            >
+              Alles, was du vor dem Gespräch{" "}
+              <span className="serif-italic">wissen willst.</span>
+            </h2>
+
+            <Accordion type="single" collapsible className="rv d2 mt-14 border-t border-[color:var(--border)]">
+              {faqs.map((f, i) => (
+                <AccordionItem
+                  key={f.q}
+                  value={"faq-" + i}
+                  className="border-b border-[color:var(--border)]"
+                >
+                  <AccordionTrigger className="py-6 text-left font-serif text-xl leading-snug text-[color:var(--ink)] hover:no-underline sm:text-2xl">
+                    {f.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="max-w-2xl pb-8 text-[0.98rem] leading-relaxed text-[color:var(--muted-fg)]">
+                    {f.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
+
         {/* ── Call CTA ─────────────────────────────────────── */}
+
         <section
           id="call"
           aria-labelledby="call-title"
