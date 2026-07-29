@@ -91,15 +91,21 @@ const faqs = [
 ];
 
 
-// Editorial-Collage: echte Aufnahmen.
-const proofSlots: { label: string; img: string | null; span: string; ratio: string }[] = [
-  // img später einfach mit importiertem Screenshot befüllen
-  { label: "Follower-Wachstum", img: null, span: "sm:col-span-7", ratio: "4 / 3" },
-  { label: "Anfragen & Leads", img: null, span: "sm:col-span-5", ratio: "3 / 4" },
-  { label: "Sales & Umsätze", img: null, span: "sm:col-span-7", ratio: "4 / 3" },
-  { label: "Content-Performance", img: null, span: "sm:col-span-5", ratio: "1 / 1" },
-
+// Editorial-Collage: echte Screenshots aus Lauras Accounts.
+const proofSlots: {
+  label: string;
+  img: string | null;
+  span: string;
+  ratio: string;
+  fit: "cover" | "contain";
+}[] = [
+  { label: "Content-Performance", img: proofStatsAsset.url, span: "sm:col-span-7", ratio: "12 / 5", fit: "contain" },
+  { label: "Reels-Reichweite", img: proofGridAsset.url, span: "sm:col-span-5", ratio: "3 / 4", fit: "cover" },
+  { label: "Views eines Formats", img: proofViews7mAsset.url, span: "sm:col-span-5", ratio: "1 / 1", fit: "contain" },
+  { label: "Reichweite außerhalb der Follower", img: proofViews15mAsset.url, span: "sm:col-span-7", ratio: "4 / 3", fit: "contain" },
+  { label: "Sales & Umsätze", img: null, span: "sm:col-span-12", ratio: "16 / 6", fit: "cover" },
 ];
+
 
 
 const build = [
