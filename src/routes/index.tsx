@@ -482,6 +482,54 @@ function HomePage() {
           </div>
         </section>
 
+        {/* ── Offer / Programm ─────────────────────────────── */}
+        <section
+          id="society"
+          aria-labelledby="offer-title"
+          className="scroll-mt-20 border-t border-[color:var(--border)] bg-[color:var(--cream2)] py-24 md:py-40"
+        >
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <p className="rv eyebrow text-[color:var(--rose)]">Das Programm</p>
+            <h2
+              id="offer-title"
+              className="rv mt-6 max-w-4xl font-serif text-[2.4rem] leading-[1.04] tracking-tight text-[color:var(--ink)] sm:text-6xl"
+            >
+              In 12 Wochen von der Idee zum eigenen Angebot —{" "}
+              <span className="serif-italic">mit deinen ersten zahlenden Kundinnen.</span>
+            </h2>
+            <p className="rv d1 mt-8 max-w-2xl text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
+              Creating Society ist ein 12-Wochen-Programm, in dem du deine Positionierung findest,
+              dein eigenes digitales Produkt oder Coaching-Angebot entwickelst und lernst, es über
+              deinen Content zu verkaufen. Nicht irgendwann. In den nächsten 12 Wochen.
+            </p>
+
+            <ul className="rv d2 mt-14 border-t border-[color:var(--border)]">
+              {[
+                "Woche 1–4 — Positionierung & Angebot: Du weißt, wofür du stehst und was du verkaufst.",
+                "Woche 5–8 — Content & Nachfrage: Dein Content erzeugt gezielt Anfragen statt nur Views.",
+                "Woche 9–12 — Verkauf & erste Kundinnen: Du gewinnst deine ersten zahlenden Kundinnen.",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="border-b border-[color:var(--border)] py-5 font-serif text-xl leading-snug text-[color:var(--ink)] sm:py-6 sm:text-2xl"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <p className="rv d3 mt-10 max-w-xl text-sm leading-relaxed text-[color:var(--muted-fg)]">
+              Funktioniert auch ohne große Reichweite — und auf Wunsch komplett faceless.
+            </p>
+
+            <div className="rv d4 mt-10">
+              <CtaButton source="offer">Strategiegespräch buchen</CtaButton>
+            </div>
+          </div>
+        </section>
+
+
+
         {/* ── Zukunft ──────────────────────────────────────── */}
         <section className="bg-[color:var(--wine)] py-28 text-[color:var(--cream)] md:py-40">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
