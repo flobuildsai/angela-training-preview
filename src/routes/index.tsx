@@ -177,27 +177,6 @@ function useScrolled() {
   return past;
 }
 
-// Blendet ein, sobald das Ziel-Element einmal im Viewport war (bleibt dann sichtbar).
-function useSeen<T extends HTMLElement>() {
-  const ref = useRef<T | null>(null);
-  const [seen, setSeen] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setSeen(true);
-          io.disconnect();
-        }
-      },
-      { threshold: 0.15 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-  return { ref, seen };
-}
 
 
 // ── Bausteine ─────────────────────────────────────────────────
