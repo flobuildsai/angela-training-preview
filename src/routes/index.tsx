@@ -188,6 +188,26 @@ function useScrolled() {
   return past;
 }
 
+function useShowStickyCta() {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const el = document.getElementById("belief-shift");
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShow(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -10% 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return show;
+}
+
 
 
 // ── Bausteine ─────────────────────────────────────────────────
@@ -243,6 +263,7 @@ function CtaButton({
 function HomePage() {
   useReveal();
   const past = useScrolled();
+  const showSticky = useShowStickyCta();
 
   return (
     <>
@@ -462,12 +483,12 @@ function HomePage() {
               </h2>
               <div className="mt-8 space-y-5 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
                 <p>
-                  Ich habe Content genutzt, um Nachfrage für ein eigenes Angebot und ein echtes
-                  Geschäftsmodell zu erzeugen.
-                </p>
-                <p>
                   Ich habe Content genutzt, um in kurzer Zeit Follower, Anfragen und zahlende
                   Kundinnen zu gewinnen, organisch, ohne großes Startpublikum.
+                </p>
+                <p>
+                  Millionen Views, Reichweite weit über meine Follower hinaus, und dahinter ein
+                  eigenes Angebot, das daraus ein echtes Geschäftsmodell macht.
                 </p>
 
                 <p className="text-[color:var(--ink)]">
@@ -832,7 +853,7 @@ function HomePage() {
         </section>
 
         {/* ── Footer ───────────────────────────────────────── */}
-        <footer className="border-t border-[color:var(--border)] py-10">
+        <footer className="border-t border-[color:var(--border)] pb-24 pt-10 md:pb-10 md:pt-10">
           <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 text-sm text-[color:var(--muted-fg)] sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <img src={logoDark} alt="thecreatingsociety" className="h-4 w-auto shrink-0 self-start object-contain" />
             <nav className="flex flex-wrap items-center gap-6">
@@ -847,6 +868,23 @@ function HomePage() {
           </div>
         </footer>
       </main>
+
+      {/* Mobile Sticky CTA */}
+      <div
+        className={
+          "fixed inset-x-0 bottom-0 z-50 border-t border-[color:var(--border)] bg-[color:var(--cream)]/95 px-4 pt-3 backdrop-blur-xl transition-transform duration-500 ease-out md:hidden " +
+          (showSticky ? "translate-y-0" : "translate-y-full")
+        }
+        style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
+      >
+        <Link
+          to="/call"
+          onClick={() => trackEvent("call_cta_click", { source: "mobile_bar" })}
+          className="flex w-full items-center justify-center gap-3 rounded-full bg-[color:var(--ink)] px-6 py-4 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[color:var(--cream)] shadow-[0_14px_30px_-18px_rgba(16,16,16,0.9)]"
+        >
+          Kostenloses Strategiegespräch buchen
+        </Link>
+      </div>
     </>
   );
 }
