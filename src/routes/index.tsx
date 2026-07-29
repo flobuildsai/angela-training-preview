@@ -1,9 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import lauraImg from "@/assets/mentor.jpg";
-import proofA from "@/assets/opportunity.jpg";
-import proofB from "@/assets/hero.jpg";
-import proofC from "@/assets/avatar.jpg";
+import lauraPortrait from "@/assets/laura-portrait.jpg.asset.json";
+import proofAAsset from "@/assets/laura-work.jpg.asset.json";
+import proofBAsset from "@/assets/laura-walk.jpg.asset.json";
+import proofCAsset from "@/assets/laura-mykonos.jpg.asset.json";
+import proofDAsset from "@/assets/laura-villa.jpg.asset.json";
+
+const lauraImg = lauraPortrait.url;
+const proofA = proofAAsset.url;
+const proofB = proofBAsset.url;
+const proofC = proofCAsset.url;
+const proofD = proofDAsset.url;
+
 import logoDark from "@/assets/logo-dark.png";
 import { trackEvent } from "@/lib/track";
 import {
