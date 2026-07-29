@@ -217,9 +217,6 @@ function CtaButton({
 function HomePage() {
   useReveal();
   const past = useScrolled();
-  const { ref: beliefRef, seen: showBar } = useSeen<HTMLElement>();
-
-  
 
   return (
     <>
