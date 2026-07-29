@@ -325,7 +325,6 @@ function HomePage() {
         {/* ── Belief Shift ─────────────────────────────────── */}
         <section
           id="belief-shift"
-          ref={beliefRef}
           className="bg-[color:var(--wine)] py-28 text-[color:var(--cream)] md:py-40"
         >
 
