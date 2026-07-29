@@ -263,7 +263,7 @@ function HomePage() {
 
       <main id="top" className="bg-[color:var(--background)]">
         {/* ── Hero ─────────────────────────────────────────── */}
-        <section className="relative mb-24 flex min-h-[100vh] flex-col justify-center overflow-hidden pt-32 pb-36 sm:mb-0 sm:min-h-[90vh] sm:pt-44 sm:pb-28 md:pt-52 md:pb-36">
+        <section className="relative mb-40 flex min-h-[100vh] flex-col justify-center overflow-hidden pt-32 pb-36 sm:mb-12 sm:min-h-[90vh] sm:pt-44 sm:pb-28 md:pt-52 md:pb-36">
           <div className="pointer-events-none absolute inset-0 hero-glow" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-3xl">
