@@ -287,6 +287,8 @@ function HomePage() {
           </div>
         </section>
 
+        <div className="h-48 sm:h-0" aria-hidden="true" />
+
         {/* ── Reframe ──────────────────────────────────────── */}
         <section className="pt-12 pb-16 md:pt-16 md:pb-24">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
