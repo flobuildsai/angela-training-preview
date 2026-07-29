@@ -293,15 +293,15 @@ function HomePage() {
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-3xl">
               <h1 className="font-serif text-[3rem] font-semibold leading-[1.02] tracking-[-0.02em] text-[color:var(--ink)] sm:text-[4.4rem] lg:text-[5.2rem]">
-                Verdiene 10.000&nbsp;€ im Monat mit Content.
+                Werde nicht nur gesehen. Werde bezahlt.
               </h1>
               <p className="serif-italic mt-5 text-[1.35rem] leading-[1.25] text-[color:var(--ink)] sm:mt-6 sm:text-[1.85rem] lg:text-[2.1rem]">
-                Ohne große Reichweite. Ohne fertige Idee.
+                Baue ein eigenes Business aus deinem Content — ohne große Reichweite, ohne fertige Idee.
               </p>
               <p className="mt-7 max-w-xl text-[1.02rem] leading-[1.7] text-[color:var(--muted-fg)] sm:mt-8">
-                Die meisten denken, du brauchst zehntausende Follower, bevor du mit Content Geld
-                verdienen kannst. Brauchst du nicht. Ich zeige dir, wie du dein eigenes Offer baust
-                und deine ersten zahlenden Kundinnen gewinnst, in den nächsten 12 Wochen.
+                Du postest schon. Du bekommst Likes. Aber das Geld kommt nicht. Weil hinter deinem
+                Content noch kein echtes Angebot steht. Ich zeige dir, wie du das änderst — und aus
+                deiner Aufmerksamkeit ein eigenes Unternehmen baust, das dir wirklich gehört.
               </p>
               <div className="mt-10 sm:mt-12">
                 <CtaButton source="hero" className="w-full sm:w-auto">
