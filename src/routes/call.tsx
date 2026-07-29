@@ -61,9 +61,10 @@ function CallPage() {
       {/* Header */}
       <header className="border-b border-[color:var(--border)]">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
-          <Link to="/" className="font-serif text-xl tracking-tight text-[color:var(--ink)] sm:text-2xl">
-            Creating <span className="serif-italic">Society</span>
+          <Link to="/" className="flex items-center">
+            <img src={logoDark} alt="thecreatingsociety" className="h-4 w-auto sm:h-5" />
           </Link>
+
           <Link
             to="/"
             className="text-[0.72rem] uppercase tracking-[0.16em] text-[color:var(--muted-fg)] transition hover:text-[color:var(--ink)]"
