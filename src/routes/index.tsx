@@ -6,6 +6,13 @@ import proofB from "@/assets/hero.jpg";
 import proofC from "@/assets/avatar.jpg";
 import logoDark from "@/assets/logo-dark.png";
 import { trackEvent } from "@/lib/track";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 
 
 export const Route = createFileRoute("/")({
@@ -44,6 +51,34 @@ const ownership = [
   "Deine Kunden.",
   "Dein Unternehmen.",
 ];
+
+const faqs = [
+  {
+    q: "Ich habe noch keine oder kaum Reichweite. Ist das ein Problem?",
+    a: "Nein. Creating Society ist genau dafür gemacht. Du brauchst kein großes Publikum, um zu starten — du brauchst eine klare Positionierung und ein Angebot. Reichweite bauen wir gezielt mit auf, aber sie ist der Weg, nicht die Voraussetzung.",
+  },
+  {
+    q: "Ich möchte mein Gesicht nicht zeigen. Geht das trotzdem?",
+    a: "Ja. Viele unserer Konzepte funktionieren komplett faceless. Wir entwickeln gemeinsam ein Content-Format, das zu dir passt — mit oder ohne Gesicht.",
+  },
+  {
+    q: "Ich habe noch keine Idee, was ich verkaufen könnte.",
+    a: "Das ist der häufigste Startpunkt. In den ersten Wochen finden wir gemeinsam heraus, welches Angebot zu deinen Fähigkeiten, deiner Erfahrung und dem Bedarf deiner Zielgruppe passt — bevor du auch nur ein Video mehr produzierst.",
+  },
+  {
+    q: "Wie viel Zeit brauche ich pro Woche?",
+    a: "Plane realistisch 5 bis 10 Stunden pro Woche ein. Das Programm ist neben Job oder Studium machbar — entscheidend ist nicht die Menge an Zeit, sondern dass du konsequent umsetzt.",
+  },
+  {
+    q: "Was kostet Creating Society?",
+    a: "Das besprechen wir im Strategiegespräch — denn zuerst prüfen wir, ob das Programm überhaupt zu deiner Ausgangslage und deinem Ziel passt. Das Gespräch selbst ist kostenlos und unverbindlich.",
+  },
+  {
+    q: "Wie läuft das Strategiegespräch ab?",
+    a: "Wir sprechen 30 bis 45 Minuten über deine Ausgangslage, deine Positionierung und dein mögliches Angebot. Du gehst mit Klarheit über deinen nächsten Schritt raus — unabhängig davon, ob wir zusammenarbeiten.",
+  },
+];
+
 
 // Austauschbare Proof-Slots — echte Assets später hier ersetzen.
 const proofSlots = [
@@ -191,7 +226,9 @@ function HomePage() {
           <div className="flex items-center gap-8">
             <nav className="hidden items-center gap-7 md:flex">
               {[
+                { href: "#methode", label: "Methode" },
                 { href: "#society", label: "Creating Society" },
+
                 { href: "#laura", label: "Laura" },
                 { href: "#call", label: "Gespräch" },
               ].map((l) => (
@@ -314,7 +351,7 @@ function HomePage() {
                 <p>Deine Personal Brand schafft Vertrauen.</p>
                 <p>Dein Angebot macht daraus Umsatz.</p>
                 <p className="text-[color:var(--cream)]">
-                  Creating Society <span className="serif-italic">verbindet alle drei.</span>
+                  Die TCS-Methode <span className="serif-italic">verbindet alle drei.</span>
                 </p>
               </div>
               <p className="mt-14 text-sm tracking-wide text-[color:var(--cream)]/55">
@@ -425,15 +462,21 @@ function HomePage() {
           </div>
         </section>
 
-        {/* ── Was wir gemeinsam aufbauen ───────────────────── */}
-        <section id="society" aria-labelledby="build-title" className="py-24 md:py-40">
+        {/* ── TCS-Methode ──────────────────────────────────── */}
+        <section id="methode" aria-labelledby="build-title" className="scroll-mt-20 py-24 md:py-40">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <p className="rv eyebrow text-[color:var(--rose)]">Die TCS-Methode</p>
             <h2
               id="build-title"
-              className="rv max-w-2xl font-serif text-[2.4rem] leading-[1.04] tracking-tight text-[color:var(--ink)] sm:text-6xl"
+              className="rv mt-6 max-w-3xl font-serif text-[2.4rem] leading-[1.04] tracking-tight text-[color:var(--ink)] sm:text-6xl"
             >
-              Was wir gemeinsam <span className="serif-italic">aufbauen.</span>
+              Die TCS-Methode: <span className="serif-italic">So bauen wir dein Business auf.</span>
             </h2>
+            <p className="rv d1 mt-7 max-w-2xl text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
+              Unsere Methode verbindet drei Dinge, die einzeln nichts wert sind: Content, Vertrauen
+              und ein Angebot, das Menschen wirklich kaufen wollen.
+            </p>
+
 
             <div className="mt-16 border-t border-[color:var(--border)]">
               {build.map((b, i) => (
@@ -466,6 +509,54 @@ function HomePage() {
             </p>
           </div>
         </section>
+
+        {/* ── Offer / Programm ─────────────────────────────── */}
+        <section
+          id="society"
+          aria-labelledby="offer-title"
+          className="scroll-mt-20 border-t border-[color:var(--border)] bg-[color:var(--cream2)] py-24 md:py-40"
+        >
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <p className="rv eyebrow text-[color:var(--rose)]">Das Programm</p>
+            <h2
+              id="offer-title"
+              className="rv mt-6 max-w-4xl font-serif text-[2.4rem] leading-[1.04] tracking-tight text-[color:var(--ink)] sm:text-6xl"
+            >
+              In 12 Wochen von der Idee zum eigenen Angebot —{" "}
+              <span className="serif-italic">mit deinen ersten zahlenden Kundinnen.</span>
+            </h2>
+            <p className="rv d1 mt-8 max-w-2xl text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
+              Creating Society ist ein 12-Wochen-Programm, in dem du deine Positionierung findest,
+              dein eigenes digitales Produkt oder Coaching-Angebot entwickelst und lernst, es über
+              deinen Content zu verkaufen. Nicht irgendwann. In den nächsten 12 Wochen.
+            </p>
+
+            <ul className="rv d2 mt-14 border-t border-[color:var(--border)]">
+              {[
+                "Woche 1–4 — Positionierung & Angebot: Du weißt, wofür du stehst und was du verkaufst.",
+                "Woche 5–8 — Content & Nachfrage: Dein Content erzeugt gezielt Anfragen statt nur Views.",
+                "Woche 9–12 — Verkauf & erste Kundinnen: Du gewinnst deine ersten zahlenden Kundinnen.",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="border-b border-[color:var(--border)] py-5 font-serif text-xl leading-snug text-[color:var(--ink)] sm:py-6 sm:text-2xl"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <p className="rv d3 mt-10 max-w-xl text-sm leading-relaxed text-[color:var(--muted-fg)]">
+              Funktioniert auch ohne große Reichweite — und auf Wunsch komplett faceless.
+            </p>
+
+            <div className="rv d4 mt-10">
+              <CtaButton source="offer">Strategiegespräch buchen</CtaButton>
+            </div>
+          </div>
+        </section>
+
+
 
         {/* ── Zukunft ──────────────────────────────────────── */}
         <section className="bg-[color:var(--wine)] py-28 text-[color:var(--cream)] md:py-40">
@@ -568,7 +659,39 @@ function HomePage() {
           </div>
         </section>
 
+        {/* ── FAQ ──────────────────────────────────────────── */}
+        <section aria-labelledby="faq-title" className="py-24 md:py-40">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <p className="rv eyebrow text-[color:var(--rose)]">Häufige Fragen</p>
+            <h2
+              id="faq-title"
+              className="rv mt-6 max-w-3xl font-serif text-[2.4rem] leading-[1.04] tracking-tight text-[color:var(--ink)] sm:text-6xl"
+            >
+              Alles, was du vor dem Gespräch{" "}
+              <span className="serif-italic">wissen willst.</span>
+            </h2>
+
+            <Accordion type="single" collapsible className="rv d2 mt-14 border-t border-[color:var(--border)]">
+              {faqs.map((f, i) => (
+                <AccordionItem
+                  key={f.q}
+                  value={"faq-" + i}
+                  className="border-b border-[color:var(--border)]"
+                >
+                  <AccordionTrigger className="py-6 text-left font-serif text-xl leading-snug text-[color:var(--ink)] hover:no-underline sm:text-2xl">
+                    {f.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="max-w-2xl pb-8 text-[0.98rem] leading-relaxed text-[color:var(--muted-fg)]">
+                    {f.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
+
         {/* ── Call CTA ─────────────────────────────────────── */}
+
         <section
           id="call"
           aria-labelledby="call-title"
