@@ -37,7 +37,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Creating Society hilft Frauen, ein eigenes Offer aus ihrem Content zu bauen – ohne große Reichweite und ohne fertige Idee. Melde dich für ein kostenloses Strategiegespräch.",
+          "Creating Society hilft Frauen, ein eigenes Offer aus ihrem Content zu bauen – ohne große Reichweite und ohne fertige Idee. Buche ein Strategiegespräch.",
       },
       {
         property: "og:title",
@@ -86,11 +86,11 @@ const faqs = [
   },
   {
     q: "Was kostet Creating Society?",
-    a: "Das besprechen wir im Strategiegespräch, denn zuerst prüfen wir, ob das Programm überhaupt zu deiner Ausgangslage und deinem Ziel passt. Das Gespräch selbst ist kostenlos und unverbindlich.",
+    a: "Das besprechen wir im Strategiegespräch, denn zuerst prüfen wir, ob das Programm überhaupt zu deiner Ausgangslage und deinem Ziel passt. Das Gespräch ist der erste Schritt, um zu schauen, ob wir zueinander passen.",
   },
   {
     q: "Wie läuft das Strategiegespräch ab?",
-    a: "Wir sprechen 30 bis 45 Minuten über deine Ausgangslage, deine Positionierung und dein mögliches Angebot. Du gehst mit Klarheit über deinen nächsten Schritt raus, unabhängig davon, ob wir zusammenarbeiten.",
+    a: "Wir sprechen über deine Ausgangslage, deine Positionierung und dein mögliches Angebot. Du gehst mit Klarheit über deinen nächsten Schritt raus, unabhängig davon, ob wir zusammenarbeiten.",
   },
 ];
 
@@ -809,12 +809,12 @@ function HomePage() {
             </p>
             <div className="rv d3 mt-10">
               <CtaButton source="call_section" tone="cream">
-                Kostenloses Strategiegespräch buchen
+                Strategiegespräch buchen
               </CtaButton>
             </div>
             <p className="rv d4 mx-auto mt-6 max-w-md text-sm leading-relaxed text-[color:var(--cream)]/55">
-              Ungefähr 30 bis 45 Minuten. Im Gespräch prüfen wir gemeinsam, ob deine Ziele und
-              Creating Society zueinander passen.
+              Im Gespräch schauen wir gemeinsam, ob deine Ziele und Creating Society zueinander
+              passen.
             </p>
           </div>
         </section>
@@ -862,7 +862,7 @@ function HomePage() {
           onClick={() => trackEvent("call_cta_click", { source: "mobile_bar" })}
           className="flex w-full items-center justify-center gap-3 rounded-full bg-[color:var(--ink)] px-6 py-4 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[color:var(--cream)] shadow-[0_14px_30px_-18px_rgba(16,16,16,0.9)]"
         >
-          Kostenloses Strategiegespräch buchen
+          Strategiegespräch buchen
         </Link>
       </div>
     </>
