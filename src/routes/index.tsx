@@ -192,8 +192,8 @@ function CtaButton({
   className?: string;
 }) {
   const tones = {
-    wine: "bg-[color:var(--wine)] text-[color:var(--cream)] hover:opacity-90",
-    cream: "bg-[color:var(--cream)] text-[color:var(--wine)] hover:opacity-90",
+    wine: "bg-[color:var(--wine-accent)] text-[color:var(--cream)] hover:opacity-90",
+    cream: "bg-[color:var(--cream)] text-[color:var(--ink)] hover:opacity-90",
   } as const;
 
   return (
