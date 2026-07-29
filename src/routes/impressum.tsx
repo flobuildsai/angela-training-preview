@@ -7,8 +7,7 @@ export const Route = createFileRoute("/impressum")({
       { title: "Impressum — Creating Society" },
       {
         name: "description",
-        content:
-          "Impressum und Anbieterkennzeichnung gemäß § 5 DDG für Creating Society.",
+        content: "Impressum und Anbieterkennzeichnung gemäß § 5 DDG für Creating Society.",
       },
       { property: "og:title", content: "Impressum — Creating Society" },
       {
@@ -46,29 +45,34 @@ function ImpressumPage() {
           <h1 className="mt-6 font-serif text-[2.4rem] leading-[1.04] text-[color:var(--ink)] sm:text-[3.2rem]">
             Impressum
           </h1>
+          <p className="mt-6 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
+            Angaben gemäß § 5 DDG (ehemals § 5 TMG).
+          </p>
 
           <div className="mt-14 space-y-12 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
             <div className="border-t border-[color:var(--border)] pt-8">
-              <h2 className="font-serif text-xl text-[color:var(--ink)] sm:text-2xl">
-                Angaben gemäß § 5 DDG
-              </h2>
+              <h2 className="font-serif text-xl text-[color:var(--ink)] sm:text-2xl">Anbieter</h2>
               <p className="mt-4">
-                [Vollständiger Name / Firma]
+                WYLD Society GmbH
                 <br />
-                [Straße Hausnummer]
+                Marktplatz 16
                 <br />
-                [PLZ Ort]
+                93167 Falkenstein
                 <br />
-                [Land]
+                Deutschland
               </p>
             </div>
 
             <div className="border-t border-[color:var(--border)] pt-8">
               <h2 className="font-serif text-xl text-[color:var(--ink)] sm:text-2xl">Kontakt</h2>
               <p className="mt-4">
-                E-Mail: [E-Mail-Adresse]
-                <br />
-                Telefon: [Telefonnummer]
+                E-Mail:{" "}
+                <a
+                  href="mailto:info@wyldsociety.io"
+                  className="text-[color:var(--ink)] underline underline-offset-4"
+                >
+                  info@wyldsociety.io
+                </a>
               </p>
             </div>
 
@@ -77,8 +81,7 @@ function ImpressumPage() {
                 Umsatzsteuer-Identifikationsnummer
               </h2>
               <p className="mt-4">
-                Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz, sofern
-                vorhanden: [USt-IdNr.]
+                Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz: [USt-IdNr.]
               </p>
             </div>
 
@@ -87,9 +90,13 @@ function ImpressumPage() {
                 Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
               </h2>
               <p className="mt-4">
-                [Name]
+                WYLD Society GmbH
                 <br />
-                [Anschrift]
+                Marktplatz 16
+                <br />
+                93167 Falkenstein
+                <br />
+                Deutschland
               </p>
             </div>
 
@@ -113,6 +120,28 @@ function ImpressumPage() {
               <p className="mt-4">
                 Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
                 Verbraucherschlichtungsstelle teilzunehmen.
+              </p>
+            </div>
+
+            <div className="border-t border-[color:var(--border)] pt-8">
+              <h2 className="font-serif text-xl text-[color:var(--ink)] sm:text-2xl">
+                Haftung für Inhalte
+              </h2>
+              <p className="mt-4">
+                Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den
+                allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht verpflichtet,
+                übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach
+                Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+              </p>
+            </div>
+
+            <div className="border-t border-[color:var(--border)] pt-8">
+              <h2 className="font-serif text-xl text-[color:var(--ink)] sm:text-2xl">Urheberrecht</h2>
+              <p className="mt-4">
+                Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten
+                unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung
+                und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der
+                schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
               </p>
             </div>
           </div>
