@@ -263,22 +263,42 @@ function HomePage() {
 
       <main id="top" className="bg-[color:var(--background)]">
         {/* ── Hero ─────────────────────────────────────────── */}
-        <section className="relative overflow-hidden pt-36 pb-16 sm:pt-44 md:pt-52 md:pb-24">
+        <section className="relative overflow-hidden pt-36 pb-16 sm:pt-44 md:pt-52 md:pb-20">
           <div className="pointer-events-none absolute inset-0 hero-glow" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-4xl">
               <h1 className="font-serif text-[3.1rem] leading-[0.92] tracking-tight text-[color:var(--ink)] sm:text-7xl lg:text-[6.5rem]">
-
-                Werde nicht nur gesehen.
+                Verdiene 10.000 € im Monat mit Content.
                 <br />
-                <span className="serif-italic">Bau etwas Eigenes daraus.</span>
+                <span className="serif-italic">Ohne große Reichweite. Ohne fertige Idee.</span>
               </h1>
               <p className="mt-10 max-w-lg text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
-                Ich helfe Frauen, aus Content ein Business aufzubauen – ohne großes Publikum, ohne
-                fertige Idee.
+                Die meisten denken, du brauchst zehntausende Follower, bevor du mit Content Geld
+                verdienen kannst. Brauchst du nicht. Ich zeige dir, wie du dein eigenes Offer baust
+                und deine ersten zahlenden Kundinnen gewinnst — in den nächsten 12 Wochen.
               </p>
               <div className="mt-10">
                 <CtaButton source="hero">Strategiegespräch buchen</CtaButton>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Reframe ──────────────────────────────────────── */}
+        <section className="pb-16 md:pb-24">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <div className="rv grid gap-4 md:grid-cols-2 md:gap-6">
+              <div className="grain rounded-[2px] border border-[color:var(--border)] bg-[color:var(--cream2)] p-6 sm:p-8">
+                <p className="eyebrow text-[color:var(--muted-fg)]">Was alle denken</p>
+                <p className="mt-4 text-[1.05rem] leading-relaxed text-[color:var(--muted-fg)] line-through">
+                  Viral gehen → Follower sammeln → auf Brand Deals hoffen
+                </p>
+              </div>
+              <div className="grain rounded-[2px] border border-[color:var(--border)] bg-[color:var(--cream)] p-6 ring-1 ring-[color:var(--wine)]/10 sm:p-8">
+                <p className="eyebrow text-[color:var(--ink)]">Was wirklich funktioniert</p>
+                <p className="mt-4 text-[1.05rem] font-medium leading-relaxed text-[color:var(--ink)]">
+                  Eigenes Offer bauen → Content, der verkauft → erste Kundinnen in 12 Wochen
+                </p>
               </div>
             </div>
           </div>
