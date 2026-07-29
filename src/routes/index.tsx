@@ -184,8 +184,8 @@ function HomePage() {
             (past ? "py-3.5" : "py-5 sm:py-7")
           }
         >
-          <a href="#top" className="font-serif text-xl tracking-tight text-[color:var(--ink)] sm:text-2xl">
-            Creating <span className="serif-italic">Society</span>
+          <a href="#top" className="flex items-center">
+            <img src={logoDark} alt="thecreatingsociety" className="h-4 w-auto sm:h-5" />
           </a>
           <div className="flex items-center gap-8">
             <nav className="hidden items-center gap-7 md:flex">
@@ -203,20 +203,8 @@ function HomePage() {
                 </a>
               ))}
             </nav>
-            <Link
-              to="/call"
-              onClick={() => trackEvent("call_cta_click", { source: "header" })}
-              className={
-                "rounded-full border border-[color:var(--ink)]/20 px-5 py-2.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--ink)] transition hover:bg-[color:var(--wine)] hover:text-[color:var(--cream)] sm:px-6 " +
-                (past ? "opacity-100" : "pointer-events-none opacity-0")
-              }
-              aria-hidden={!past}
-              tabIndex={past ? 0 : -1}
-            >
-              Strategiegespräch buchen
-            </Link>
-
           </div>
+
         </div>
       </header>
 
