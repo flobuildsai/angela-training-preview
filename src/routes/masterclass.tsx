@@ -238,71 +238,80 @@ function MasterclassPage() {
       </section>
 
       {/* 02 — VERGLEICH */}
-      <section aria-labelledby="difference-heading" className="bg-[color:var(--cream2)] py-24 md:py-28">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <section aria-labelledby="difference-heading" className="bg-[color:var(--bg)] py-24 md:py-32">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <div className="rv max-w-3xl">
             <SectionIndex index="02" label="Der Unterschied" />
             <h2
               id="difference-heading"
-              className="mt-6 font-serif text-[2.1rem] leading-[1.06] tracking-tight sm:text-5xl"
+              className="mt-6 font-serif text-[2rem] font-normal leading-[1.1] tracking-tight sm:text-[2.9rem]"
             >
-              Es gibt drei Wege, mit Content Geld zu verdienen.{" "}
-              <span className="serif-italic text-[color:var(--rose)]">Zwei davon lassen dich abhängig.</span>
+              Drei Wege, mit Content Geld zu verdienen.{" "}
+              <span className="serif-italic text-[color:var(--muted-fg)]">
+                Zwei davon machen dich abhängig.
+              </span>
             </h2>
           </div>
 
-          <div className="rv d1 mt-14 grid gap-5 md:grid-cols-3">
+          <div className="mt-16 border-t border-[color:var(--border)]">
             {[
               {
+                n: "01",
                 title: "Reichweiten-Kurse",
                 tag: "Du lernst, wie du mehr Views bekommst.",
-                problem: "Aber wenn du aufhörst, hast du nichts.",
-                highlight: false,
+                problem: "Sobald du aufhörst zu posten, bleibt nichts davon übrig.",
+                active: false,
               },
               {
+                n: "02",
                 title: "Kooperationen",
                 tag: "Du bekommst Geld für deine Reichweite.",
-                problem: "Aber wenn die Marken weg sind, ist das Geld weg.",
-                highlight: false,
+                problem: "Sind die Marken weg, ist auch das Einkommen weg.",
+                active: false,
               },
               {
+                n: "03",
                 title: "Creating Society",
                 tag: "Du baust ein eigenes Angebot.",
-                problem: "Das bleibt. Auch wenn du mal pausierst.",
-                highlight: true,
+                problem: "Das gehört dir. Es trägt dich auch in Wochen, in denen du pausierst.",
+                active: true,
               },
-            ].map((c) => (
+            ].map((c, i) => (
               <div
                 key={c.title}
                 className={
-                  "rounded-2xl p-7 sm:p-8 " +
-                  (c.highlight
-                    ? "border border-[color:var(--rose)] bg-white shadow-[0_20px_60px_-30px_rgba(26,18,9,0.35)]"
-                    : "border border-[color:var(--border)] bg-white/60")
+                  "rv border-b border-[color:var(--border)] py-9 sm:py-11 " +
+                  (i === 1 ? "d1 " : i === 2 ? "d2 " : "") +
+                  (c.active ? "" : "opacity-70")
                 }
               >
-                <p
-                  className={
-                    "eyebrow " + (c.highlight ? "text-[color:var(--rose)]" : "text-[color:var(--muted-fg)]")
-                  }
-                >
-                  {c.title}
-                </p>
-                <p className="mt-5 font-serif text-xl leading-snug text-[color:var(--ink)] sm:text-2xl">
-                  {c.tag}
-                </p>
-                <p className="mt-4 text-[15px] leading-relaxed text-[color:var(--muted-fg)]">
-                  {c.problem}
-                </p>
+                <div className="grid gap-4 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-8 md:grid-cols-[3rem_14rem_minmax(0,1fr)]">
+                  <span className="font-serif text-sm text-[color:var(--muted-fg)]">{c.n}</span>
+                  <p className="eyebrow shrink-0 text-[color:var(--muted-fg)]">{c.title}</p>
+                  <div className="min-w-0">
+                    <p
+                      className={
+                        "font-serif text-[1.5rem] font-normal leading-snug sm:text-[1.9rem] " +
+                        (c.active ? "text-[color:var(--ink)]" : "text-[color:var(--ink)]")
+                      }
+                    >
+                      {c.tag}
+                    </p>
+                    <p className="mt-3 max-w-md text-[15px] leading-relaxed text-[color:var(--muted-fg)]">
+                      {c.problem}
+                    </p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
 
-          <p className="rv d2 mt-12 text-center font-serif text-lg text-[color:var(--wine)] sm:text-xl">
+          <p className="rv d2 mt-12 font-serif text-lg leading-relaxed text-[color:var(--ink)] sm:text-xl">
             Genau dafür gibt es Creating Society.
           </p>
         </div>
       </section>
+
 
       {/* VIDEO 2 */}
       <section aria-labelledby="breakdown-heading" className="bg-[color:var(--cream)] py-20">
