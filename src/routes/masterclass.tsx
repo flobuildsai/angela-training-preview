@@ -205,7 +205,7 @@ function MasterclassPage() {
         <div className="rv d4 mt-10 flex flex-col items-center gap-3 px-5">
           <CallButton tone="cream">Strategiegespräch buchen</CallButton>
           <p className="text-xs text-[color:var(--cream)]/60 tracking-wide">
-            Kostenlos und unverbindlich. 30 bis 45 Minuten.
+            Persönlich, ohne Verkaufsdruck.
           </p>
         </div>
       </section>
@@ -453,7 +453,7 @@ function MasterclassPage() {
                 items: [
                   "Verkaufen im Content, ohne dass es sich wie Werbung anfühlt.",
                   "DMs, Storys, Kommentare und einfache Automationen.",
-                  "Ein schlanker Weg: kostenloser Einstieg, E-Mail, Angebot.",
+                  "Ein schlanker Weg: Einstieg per E-Mail, Angebot.",
                   "Erste Kundinnen, ihre Ergebnisse, die nächsten Kundinnen.",
                 ],
                 out: "Du hast Verkäufe, die sich wiederholen lassen.",
@@ -630,16 +630,16 @@ function MasterclassPage() {
           </div>
 
           <div className="rv d4 mt-14 rounded-2xl bg-white p-8 sm:p-12 border border-[color:var(--border)] text-center">
-            <h3 className="font-serif text-3xl sm:text-4xl">Kostenloses Strategiegespräch</h3>
+            <h3 className="font-serif text-3xl sm:text-4xl">Strategiegespräch</h3>
             <p className="mt-4 text-[color:var(--muted-fg)] max-w-xl mx-auto leading-relaxed">
-              30 bis 45 Minuten, unverbindlich, ohne Verkaufsdruck. Wir prüfen zuerst, ob das
-              Programm überhaupt zu deiner Situation passt.
+              Persönlich, ohne Verkaufsdruck. Wir prüfen zuerst, ob das Programm zu deiner Situation
+              passt.
             </p>
             <div className="mt-8">
               <CallButton>Strategiegespräch buchen</CallButton>
             </div>
             <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[11px] text-[color:var(--muted-fg)]">
-              {["Kostenlos", "Unverbindlich", "Persönlich", "Kein Verkaufsdruck"].map((t, i, a) => (
+              {["Persönlich", "Kein Verkaufsdruck", "Klarheit", "Nächster Schritt"].map((t, i, a) => (
                 <li key={t} className="flex items-center gap-4">
                   <span>{t}</span>
                   {i < a.length - 1 && <span className="h-3 w-px bg-[color:var(--border)]" />}
@@ -703,8 +703,8 @@ function MasterclassPage() {
                 ["Ich möchte mein Gesicht nicht zeigen. Geht das trotzdem?", "Ja. Viele unserer Konzepte funktionieren komplett faceless. Wir entwickeln gemeinsam ein Content-Format, das zu dir passt, mit oder ohne Gesicht."],
                 ["Ich habe noch keine Idee, was ich verkaufen könnte.", "Das ist der häufigste Startpunkt. In den ersten Wochen finden wir gemeinsam heraus, welches Angebot zu deinen Fähigkeiten, deiner Erfahrung und dem Bedarf deiner Zielgruppe passt, bevor du auch nur ein Video mehr produzierst."],
                 ["Wie viel Zeit brauche ich pro Woche?", "Plane realistisch 5 bis 10 Stunden pro Woche ein. Das Programm ist neben Job oder Studium machbar. Entscheidend ist nicht die Menge an Zeit, sondern dass du konsequent umsetzt."],
-                ["Was kostet Creating Society?", "Das besprechen wir im Strategiegespräch, denn zuerst prüfen wir, ob das Programm überhaupt zu deiner Ausgangslage und deinem Ziel passt. Das Gespräch selbst ist kostenlos und unverbindlich."],
-                ["Wie läuft das Strategiegespräch ab?", "Wir sprechen 30 bis 45 Minuten über deine Ausgangslage, deine Positionierung und dein mögliches Angebot. Du gehst mit Klarheit über deinen nächsten Schritt raus, unabhängig davon, ob wir zusammenarbeiten."],
+                ["Was kostet Creating Society?", "Das besprechen wir im Strategiegespräch, denn zuerst prüfen wir, ob das Programm überhaupt zu deiner Ausgangslage und deinem Ziel passt. Das Gespräch ist der erste Schritt, um zu schauen, ob wir zueinander passen."],
+                ["Wie läuft das Strategiegespräch ab?", "Wir sprechen über deine Ausgangslage, deine Positionierung und dein mögliches Angebot. Du gehst mit Klarheit über deinen nächsten Schritt raus, unabhängig davon, ob wir zusammenarbeiten."],
               ].map(([q, a], i) => (
                 <AccordionItem key={q} value={`item-${i}`} className="border-b border-[color:var(--border)]">
                   <AccordionTrigger className="text-left font-serif text-lg sm:text-xl hover:no-underline py-6">
@@ -728,7 +728,7 @@ function MasterclassPage() {
             <p className="serif-italic text-2xl text-[color:var(--rose)]">Zum Schluss</p>
             <p>Wenn du bis hierher gelesen hast, bist du vermutlich nicht auf der Suche nach dem nächsten Kurs, sondern nach etwas Eigenem.</p>
             <p>Genau darüber sprechen wir im Strategiegespräch: wo du stehst, was du anbieten könntest und ob das in den nächsten 12 Wochen realistisch ist.</p>
-            <p className="serif-italic text-[color:var(--cream)]">Kostenlos, unverbindlich, ohne Verkaufsdruck.</p>
+            <p className="serif-italic text-[color:var(--cream)]">Ohne Verkaufsdruck, mit klarem nächsten Schritt.</p>
             <p className="serif-italic">Bis gleich, Laura</p>
           </div>
           <div className="rv d1 mt-10 text-center">

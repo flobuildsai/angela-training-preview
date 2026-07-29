@@ -11,13 +11,13 @@ export const Route = createFileRoute("/call")({
       {
         name: "description",
         content:
-          "Buche ein kostenloses Strategiegespräch mit Laura: Positionierung, Angebot und der nächste konkrete Schritt für dein eigenes Business.",
+          "Buche ein Strategiegespräch mit Laura: Positionierung, Angebot und der nächste konkrete Schritt für dein eigenes Business.",
       },
       { property: "og:title", content: "Strategiegespräch buchen — Creating Society" },
       {
         property: "og:description",
         content:
-          "30 bis 45 Minuten Klarheit: wo du stehst, was du anbieten kannst und ob Creating Society der richtige nächste Schritt ist.",
+          "Klarheit: wo du stehst, was du anbieten kannst und ob Creating Society der richtige nächste Schritt ist.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -80,7 +80,7 @@ function CallPage() {
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="grid gap-12 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-6">
-              <p className="eyebrow text-[color:var(--cream)]/60">Kostenloses Strategiegespräch</p>
+              <p className="eyebrow text-[color:var(--cream)]/60">Strategiegespräch</p>
               <h1 className="mt-7 font-serif text-[2.4rem] leading-[1.02] sm:text-[3.4rem]">
                 Du brauchst nicht noch mehr gespeicherte Content-Tipps.
               </h1>
@@ -102,9 +102,8 @@ function CallPage() {
                 ))}
               </ul>
               <p className="mt-8 max-w-md text-sm leading-relaxed text-[color:var(--cream)]/55">
-                Das Gespräch dauert ungefähr 30 bis 45 Minuten. Die Zusammenarbeit ist nicht für
-                jede Person geeignet. Im Gespräch prüfen wir gemeinsam, ob deine Ziele und Creating
-                Society zueinander passen.
+                Die Zusammenarbeit ist nicht für jede Person geeignet. Im Gespräch prüfen wir
+                gemeinsam, ob deine Ziele und Creating Society zueinander passen.
               </p>
             </div>
 
