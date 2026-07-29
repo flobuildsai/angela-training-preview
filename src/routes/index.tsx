@@ -52,6 +52,34 @@ const ownership = [
   "Dein Unternehmen.",
 ];
 
+const faqs = [
+  {
+    q: "Ich habe noch keine oder kaum Reichweite. Ist das ein Problem?",
+    a: "Nein. Creating Society ist genau dafür gemacht. Du brauchst kein großes Publikum, um zu starten — du brauchst eine klare Positionierung und ein Angebot. Reichweite bauen wir gezielt mit auf, aber sie ist der Weg, nicht die Voraussetzung.",
+  },
+  {
+    q: "Ich möchte mein Gesicht nicht zeigen. Geht das trotzdem?",
+    a: "Ja. Viele unserer Konzepte funktionieren komplett faceless. Wir entwickeln gemeinsam ein Content-Format, das zu dir passt — mit oder ohne Gesicht.",
+  },
+  {
+    q: "Ich habe noch keine Idee, was ich verkaufen könnte.",
+    a: "Das ist der häufigste Startpunkt. In den ersten Wochen finden wir gemeinsam heraus, welches Angebot zu deinen Fähigkeiten, deiner Erfahrung und dem Bedarf deiner Zielgruppe passt — bevor du auch nur ein Video mehr produzierst.",
+  },
+  {
+    q: "Wie viel Zeit brauche ich pro Woche?",
+    a: "Plane realistisch 5 bis 10 Stunden pro Woche ein. Das Programm ist neben Job oder Studium machbar — entscheidend ist nicht die Menge an Zeit, sondern dass du konsequent umsetzt.",
+  },
+  {
+    q: "Was kostet Creating Society?",
+    a: "Das besprechen wir im Strategiegespräch — denn zuerst prüfen wir, ob das Programm überhaupt zu deiner Ausgangslage und deinem Ziel passt. Das Gespräch selbst ist kostenlos und unverbindlich.",
+  },
+  {
+    q: "Wie läuft das Strategiegespräch ab?",
+    a: "Wir sprechen 30 bis 45 Minuten über deine Ausgangslage, deine Positionierung und dein mögliches Angebot. Du gehst mit Klarheit über deinen nächsten Schritt raus — unabhängig davon, ob wir zusammenarbeiten.",
+  },
+];
+
+
 // Austauschbare Proof-Slots — echte Assets später hier ersetzen.
 const proofSlots = [
   { label: "Property Circle — Landingpage", img: proofA, span: "sm:col-span-7", ratio: "4 / 3" },
