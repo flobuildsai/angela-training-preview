@@ -626,21 +626,8 @@ function HomePage() {
         </footer>
       </main>
 
-      {/* Mobile Sticky CTA */}
-      <div
-        className={
-          "fixed inset-x-0 bottom-0 z-40 border-t border-[color:var(--border)] bg-[color:var(--cream)]/95 p-3 backdrop-blur-xl transition-transform duration-300 md:hidden " +
-          (past ? "translate-y-0" : "translate-y-full")
-        }
-      >
-        <Link
-          to="/call"
-          onClick={() => trackEvent("call_cta_click", { source: "mobile_bar" })}
-          className="block w-full rounded-full bg-[color:var(--wine)] px-6 py-3.5 text-center text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--cream)]"
-        >
-          Kostenloses Strategiegespräch buchen
-        </Link>
-      </div>
+
+
 
     </>
   );
