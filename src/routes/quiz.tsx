@@ -32,7 +32,7 @@ const t = {
       en: "Answer 6 quick questions and get your personal numbers — plus your 12-week plan.",
     },
     cta: { de: "Los geht's →", en: "Let's go →" },
-    micro: { de: "2 Minuten · kostenlos · keine Anmeldung", en: "2 minutes · free · no signup" },
+    micro: { de: "2 Minuten · keine Anmeldung", en: "2 minutes · no signup" },
   },
 
   qlabel: {
