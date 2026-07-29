@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import lauraPortrait from "@/assets/laura-portrait.jpg.asset.json";
 import proofAAsset from "@/assets/laura-work.jpg.asset.json";
 import proofBAsset from "@/assets/laura-walk.jpg.asset.json";
@@ -176,6 +176,29 @@ function useScrolled() {
   }, []);
   return past;
 }
+
+// Blendet ein, sobald das Ziel-Element einmal im Viewport war (bleibt dann sichtbar).
+function useSeen<T extends HTMLElement>() {
+  const ref = useRef<T | null>(null);
+  const [seen, setSeen] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setSeen(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.15 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return { ref, seen };
+}
+
 
 // ── Bausteine ─────────────────────────────────────────────────
 function CtaButton({
