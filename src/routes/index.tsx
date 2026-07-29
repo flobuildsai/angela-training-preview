@@ -313,24 +313,23 @@ function HomePage() {
         <section className="relative flex min-h-[78vh] flex-col justify-center overflow-hidden pt-14 pb-14 sm:min-h-[82vh] sm:pt-24 sm:pb-20 md:pt-28">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-3xl">
-              <h1 className="font-serif text-[3rem] font-semibold leading-[1.02] tracking-[-0.02em] text-[color:var(--ink)] sm:text-[4.4rem] lg:text-[5.2rem]">
-                Verdiene 10.000 € pro Monat mit Content.
+              <h1 className="font-serif text-[3.2rem] font-medium leading-[1.05] tracking-[-0.02em] text-[color:var(--ink)] sm:text-[4.6rem] lg:text-[5.6rem]">
+                Verdiene{" "}
+                <span className="whitespace-nowrap">10.000 €</span>{" "}
+                pro Monat mit Content.
               </h1>
-              <p className="serif-italic mt-5 text-[1.35rem] leading-[1.25] text-[color:var(--ink)] sm:mt-6 sm:text-[1.85rem] lg:text-[2.1rem]">
+              <p className="serif-italic mt-6 text-[1.35rem] leading-[1.25] text-[color:var(--ink)] sm:mt-7 sm:text-[1.85rem] lg:text-[2.1rem]">
                 Ohne große Reichweite. Ohne fertige Idee.
               </p>
-              <p className="mt-7 max-w-xl text-[1.02rem] leading-[1.7] text-[color:var(--muted-fg)] sm:mt-8">
+              <p className="mt-8 max-w-xl text-[1.02rem] leading-[1.7] text-[color:var(--muted-fg)] sm:mt-9">
                 Du postest schon. Du bekommst Likes. Aber das Geld kommt nicht, weil hinter deinem
                 Content noch kein echtes Angebot steht. Ich zeige dir, wie du aus deiner
                 Aufmerksamkeit ein eigenes Business baust, das dir wirklich gehört.
               </p>
-              <div className="mt-10 sm:mt-12">
+              <div className="mt-11 sm:mt-12">
                 <CtaButton source="hero" className="w-full sm:w-auto">
                   Strategiegespräch buchen
                 </CtaButton>
-                <p className="mt-4 text-[0.8rem] tracking-wide text-[color:var(--muted-fg)]">
-                  Kostenlos und unverbindlich, 30 bis 45 Minuten.
-                </p>
               </div>
             </div>
           </div>
