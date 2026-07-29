@@ -6,6 +6,13 @@ import proofB from "@/assets/hero.jpg";
 import proofC from "@/assets/avatar.jpg";
 import logoDark from "@/assets/logo-dark.png";
 import { trackEvent } from "@/lib/track";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 
 
 export const Route = createFileRoute("/")({
