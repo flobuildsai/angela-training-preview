@@ -242,87 +242,63 @@ function MasterclassPage() {
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="rv max-w-3xl">
             <SectionIndex index="02" label="Der Unterschied" />
-            <h2 id="difference-heading" className="mt-6 font-serif text-[2.1rem] sm:text-5xl leading-[1.06] tracking-tight">
-              Drei Wege, mit Content Geld zu verdienen.
+            <h2
+              id="difference-heading"
+              className="mt-6 font-serif text-[2.1rem] leading-[1.06] tracking-tight sm:text-5xl"
+            >
+              Es gibt drei Wege, mit Content Geld zu verdienen.{" "}
+              <span className="serif-italic text-[color:var(--rose)]">Zwei davon lassen dich abhängig.</span>
             </h2>
-            <p className="mt-3 serif-italic text-[color:var(--rose)] text-xl sm:text-2xl">Nur einer davon gehört dir.</p>
           </div>
 
-          {/* Desktop */}
-          <div className="rv d1 mt-14 hidden md:block overflow-hidden rounded-2xl border border-[color:var(--border)] bg-white">
-            <table className="w-full text-left text-[15px]">
-              <thead>
-                <tr className="border-b border-[color:var(--border)] text-[color:var(--muted-fg)]">
-                  <th className="p-5 font-normal w-1/4"></th>
-                  <th className="p-5 font-normal eyebrow">Reichweiten-Kurse</th>
-                  <th className="p-5 font-normal eyebrow">Kooperationen</th>
-                  <th className="p-5 font-serif text-base text-[color:var(--cream)] bg-[color:var(--rose)]">Creating Society</th>
-                </tr>
-              </thead>
-              <tbody className="text-[color:var(--ink)]/85">
-                {[
-                  ["Was du lernst", "Wie du mehr Views bekommst", "Wie du Marken zufriedenstellst", "Wie du ein eigenes Angebot baust und verkaufst"],
-                  ["Was dir am Ende gehört", "Nichts", "Nichts", "Dein Angebot, deine Community, deine Kundinnen"],
-                  ["Wovon du abhängig bist", "Vom Algorithmus", "Von Budgets anderer", "Von deinem eigenen Angebot"],
-                  ["Wie du bezahlt wirst", "Wenn eine Marke dich entdeckt", "Einmal pro Kooperation", "Jedes Mal, wenn jemand kauft"],
-                  ["Wenn du pausierst", "Es hört auf", "Es hört auf", "Dein Angebot verkauft weiter"],
-                ].map((row) => (
-                  <tr key={row[0]} className="border-b border-[color:var(--border)] last:border-0 align-top">
-                    <td className="p-5 text-[color:var(--muted-fg)] eyebrow">{row[0]}</td>
-                    <td className="p-5">{row[1]}</td>
-                    <td className="p-5">{row[2]}</td>
-                    <td className="p-5 bg-[color:var(--rose)]/5 border-l-2 border-[color:var(--rose)] font-medium">{row[3]}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Mobile */}
-          <div className="rv d1 mt-10 md:hidden space-y-4">
+          <div className="rv d1 mt-14 grid gap-5 md:grid-cols-3">
             {[
-              { title: "Reichweiten-Kurse", elevated: false, rows: [
-                ["Was du lernst", "Wie du mehr Views bekommst"],
-                ["Was dir gehört", "Nichts"],
-                ["Abhängig von", "Dem Algorithmus"],
-                ["Wenn du pausierst", "Es hört auf"],
-              ]},
-              { title: "Kooperationen", elevated: false, rows: [
-                ["Was du lernst", "Wie du Marken zufriedenstellst"],
-                ["Was dir gehört", "Nichts"],
-                ["Abhängig von", "Budgets anderer"],
-                ["Wenn du pausierst", "Es hört auf"],
-              ]},
-              { title: "Creating Society", elevated: true, rows: [
-                ["Was du lernst", "Wie du ein eigenes Angebot baust und verkaufst"],
-                ["Was dir gehört", "Dein Angebot, deine Community, deine Kundinnen"],
-                ["Abhängig von", "Deinem eigenen Angebot"],
-                ["Wenn du pausierst", "Dein Angebot verkauft weiter"],
-              ]},
+              {
+                title: "Reichweiten-Kurse",
+                tag: "Du lernst, wie du mehr Views bekommst.",
+                problem: "Aber wenn du aufhörst, hast du nichts.",
+                highlight: false,
+              },
+              {
+                title: "Kooperationen",
+                tag: "Du bekommst Geld für deine Reichweite.",
+                problem: "Aber wenn die Marken weg sind, ist das Geld weg.",
+                highlight: false,
+              },
+              {
+                title: "Creating Society",
+                tag: "Du baust ein eigenes Angebot.",
+                problem: "Das bleibt. Auch wenn du mal pausierst.",
+                highlight: true,
+              },
             ].map((c) => (
               <div
                 key={c.title}
                 className={
-                  "rounded-2xl p-6 " +
-                  (c.elevated
-                    ? "bg-white border-l-4 border-[color:var(--rose)] shadow-[0_20px_60px_-30px_rgba(26,18,9,0.35)]"
-                    : "bg-white/60 border border-[color:var(--border)]")
+                  "rounded-2xl p-7 sm:p-8 " +
+                  (c.highlight
+                    ? "border border-[color:var(--rose)] bg-white shadow-[0_20px_60px_-30px_rgba(26,18,9,0.35)]"
+                    : "border border-[color:var(--border)] bg-white/60")
                 }
               >
-                <h3 className={"font-serif text-2xl " + (c.elevated ? "text-[color:var(--wine)]" : "text-[color:var(--muted-fg)]")}>{c.title}</h3>
-                <dl className="mt-4 space-y-3">
-                  {c.rows.map(([k, v]) => (
-                    <div key={k}>
-                      <dt className="eyebrow text-[color:var(--muted-fg)]">{k}</dt>
-                      <dd className="mt-1 text-[15px] text-[color:var(--ink)]/85">{v}</dd>
-                    </div>
-                  ))}
-                </dl>
+                <p
+                  className={
+                    "eyebrow " + (c.highlight ? "text-[color:var(--rose)]" : "text-[color:var(--muted-fg)]")
+                  }
+                >
+                  {c.title}
+                </p>
+                <p className="mt-5 font-serif text-xl leading-snug text-[color:var(--ink)] sm:text-2xl">
+                  {c.tag}
+                </p>
+                <p className="mt-4 text-[15px] leading-relaxed text-[color:var(--muted-fg)]">
+                  {c.problem}
+                </p>
               </div>
             ))}
           </div>
 
-          <p className="rv d2 mt-10 text-center serif-italic text-lg text-[color:var(--wine)]">
+          <p className="rv d2 mt-12 text-center font-serif text-lg text-[color:var(--wine)] sm:text-xl">
             Genau dafür gibt es Creating Society.
           </p>
         </div>
