@@ -261,8 +261,8 @@ function HomePage() {
           <div className="pointer-events-none absolute inset-0 hero-glow" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-4xl">
-              <p className="eyebrow text-[color:var(--rose)]">Creating Society</p>
-              <h1 className="mt-8 font-serif text-[3.1rem] leading-[0.92] tracking-tight text-[color:var(--ink)] sm:text-7xl lg:text-[6.5rem]">
+              <h1 className="font-serif text-[3.1rem] leading-[0.92] tracking-tight text-[color:var(--ink)] sm:text-7xl lg:text-[6.5rem]">
+
                 Werde nicht nur gesehen.
                 <br />
                 <span className="serif-italic">Bau etwas Eigenes daraus.</span>
