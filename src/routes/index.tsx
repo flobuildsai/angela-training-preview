@@ -5,6 +5,10 @@ import proofAAsset from "@/assets/laura-work.jpg.asset.json";
 import proofBAsset from "@/assets/laura-walk.jpg.asset.json";
 import proofCAsset from "@/assets/laura-mykonos.jpg.asset.json";
 import proofDAsset from "@/assets/laura-villa.jpg.asset.json";
+import proofStatsAsset from "@/assets/proof-stats.jpeg.asset.json";
+import proofGridAsset from "@/assets/proof-grid.jpeg.asset.json";
+import proofViews7mAsset from "@/assets/proof-views-7m.jpeg.asset.json";
+import proofViews15mAsset from "@/assets/proof-views-15m.jpeg.asset.json";
 
 const lauraImg = lauraPortrait.url;
 const lifestyleShots = [
@@ -91,15 +95,22 @@ const faqs = [
 ];
 
 
-// Editorial-Collage: echte Aufnahmen.
-const proofSlots: { label: string; img: string | null; span: string; ratio: string }[] = [
-  // img später einfach mit importiertem Screenshot befüllen
-  { label: "Follower-Wachstum", img: null, span: "sm:col-span-7", ratio: "4 / 3" },
-  { label: "Anfragen & Leads", img: null, span: "sm:col-span-5", ratio: "3 / 4" },
-  { label: "Sales & Umsätze", img: null, span: "sm:col-span-7", ratio: "4 / 3" },
-  { label: "Content-Performance", img: null, span: "sm:col-span-5", ratio: "1 / 1" },
+// Editorial-Collage: echte Screenshots aus Lauras Accounts.
+const proofSlots: {
+  label: string;
+  img: string | null;
+  span: string;
+  ratio: string;
+  fit: "cover" | "contain";
+}[] = [
+  { label: "Content-Performance", img: proofStatsAsset.url, span: "sm:col-span-7", ratio: "12 / 7", fit: "contain" },
+  { label: "Reels-Reichweite", img: proofGridAsset.url, span: "sm:col-span-5", ratio: "3 / 4", fit: "cover" },
+  { label: "Views eines Formats", img: proofViews7mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
+  { label: "Reichweite außerhalb der Follower", img: proofViews15mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
+  { label: "Sales & Umsätze", img: null, span: "sm:col-span-12", ratio: "16 / 4", fit: "cover" },
 
 ];
+
 
 
 const build = [
@@ -478,7 +489,15 @@ function HomePage() {
                     style={{ aspectRatio: slot.ratio }}
                   >
                     {slot.img ? (
-                      <img src={slot.img} alt={slot.label} className="h-full w-full object-cover" />
+                      <img
+                        src={slot.img}
+                        alt={slot.label}
+                        loading="lazy"
+                        className={
+                          "h-full w-full " +
+                          (slot.fit === "contain" ? "object-contain p-3 sm:p-5" : "object-cover")
+                        }
+                      />
                     ) : (
                       <div className="grid h-full w-full place-items-center px-6 text-center">
                         <span className="eyebrow text-[color:var(--muted-fg)]">
@@ -486,6 +505,7 @@ function HomePage() {
                         </span>
                       </div>
                     )}
+
 
                   </div>
                   <figcaption className="mt-3 text-[0.72rem] uppercase tracking-[0.16em] text-[color:var(--muted-fg)]">
