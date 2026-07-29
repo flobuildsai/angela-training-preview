@@ -29,7 +29,7 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Creating Society — Verdiene mit Content und deinem eigenen Offer" },
+      { title: "Creating Society | Verdiene mit Content und deinem eigenen Offer" },
       {
         name: "description",
         content:
@@ -37,7 +37,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "Creating Society — Verdiene mit Content und deinem eigenen Offer",
+        content: "Creating Society | Verdiene mit Content und deinem eigenen Offer",
       },
       {
         property: "og:description",
@@ -66,32 +66,32 @@ const ownership = [
 const faqs = [
   {
     q: "Ich habe noch keine oder kaum Reichweite. Ist das ein Problem?",
-    a: "Nein. Creating Society ist genau dafür gemacht. Du brauchst kein großes Publikum, um zu starten — du brauchst eine klare Positionierung und ein Angebot. Reichweite bauen wir gezielt mit auf, aber sie ist der Weg, nicht die Voraussetzung.",
+    a: "Nein. Creating Society ist genau dafür gemacht. Du brauchst kein großes Publikum, um zu starten. Du brauchst eine klare Positionierung und ein Angebot. Reichweite bauen wir gezielt mit auf, aber sie ist der Weg, nicht die Voraussetzung.",
   },
   {
     q: "Ich möchte mein Gesicht nicht zeigen. Geht das trotzdem?",
-    a: "Ja. Viele unserer Konzepte funktionieren komplett faceless. Wir entwickeln gemeinsam ein Content-Format, das zu dir passt — mit oder ohne Gesicht.",
+    a: "Ja. Viele unserer Konzepte funktionieren komplett faceless. Wir entwickeln gemeinsam ein Content-Format, das zu dir passt, mit oder ohne Gesicht.",
   },
   {
     q: "Ich habe noch keine Idee, was ich verkaufen könnte.",
-    a: "Das ist der häufigste Startpunkt. In den ersten Wochen finden wir gemeinsam heraus, welches Angebot zu deinen Fähigkeiten, deiner Erfahrung und dem Bedarf deiner Zielgruppe passt — bevor du auch nur ein Video mehr produzierst.",
+    a: "Das ist der häufigste Startpunkt. In den ersten Wochen finden wir gemeinsam heraus, welches Angebot zu deinen Fähigkeiten, deiner Erfahrung und dem Bedarf deiner Zielgruppe passt, bevor du auch nur ein Video mehr produzierst.",
   },
   {
     q: "Wie viel Zeit brauche ich pro Woche?",
-    a: "Plane realistisch 5 bis 10 Stunden pro Woche ein. Das Programm ist neben Job oder Studium machbar — entscheidend ist nicht die Menge an Zeit, sondern dass du konsequent umsetzt.",
+    a: "Plane realistisch 5 bis 10 Stunden pro Woche ein. Das Programm ist neben Job oder Studium machbar. Entscheidend ist nicht die Menge an Zeit, sondern dass du konsequent umsetzt.",
   },
   {
     q: "Was kostet Creating Society?",
-    a: "Das besprechen wir im Strategiegespräch — denn zuerst prüfen wir, ob das Programm überhaupt zu deiner Ausgangslage und deinem Ziel passt. Das Gespräch selbst ist kostenlos und unverbindlich.",
+    a: "Das besprechen wir im Strategiegespräch, denn zuerst prüfen wir, ob das Programm überhaupt zu deiner Ausgangslage und deinem Ziel passt. Das Gespräch selbst ist kostenlos und unverbindlich.",
   },
   {
     q: "Wie läuft das Strategiegespräch ab?",
-    a: "Wir sprechen 30 bis 45 Minuten über deine Ausgangslage, deine Positionierung und dein mögliches Angebot. Du gehst mit Klarheit über deinen nächsten Schritt raus — unabhängig davon, ob wir zusammenarbeiten.",
+    a: "Wir sprechen 30 bis 45 Minuten über deine Ausgangslage, deine Positionierung und dein mögliches Angebot. Du gehst mit Klarheit über deinen nächsten Schritt raus, unabhängig davon, ob wir zusammenarbeiten.",
   },
 ];
 
 
-// Editorial-Collage — echte Aufnahmen.
+// Editorial-Collage: echte Aufnahmen.
 const proofSlots: { label: string; img: string | null; span: string; ratio: string }[] = [
   // img später einfach mit importiertem Screenshot befüllen
   { label: "Follower-Wachstum", img: null, span: "sm:col-span-7", ratio: "4 / 3" },
@@ -266,16 +266,16 @@ function HomePage() {
         <section className="relative overflow-hidden pt-32 pb-12 sm:pt-44 md:pt-52 md:pb-20">
           <div className="pointer-events-none absolute inset-0 hero-glow" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <div className="rv max-w-4xl">
-              <h1 className="font-serif text-[2.35rem] leading-[0.99] tracking-tight text-[color:var(--ink)] sm:text-6xl lg:text-[5.5rem]">
+            <div className="rv max-w-3xl">
+              <h1 className="font-serif text-[2.1rem] font-normal leading-[1.08] tracking-[-0.01em] text-[color:var(--ink)] sm:text-[3.1rem] lg:text-[4rem]">
                 Verdiene 10.000&nbsp;€ im Monat mit Content.
-                <br />
+                <br className="hidden sm:block" />{" "}
                 <span className="serif-italic">Ohne große Reichweite. Ohne fertige Idee.</span>
               </h1>
-              <p className="mt-8 max-w-lg text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)] sm:mt-10">
+              <p className="mt-6 max-w-md text-[0.98rem] leading-[1.75] text-[color:var(--muted-fg)] sm:mt-8">
                 Die meisten denken, du brauchst zehntausende Follower, bevor du mit Content Geld
                 verdienen kannst. Brauchst du nicht. Ich zeige dir, wie du dein eigenes Offer baust
-                und deine ersten zahlenden Kundinnen gewinnst — in den nächsten 12 Wochen.
+                und deine ersten zahlenden Kundinnen gewinnst, in den nächsten 12 Wochen.
               </p>
               <div className="mt-8 sm:mt-10">
                 <CtaButton source="hero" className="w-full sm:w-auto">
@@ -437,7 +437,7 @@ function HomePage() {
                 </p>
                 <p>
                   Ich habe Content genutzt, um in kurzer Zeit Follower, Anfragen und zahlende
-                  Kundinnen zu gewinnen — organisch, ohne großes Startpublikum.
+                  Kundinnen zu gewinnen, organisch, ohne großes Startpublikum.
                 </p>
 
                 <p className="text-[color:var(--ink)]">
@@ -535,7 +535,7 @@ function HomePage() {
               id="offer-title"
               className="rv mt-6 max-w-4xl font-serif text-[2.4rem] leading-[1.04] tracking-tight text-[color:var(--ink)] sm:text-6xl"
             >
-              In 12 Wochen von der Idee zum eigenen Angebot —{" "}
+              In 12 Wochen von der Idee zum eigenen Angebot,{" "}
               <span className="serif-italic">mit deinen ersten zahlenden Kundinnen.</span>
             </h2>
             <p className="rv d1 mt-8 max-w-2xl text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
@@ -546,9 +546,9 @@ function HomePage() {
 
             <ul className="rv d2 mt-14 border-t border-[color:var(--border)]">
               {[
-                "Woche 1–4 — Positionierung & Angebot: Du weißt, wofür du stehst und was du verkaufst.",
-                "Woche 5–8 — Content & Nachfrage: Dein Content erzeugt gezielt Anfragen statt nur Views.",
-                "Woche 9–12 — Verkauf & erste Kundinnen: Du gewinnst deine ersten zahlenden Kundinnen.",
+                "Woche 1–4, Positionierung & Angebot: Du weißt, wofür du stehst und was du verkaufst.",
+                "Woche 5–8, Content & Nachfrage: Dein Content erzeugt gezielt Anfragen statt nur Views.",
+                "Woche 9–12, Verkauf & erste Kundinnen: Du gewinnst deine ersten zahlenden Kundinnen.",
               ].map((item) => (
                 <li
                   key={item}
@@ -560,7 +560,7 @@ function HomePage() {
             </ul>
 
             <p className="rv d3 mt-10 max-w-xl text-sm leading-relaxed text-[color:var(--muted-fg)]">
-              Funktioniert auch ohne große Reichweite — und auf Wunsch komplett faceless.
+              Funktioniert auch ohne große Reichweite, und auf Wunsch komplett faceless.
             </p>
 
             <div className="rv d4 mt-10">
