@@ -29,20 +29,20 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Creating Society — Bau ein Business aus deinem Content" },
+      { title: "Creating Society — Verdiene mit Content und deinem eigenen Offer" },
       {
         name: "description",
         content:
-          "Creating Society hilft Frauen dabei, mit Content Aufmerksamkeit aufzubauen – und daraus eine eigene Marke, ein Angebot und ein Business zu entwickeln.",
+          "Creating Society hilft Frauen, ein eigenes Offer aus ihrem Content zu bauen – ohne große Reichweite und ohne fertige Idee. Melde dich für ein kostenloses Strategiegespräch.",
       },
       {
         property: "og:title",
-        content: "Creating Society — Bau ein Business aus deinem Content",
+        content: "Creating Society — Verdiene mit Content und deinem eigenen Offer",
       },
       {
         property: "og:description",
         content:
-          "Für Frauen, die nicht nur posten, sondern etwas Eigenes aufbauen wollen. Kostenloses Strategiegespräch buchen.",
+          "Für Frauen, die aus ihrer Sichtbarkeit ein eigenes Business aufbauen wollen. Kostenloses Strategiegespräch buchen.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
