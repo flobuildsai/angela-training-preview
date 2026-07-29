@@ -13,6 +13,8 @@ import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as WaitlistRouteImport } from './routes/waitlist'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as MasterclassRouteImport } from './routes/masterclass'
+import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CallRouteImport } from './routes/call'
 import { Route as ApplyRouteImport } from './routes/apply'
@@ -36,6 +38,16 @@ const QuizRoute = QuizRouteImport.update({
 const MasterclassRoute = MasterclassRouteImport.update({
   id: '/masterclass',
   path: '/masterclass',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpressumRoute = ImpressumRouteImport.update({
+  id: '/impressum',
+  path: '/impressum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DatenschutzRoute = DatenschutzRouteImport.update({
+  id: '/datenschutz',
+  path: '/datenschutz',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutRoute = CheckoutRouteImport.update({
@@ -64,6 +76,8 @@ export interface FileRoutesByFullPath {
   '/apply': typeof ApplyRoute
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
+  '/datenschutz': typeof DatenschutzRoute
+  '/impressum': typeof ImpressumRoute
   '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
   '/waitlist': typeof WaitlistRoute
@@ -74,6 +88,8 @@ export interface FileRoutesByTo {
   '/apply': typeof ApplyRoute
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
+  '/datenschutz': typeof DatenschutzRoute
+  '/impressum': typeof ImpressumRoute
   '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
   '/waitlist': typeof WaitlistRoute
@@ -85,6 +101,8 @@ export interface FileRoutesById {
   '/apply': typeof ApplyRoute
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
+  '/datenschutz': typeof DatenschutzRoute
+  '/impressum': typeof ImpressumRoute
   '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
   '/waitlist': typeof WaitlistRoute
@@ -97,6 +115,8 @@ export interface FileRouteTypes {
     | '/apply'
     | '/call'
     | '/checkout'
+    | '/datenschutz'
+    | '/impressum'
     | '/masterclass'
     | '/quiz'
     | '/waitlist'
@@ -107,6 +127,8 @@ export interface FileRouteTypes {
     | '/apply'
     | '/call'
     | '/checkout'
+    | '/datenschutz'
+    | '/impressum'
     | '/masterclass'
     | '/quiz'
     | '/waitlist'
@@ -117,6 +139,8 @@ export interface FileRouteTypes {
     | '/apply'
     | '/call'
     | '/checkout'
+    | '/datenschutz'
+    | '/impressum'
     | '/masterclass'
     | '/quiz'
     | '/waitlist'
@@ -128,6 +152,8 @@ export interface RootRouteChildren {
   ApplyRoute: typeof ApplyRoute
   CallRoute: typeof CallRoute
   CheckoutRoute: typeof CheckoutRoute
+  DatenschutzRoute: typeof DatenschutzRoute
+  ImpressumRoute: typeof ImpressumRoute
   MasterclassRoute: typeof MasterclassRoute
   QuizRoute: typeof QuizRoute
   WaitlistRoute: typeof WaitlistRoute
@@ -162,6 +188,20 @@ declare module '@tanstack/react-router' {
       path: '/masterclass'
       fullPath: '/masterclass'
       preLoaderRoute: typeof MasterclassRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impressum': {
+      id: '/impressum'
+      path: '/impressum'
+      fullPath: '/impressum'
+      preLoaderRoute: typeof ImpressumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/datenschutz': {
+      id: '/datenschutz'
+      path: '/datenschutz'
+      fullPath: '/datenschutz'
+      preLoaderRoute: typeof DatenschutzRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout': {
@@ -200,6 +240,8 @@ const rootRouteChildren: RootRouteChildren = {
   ApplyRoute: ApplyRoute,
   CallRoute: CallRoute,
   CheckoutRoute: CheckoutRoute,
+  DatenschutzRoute: DatenschutzRoute,
+  ImpressumRoute: ImpressumRoute,
   MasterclassRoute: MasterclassRoute,
   QuizRoute: QuizRoute,
   WaitlistRoute: WaitlistRoute,

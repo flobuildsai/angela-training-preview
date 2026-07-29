@@ -89,11 +89,13 @@ const faqs = [
 
 
 // Editorial-Collage — echte Aufnahmen.
-const proofSlots = [
-  { label: "Arbeiten von überall", img: proofA, span: "sm:col-span-7", ratio: "4 / 3" },
-  { label: "Unterwegs", img: proofB, span: "sm:col-span-5", ratio: "3 / 4" },
-  { label: "Zwischen zwei Calls", img: proofC, span: "sm:col-span-5", ratio: "1 / 1" },
-  { label: "Der Blick, für den es sich lohnt", img: proofD, span: "sm:col-span-7", ratio: "16 / 10" },
+const proofSlots: { label: string; img: string | null; span: string; ratio: string }[] = [
+  // img später einfach mit importiertem Screenshot befüllen
+  { label: "Follower-Wachstum", img: null, span: "sm:col-span-7", ratio: "4 / 3" },
+  { label: "Anfragen & Leads", img: null, span: "sm:col-span-5", ratio: "3 / 4" },
+  { label: "Sales & Umsätze", img: null, span: "sm:col-span-7", ratio: "4 / 3" },
+  { label: "Content-Performance", img: null, span: "sm:col-span-5", ratio: "1 / 1" },
+
 ];
 
 
