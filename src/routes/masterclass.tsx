@@ -19,7 +19,7 @@ export const Route = createFileRoute("/masterclass")({
       {
         name: "description",
         content:
-          "Die Masterclass von Laura: Wie du aus deinem Content ein eigenes Angebot baust, ohne große Reichweite und ohne fertige Idee. Kostenloses Strategiegespräch buchen.",
+          "Die Masterclass von Laura: Wie du aus deinem Content ein eigenes Angebot baust, ohne große Reichweite und ohne fertige Idee. Strategiegespräch für den Early Access buchen.",
       },
       { property: "og:title", content: "Masterclass | Creating Society" },
       {
@@ -170,6 +170,22 @@ function CallButton({ children, tone = "wine" }: { children: React.ReactNode; to
   );
 }
 
+function StoryImage({ src, alt, caption }: { src: string; alt: string; caption: string }) {
+  return (
+    <figure className="rv my-12">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="w-full aspect-[4/3] sm:aspect-[16/10] object-cover rounded-2xl"
+      />
+      <figcaption className="mt-3 serif-italic text-[15px] text-[color:var(--muted-fg)]">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
 function MasterclassPage() {
   useReveal();
   const { progress, pastHero } = useScrollState();
@@ -182,30 +198,29 @@ function MasterclassPage() {
       {/* HERO + VIDEO 1 */}
       <section
         aria-labelledby="hero-heading"
-        className="relative bg-[color:var(--wine)] text-[color:var(--cream)] pt-28 pb-24 sm:pt-32 sm:pb-28 overflow-hidden grain"
+        className="relative bg-[color:var(--wine)] text-[color:var(--cream)] pt-28 pb-20 sm:pt-32 sm:pb-24 overflow-hidden grain"
       >
-        <div className="relative mx-auto max-w-[820px] px-5 sm:px-8 text-center">
+        <div className="relative mx-auto max-w-[780px] px-5 sm:px-8 text-center">
           <p className="rv eyebrow text-[color:var(--cream)]/60">Die Masterclass</p>
           <h1
             id="hero-heading"
             className="rv d1 mt-6 font-serif text-[2.4rem] sm:text-5xl md:text-6xl leading-[1.05] tracking-tight"
           >
-            Verdiene 10.000&nbsp;€ im Monat mit Content.
+            Mach aus deinem Content ein eigenes Angebot.
           </h1>
-          <p className="rv d2 mt-6 serif-italic text-lg sm:text-xl text-[color:var(--cream)]/75 max-w-[560px] mx-auto leading-relaxed">
-            Ohne große Reichweite. Ohne fertige Idee. Ohne dein Gesicht zeigen zu müssen, wenn du
-            das nicht willst.
+          <p className="rv d2 mt-5 serif-italic text-lg sm:text-xl text-[color:var(--cream)]/75 max-w-[520px] mx-auto leading-relaxed">
+            Auch ohne große Reichweite, ohne fertige Idee und ohne dein Gesicht zu zeigen.
           </p>
         </div>
 
-        <div className="rv d3 relative mx-auto max-w-4xl px-5 sm:px-8 mt-12">
+        <div className="rv d3 relative mx-auto max-w-4xl px-5 sm:px-8 mt-10">
           <VideoBlock videoId="hero-1" label="Video 1 · Starte hier" />
         </div>
 
-        <div className="rv d4 mt-10 flex flex-col items-center gap-3 px-5">
+        <div className="rv d4 mt-9 flex flex-col items-center gap-3 px-5">
           <CallButton tone="cream">Strategiegespräch buchen</CallButton>
           <p className="text-xs text-[color:var(--cream)]/60 tracking-wide">
-            Persönlich, ohne Verkaufsdruck.
+            Early Access, begrenzte Plätze in der ersten Gruppe.
           </p>
         </div>
       </section>
@@ -213,7 +228,7 @@ function MasterclassPage() {
       <Marquee />
 
       {/* 01 — PROBLEM */}
-      <section aria-labelledby="problem-heading" className="bg-[color:var(--cream)] pt-28 pb-24 md:pt-36">
+      <section aria-labelledby="problem-heading" className="bg-[color:var(--cream)] py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-5 sm:px-8 grid md:grid-cols-12 gap-12 md:gap-16 items-start">
           <div className="rv md:col-span-5">
             <SectionIndex index="01" label="Das Problem" />
@@ -226,9 +241,15 @@ function MasterclassPage() {
             </h2>
           </div>
           <div className="rv d1 md:col-span-7 md:pl-4 space-y-5 text-[color:var(--muted-fg)] leading-relaxed text-[15px] sm:text-base">
-            <p>Du siehst andere, die mit Content ein Business aufbauen. Aber dir fehlt der Plan, wie du überhaupt anfängst: welche Formate funktionieren, wie du die richtige Zielgruppe erreichst und wie du dich ohne Algorithmus-Glück sichtbar machst.</p>
-            <p>Und selbst wenn du schon postest: Views und Likes sind kein Geschäft. Ohne ein klares Angebot dahinter bleibt Aufmerksamkeit nur Arbeit, die dich deine Abende kostet.</p>
-            <p>Die Frauen, die mit Content Geld verdienen, sind nicht talentierter als du. Sie hatten nur einen Plan: eine Positionierung, ein Angebot und eine Strategie, wie sie beides verbinden.</p>
+            <p>
+              Vielleicht postest du schon und fragst dich, warum daraus kein Einkommen wird.
+              Vielleicht willst du starten und weißt nicht, wofür du überhaupt stehen sollst.
+              Beides ist derselbe Punkt: Es fehlt nicht an Ideen, es fehlt an einem Plan.
+            </p>
+            <p>
+              Views sind kein Geschäft. Erst wenn hinter der Aufmerksamkeit ein klares Angebot
+              steht, wird aus Arbeit ein Business.
+            </p>
             <blockquote className="mt-8 border-l-2 border-[color:var(--rose)] pl-6 py-2 serif-italic text-[color:var(--ink)] text-xl leading-snug">
               Ich hatte Millionen Views im Monat und kaum Einkommen daraus. Verändert hat sich erst
               etwas, als ich angefangen habe, etwas Eigenes dahinter zu bauen.
@@ -237,92 +258,65 @@ function MasterclassPage() {
         </div>
       </section>
 
-      {/* 02 — VERGLEICH */}
-      <section aria-labelledby="difference-heading" className="bg-[color:var(--bg)] py-24 md:py-32">
-        <div className="mx-auto max-w-5xl px-5 sm:px-8">
+      {/* 02 — WAS DU BEKOMMST */}
+      <section aria-labelledby="inside-heading" className="bg-[color:var(--bg)] py-24 md:py-28">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="rv max-w-3xl">
-            <SectionIndex index="02" label="Der Unterschied" />
-            <h2
-              id="difference-heading"
-              className="mt-6 font-serif text-[2rem] font-normal leading-[1.1] tracking-tight sm:text-[2.9rem]"
-            >
-              Drei Wege, mit Content Geld zu verdienen.{" "}
-              <span className="serif-italic text-[color:var(--muted-fg)]">
-                Zwei davon machen dich abhängig.
-              </span>
+            <SectionIndex index="02" label="Was du bekommst" />
+            <h2 id="inside-heading" className="mt-6 font-serif text-[2.1rem] sm:text-5xl leading-[1.05] tracking-tight">
+              Struktur, Begleitung{" "}
+              <span className="serif-italic text-[color:var(--rose)]">und Werkzeuge.</span>
             </h2>
           </div>
 
-          <div className="mt-16 border-t border-[color:var(--border)]">
+          <div className="mt-14 grid md:grid-cols-3 gap-10 md:gap-12">
             {[
-              {
-                n: "01",
-                title: "Reichweiten-Kurse",
-                tag: "Du lernst, wie du mehr Views bekommst.",
-                problem: "Sobald du aufhörst zu posten, bleibt nichts davon übrig.",
-                active: false,
-              },
-              {
-                n: "02",
-                title: "Kooperationen",
-                tag: "Du bekommst Geld für deine Reichweite.",
-                problem: "Sind die Marken weg, ist auch das Einkommen weg.",
-                active: false,
-              },
-              {
-                n: "03",
-                title: "Creating Society",
-                tag: "Du baust ein eigenes Angebot.",
-                problem: "Das gehört dir. Es trägt dich auch in Wochen, in denen du pausierst.",
-                active: true,
-              },
-            ].map((c, i) => (
-              <div
-                key={c.title}
-                className={
-                  "rv border-b border-[color:var(--border)] py-9 sm:py-11 " +
-                  (i === 1 ? "d1 " : i === 2 ? "d2 " : "") +
-                  (c.active ? "" : "opacity-70")
-                }
-              >
-                <div className="grid gap-4 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-8 md:grid-cols-[3rem_14rem_minmax(0,1fr)]">
-                  <span className="font-serif text-sm text-[color:var(--muted-fg)]">{c.n}</span>
-                  <p className="eyebrow shrink-0 text-[color:var(--muted-fg)]">{c.title}</p>
-                  <div className="min-w-0">
-                    <p
-                      className={
-                        "font-serif text-[1.5rem] font-normal leading-snug sm:text-[1.9rem] " +
-                        (c.active ? "text-[color:var(--ink)]" : "text-[color:var(--ink)]")
-                      }
-                    >
-                      {c.tag}
-                    </p>
-                    <p className="mt-3 max-w-md text-[15px] leading-relaxed text-[color:var(--muted-fg)]">
-                      {c.problem}
-                    </p>
-                  </div>
-                </div>
+              { label: "Das System", items: [
+                ["Die TCS-Methode", "Positionierung, Content, Angebot, Verkauf, in der Reihenfolge, die funktioniert"],
+                ["Faceless möglich", "der komplette Weg, ohne dass du dein Gesicht zeigen musst"],
+                ["12-Wochen-Fahrplan", "du weißt jede Woche, was zu tun ist"],
+              ]},
+              { label: "Die Begleitung", items: [
+                ["Direktes Feedback von mir", "zu deiner Positionierung, deinem Content und deinem Angebot"],
+                ["Die Community", "Frauen, die im selben Zeitraum dasselbe aufbauen"],
+                ["Live Calls", "bring die Stelle mit, an der du feststeckst"],
+              ]},
+              { label: "Die Werkzeuge", items: [
+                ["Vorlagen", "Hooks, Reel-Skripte, Verkaufsseite, E-Mail-Sequenzen, Preisrechner"],
+                ["Prozesse", "damit Content, Angebot und Verkauf ineinandergreifen"],
+                ["Updates", "alles, was wir weiterentwickeln, bekommst du mit"],
+              ]},
+            ].map((cluster) => (
+              <div key={cluster.label} className="rv">
+                <p className="eyebrow text-[color:var(--rose)]">{cluster.label}</p>
+                <ul className="mt-6 border-t border-[color:var(--border)]">
+                  {cluster.items.map(([title, desc]) => (
+                    <li key={title} className="py-5 border-b border-[color:var(--border)]">
+                      <h3 className="font-serif text-xl text-[color:var(--ink)]">{title}</h3>
+                      <p className="mt-1 text-[14px] text-[color:var(--muted-fg)] leading-relaxed">{desc}</p>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
 
-          <p className="rv d2 mt-12 font-serif text-lg leading-relaxed text-[color:var(--ink)] sm:text-xl">
-            Genau dafür gibt es Creating Society.
+          <p className="rv d2 mt-12 max-w-2xl text-[15px] leading-relaxed text-[color:var(--muted-fg)]">
+            Es gibt keinen Warenkorb. Der Zugang läuft über ein Gespräch, weil ich vorher wissen
+            will, ob das zu deiner Situation passt.
           </p>
         </div>
       </section>
 
-
       {/* VIDEO 2 */}
-      <section aria-labelledby="breakdown-heading" className="bg-[color:var(--cream)] py-20">
+      <section aria-labelledby="breakdown-heading" className="bg-[color:var(--cream)] py-24">
         <div className="mx-auto max-w-4xl px-5 sm:px-8 text-center">
           <p className="rv eyebrow text-[color:var(--rose)]">Die Methode im Detail</p>
           <h2 id="breakdown-heading" className="rv d1 mt-5 font-serif text-3xl sm:text-4xl tracking-tight">
             So funktioniert das konkret
           </h2>
-          <p className="rv d2 mt-5 text-[color:var(--muted-fg)] max-w-2xl mx-auto leading-relaxed">
-            Die vier Schritte, was du in jedem davon aufbaust, und warum das etwas anderes ist als
-            jeder Content-Kurs, den du bisher gesehen hast.
+          <p className="rv d2 mt-5 text-[color:var(--muted-fg)] max-w-xl mx-auto leading-relaxed">
+            Die vier Schritte und was du in jedem davon aufbaust.
           </p>
           <div className="rv d3 mt-12">
             <VideoBlock videoId="breakdown-2" label="Video 2 · Die Methode" />
@@ -330,54 +324,9 @@ function MasterclassPage() {
         </div>
       </section>
 
-      {/* FÜR WEN */}
-      <section aria-labelledby="forwho-heading" className="bg-[color:var(--cream)] pb-24 md:pb-28">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <h2 id="forwho-heading" className="rv font-serif text-3xl sm:text-4xl tracking-tight max-w-2xl">
-            Für wen das <span className="serif-italic text-[color:var(--rose)]">gemacht ist.</span>
-          </h2>
-          <div className="mt-12 grid md:grid-cols-2 gap-6">
-            <div className="rv d1 rounded-2xl bg-white p-8 sm:p-10 border-l-4 border-[color:var(--rose)] shadow-[0_20px_60px_-40px_rgba(26,18,9,0.4)]">
-              <h3 className="font-serif text-2xl">Das passt zu dir, wenn:</h3>
-              <ul className="mt-6 space-y-4 text-[color:var(--ink)]/85 text-[15px] leading-relaxed">
-                {[
-                  "du bereits Content machst, aber daraus kaum oder unregelmäßig Geld entsteht.",
-                  "du starten möchtest, aber noch nicht weißt, wofür du stehen oder was du anbieten kannst.",
-                  "du nicht dauerhaft von Kooperationen und Marken abhängig sein willst.",
-                  "du lieber ein starkes Angebot aufbaust, als fünfmal täglich zu posten.",
-                  "du 5 bis 10 fokussierte Stunden pro Woche investieren kannst.",
-                ].map((t) => (
-                  <li key={t} className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--rose)] shrink-0" />
-                    <span>{t}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="rv d2 rounded-2xl bg-[color:var(--cream2)] p-8 sm:p-10">
-              <h3 className="font-serif text-2xl text-[color:var(--muted-fg)]">Das passt nicht, wenn:</h3>
-              <ul className="mt-6 space-y-4 text-[color:var(--muted-fg)] text-[15px] leading-relaxed">
-                {[
-                  "du Geld willst, ohne etwas aufzubauen.",
-                  "du ein fertiges Produkt suchst, das du nur weiterverkaufst.",
-                  "dir Bekanntheit wichtiger ist als ein tragfähiges Business.",
-                  "du jemanden brauchst, der dich jeden Morgen motiviert.",
-                  "du erwartest, dass das in zwei Wochen läuft.",
-                ].map((t) => (
-                  <li key={t} className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--muted-fg)]/60 shrink-0" />
-                    <span>{t}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TCS-METHODE */}
+      {/* 03 — TCS-METHODE */}
       <section id="methode" aria-labelledby="system-heading" className="scroll-mt-20 bg-[color:var(--wine)] text-[color:var(--cream)] py-28 md:py-36 grain">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <div className="max-w-3xl">
             <SectionIndex index="03" label="Die TCS-Methode" tone="cream" />
             <h2
@@ -387,78 +336,60 @@ function MasterclassPage() {
               Vier Schritte. <span className="serif-italic">Ein Ergebnis.</span>
             </h2>
             <p className="rv d2 mt-6 text-[color:var(--cream)]/70 leading-relaxed max-w-xl">
-              Unsere Methode verbindet drei Dinge, die einzeln nichts wert sind: Content, Vertrauen
-              und ein Angebot, das Menschen wirklich kaufen wollen.
+              Content, Vertrauen und ein Angebot, das Menschen wirklich kaufen wollen. Einzeln
+              bringt davon nichts etwas, zusammen wird daraus ein Business.
             </p>
           </div>
 
-          <div className="mt-16 space-y-6">
+          <div className="mt-16 border-t border-white/10">
             {[
               {
                 n: "01",
-                name: "POSITIONIERUNG",
+                name: "Positionierung",
                 tag: "Wofür du stehen willst.",
-                items: [
-                  "Eine Positionierung, die zu dir passt und die andere sofort verstehen.",
-                  "Du musst keine Expertin sein, du musst nur ein Stück weiter sein als die Frau, der du hilfst.",
-                  "Deine Nische finden, ohne dich einzusperren.",
-                  "Mit Gesicht oder komplett faceless, du entscheidest.",
-                ],
+                body: "Du musst keine Expertin sein, du musst nur ein Stück weiter sein als die Frau, der du hilfst. Wir finden deine Nische, ohne dich einzusperren, mit Gesicht oder komplett faceless.",
                 out: "Du kannst in einem Satz sagen, wem du wobei hilfst.",
               },
               {
                 n: "02",
-                name: "CONTENT",
+                name: "Content",
                 tag: "Content, der etwas für dich aufbaut.",
-                items: [
-                  "Formate und Botschaften, die Aufmerksamkeit erzeugen und Vertrauen schaffen.",
-                  "Reichweite entsteht über Interesse, nicht über Followerzahlen.",
-                  "Hooks, Storys und Serien, die auch bei kleiner Reichweite verkaufen.",
-                  "Produktion in Blöcken, damit es neben Job oder Studium machbar bleibt.",
-                ],
+                body: "Formate, Hooks und Serien, die Aufmerksamkeit erzeugen und Vertrauen schaffen. Produziert in Blöcken, damit es neben Job oder Studium machbar bleibt.",
                 out: "Du hast einen Rhythmus, der die richtigen Menschen anzieht.",
               },
               {
                 n: "03",
-                name: "ANGEBOT",
-                tag: "Ein Angebot, das Menschen wirklich kaufen wollen.",
-                items: [
-                  "Wir finden heraus, was du sinnvoll verkaufen kannst, basierend auf deinen Fähigkeiten und dem Bedarf deiner Zielgruppe.",
-                  "Was du zuerst baust, und was du auf keinen Fall zuerst baust.",
-                  "Verkaufen, bevor alles fertig ist, statt monatelang zu basteln.",
-                  "Preis und Aufbau so, dass es eine klare Entscheidung wird.",
-                ],
+                name: "Angebot",
+                tag: "Etwas, das Menschen wirklich kaufen wollen.",
+                body: "Wir klären, was du sinnvoll verkaufen kannst, was du zuerst baust und was auf keinen Fall. Verkauft wird, bevor alles fertig ist, statt monatelang zu basteln.",
                 out: "Du hast ein fertiges, bepreistes Angebot.",
               },
               {
                 n: "04",
-                name: "VERKAUF",
-                tag: "Vom Zuschauer zur Kundin.",
-                items: [
-                  "Verkaufen im Content, ohne dass es sich wie Werbung anfühlt.",
-                  "DMs, Storys, Kommentare und einfache Automationen.",
-                  "Ein schlanker Weg: Einstieg per E-Mail, Angebot.",
-                  "Erste Kundinnen, ihre Ergebnisse, die nächsten Kundinnen.",
-                ],
+                name: "Verkauf",
+                tag: "Von der Zuschauerin zur Kundin.",
+                body: "Verkaufen im Content, ohne dass es sich wie Werbung anfühlt. Storys, DMs, Kommentare und ein schlanker Weg über E-Mail zum Angebot.",
                 out: "Du hast Verkäufe, die sich wiederholen lassen.",
               },
-            ].map((p) => (
-              <div key={p.n} className="rv rounded-2xl border border-white/10 bg-white/[0.02] p-8 sm:p-10 grid md:grid-cols-[auto_1fr] gap-8">
-                <div className="min-w-0">
-                  <div className="font-serif text-5xl sm:text-6xl text-[color:var(--rose)]">{p.n}</div>
-                  <div className="mt-3 text-xs tracking-[0.25em] font-semibold">{p.name}</div>
-                </div>
-                <div className="min-w-0">
-                  <p className="serif-italic text-xl sm:text-2xl text-[color:var(--cream)]/90">{p.tag}</p>
-                  <ul className="mt-6 space-y-3 text-[color:var(--cream)]/75 text-[15px] leading-relaxed">
-                    {p.items.map((i) => (
-                      <li key={i} className="flex gap-3">
-                        <span className="mt-2 h-1 w-1 rounded-full bg-[color:var(--rose)] shrink-0" />
-                        <span>{i}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-6 pt-5 border-t border-white/10 serif-italic text-[color:var(--rose)]">{p.out}</p>
+            ].map((p, i) => (
+              <div
+                key={p.n}
+                className={"rv border-b border-white/10 py-10 " + (i === 1 ? "d1" : i >= 2 ? "d2" : "")}
+              >
+                <div className="grid gap-5 md:grid-cols-[7rem_minmax(0,1fr)] md:gap-10">
+                  <div className="min-w-0">
+                    <div className="font-serif text-4xl text-[color:var(--rose)] leading-none">{p.n}</div>
+                    <div className="mt-3 eyebrow text-[color:var(--cream)]/50">{p.name}</div>
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-serif text-[1.6rem] sm:text-[2rem] leading-snug text-[color:var(--cream)]">
+                      {p.tag}
+                    </p>
+                    <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-[color:var(--cream)]/70">
+                      {p.body}
+                    </p>
+                    <p className="mt-5 serif-italic text-[color:var(--rose)]">{p.out}</p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -466,12 +397,51 @@ function MasterclassPage() {
         </div>
       </section>
 
-      {/* 12 WOCHEN */}
-      <section id="programm" aria-labelledby="weeks-heading" className="scroll-mt-20 bg-[color:var(--cream)] py-24 md:py-28">
+      {/* FÜR WEN */}
+      <section aria-labelledby="forwho-heading" className="bg-[color:var(--cream)] py-24 md:py-28">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8">
+          <h2 id="forwho-heading" className="rv font-serif text-3xl sm:text-5xl tracking-tight max-w-2xl leading-[1.06]">
+            Für wen das <span className="serif-italic text-[color:var(--rose)]">gemacht ist.</span>
+          </h2>
+          <div className="mt-14 grid md:grid-cols-2 gap-12 md:gap-16">
+            <div className="rv">
+              <p className="eyebrow text-[color:var(--rose)]">Das passt zu dir, wenn</p>
+              <ul className="mt-6 border-t border-[color:var(--border)] text-[15px] leading-relaxed text-[color:var(--ink)]/85">
+                {[
+                  "du bereits Content machst, aber daraus kaum Geld entsteht.",
+                  "du starten willst und noch nicht weißt, wofür du stehst.",
+                  "du nicht dauerhaft von Kooperationen abhängig sein möchtest.",
+                  "du lieber ein starkes Angebot baust, als fünfmal täglich zu posten.",
+                  "du 5 bis 10 fokussierte Stunden pro Woche investieren kannst.",
+                ].map((t) => (
+                  <li key={t} className="py-4 border-b border-[color:var(--border)]">{t}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="rv d1">
+              <p className="eyebrow text-[color:var(--muted-fg)]">Das passt nicht, wenn</p>
+              <ul className="mt-6 border-t border-[color:var(--border)] text-[15px] leading-relaxed text-[color:var(--muted-fg)]">
+                {[
+                  "du Geld willst, ohne etwas aufzubauen.",
+                  "du ein fertiges Produkt suchst, das du nur weiterverkaufst.",
+                  "dir Bekanntheit wichtiger ist als ein tragfähiges Business.",
+                  "du jemanden brauchst, der dich jeden Morgen motiviert.",
+                  "du erwartest, dass das in zwei Wochen läuft.",
+                ].map((t) => (
+                  <li key={t} className="py-4 border-b border-[color:var(--border)]">{t}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 04 — 12 WOCHEN */}
+      <section id="programm" aria-labelledby="weeks-heading" className="scroll-mt-20 bg-[color:var(--bg)] py-24 md:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="rv max-w-3xl">
-            <p className="eyebrow text-[color:var(--rose)]">Das Programm</p>
-            <h2 id="weeks-heading" className="mt-5 font-serif text-[2.2rem] sm:text-5xl leading-[1.05] tracking-tight">
+            <SectionIndex index="04" label="Der Ablauf" />
+            <h2 id="weeks-heading" className="mt-6 font-serif text-[2.2rem] sm:text-5xl leading-[1.05] tracking-tight">
               In 12 Wochen von der Idee zum eigenen Angebot,{" "}
               <span className="serif-italic text-[color:var(--rose)]">mit deinen ersten zahlenden Kundinnen.</span>
             </h2>
@@ -481,12 +451,12 @@ function MasterclassPage() {
             <div className="hidden md:block absolute top-6 left-[8%] right-[8%] h-px bg-[color:var(--border)]" aria-hidden="true" />
             <ol className="grid md:grid-cols-3 gap-8 md:gap-10 relative">
               {[
-                { w: "Woche 1–4", name: "Positionierung & Angebot", body: "Du weißt, wofür du stehst und was du verkaufst. Die meisten kommen nie bis hierher, deshalb verdienen die meisten auch nichts." },
-                { w: "Woche 5–8", name: "Content & Nachfrage", body: "Dein Content erzeugt gezielt Anfragen statt nur Views. Getestet, nicht geraten." },
-                { w: "Woche 9–12", name: "Verkauf & erste Kundinnen", body: "Du gewinnst deine ersten zahlenden Kundinnen und weißt, wie du das wiederholst." },
+                { w: "Woche 1 bis 4", name: "Positionierung & Angebot", body: "Du weißt, wofür du stehst und was du verkaufst. Die meisten kommen nie bis hierher." },
+                { w: "Woche 5 bis 8", name: "Content & Nachfrage", body: "Dein Content erzeugt gezielt Anfragen statt nur Views. Getestet, nicht geraten." },
+                { w: "Woche 9 bis 12", name: "Verkauf & erste Kundinnen", body: "Du gewinnst deine ersten zahlenden Kundinnen und weißt, wie du das wiederholst." },
               ].map((n, i) => (
                 <li key={n.w} className="rv relative" style={{ transitionDelay: `${i * 80}ms` }}>
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-[color:var(--cream)] border border-[color:var(--rose)] text-[color:var(--rose)] font-serif text-lg relative z-10">
+                  <div className="grid h-12 w-12 place-items-center rounded-full bg-[color:var(--bg)] border border-[color:var(--rose)] text-[color:var(--rose)] font-serif text-lg relative z-10">
                     {i + 1}
                   </div>
                   <p className="mt-4 eyebrow text-[color:var(--muted-fg)]">{n.w}</p>
@@ -497,10 +467,10 @@ function MasterclassPage() {
             </ol>
           </div>
 
-          <p className="rv d2 mt-12 max-w-3xl text-[color:var(--muted-fg)] leading-relaxed">
-            12 Wochen ist das Tempo, wenn du 5 bis 10 fokussierte Stunden pro Woche investierst.
-            Weniger Zeit heißt einfach: es dauert länger. Funktioniert auch ohne große Reichweite
-            und auf Wunsch komplett faceless.
+          <p className="rv d2 mt-12 max-w-2xl text-[color:var(--muted-fg)] leading-relaxed text-[15px]">
+            12 Wochen ist das Tempo bei 5 bis 10 fokussierten Stunden pro Woche. Weniger Zeit heißt
+            einfach, es dauert länger. Funktioniert ohne große Reichweite und auf Wunsch komplett
+            faceless.
           </p>
         </div>
       </section>
@@ -510,7 +480,7 @@ function MasterclassPage() {
         <section aria-labelledby="proof-heading" className="bg-[color:var(--cream2)] py-28">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-3xl">
-              <SectionIndex index="04" label="Ergebnisse" />
+              <SectionIndex index="05" label="Ergebnisse" />
               <h2 id="proof-heading" className="mt-6 font-serif text-4xl sm:text-5xl tracking-tight">
                 Zahlen, <span className="serif-italic text-[color:var(--rose)]">keine Versprechen.</span>
               </h2>
@@ -546,53 +516,9 @@ function MasterclassPage() {
         </section>
       )}
 
-      {/* WAS DRIN IST */}
-      <section aria-labelledby="inside-heading" className="bg-[color:var(--cream)] py-24 md:py-28">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="rv max-w-3xl">
-            <p className="eyebrow text-[color:var(--rose)]">Was dich erwartet</p>
-            <h2 id="inside-heading" className="mt-5 font-serif text-[2.1rem] sm:text-5xl tracking-tight">
-              Begleitung, Struktur <span className="serif-italic text-[color:var(--rose)]">und Werkzeuge.</span>
-            </h2>
-          </div>
-
-          <div className="mt-14 grid md:grid-cols-3 gap-10 md:gap-12">
-            {[
-              { label: "Das System", items: [
-                ["Die TCS-Methode", "Positionierung, Content, Angebot, Verkauf, in der Reihenfolge, die funktioniert"],
-                ["Faceless möglich", "der komplette Weg, ohne dass du dein Gesicht zeigen musst"],
-                ["12-Wochen-Fahrplan", "du weißt jede Woche, was zu tun ist"],
-              ]},
-              { label: "Die Begleitung", items: [
-                ["Direktes Feedback von mir", "zu deiner Positionierung, deinem Content und deinem Angebot"],
-                ["Die Community", "Frauen, die im selben Zeitraum dasselbe aufbauen"],
-                ["Live Calls", "bring die Stelle mit, an der du feststeckst"],
-              ]},
-              { label: "Die Werkzeuge", items: [
-                ["Vorlagen", "Hooks, Reel-Skripte, Verkaufsseite, E-Mail-Sequenzen, Preisrechner"],
-                ["Prozesse", "damit Content, Angebot und Verkauf ineinandergreifen"],
-                ["Updates", "alles, was wir weiterentwickeln, bekommst du mit"],
-              ]},
-            ].map((cluster) => (
-              <div key={cluster.label} className="rv">
-                <p className="eyebrow text-[color:var(--rose)]">{cluster.label}</p>
-                <ul className="mt-6 border-t border-[color:var(--border)]">
-                  {cluster.items.map(([title, desc]) => (
-                    <li key={title} className="py-5 border-b border-[color:var(--border)]">
-                      <h3 className="font-serif text-xl text-[color:var(--ink)]">{title}</h3>
-                      <p className="mt-1 text-[14px] text-[color:var(--muted-fg)] leading-relaxed">{desc}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* VIDEO 3 + CALL */}
+      {/* 05 — VIDEO 3 + CALL */}
       <section id="call" aria-labelledby="offer-heading" className="scroll-mt-20 bg-[color:var(--cream2)] py-28 md:py-36">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <div className="max-w-3xl">
             <SectionIndex index="05" label="Der nächste Schritt" />
             <h2
@@ -603,9 +529,9 @@ function MasterclassPage() {
               <span className="serif-italic text-[color:var(--rose)]">sprechen wir.</span>
             </h2>
             <p className="rv d2 mt-6 text-[color:var(--muted-fg)] max-w-xl leading-relaxed">
-              Im Strategiegespräch schauen wir uns deine Ausgangslage an, klären deine Positionierung
-              und dein mögliches Angebot. Du gehst mit einem klaren nächsten Schritt raus,
-              unabhängig davon, ob wir zusammenarbeiten.
+              Creating Society startet mit einer ersten, bewusst kleinen Gruppe. Wer dabei sein
+              möchte, geht durch ein Gespräch. Wir schauen uns deine Ausgangslage an, klären deine
+              Positionierung und dein mögliches Angebot.
             </p>
           </div>
 
@@ -613,63 +539,74 @@ function MasterclassPage() {
             <VideoBlock videoId="offer-3" label="Video 3 · Bevor du buchst" />
           </div>
 
-          <div className="rv d4 mt-14 rounded-2xl bg-white p-8 sm:p-12 border border-[color:var(--border)] text-center">
-            <h3 className="font-serif text-3xl sm:text-4xl">Strategiegespräch</h3>
-            <p className="mt-4 text-[color:var(--muted-fg)] max-w-xl mx-auto leading-relaxed">
-              Persönlich, ohne Verkaufsdruck. Wir prüfen zuerst, ob das Programm zu deiner Situation
-              passt.
+          <div className="rv d4 mt-14 border-t border-[color:var(--border)] pt-12 text-center">
+            <p className="eyebrow text-[color:var(--rose)]">Early Access</p>
+            <h3 className="mt-4 font-serif text-3xl sm:text-4xl">Strategiegespräch</h3>
+            <p className="mt-4 text-[color:var(--muted-fg)] max-w-xl mx-auto leading-relaxed text-[15px]">
+              Persönlich, ohne Verkaufsdruck. Du gehst mit einem klaren nächsten Schritt raus,
+              unabhängig davon, ob wir zusammenarbeiten.
             </p>
             <div className="mt-8">
               <CallButton>Strategiegespräch buchen</CallButton>
             </div>
-            <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[11px] text-[color:var(--muted-fg)]">
-              {["Persönlich", "Kein Verkaufsdruck", "Klarheit", "Nächster Schritt"].map((t, i, a) => (
-                <li key={t} className="flex items-center gap-4">
-                  <span>{t}</span>
-                  {i < a.length - 1 && <span className="h-3 w-px bg-[color:var(--border)]" />}
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </section>
 
-      {/* LAURA */}
-      <section aria-labelledby="story-heading" className="bg-[color:var(--cream)] py-24 md:py-28">
-        <div className="mx-auto max-w-5xl px-5 sm:px-8">
-          <div className="rv max-w-3xl">
+      {/* LAURAS STORY */}
+      <section aria-labelledby="story-heading" className="bg-[color:var(--cream)] py-24 md:py-32">
+        <div className="mx-auto max-w-[680px] px-5 sm:px-8">
+          <div className="rv">
             <p className="eyebrow text-[color:var(--rose)]">Hinter Creating Society</p>
-            <h2 id="story-heading" className="mt-5 font-serif text-[2.2rem] sm:text-5xl md:text-6xl tracking-tight">
-              Ich bin <span className="serif-italic text-[color:var(--rose)]">Laura.</span>
+            <h2 id="story-heading" className="mt-5 font-serif text-[2.2rem] sm:text-5xl tracking-tight leading-[1.06]">
+              Hey, ich bin <span className="serif-italic text-[color:var(--rose)]">Laura.</span>
             </h2>
           </div>
 
-          <div className="mt-14 grid md:grid-cols-2 gap-10 md:gap-14 items-center">
-            <div className="rv">
-              <img src={lauraImg} alt="Laura" className="w-full aspect-[4/5] object-cover rounded-2xl" loading="lazy" />
-            </div>
-            <div className="rv d1 space-y-5 text-[color:var(--ink)]/85 leading-relaxed text-[15px] sm:text-base">
-              <p>Ich habe jahrelang Content gemacht und hatte irgendwann Reichweite, über die viele reden. Von außen sah das nach genau dem aus, was alle online aufbauen wollen.</p>
-              <p className="serif-italic text-[color:var(--wine)]">Nur hat sich das lange nicht auf meinem Konto gezeigt.</p>
-              <p>Ich hatte ein Publikum, aber kein Business. Das sind zwei verschiedene Dinge. Kooperationen zahlten einmal, kosteten Wochen Abstimmung, und mit jedem Monat wurde deutlicher, dass ich mir keine Struktur aufgebaut hatte, sondern nur Sichtbarkeit.</p>
-            </div>
+          <div className="rv d1 mt-8 space-y-5 text-[color:var(--ink)]/85 leading-relaxed text-[16px]">
+            <p>Ich erzähle dir kurz, wie das hier entstanden ist. Es dauert zwei Minuten und erklärt vermutlich mehr als jede Auflistung von Modulen.</p>
+            <p>Vor ein paar Jahren habe ich angefangen, Content zu machen, ohne Plan, einfach weil es mir Spaß gemacht hat. Irgendwann kam Reichweite dazu. Von außen sah das nach genau dem aus, was viele online aufbauen wollen.</p>
           </div>
 
-          <div className="mt-14 grid md:grid-cols-2 gap-10 md:gap-14 items-center">
-            <div className="rv order-2 md:order-1 space-y-5 text-[color:var(--ink)]/85 leading-relaxed text-[15px] sm:text-base">
-              <p>Also habe ich aufgehört, auf Views zu optimieren, und angefangen, das zu bauen, was darunter liegt. Ich habe geklärt, wobei ich Menschen wirklich helfen kann, ein Angebot entwickelt und es verkauft, bevor es fertig war.</p>
-              <p>An meinem Content hat sich dabei erstaunlich wenig geändert. Verändert hat sich, dass hinter der Aufmerksamkeit endlich etwas stand.</p>
-              <p>Genau das machen wir bei Creating Society, gemeinsam und in einem klaren Rahmen.</p>
-            </div>
-            <div className="rv d1 order-1 md:order-2 grid grid-cols-2 gap-4">
-              <img src={workImg} alt="Laura beim Arbeiten" className="w-full aspect-[3/4] object-cover rounded-2xl" loading="lazy" />
-              <img src={walkImg} alt="Laura unterwegs" className="mt-8 w-full aspect-[3/4] object-cover rounded-2xl" loading="lazy" />
-            </div>
+          <StoryImage
+            src={workImg}
+            alt="Laura bei der Arbeit an ihrem Laptop"
+            caption="Damals: viel Arbeit, viele Views, wenig Struktur dahinter."
+          />
+
+          <div className="rv space-y-5 text-[color:var(--ink)]/85 leading-relaxed text-[16px]">
+            <p className="serif-italic text-xl text-[color:var(--wine)]">Nur hat sich das lange nicht auf meinem Konto gezeigt.</p>
+            <p>Ich hatte ein Publikum, aber kein Business. Das sind zwei verschiedene Dinge. Kooperationen zahlten einmal, kosteten Wochen Abstimmung und waren im nächsten Monat wieder weg. Jedes Mal fing ich bei null an.</p>
+            <p>Irgendwann war der Punkt erreicht, an dem ich gemerkt habe: Ich optimiere seit Jahren auf die falsche Zahl. Nicht Views entscheiden, sondern was hinter den Views steht.</p>
+            <p>Also habe ich aufgehört, mehr Content zu produzieren, und angefangen, etwas Eigenes zu bauen. Ich habe geklärt, wobei ich Menschen wirklich helfen kann, daraus ein Angebot entwickelt und es verkauft, bevor es fertig war.</p>
           </div>
 
-          <div className="rv mt-14 max-w-2xl mx-auto text-center space-y-5 text-[color:var(--ink)]/85 leading-relaxed text-[15px] sm:text-base">
-            <p>Ich verspreche dir nicht, dass es leicht, schnell oder passiv ist. Es ist ein Business, und Business bedeutet Arbeit. Aber es ist Arbeit, die sich aufbaut, statt jeden Monat wieder bei null anzufangen.</p>
-            <p className="serif-italic text-lg text-[color:var(--wine)]">Laura</p>
+          <StoryImage
+            src={walkImg}
+            alt="Laura unterwegs"
+            caption="Heute arbeite ich von dort, wo ich gerade bin."
+          />
+
+          <div className="rv space-y-5 text-[color:var(--ink)]/85 leading-relaxed text-[16px]">
+            <p>An meinem Content hat sich dabei erstaunlich wenig geändert. Verändert hat sich, dass hinter der Aufmerksamkeit endlich etwas stand, das mir gehört.</p>
+            <p>Und ehrlich: Das Beste daran ist nicht das Geld. Es ist, dass ich nicht mehr für jeden Euro neu verhandeln muss. Ich baue einmal etwas auf und arbeite dann daran, es besser zu machen, statt jeden Monat wieder von vorne anzufangen.</p>
+            <p>Genau das gebe ich jetzt weiter. Ich habe Creating Society gebaut, weil ich glaube, dass fast jede Frau etwas hat, wofür andere zahlen würden. Du musst dafür nicht die Beste in deinem Feld sein. Du musst nur ein Stück weiter sein als die, der du hilfst.</p>
+            <p>Egal ob Fotografie, Finanzen, Fitness, Sprachen, Design, Organisation oder etwas, das du bisher gar nicht als Wissen betrachtet hast. Für fast alles gibt es Menschen, die es lernen wollen.</p>
+            <p className="serif-italic text-lg text-[color:var(--wine)]">Ich verspreche dir nicht, dass es leicht oder passiv ist. Es ist Arbeit. Aber es ist Arbeit, die sich aufbaut.</p>
+            <p>Laura</p>
+          </div>
+
+          <div className="rv mt-10">
+            <img
+              src={lauraImg}
+              alt="Porträt von Laura"
+              loading="lazy"
+              className="w-full aspect-[4/5] object-cover rounded-2xl"
+            />
+          </div>
+
+          <div className="rv mt-10 text-center">
+            <CallButton>Strategiegespräch buchen</CallButton>
           </div>
         </div>
       </section>
@@ -683,12 +620,12 @@ function MasterclassPage() {
           <div className="rv d1 mt-12">
             <Accordion type="single" collapsible className="w-full">
               {[
-                ["Ich habe noch keine oder kaum Reichweite. Ist das ein Problem?", "Nein. Creating Society ist genau dafür gemacht. Du brauchst kein großes Publikum, um zu starten. Du brauchst eine klare Positionierung und ein Angebot. Reichweite bauen wir gezielt mit auf, aber sie ist der Weg, nicht die Voraussetzung."],
-                ["Ich möchte mein Gesicht nicht zeigen. Geht das trotzdem?", "Ja. Viele unserer Konzepte funktionieren komplett faceless. Wir entwickeln gemeinsam ein Content-Format, das zu dir passt, mit oder ohne Gesicht."],
-                ["Ich habe noch keine Idee, was ich verkaufen könnte.", "Das ist der häufigste Startpunkt. In den ersten Wochen finden wir gemeinsam heraus, welches Angebot zu deinen Fähigkeiten, deiner Erfahrung und dem Bedarf deiner Zielgruppe passt, bevor du auch nur ein Video mehr produzierst."],
-                ["Wie viel Zeit brauche ich pro Woche?", "Plane realistisch 5 bis 10 Stunden pro Woche ein. Das Programm ist neben Job oder Studium machbar. Entscheidend ist nicht die Menge an Zeit, sondern dass du konsequent umsetzt."],
-                ["Was kostet Creating Society?", "Das besprechen wir im Strategiegespräch, denn zuerst prüfen wir, ob das Programm überhaupt zu deiner Ausgangslage und deinem Ziel passt. Das Gespräch ist der erste Schritt, um zu schauen, ob wir zueinander passen."],
-                ["Wie läuft das Strategiegespräch ab?", "Wir sprechen über deine Ausgangslage, deine Positionierung und dein mögliches Angebot. Du gehst mit Klarheit über deinen nächsten Schritt raus, unabhängig davon, ob wir zusammenarbeiten."],
+                ["Ich habe noch keine oder kaum Reichweite. Ist das ein Problem?", "Nein. Creating Society ist genau dafür gemacht. Du brauchst kein großes Publikum, um zu starten. Reichweite bauen wir gezielt mit auf, sie ist der Weg, nicht die Voraussetzung."],
+                ["Ich möchte mein Gesicht nicht zeigen. Geht das trotzdem?", "Ja. Viele Konzepte funktionieren komplett faceless. Wir entwickeln gemeinsam ein Format, das zu dir passt."],
+                ["Ich habe noch keine Idee, was ich verkaufen könnte.", "Das ist der häufigste Startpunkt. In den ersten Wochen finden wir heraus, welches Angebot zu deinen Fähigkeiten und dem Bedarf deiner Zielgruppe passt."],
+                ["Wie viel Zeit brauche ich pro Woche?", "Plane 5 bis 10 Stunden ein. Das Programm ist neben Job oder Studium machbar."],
+                ["Was kostet Creating Society?", "Das besprechen wir im Gespräch, weil wir zuerst prüfen, ob das Programm zu deiner Ausgangslage passt."],
+                ["Was ist mit Early Access gemeint?", "Wir starten mit einer bewusst kleinen ersten Gruppe, die enger begleitet wird. Die Plätze dafür sind begrenzt und werden über das Gespräch vergeben."],
               ].map(([q, a], i) => (
                 <AccordionItem key={q} value={`item-${i}`} className="border-b border-[color:var(--border)]">
                   <AccordionTrigger className="text-left font-serif text-lg sm:text-xl hover:no-underline py-6">
@@ -704,15 +641,17 @@ function MasterclassPage() {
         </div>
       </section>
 
-      {/* SCHLUSS */}
+      {/* PS */}
       <section aria-labelledby="ps-heading" className="bg-[color:var(--wine)] text-[color:var(--cream)] py-24 md:py-28 grain">
         <div className="mx-auto max-w-[640px] px-5 sm:px-8">
           <h2 id="ps-heading" className="sr-only">Ein letzter Gedanke von Laura</h2>
           <div className="rv space-y-5 leading-relaxed text-[color:var(--cream)]/85 text-[15px] sm:text-base">
-            <p className="serif-italic text-2xl text-[color:var(--rose)]">Zum Schluss</p>
-            <p>Wenn du bis hierher gelesen hast, bist du vermutlich nicht auf der Suche nach dem nächsten Kurs, sondern nach etwas Eigenem.</p>
-            <p>Genau darüber sprechen wir im Strategiegespräch: wo du stehst, was du anbieten könntest und ob das in den nächsten 12 Wochen realistisch ist.</p>
-            <p className="serif-italic text-[color:var(--cream)]">Ohne Verkaufsdruck, mit klarem nächsten Schritt.</p>
+            <p className="serif-italic text-2xl text-[color:var(--rose)]">PS.</p>
+            <p>Wenn du bis hierher gescrollt hast, denkst du dir vielleicht: Warum gibst du das überhaupt weiter, wenn es so gut funktioniert?</p>
+            <p>Faire Frage. Die ehrliche Antwort ist: Mein eigenes Business läuft weiter, unabhängig davon. Das hier nimmt mir nichts weg.</p>
+            <p>Was ich aber jeden Tag in meinen Nachrichten sehe, sind Frauen, die etwas können und es verschenken, weil ihnen niemand gezeigt hat, wie man daraus ein Angebot macht. Genau da will ich ansetzen.</p>
+            <p>Deshalb starten wir klein. Die erste Gruppe wird eng begleitet, und dafür gibt es nur eine begrenzte Anzahl Plätze.</p>
+            <p className="serif-italic text-[color:var(--cream)]">Wenn du wissen willst, ob du dazugehörst, buch dir ein Gespräch.</p>
             <p className="serif-italic">Bis gleich, Laura</p>
           </div>
           <div className="rv d1 mt-10 text-center">
