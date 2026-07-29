@@ -323,7 +323,7 @@ function HomePage() {
                 <p>Deine Personal Brand schafft Vertrauen.</p>
                 <p>Dein Angebot macht daraus Umsatz.</p>
                 <p className="text-[color:var(--cream)]">
-                  Creating Society <span className="serif-italic">verbindet alle drei.</span>
+                  Die TCS-Methode <span className="serif-italic">verbindet alle drei.</span>
                 </p>
               </div>
               <p className="mt-14 text-sm tracking-wide text-[color:var(--cream)]/55">
