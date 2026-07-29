@@ -263,21 +263,22 @@ function HomePage() {
 
       <main id="top" className="bg-[color:var(--background)]">
         {/* ── Hero ─────────────────────────────────────────── */}
-        <section className="relative overflow-hidden pt-32 pb-12 sm:pt-44 md:pt-52 md:pb-20">
+        <section className="relative flex min-h-[88vh] flex-col justify-center overflow-hidden pt-32 pb-20 sm:pt-44 sm:pb-28 md:min-h-[90vh] md:pt-52 md:pb-36">
           <div className="pointer-events-none absolute inset-0 hero-glow" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-3xl">
-              <h1 className="font-serif text-[2.1rem] font-normal leading-[1.08] tracking-[-0.01em] text-[color:var(--ink)] sm:text-[3.1rem] lg:text-[4rem]">
+              <h1 className="font-serif text-[2.35rem] font-normal leading-[1.05] tracking-[-0.02em] text-[color:var(--ink)] sm:text-[3.6rem] lg:text-[4.6rem]">
                 Verdiene 10.000&nbsp;€ im Monat mit Content.
-                <br className="hidden sm:block" />{" "}
-                <span className="serif-italic">Ohne große Reichweite. Ohne fertige Idee.</span>
               </h1>
-              <p className="mt-6 max-w-md text-[0.98rem] leading-[1.75] text-[color:var(--muted-fg)] sm:mt-8">
+              <p className="serif-italic mt-4 text-[1.25rem] leading-[1.3] text-[color:var(--ink)] sm:mt-5 sm:text-[1.75rem] lg:text-[2.1rem]">
+                Ohne große Reichweite. Ohne fertige Idee.
+              </p>
+              <p className="mt-7 max-w-md text-[0.98rem] leading-[1.75] text-[color:var(--muted-fg)] sm:mt-9">
                 Die meisten denken, du brauchst zehntausende Follower, bevor du mit Content Geld
                 verdienen kannst. Brauchst du nicht. Ich zeige dir, wie du dein eigenes Offer baust
                 und deine ersten zahlenden Kundinnen gewinnst, in den nächsten 12 Wochen.
               </p>
-              <div className="mt-8 sm:mt-10">
+              <div className="mt-9 sm:mt-11">
                 <CtaButton source="hero" className="w-full sm:w-auto">
                   Strategiegespräch buchen
                 </CtaButton>
