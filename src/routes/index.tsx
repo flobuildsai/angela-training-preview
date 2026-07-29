@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import lauraPortrait from "@/assets/laura-portrait.jpg.asset.json";
 import proofAAsset from "@/assets/laura-work.jpg.asset.json";
 import proofBAsset from "@/assets/laura-walk.jpg.asset.json";
