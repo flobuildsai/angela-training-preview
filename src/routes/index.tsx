@@ -5,6 +5,10 @@ import proofAAsset from "@/assets/laura-work.jpg.asset.json";
 import proofBAsset from "@/assets/laura-walk.jpg.asset.json";
 import proofCAsset from "@/assets/laura-mykonos.jpg.asset.json";
 import proofDAsset from "@/assets/laura-villa.jpg.asset.json";
+import proofStatsAsset from "@/assets/proof-stats.jpeg.asset.json";
+import proofGridAsset from "@/assets/proof-grid.jpeg.asset.json";
+import proofViews7mAsset from "@/assets/proof-views-7m.jpeg.asset.json";
+import proofViews15mAsset from "@/assets/proof-views-15m.jpeg.asset.json";
 
 const lauraImg = lauraPortrait.url;
 const lifestyleShots = [
