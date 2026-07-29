@@ -853,7 +853,7 @@ function HomePage() {
         </section>
 
         {/* ── Footer ───────────────────────────────────────── */}
-        <footer className="border-t border-[color:var(--border)] py-10">
+        <footer className="border-t border-[color:var(--border)] pb-24 pt-10 md:pb-10 md:pt-10">
           <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 text-sm text-[color:var(--muted-fg)] sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <img src={logoDark} alt="thecreatingsociety" className="h-4 w-auto shrink-0 self-start object-contain" />
             <nav className="flex flex-wrap items-center gap-6">
