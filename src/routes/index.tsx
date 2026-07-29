@@ -302,7 +302,7 @@ function HomePage() {
                   Viral gehen → Follower sammeln → auf Brand Deals hoffen
                 </p>
               </div>
-              <div className="grain rounded-[2px] border border-[color:var(--border)] bg-[color:var(--cream)] p-6 ring-1 ring-[color:var(--wine)]/10 sm:p-8">
+              <div className="grain rounded-[2px] border border-[color:var(--border)] bg-[color:var(--cream)] p-6 ring-1 ring-[color:var(--wine-accent)]/10 sm:p-8">
                 <p className="eyebrow text-[color:var(--ink)]">Was wirklich funktioniert</p>
                 <p className="mt-4 text-[1.05rem] font-medium leading-relaxed text-[color:var(--ink)]">
                   Eigenes Offer bauen → Content, der verkauft → erste Kundinnen in 12 Wochen
