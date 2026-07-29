@@ -198,7 +198,9 @@ function HomePage() {
           <div className="flex items-center gap-8">
             <nav className="hidden items-center gap-7 md:flex">
               {[
+                { href: "#methode", label: "Methode" },
                 { href: "#society", label: "Creating Society" },
+
                 { href: "#laura", label: "Laura" },
                 { href: "#call", label: "Gespräch" },
               ].map((l) => (
