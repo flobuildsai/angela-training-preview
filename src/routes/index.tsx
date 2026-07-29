@@ -192,8 +192,10 @@ function CtaButton({
   className?: string;
 }) {
   const tones = {
-    wine: "bg-[color:var(--wine-accent)] text-[color:var(--cream)] hover:opacity-90",
-    cream: "bg-[color:var(--cream)] text-[color:var(--ink)] hover:opacity-90",
+    wine:
+      "bg-[color:var(--ink)] text-[color:var(--cream)] shadow-[0_14px_30px_-18px_rgba(16,16,16,0.9)] hover:shadow-[0_18px_38px_-16px_rgba(16,16,16,0.9)]",
+    cream:
+      "bg-[color:var(--cream)] text-[color:var(--ink)] shadow-[0_14px_30px_-20px_rgba(0,0,0,0.5)] hover:shadow-[0_18px_38px_-18px_rgba(0,0,0,0.55)]",
   } as const;
 
   return (
@@ -201,16 +203,29 @@ function CtaButton({
       to="/call"
       onClick={() => trackEvent("call_cta_click", { source })}
       className={
-        "inline-flex items-center justify-center whitespace-nowrap rounded-full px-7 py-3.5 text-[0.68rem] font-semibold uppercase tracking-[0.16em] transition sm:px-9 sm:py-4 " +
+        "group inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-8 py-4 text-[0.7rem] font-medium uppercase tracking-[0.18em] transition-all duration-300 ease-out hover:-translate-y-[1px] active:translate-y-0 sm:px-10 sm:py-[1.05rem] " +
         tones[tone] +
         " " +
         className
       }
     >
-      {children}
+      <span>{children}</span>
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        className="h-[0.85rem] w-[0.85rem] shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-1"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M5 12h13M12 5.5 18.5 12 12 18.5" />
+      </svg>
     </Link>
   );
 }
+
 
 
 // ── Seite ─────────────────────────────────────────────────────
