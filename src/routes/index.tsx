@@ -434,15 +434,21 @@ function HomePage() {
           </div>
         </section>
 
-        {/* ── Was wir gemeinsam aufbauen ───────────────────── */}
-        <section id="society" aria-labelledby="build-title" className="py-24 md:py-40">
+        {/* ── TCS-Methode ──────────────────────────────────── */}
+        <section id="methode" aria-labelledby="build-title" className="scroll-mt-20 py-24 md:py-40">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <p className="rv eyebrow text-[color:var(--rose)]">Die TCS-Methode</p>
             <h2
               id="build-title"
-              className="rv max-w-2xl font-serif text-[2.4rem] leading-[1.04] tracking-tight text-[color:var(--ink)] sm:text-6xl"
+              className="rv mt-6 max-w-3xl font-serif text-[2.4rem] leading-[1.04] tracking-tight text-[color:var(--ink)] sm:text-6xl"
             >
-              Was wir gemeinsam <span className="serif-italic">aufbauen.</span>
+              Die TCS-Methode: <span className="serif-italic">So bauen wir dein Business auf.</span>
             </h2>
+            <p className="rv d1 mt-7 max-w-2xl text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
+              Unsere Methode verbindet drei Dinge, die einzeln nichts wert sind: Content, Vertrauen
+              und ein Angebot, das Menschen wirklich kaufen wollen.
+            </p>
+
 
             <div className="mt-16 border-t border-[color:var(--border)]">
               {build.map((b, i) => (
