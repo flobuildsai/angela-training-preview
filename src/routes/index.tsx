@@ -574,13 +574,13 @@ function HomePage() {
               id="offer-title"
               className="rv mt-6 max-w-4xl font-serif text-[2.4rem] leading-[1.04] tracking-tight text-[color:var(--ink)] sm:text-6xl"
             >
-              In 12 Wochen von der Idee zum eigenen Angebot,{" "}
+              Von der Idee zum eigenen Angebot,{" "}
               <span className="serif-italic">mit deinen ersten zahlenden Kundinnen.</span>
             </h2>
             <p className="rv d1 mt-8 max-w-2xl text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
-              Creating Society ist ein 12-Wochen-Programm, in dem du deine Positionierung findest,
+              Creating Society ist ein strukturiertes Programm, in dem du deine Positionierung findest,
               dein eigenes digitales Produkt oder Coaching-Angebot entwickelst und lernst, es über
-              deinen Content zu verkaufen. Nicht irgendwann. In den nächsten 12 Wochen.
+              deinen Content zu verkaufen. Nicht irgendwann. Jetzt.
             </p>
 
             <ul className="rv d2 mt-14 border-t border-[color:var(--border)]">
