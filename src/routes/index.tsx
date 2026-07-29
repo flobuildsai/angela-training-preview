@@ -263,7 +263,7 @@ function HomePage() {
 
       <main id="top" className="bg-[color:var(--background)]">
         {/* ── Hero ─────────────────────────────────────────── */}
-        <section className="relative flex min-h-[100vh] flex-col justify-center overflow-hidden pt-32 pb-24 sm:min-h-[90vh] sm:pt-44 sm:pb-28 md:pt-52 md:pb-36">
+        <section className="relative flex min-h-[100vh] flex-col justify-center overflow-hidden pt-32 pb-36 sm:min-h-[90vh] sm:pt-44 sm:pb-28 md:pt-52 md:pb-36">
           <div className="pointer-events-none absolute inset-0 hero-glow" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-3xl">
@@ -288,7 +288,7 @@ function HomePage() {
         </section>
 
         {/* ── Reframe ──────────────────────────────────────── */}
-        <section className="pb-16 md:pb-24">
+        <section className="pt-12 pb-16 md:pt-16 md:pb-24">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv grid gap-4 md:grid-cols-2 md:gap-6">
               <div className="grain rounded-[2px] border border-[color:var(--border)] bg-[color:var(--cream2)] p-6 sm:p-8">
