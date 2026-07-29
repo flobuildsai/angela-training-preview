@@ -786,12 +786,6 @@ function HomePage() {
           </div>
         </footer>
       </main>
-
-
-
-
-
-
     </>
   );
 }
