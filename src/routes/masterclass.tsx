@@ -453,7 +453,7 @@ function MasterclassPage() {
                 items: [
                   "Verkaufen im Content, ohne dass es sich wie Werbung anfühlt.",
                   "DMs, Storys, Kommentare und einfache Automationen.",
-                  "Ein schlanker Weg: kostenloser Einstieg, E-Mail, Angebot.",
+                  "Ein schlanker Weg: Einstieg per E-Mail, Angebot.",
                   "Erste Kundinnen, ihre Ergebnisse, die nächsten Kundinnen.",
                 ],
                 out: "Du hast Verkäufe, die sich wiederholen lassen.",
