@@ -263,14 +263,14 @@ function HomePage() {
 
       <main id="top" className="bg-[color:var(--background)]">
         {/* ── Hero ─────────────────────────────────────────── */}
-        <section className="relative mb-32 flex min-h-[100vh] flex-col justify-center overflow-hidden pt-24 pb-16 sm:mb-8 sm:min-h-[92vh] sm:pt-32 sm:pb-24 md:pt-40 md:pb-32">
+        <section className="relative mb-28 flex min-h-[95vh] flex-col justify-center overflow-hidden pt-20 pb-14 sm:mb-8 sm:min-h-[92vh] sm:pt-28 sm:pb-18 md:pt-36 md:pb-24">
           <div className="pointer-events-none absolute inset-0 hero-glow" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-3xl">
               <p className="eyebrow mb-8 text-[color:var(--wine-accent)]">
                 Business Coaching für Frauen
               </p>
-              <h1 className="font-serif text-[2.85rem] font-semibold leading-[1.02] tracking-[-0.02em] text-[color:var(--ink)] sm:text-[4rem] lg:text-[5rem]">
+              <h1 className="font-serif text-[3rem] font-semibold leading-[1.02] tracking-[-0.02em] text-[color:var(--ink)] sm:text-[4.4rem] lg:text-[5.2rem]">
                 Verdiene 10.000&nbsp;€ im Monat mit Content.
               </h1>
               <p className="serif-italic mt-4 mb-8 text-[1.35rem] leading-[1.25] text-[color:var(--ink)] sm:mt-5 sm:mb-10 sm:text-[1.85rem] lg:text-[2.1rem]">
