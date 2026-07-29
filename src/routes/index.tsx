@@ -238,6 +238,8 @@ function CtaButton({
 function HomePage() {
   useReveal();
   const past = useScrolled();
+  const { ref: beliefRef, seen: showBar } = useSeen<HTMLElement>();
+
   
 
   return (
@@ -377,7 +379,12 @@ function HomePage() {
         )}
 
         {/* ── Belief Shift ─────────────────────────────────── */}
-        <section className="bg-[color:var(--wine)] py-28 text-[color:var(--cream)] md:py-40">
+        <section
+          id="belief-shift"
+          ref={beliefRef}
+          className="bg-[color:var(--wine)] py-28 text-[color:var(--cream)] md:py-40"
+        >
+
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-4xl">
               <p className="font-serif text-[2.4rem] leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
