@@ -488,7 +488,15 @@ function HomePage() {
                     style={{ aspectRatio: slot.ratio }}
                   >
                     {slot.img ? (
-                      <img src={slot.img} alt={slot.label} className="h-full w-full object-cover" />
+                      <img
+                        src={slot.img}
+                        alt={slot.label}
+                        loading="lazy"
+                        className={
+                          "h-full w-full " +
+                          (slot.fit === "contain" ? "object-contain p-3 sm:p-5" : "object-cover")
+                        }
+                      />
                     ) : (
                       <div className="grid h-full w-full place-items-center px-6 text-center">
                         <span className="eyebrow text-[color:var(--muted-fg)]">
@@ -496,6 +504,7 @@ function HomePage() {
                         </span>
                       </div>
                     )}
+
 
                   </div>
                   <figcaption className="mt-3 text-[0.72rem] uppercase tracking-[0.16em] text-[color:var(--muted-fg)]">
