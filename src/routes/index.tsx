@@ -886,6 +886,5 @@ function HomePage() {
         </Link>
       </div>
     </>
-    </>
   );
 }
