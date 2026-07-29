@@ -1,9 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import lauraImg from "@/assets/mentor.jpg";
-import proofA from "@/assets/opportunity.jpg";
-import proofB from "@/assets/hero.jpg";
-import proofC from "@/assets/avatar.jpg";
+import lauraPortrait from "@/assets/laura-portrait.jpg.asset.json";
+import proofAAsset from "@/assets/laura-work.jpg.asset.json";
+import proofBAsset from "@/assets/laura-walk.jpg.asset.json";
+import proofCAsset from "@/assets/laura-mykonos.jpg.asset.json";
+import proofDAsset from "@/assets/laura-villa.jpg.asset.json";
+
+const lauraImg = lauraPortrait.url;
+const proofA = proofAAsset.url;
+const proofB = proofBAsset.url;
+const proofC = proofCAsset.url;
+const proofD = proofDAsset.url;
+
 import logoDark from "@/assets/logo-dark.png";
 import { trackEvent } from "@/lib/track";
 import {
@@ -80,13 +88,14 @@ const faqs = [
 ];
 
 
-// Austauschbare Proof-Slots — echte Assets später hier ersetzen.
+// Editorial-Collage — echte Aufnahmen.
 const proofSlots = [
-  { label: "Property Circle — Landingpage", img: proofA, span: "sm:col-span-7", ratio: "4 / 3" },
-  { label: "Organischer Content", img: proofB, span: "sm:col-span-5", ratio: "3 / 4" },
-  { label: "Kampagne / Paid Marketing", img: proofC, span: "sm:col-span-5", ratio: "1 / 1" },
-  { label: "Anfragen & Leads", img: null, span: "sm:col-span-7", ratio: "16 / 10" },
+  { label: "Arbeiten von überall", img: proofA, span: "sm:col-span-7", ratio: "4 / 3" },
+  { label: "Unterwegs", img: proofB, span: "sm:col-span-5", ratio: "3 / 4" },
+  { label: "Zwischen zwei Calls", img: proofC, span: "sm:col-span-5", ratio: "1 / 1" },
+  { label: "Der Blick, für den es sich lohnt", img: proofD, span: "sm:col-span-7", ratio: "16 / 10" },
 ];
+
 
 const build = [
   {
