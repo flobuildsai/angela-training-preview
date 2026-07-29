@@ -796,7 +796,7 @@ function HomePage() {
         </section>
 
         {/* ── Footer ───────────────────────────────────────── */}
-        <footer className="border-t border-[color:var(--border)] py-10">
+        <footer className="border-t border-[color:var(--border)] py-10 pb-24 md:pb-10">
           <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 text-sm text-[color:var(--muted-fg)] sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <img src={logoDark} alt="thecreatingsociety" className="h-4 w-auto shrink-0 self-start object-contain" />
             <nav className="flex flex-wrap items-center gap-6">
@@ -811,6 +811,23 @@ function HomePage() {
           </div>
         </footer>
       </main>
+
+      {/* Mobile Sticky CTA */}
+      <div
+        className={
+          "fixed inset-x-0 bottom-0 z-40 border-t border-[color:var(--border)] bg-[color:var(--cream)]/95 px-5 py-3 backdrop-blur-xl transition-transform duration-500 md:hidden " +
+          (showBar ? "translate-y-0" : "translate-y-full")
+        }
+      >
+        <Link
+          to="/call"
+          onClick={() => trackEvent("call_cta_click", { source: "mobile_bar" })}
+          className="flex w-full items-center justify-center rounded-full bg-[color:var(--wine)] px-6 py-3.5 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[color:var(--cream)] transition hover:opacity-90"
+        >
+          Kostenloses Strategiegespräch buchen
+        </Link>
+      </div>
+
 
 
 
