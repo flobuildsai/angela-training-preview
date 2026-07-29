@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { CalendlyEmbed } from "@/components/CalendlyEmbed";
+import logoDark from "@/assets/logo-dark.png";
 import { trackEvent } from "@/lib/track";
 
 export const Route = createFileRoute("/call")({
