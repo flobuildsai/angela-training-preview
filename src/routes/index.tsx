@@ -103,11 +103,12 @@ const proofSlots: {
   ratio: string;
   fit: "cover" | "contain";
 }[] = [
-  { label: "Content-Performance", img: proofStatsAsset.url, span: "sm:col-span-7", ratio: "12 / 5", fit: "contain" },
+  { label: "Content-Performance", img: proofStatsAsset.url, span: "sm:col-span-7", ratio: "12 / 7", fit: "contain" },
   { label: "Reels-Reichweite", img: proofGridAsset.url, span: "sm:col-span-5", ratio: "3 / 4", fit: "cover" },
-  { label: "Views eines Formats", img: proofViews7mAsset.url, span: "sm:col-span-5", ratio: "1 / 1", fit: "contain" },
-  { label: "Reichweite außerhalb der Follower", img: proofViews15mAsset.url, span: "sm:col-span-7", ratio: "4 / 3", fit: "contain" },
-  { label: "Sales & Umsätze", img: null, span: "sm:col-span-12", ratio: "16 / 6", fit: "cover" },
+  { label: "Views eines Formats", img: proofViews7mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
+  { label: "Reichweite außerhalb der Follower", img: proofViews15mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
+  { label: "Sales & Umsätze", img: null, span: "sm:col-span-12", ratio: "16 / 4", fit: "cover" },
+
 ];
 
 
