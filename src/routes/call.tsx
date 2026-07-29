@@ -142,7 +142,7 @@ function CallPage() {
 
       <footer className="border-t border-[color:var(--border)] py-10">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 text-sm text-[color:var(--muted-fg)] sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p className="font-serif text-base text-[color:var(--ink)]">Creating Society</p>
+          <img src={logoDark} alt="thecreatingsociety" className="h-4 w-auto" />
           <nav className="flex flex-wrap items-center gap-6">
             <a href="/impressum" className="transition hover:text-[color:var(--ink)]">
               Impressum
