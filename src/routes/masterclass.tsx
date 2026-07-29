@@ -221,15 +221,14 @@ function MasterclassPage() {
               id="problem-heading"
               className="mt-6 font-serif text-[2.2rem] sm:text-5xl lg:text-6xl leading-[1.04] tracking-tight"
             >
-              Du hast kein Reichweiten-Problem.{" "}
-              <span className="serif-italic text-[color:var(--rose)]">Du hast kein Angebot.</span>
+              Du brauchst nicht mehr Content-Tipps.{" "}
+              <span className="serif-italic text-[color:var(--rose)]">Du brauchst einen Plan.</span>
             </h2>
           </div>
           <div className="rv d1 md:col-span-7 md:pl-4 space-y-5 text-[color:var(--muted-fg)] leading-relaxed text-[15px] sm:text-base">
-            <p>Du postest. Manche Videos laufen gut. Manchmal richtig gut, mit tausenden Views, Saves und neuen Followern.</p>
-            <p>Und am Ende des Monats hat sich auf deinem Konto trotzdem nichts verändert.</p>
-            <p>Views sind kein Business. Views sind Aufmerksamkeit. Aufmerksamkeit ohne Angebot ist nur Arbeit, die dich deine Abende kostet.</p>
-            <p>Die Frauen, die mit Content Geld verdienen, sind nicht talentierter als du. Viele haben weniger Reichweite. Sie hatten nur etwas zu verkaufen, als die Aufmerksamkeit da war.</p>
+            <p>Du siehst andere, die mit Content ein Business aufbauen. Aber dir fehlt der Plan, wie du überhaupt anfängst: welche Formate funktionieren, wie du die richtige Zielgruppe erreichst und wie du dich ohne Algorithmus-Glück sichtbar machst.</p>
+            <p>Und selbst wenn du schon postest: Views und Likes sind kein Geschäft. Ohne ein klares Angebot dahinter bleibt Aufmerksamkeit nur Arbeit, die dich deine Abende kostet.</p>
+            <p>Die Frauen, die mit Content Geld verdienen, sind nicht talentierter als du. Sie hatten nur einen Plan: eine Positionierung, ein Angebot und eine Strategie, wie sie beides verbinden.</p>
             <blockquote className="mt-8 border-l-2 border-[color:var(--rose)] pl-6 py-2 serif-italic text-[color:var(--ink)] text-xl leading-snug">
               Ich hatte Millionen Views im Monat und kaum Einkommen daraus. Verändert hat sich erst
               etwas, als ich angefangen habe, etwas Eigenes dahinter zu bauen.
