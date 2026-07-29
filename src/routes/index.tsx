@@ -263,22 +263,25 @@ function HomePage() {
 
       <main id="top" className="bg-[color:var(--background)]">
         {/* ── Hero ─────────────────────────────────────────── */}
-        <section className="relative mb-40 flex min-h-[100vh] flex-col justify-center overflow-hidden pt-32 pb-36 sm:mb-12 sm:min-h-[90vh] sm:pt-44 sm:pb-28 md:pt-52 md:pb-36">
+        <section className="relative mb-32 flex min-h-[100vh] flex-col justify-center overflow-hidden pt-24 pb-16 sm:mb-8 sm:min-h-[92vh] sm:pt-32 sm:pb-24 md:pt-40 md:pb-32">
           <div className="pointer-events-none absolute inset-0 hero-glow" aria-hidden="true" />
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-3xl">
-              <h1 className="font-serif text-[2.35rem] font-normal leading-[1.05] tracking-[-0.02em] text-[color:var(--ink)] sm:text-[3.6rem] lg:text-[4.6rem]">
+              <p className="eyebrow mb-8 text-[color:var(--wine-accent)]">
+                Business Coaching für Frauen
+              </p>
+              <h1 className="font-serif text-[2.85rem] font-semibold leading-[1.02] tracking-[-0.02em] text-[color:var(--ink)] sm:text-[4rem] lg:text-[5rem]">
                 Verdiene 10.000&nbsp;€ im Monat mit Content.
               </h1>
-              <p className="serif-italic mt-4 text-[1.25rem] leading-[1.3] text-[color:var(--ink)] sm:mt-5 sm:text-[1.75rem] lg:text-[2.1rem]">
+              <p className="serif-italic mt-4 mb-8 text-[1.35rem] leading-[1.25] text-[color:var(--ink)] sm:mt-5 sm:mb-10 sm:text-[1.85rem] lg:text-[2.1rem]">
                 Ohne große Reichweite. Ohne fertige Idee.
               </p>
-              <p className="mt-7 max-w-md text-[0.98rem] leading-[1.75] text-[color:var(--muted-fg)] sm:mt-9">
+              <p className="mb-10 max-w-md text-[1.02rem] leading-[1.75] text-[color:var(--muted-fg)] sm:mb-12">
                 Die meisten denken, du brauchst zehntausende Follower, bevor du mit Content Geld
                 verdienen kannst. Brauchst du nicht. Ich zeige dir, wie du dein eigenes Offer baust
                 und deine ersten zahlenden Kundinnen gewinnst, in den nächsten 12 Wochen.
               </p>
-              <div className="mt-9 sm:mt-11">
+              <div>
                 <CtaButton source="hero" className="w-full sm:w-auto">
                   Strategiegespräch buchen
                 </CtaButton>
@@ -287,7 +290,7 @@ function HomePage() {
           </div>
         </section>
 
-        <div className="h-48 sm:h-0" aria-hidden="true" />
+        <div className="h-40 sm:h-0" aria-hidden="true" />
 
         {/* ── Reframe ──────────────────────────────────────── */}
         <section className="pt-12 pb-16 md:pt-16 md:pb-24">
