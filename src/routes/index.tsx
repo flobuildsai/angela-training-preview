@@ -848,23 +848,7 @@ function HomePage() {
           </div>
         </footer>
       </main>
-
-      {/* Mobile Sticky CTA */}
-      <div
-        className={
-          "fixed inset-x-0 bottom-0 z-50 border-t border-[color:var(--border)] bg-[color:var(--cream)]/95 px-4 pt-3 backdrop-blur-xl transition-transform duration-500 ease-out md:hidden " +
-          (showSticky ? "translate-y-0" : "translate-y-full")
-        }
-        style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
-      >
-        <Link
-          to="/call"
-          onClick={() => trackEvent("call_cta_click", { source: "mobile_bar" })}
-          className="flex w-full items-center justify-center gap-3 rounded-full bg-[color:var(--ink)] px-6 py-4 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[color:var(--cream)] shadow-[0_14px_30px_-18px_rgba(16,16,16,0.9)]"
-        >
-          Strategiegespräch buchen
-        </Link>
-      </div>
     </>
+
   );
 }
