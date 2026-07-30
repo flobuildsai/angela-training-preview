@@ -244,7 +244,6 @@ function CtaButton({
 function HomePage() {
   useReveal();
   const past = useScrolled();
-  const showSticky = useShowStickyCta();
 
   return (
     <>
