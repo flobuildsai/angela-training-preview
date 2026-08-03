@@ -41,6 +41,13 @@ const lauraImg = lauraPortrait.url;
 const workImg = lauraWork.url;
 const walkImg = lauraWalk.url;
 
+const proofSlots: { src: string; caption: string }[] = [
+  { src: proofViews7m.url, caption: "Views eines Formats" },
+  { src: proofViews15m.url, caption: "Reichweite außerhalb der Follower" },
+  { src: proofStats.url, caption: "Content-Performance" },
+];
+
+
 // ─────────────────────────────────────────────────────────────
 // SOCIAL PROOF
 // Bleibt leer, bis echte, verifizierte Ergebnisse vorliegen.
