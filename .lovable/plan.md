@@ -1,42 +1,48 @@
 ## Ziel
 
-Die Startseite wird als Pre-Launch-Seite geframed: Creating Society startet bald, die erste Gruppe ist begrenzt, und der Zugang läuft ausschließlich über ein Strategiegespräch. Das Gespräch ist damit nicht nur Beratung, sondern der Weg zum Early Access.
+Die Programm-Sektion auf der Startseite (`#society`) wirkt aktuell wie drei nackte Textzeilen: „Woche 1–4 / 5–8 / 9–12“, untereinander mit Trennlinien. Das ist inhaltsarm und sieht auf dem Handy nach Fließtext aus. Aus dem PDF-Curriculum kennen wir jetzt den echten Inhalt des Programms, den wir stattdessen zeigen.
 
-Nur `src/routes/index.tsx` wird angefasst. Struktur und Design bleiben, es ändert sich die Rahmung, einzelne Copy-Stellen und zwei neue kleine Blöcke.
+Nur `src/routes/index.tsx` wird angefasst.
 
-## Was sich ändert
+## Neuer Aufbau der Sektion
 
-**Hero**
-Über der Headline steht statt "Creating Society" eine Pre-Launch-Zeile, zum Beispiel "Creating Society, Start bald, Early Access". Unter dem Button eine leise Zeile: begrenzte erste Gruppe, Zugang über das Gespräch. Kein Countdown, keine erfundenen Restplatzzahlen.
+**Intro bleibt sinngemäß**, wird leicht gestrafft: was Creating Society ist und wohin es führt (eigenes digitales Produkt, verkauft über deinen Content).
 
-**Neuer Block: Early Access, direkt nach dem Hero**
-Ruhige Zeile mit drei Punkten in Editorial-Typo, keine Karten:
+**Statt der drei Wochenzeilen: das Curriculum in drei Phasen mit echten Modulen.** Jede Phase ist ein eigener Block mit großer Ziffer, Phasentitel, einem Satz Ergebnis und darunter die Module als kompakte Zeilen. Inhalte aus dem PDF:
 
 ```text
-01  Creating Society startet in Kürze
-02  Die erste Gruppe wird klein gehalten
-03  Zugang bekommst du über ein Strategiegespräch
+01  Fundament
+    Mindset und Unternehmer 1x1
+    Nische und perfekte Kundin finden
+    Ziele und eigene Roadmap
+    Ergebnis: Du weißt, was du verkaufst und an wen.
+
+02  Produkt
+    Dein digitales Produkt wählen (Kurs, Guide, Masterclass, Templates, Membership)
+    Branding: Name, Logo, Farben
+    Produkt aufbauen und fertigstellen
+    Ergebnis: Dein Angebot existiert und ist verkaufbar.
+
+03  Verkauf
+    Social Media Bootcamp
+    Storytelling und Vertrauen aufbauen
+    Pre-Launch und Testphase
+    Passiv verkaufen und Affiliate
+    Ergebnis: Deine ersten zahlenden Kundinnen.
 ```
 
-Darunter ein Satz, was Early Access konkret bedeutet: du bist von Anfang an dabei, wirst enger begleitet und bekommst die Konditionen der ersten Gruppe.
+**Layout**
+Desktop: dreispaltiges Raster, dünne senkrechte Linien dazwischen, Ziffer groß in Serif, Module als schmale Liste mit feinen Trennlinien. Mobil: gestapelt, Ziffer und Phasentitel in einer Zeile, Module darunter, deutlich gesetzte Abstände, damit es nicht mehr wie ein Absatz aussieht.
 
-**Programm-Sektion**
-Eyebrow von "Das Programm" auf "Das Programm, Early Access" gedreht. Ein zusätzlicher Absatz erklärt, dass die erste Gruppe bewusst klein bleibt und die Plätze über Gespräche vergeben werden. Buttonlabel bleibt.
-
-**Call-Sektion**
-Wird zur Early-Access-Sektion umformuliert: das Gespräch ist der Weg auf die Early-Access-Liste, kein Verkaufsgespräch mit Druck. Zusatzzeile darunter macht klar, was danach passiert (Gespräch, gemeinsam prüfen, bei Passung Platz in der ersten Gruppe).
-
-**Closing**
-Schlusszeile bekommt einen kurzen Pre-Launch-Hinweis mit letztem CTA statt nur der Markenzeile.
+**Danach** die bestehende Zeile „funktioniert auch ohne große Reichweite, auf Wunsch faceless“ und der CTA bleiben.
 
 ## Was gleich bleibt
 
-- Design-System, Farben, Cormorant-Headlines, `rv`-Animationen
-- Hero-Layout mit Lauras Bild
-- Alle CTAs weiterhin auf `/call`
-- Keine Preise, keine Sticky-Bar, keine Em-Dashes, keine erfundenen Zahlen oder Deadlines
+- Design-System: Farben, Cormorant-Headlines, `rv`-Animationen, schwarzer CTA-Button
+- Alle anderen Sektionen der Startseite unverändert
 - `/masterclass`, `/call`, `/apply` und Legal-Seiten unverändert
+- Keine Preise, keine Em-Dashes, keine erfundenen Zahlen
 
 ## Offen
 
-Wenn du ein konkretes Startdatum oder eine Platzzahl nennen willst (zum Beispiel "Start im September, 20 Plätze"), baue ich das ein. Ohne diese Angaben bleibt die Formulierung bewusst unkonkret, damit nichts behauptet wird, was nicht stimmt.
+Die Wochen-Angaben (1–4, 5–8, 9–12) kann ich pro Phase als kleines Label behalten oder ganz weglassen. Vorschlag: behalten, weil es Struktur gibt, aber nur als feines Label über dem Phasentitel.
