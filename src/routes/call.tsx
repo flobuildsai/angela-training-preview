@@ -27,29 +27,9 @@ export const Route = createFileRoute("/call")({
 });
 
 const callAgenda = [
-  "wo du aktuell stehst",
-  "welche Positionierung zu dir passen könnte",
+  "wo du stehst und welche Positionierung zu dir passt",
   "welches Angebot du entwickeln kannst",
-  "wie Content für dich Aufmerksamkeit und Kunden gewinnen kann",
   "ob Creating Society der richtige nächste Schritt für dich ist",
-];
-
-const prep = [
-  {
-    index: "01",
-    title: "Termin wählen",
-    body: "Such dir unten einen Zeitpunkt aus, der wirklich in deinen Kalender passt.",
-  },
-  {
-    index: "02",
-    title: "Kurz vorbereiten",
-    body: "Überleg dir vorab, wo du stehst und was du in den nächsten zwölf Wochen erreichen möchtest.",
-  },
-  {
-    index: "03",
-    title: "Gemeinsam schauen",
-    body: "Im Gespräch entwickeln wir eine klare Richtung – und du weißt danach, was dein nächster Schritt ist.",
-  },
 ];
 
 function CallPage() {
@@ -76,64 +56,38 @@ function CallPage() {
       </header>
 
       {/* Intro */}
-      <section className="bg-[color:var(--wine)] py-20 text-[color:var(--cream)] md:py-28">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="grid gap-12 md:grid-cols-12 md:gap-16">
-            <div className="md:col-span-6">
-              <p className="eyebrow text-[color:var(--cream)]/60">Strategiegespräch</p>
-              <h1 className="mt-7 font-serif text-[2.4rem] leading-[1.02] sm:text-[3.4rem]">
-                Du brauchst nicht noch mehr gespeicherte Content-Tipps.
-              </h1>
-              <p className="mt-7 max-w-md text-[1.02rem] leading-relaxed text-[color:var(--cream)]/70">
-                Du brauchst Klarheit darüber, was du aufbauen kannst – und einen Plan, wie du es
-                umsetzt.
-              </p>
-              <p className="mt-10 text-sm uppercase tracking-[0.16em] text-[color:var(--cream)]/50">
-                Im Gespräch schauen wir uns gemeinsam an:
-              </p>
-              <ul className="mt-6 border-t border-[color:var(--cream)]/15">
-                {callAgenda.map((a) => (
-                  <li
-                    key={a}
-                    className="border-b border-[color:var(--cream)]/15 py-4 text-[1.02rem] text-[color:var(--cream)]/85"
-                  >
-                    {a}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-8 max-w-md text-sm leading-relaxed text-[color:var(--cream)]/55">
-                Die Zusammenarbeit ist nicht für jede Person geeignet. Im Gespräch prüfen wir
-                gemeinsam, ob deine Ziele und Creating Society zueinander passen.
-              </p>
-            </div>
-
-            <div className="md:col-span-6">
-              <div className="space-y-8">
-                {prep.map((p) => (
-                  <div key={p.index} className="border-t border-[color:var(--cream)]/15 pt-6">
-                    <p className="font-serif text-2xl text-[color:var(--cream)]/40">{p.index}</p>
-                    <h2 className="mt-3 font-serif text-xl text-[color:var(--cream)] sm:text-2xl">
-                      {p.title}
-                    </h2>
-                    <p className="mt-2 text-[0.98rem] leading-relaxed text-[color:var(--cream)]/65">
-                      {p.body}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+      <section className="bg-[color:var(--wine)] py-14 text-[color:var(--cream)] md:py-18">
+        <div className="mx-auto max-w-2xl px-5 text-center sm:px-8">
+          <p className="eyebrow text-[color:var(--cream)]/60">Kostenloses Strategiegespräch</p>
+          <h1 className="mt-6 font-serif text-[2.2rem] leading-[1.05] sm:text-[3rem]">
+            Du brauchst nicht noch mehr gespeicherte Content-Tipps.
+          </h1>
+          <p className="mt-5 text-[1.02rem] leading-relaxed text-[color:var(--cream)]/70">
+            Du brauchst Klarheit darüber, was du aufbauen kannst – und einen Plan, wie du es umsetzt.
+          </p>
+          <p className="mt-8 text-sm uppercase tracking-[0.16em] text-[color:var(--cream)]/50">
+            Im Gespräch klären wir:
+          </p>
+          <ul className="mt-5 border-t border-[color:var(--cream)]/15 text-left">
+            {callAgenda.map((a) => (
+              <li
+                key={a}
+                className="border-b border-[color:var(--cream)]/15 py-3.5 text-[0.98rem] text-[color:var(--cream)]/85"
+              >
+                {a}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 text-sm text-[color:var(--cream)]/55">
+            30 bis 45 Minuten. Ehrlich, ohne Druck – und nicht für jede geeignet.
+          </p>
         </div>
       </section>
 
       {/* Calendly */}
-      <section id="booking" className="py-16 md:py-24">
+      <section id="booking" className="py-10 md:py-14">
         <div className="mx-auto max-w-4xl px-5 sm:px-8">
-          <p className="eyebrow text-[color:var(--rose)]">Termin wählen</p>
-          <h2 className="mt-5 font-serif text-[2rem] leading-[1.06] text-[color:var(--ink)] sm:text-[2.6rem]">
-            Wähle einen Zeitpunkt, der zu dir passt.
-          </h2>
-          <div className="mt-10">
+          <div className="mt-2">
             <CalendlyEmbed />
           </div>
         </div>
