@@ -40,11 +40,11 @@ export function VideoBlock({ videoId, label, poster = posterImg }: VideoBlockPro
         {playing && (
           <div className="absolute inset-0 grid place-items-center bg-[color:var(--ink)]/60 text-[color:var(--cream)] text-sm">
             {/* TODO: embed player here */}
-            Video player loads here
+            Video wird hier geladen
           </div>
         )}
       </button>
-      <p className="mt-3 text-center text-xs tracking-wide text-[color:var(--muted-fg)]">Click to unmute</p>
+      <p className="mt-3 text-center text-xs tracking-wide text-[color:var(--muted-fg)]">Zum Aktivieren des Tons tippen</p>
     </div>
   );
 }
