@@ -5,6 +5,9 @@ import lauraPortrait from "@/assets/laura-portrait.jpg.asset.json";
 import lauraWork from "@/assets/laura-work.jpg.asset.json";
 import lauraWalk from "@/assets/laura-walk.jpg.asset.json";
 import logoDark from "@/assets/logo-dark.png";
+import proofViews7m from "@/assets/proof-views-7m.jpeg.asset.json";
+import proofViews15m from "@/assets/proof-views-15m.jpeg.asset.json";
+import proofStats from "@/assets/proof-stats.jpeg.asset.json";
 import {
   Accordion,
   AccordionContent,
@@ -15,17 +18,17 @@ import {
 export const Route = createFileRoute("/masterclass")({
   head: () => ({
     meta: [
-      { title: "Masterclass | Creating Society" },
+      { title: "Creating Society | Das Programm" },
       {
         name: "description",
         content:
-          "Die Masterclass von Laura: Wie du aus deinem Content ein eigenes Angebot baust, ohne große Reichweite und ohne fertige Idee. Strategiegespräch für den Early Access buchen.",
+          "Das Programm von Laura: Wie du aus dem, was du kannst, ein eigenes Angebot baust, ohne große Reichweite und ohne fertige Idee. Strategiegespräch für den Early Access buchen.",
       },
-      { property: "og:title", content: "Masterclass | Creating Society" },
+      { property: "og:title", content: "Creating Society | Das Programm" },
       {
         property: "og:description",
         content:
-          "Content, Positionierung und ein Angebot, das Menschen wirklich kaufen wollen. Jetzt Masterclass ansehen.",
+          "Content, Positionierung und ein Angebot, das Menschen wirklich kaufen wollen. Jetzt das Programm ansehen.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -37,6 +40,13 @@ export const Route = createFileRoute("/masterclass")({
 const lauraImg = lauraPortrait.url;
 const workImg = lauraWork.url;
 const walkImg = lauraWalk.url;
+
+const proofSlots: { src: string; caption: string }[] = [
+  { src: proofViews7m.url, caption: "Views eines Formats" },
+  { src: proofViews15m.url, caption: "Reichweite außerhalb der Follower" },
+  { src: proofStats.url, caption: "Content-Performance" },
+];
+
 
 // ─────────────────────────────────────────────────────────────
 // SOCIAL PROOF
@@ -201,12 +211,12 @@ function MasterclassPage() {
         className="relative bg-[color:var(--wine)] text-[color:var(--cream)] pt-28 pb-20 sm:pt-32 sm:pb-24 overflow-hidden grain"
       >
         <div className="relative mx-auto max-w-[780px] px-5 sm:px-8 text-center">
-          <p className="rv eyebrow text-[color:var(--cream)]/60">Die Masterclass</p>
+          <p className="rv eyebrow text-[color:var(--cream)]/60">Das Programm</p>
           <h1
             id="hero-heading"
             className="rv d1 mt-6 font-serif text-[2.4rem] sm:text-5xl md:text-6xl leading-[1.05] tracking-tight"
           >
-            Mach aus deinem Content ein eigenes Angebot.
+            Mach aus dem, was du kannst, ein eigenes Angebot.
           </h1>
           <p className="rv d2 mt-5 serif-italic text-lg sm:text-xl text-[color:var(--cream)]/75 max-w-[520px] mx-auto leading-relaxed">
             Auch ohne große Reichweite, ohne fertige Idee und ohne dein Gesicht zu zeigen.
@@ -257,6 +267,32 @@ function MasterclassPage() {
           </div>
         </div>
       </section>
+
+      {/* PROOF-REIHE */}
+      <section aria-label="Belege" className="bg-[color:var(--cream)] pb-24 md:pb-28">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <p className="rv eyebrow text-[color:var(--muted-fg)]">Keine Behauptungen. Screenshots.</p>
+          <div className="rv d1 mt-6 grid gap-5 sm:grid-cols-3">
+            {proofSlots.map((slot) => (
+              <figure key={slot.caption}>
+                <div className="grain relative overflow-hidden rounded-[2px] bg-[color:var(--cream)] ring-1 ring-[color:var(--border)]">
+                  <img
+                    src={slot.src}
+                    alt={slot.caption}
+                    loading="lazy"
+                    className="aspect-[4/5] w-full object-contain p-3 sm:p-5"
+                  />
+                </div>
+                <figcaption className="mt-3 eyebrow text-[color:var(--muted-fg)]">
+                  {slot.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
 
       {/* 02 — WAS DU BEKOMMST */}
       <section aria-labelledby="inside-heading" className="bg-[color:var(--bg)] py-24 md:py-28">

@@ -19,7 +19,7 @@ export function VideoBlock({ videoId, label, poster = posterImg }: VideoBlockPro
       <button
         type="button"
         onClick={() => setPlaying(true)}
-        aria-label={`Play ${label}`}
+        aria-label={`${label} abspielen`}
         className="group relative block w-full overflow-hidden rounded-2xl shadow-[0_30px_80px_-30px_rgba(26,18,9,0.35)] focus:outline-none focus:ring-2 focus:ring-[color:var(--rose)] focus:ring-offset-4 focus:ring-offset-[color:var(--background)]"
         style={{ aspectRatio: "16 / 9" }}
       >
@@ -40,11 +40,11 @@ export function VideoBlock({ videoId, label, poster = posterImg }: VideoBlockPro
         {playing && (
           <div className="absolute inset-0 grid place-items-center bg-[color:var(--ink)]/60 text-[color:var(--cream)] text-sm">
             {/* TODO: embed player here */}
-            Video player loads here
+            Video wird hier geladen
           </div>
         )}
       </button>
-      <p className="mt-3 text-center text-xs tracking-wide text-[color:var(--muted-fg)]">Click to unmute</p>
+      <p className="mt-3 text-center text-xs tracking-wide text-[color:var(--muted-fg)]">Zum Aktivieren des Tons tippen</p>
     </div>
   );
 }
