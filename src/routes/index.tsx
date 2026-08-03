@@ -215,7 +215,7 @@ function CtaButton({
       to="/call"
       onClick={() => trackEvent("call_cta_click", { source })}
       className={
-        "group inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full px-8 py-4 text-[0.7rem] font-medium uppercase tracking-[0.18em] transition-all duration-300 ease-out hover:-translate-y-[1px] active:translate-y-0 sm:px-10 sm:py-[1.05rem] " +
+        "group inline-flex max-w-full items-center justify-center gap-3 whitespace-normal text-center rounded-full px-6 py-4 text-[0.68rem] font-medium uppercase leading-snug tracking-[0.14em] transition-all duration-300 ease-out hover:-translate-y-[1px] active:translate-y-0 sm:whitespace-nowrap sm:px-10 sm:py-[1.05rem] sm:text-[0.7rem] sm:tracking-[0.18em] " +
         tones[tone] +
         " " +
         className
