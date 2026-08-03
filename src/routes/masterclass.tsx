@@ -258,6 +258,32 @@ function MasterclassPage() {
         </div>
       </section>
 
+      {/* PROOF-REIHE */}
+      <section aria-label="Belege" className="bg-[color:var(--cream)] pb-24 md:pb-28">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <p className="rv eyebrow text-[color:var(--muted-fg)]">Keine Behauptungen. Screenshots.</p>
+          <div className="rv d1 mt-6 grid gap-5 sm:grid-cols-3">
+            {proofSlots.map((slot) => (
+              <figure key={slot.caption}>
+                <div className="grain relative overflow-hidden rounded-[2px] bg-[color:var(--cream)] ring-1 ring-[color:var(--border)]">
+                  <img
+                    src={slot.src}
+                    alt={slot.caption}
+                    loading="lazy"
+                    className="aspect-[4/5] w-full object-contain p-3 sm:p-5"
+                  />
+                </div>
+                <figcaption className="mt-3 eyebrow text-[color:var(--muted-fg)]">
+                  {slot.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+
       {/* 02 — WAS DU BEKOMMST */}
       <section aria-labelledby="inside-heading" className="bg-[color:var(--bg)] py-24 md:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
