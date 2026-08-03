@@ -201,12 +201,12 @@ function MasterclassPage() {
         className="relative bg-[color:var(--wine)] text-[color:var(--cream)] pt-28 pb-20 sm:pt-32 sm:pb-24 overflow-hidden grain"
       >
         <div className="relative mx-auto max-w-[780px] px-5 sm:px-8 text-center">
-          <p className="rv eyebrow text-[color:var(--cream)]/60">Die Masterclass</p>
+          <p className="rv eyebrow text-[color:var(--cream)]/60">Das Programm</p>
           <h1
             id="hero-heading"
             className="rv d1 mt-6 font-serif text-[2.4rem] sm:text-5xl md:text-6xl leading-[1.05] tracking-tight"
           >
-            Mach aus deinem Content ein eigenes Angebot.
+            Mach aus dem, was du kannst, ein eigenes Angebot.
           </h1>
           <p className="rv d2 mt-5 serif-italic text-lg sm:text-xl text-[color:var(--cream)]/75 max-w-[520px] mx-auto leading-relaxed">
             Auch ohne große Reichweite, ohne fertige Idee und ohne dein Gesicht zu zeigen.
