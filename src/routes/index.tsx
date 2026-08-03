@@ -576,29 +576,89 @@ function HomePage() {
               <span className="serif-italic">mit deinen ersten zahlenden Kundinnen.</span>
             </h2>
             <p className="rv d1 mt-8 max-w-2xl text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
-              Creating Society ist ein strukturiertes Programm, in dem du deine Positionierung findest,
-              dein eigenes digitales Produkt oder Coaching-Angebot entwickelst und lernst, es über
-              deinen Content zu verkaufen. Nicht irgendwann. Jetzt.
+              Creating Society ist ein strukturiertes Programm, in dem du dein Wissen in ein eigenes
+              digitales Produkt verwandelst und lernst, es über deinen Content zu verkaufen.
             </p>
 
-            <ul className="rv d2 mt-14 border-t border-[color:var(--border)]">
+            <div className="rv d2 mt-16 grid gap-12 border-t border-[color:var(--border)] pt-12 md:grid-cols-3 md:gap-0">
               {[
-                "Woche 1–4, Positionierung & Angebot: Du weißt, wofür du stehst und was du verkaufst.",
-                "Woche 5–8, Content & Nachfrage: Dein Content erzeugt gezielt Anfragen statt nur Views.",
-                "Woche 9–12, Verkauf & erste Kundinnen: Du gewinnst deine ersten zahlenden Kundinnen.",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className="border-b border-[color:var(--border)] py-5 font-serif text-xl leading-snug text-[color:var(--ink)] sm:py-6 sm:text-2xl"
+                {
+                  no: "01",
+                  weeks: "Woche 1–4",
+                  title: "Fundament",
+                  modules: [
+                    "Mindset und Unternehmer 1x1",
+                    "Nische und perfekte Kundin finden",
+                    "Ziele und eigene Roadmap",
+                  ],
+                  result: "Du weißt, was du verkaufst und an wen.",
+                },
+                {
+                  no: "02",
+                  weeks: "Woche 5–8",
+                  title: "Produkt",
+                  modules: [
+                    "Produktform wählen: Kurs, Guide, Masterclass, Templates, Membership",
+                    "Branding: Name, Logo, Farben",
+                    "Produkt aufbauen und fertigstellen",
+                  ],
+                  result: "Dein Angebot existiert und ist verkaufbar.",
+                },
+                {
+                  no: "03",
+                  weeks: "Woche 9–12",
+                  title: "Verkauf",
+                  modules: [
+                    "Social Media Bootcamp",
+                    "Storytelling und Vertrauen aufbauen",
+                    "Pre-Launch und Testphase",
+                    "Passiv verkaufen und Affiliate",
+                  ],
+                  result: "Deine ersten zahlenden Kundinnen.",
+                },
+              ].map((phase, i) => (
+                <div
+                  key={phase.no}
+                  className={`md:px-8 ${
+                    i > 0 ? "md:border-l md:border-[color:var(--border)]" : "md:pl-0"
+                  } ${i === 2 ? "md:pr-0" : ""}`}
                 >
-                  {item}
-                </li>
-              ))}
-            </ul>
+                  <div className="flex items-baseline gap-4">
+                    <span className="font-serif text-[2.6rem] leading-none text-[color:var(--rose)]">
+                      {phase.no}
+                    </span>
+                    <div>
+                      <p className="text-[0.68rem] uppercase tracking-[0.18em] text-[color:var(--muted-fg)]">
+                        {phase.weeks}
+                      </p>
+                      <h3 className="font-serif text-2xl leading-tight text-[color:var(--ink)]">
+                        {phase.title}
+                      </h3>
+                    </div>
+                  </div>
 
-            <p className="rv d3 mt-10 max-w-xl text-sm leading-relaxed text-[color:var(--muted-fg)]">
+                  <ul className="mt-6 border-t border-[color:var(--border)]">
+                    {phase.modules.map((m) => (
+                      <li
+                        key={m}
+                        className="border-b border-[color:var(--border)] py-3 text-[0.95rem] leading-relaxed text-[color:var(--muted-fg)]"
+                      >
+                        {m}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <p className="mt-5 font-serif text-lg leading-snug text-[color:var(--ink)]">
+                    <span className="serif-italic">{phase.result}</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <p className="rv d3 mt-14 max-w-xl text-sm leading-relaxed text-[color:var(--muted-fg)]">
               Funktioniert auch ohne große Reichweite, und auf Wunsch komplett faceless.
             </p>
+
 
             <div className="rv d4 mt-10">
               <CtaButton source="offer">Strategiegespräch buchen</CtaButton>
