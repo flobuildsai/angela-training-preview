@@ -5,6 +5,9 @@ import lauraPortrait from "@/assets/laura-portrait.jpg.asset.json";
 import lauraWork from "@/assets/laura-work.jpg.asset.json";
 import lauraWalk from "@/assets/laura-walk.jpg.asset.json";
 import logoDark from "@/assets/logo-dark.png";
+import proofViews7m from "@/assets/proof-views-7m.jpeg.asset.json";
+import proofViews15m from "@/assets/proof-views-15m.jpeg.asset.json";
+import proofStats from "@/assets/proof-stats.jpeg.asset.json";
 import {
   Accordion,
   AccordionContent,
