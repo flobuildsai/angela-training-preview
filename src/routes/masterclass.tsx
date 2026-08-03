@@ -15,17 +15,17 @@ import {
 export const Route = createFileRoute("/masterclass")({
   head: () => ({
     meta: [
-      { title: "Masterclass | Creating Society" },
+      { title: "Creating Society | Das Programm" },
       {
         name: "description",
         content:
-          "Die Masterclass von Laura: Wie du aus deinem Content ein eigenes Angebot baust, ohne große Reichweite und ohne fertige Idee. Strategiegespräch für den Early Access buchen.",
+          "Das Programm von Laura: Wie du aus dem, was du kannst, ein eigenes Angebot baust, ohne große Reichweite und ohne fertige Idee. Strategiegespräch für den Early Access buchen.",
       },
-      { property: "og:title", content: "Masterclass | Creating Society" },
+      { property: "og:title", content: "Creating Society | Das Programm" },
       {
         property: "og:description",
         content:
-          "Content, Positionierung und ein Angebot, das Menschen wirklich kaufen wollen. Jetzt Masterclass ansehen.",
+          "Content, Positionierung und ein Angebot, das Menschen wirklich kaufen wollen. Jetzt das Programm ansehen.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
