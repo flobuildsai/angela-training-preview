@@ -104,6 +104,7 @@ const proofSteps: {
   img: string;
   ratio: string;
   fit: "cover" | "contain";
+  gallery?: { img: string; ratio: string; fit: "cover" | "contain"; alt: string }[];
 }[] = [
   {
     step: "01",
@@ -122,6 +123,9 @@ const proofSteps: {
     img: proofViews7mAsset.url,
     ratio: "1 / 1",
     fit: "contain",
+    gallery: [
+      { img: proofGridAsset.url, ratio: "3 / 4", fit: "cover", alt: "Reels-Reichweite im zweiten Monat" },
+    ],
   },
   {
     step: "03",
@@ -133,13 +137,6 @@ const proofSteps: {
     fit: "contain",
   },
 ];
-
-const proofLead = {
-  label: "Reels-Reichweite",
-  img: proofGridAsset.url,
-  ratio: "3 / 4",
-  fit: "cover" as const,
-};
 
 
 
