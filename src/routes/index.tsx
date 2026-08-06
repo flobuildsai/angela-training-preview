@@ -9,6 +9,7 @@ import proofStatsAsset from "@/assets/proof-stats.jpeg.asset.json";
 import proofGridAsset from "@/assets/proof-grid.jpeg.asset.json";
 import proofViews7mAsset from "@/assets/proof-views-7m.jpeg.asset.json";
 import proofViews15mAsset from "@/assets/proof-views-15m.jpeg.asset.json";
+import proofStripeAsset from "@/assets/proof-stripe.png.asset.json";
 
 const lauraImg = lauraPortrait.url;
 const lifestyleShots = [
@@ -107,7 +108,7 @@ const proofSlots: {
   { label: "Reels-Reichweite", img: proofGridAsset.url, span: "sm:col-span-5", ratio: "3 / 4", fit: "cover" },
   { label: "Views eines Formats", img: proofViews7mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
   { label: "Reichweite außerhalb der Follower", img: proofViews15mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
-  { label: "Sales & Umsätze", img: null, span: "sm:col-span-12", ratio: "16 / 4", fit: "cover" },
+  { label: "Sales über Nacht", img: proofStripeAsset.url, span: "sm:col-span-5", ratio: "3 / 4", fit: "contain" },
 
 ];
 
