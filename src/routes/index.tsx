@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import lauraPortrait from "@/assets/laura-portrait.jpg.asset.json";
+import lauraNew from "@/assets/laura-new.jpg.asset.json";
 import proofAAsset from "@/assets/laura-work.jpg.asset.json";
 import proofBAsset from "@/assets/laura-walk.jpg.asset.json";
 import proofCAsset from "@/assets/laura-mykonos.jpg.asset.json";
@@ -10,6 +11,7 @@ import proofViews7mAsset from "@/assets/proof-views-7m.jpeg.asset.json";
 import proofViews15mAsset from "@/assets/proof-views-15m.jpeg.asset.json";
 import proofStripeAsset from "@/assets/proof-stripe.png.asset.json";
 
+const heroImg = lauraNew.url;
 const lauraImg = lauraPortrait.url;
 const lifestyleShots = [
   { src: proofAAsset.url, alt: "Laura beim Arbeiten" },
