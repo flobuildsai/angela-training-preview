@@ -131,7 +131,7 @@ const proofSteps: {
     step: "03",
     when: "Danach",
     claim: "Die ersten Sales",
-    body: "Sobald ein eigenes Angebot dahinter steht, wird aus Aufmerksamkeit Umsatz. Dieser Screenshot ist von einem Morgen nach dem Aufstehen.",
+    body: "Ich habe das erste Angebot gezielt gelauncht. Seitdem kommen fast jeden Tag Sales, auch über Nacht. Dieser Screenshot ist von einem Morgen nach dem Aufstehen.",
     img: proofStripeAsset.url,
     ratio: "4 / 5",
     fit: "contain",
