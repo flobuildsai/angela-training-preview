@@ -96,21 +96,50 @@ const faqs = [
 ];
 
 
-// Editorial-Collage: echte Screenshots aus Lauras Accounts.
-const proofSlots: {
-  label: string;
-  img: string | null;
-  span: string;
+// Chronologischer Beweis: Reichweite → Skalierung → Umsatz.
+const proofSteps: {
+  step: string;
+  when: string;
+  claim: string;
+  body: string;
+  img: string;
   ratio: string;
   fit: "cover" | "contain";
 }[] = [
-  { label: "Content-Performance", img: proofStatsAsset.url, span: "sm:col-span-7", ratio: "12 / 7", fit: "contain" },
-  { label: "Reels-Reichweite", img: proofGridAsset.url, span: "sm:col-span-5", ratio: "3 / 4", fit: "cover" },
-  { label: "Erste 30 Tage: 1,5 Mio. Views", img: proofViews15mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
-  { label: "Nach 60 Tagen: 6,9 Mio. Views", img: proofViews7mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
-  { label: "Und dann: die ersten Sales über Nacht", img: proofStripeAsset.url, span: "sm:col-span-5", ratio: "3 / 4", fit: "contain" },
-
+  {
+    step: "01",
+    when: "Monat 1",
+    claim: "1,5 Mio. Views",
+    body: "Neuer Account, null Startpublikum. Im ersten Monat die ersten Millionen Views und die ersten echten Follower.",
+    img: proofViews15mAsset.url,
+    ratio: "1 / 1",
+    fit: "contain",
+  },
+  {
+    step: "02",
+    when: "Monat 2",
+    claim: "6,9 Mio. Views",
+    body: "Kein Zufallstreffer. Das Format wiederholt sich, die Reichweite wächst weiter, weit über die Follower hinaus.",
+    img: proofViews7mAsset.url,
+    ratio: "1 / 1",
+    fit: "contain",
+  },
+  {
+    step: "03",
+    when: "Danach",
+    claim: "Die ersten Sales",
+    body: "Sobald ein eigenes Angebot dahinter steht, wird aus Aufmerksamkeit Umsatz. Dieser Screenshot ist von einem Morgen nach dem Aufstehen.",
+    img: proofStripeAsset.url,
+    ratio: "4 / 5",
+    fit: "contain",
+  },
 ];
+
+const proofContext: { label: string; img: string; ratio: string; fit: "cover" | "contain" }[] = [
+  { label: "Content-Performance", img: proofStatsAsset.url, ratio: "12 / 7", fit: "contain" },
+  { label: "Reels-Reichweite", img: proofGridAsset.url, ratio: "3 / 4", fit: "cover" },
+];
+
 
 
 
