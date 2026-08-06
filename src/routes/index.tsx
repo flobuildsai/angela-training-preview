@@ -107,7 +107,7 @@ const proofSlots: {
   { label: "Reels-Reichweite", img: proofGridAsset.url, span: "sm:col-span-5", ratio: "3 / 4", fit: "cover" },
   { label: "Views eines Formats", img: proofViews7mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
   { label: "Reichweite außerhalb der Follower", img: proofViews15mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
-  { label: "Sales & Umsätze", img: null, span: "sm:col-span-12", ratio: "16 / 4", fit: "cover" },
+  { label: "Sales über Nacht", img: proofStripeAsset.url, span: "sm:col-span-5", ratio: "3 / 4", fit: "contain" },
 
 ];
 
