@@ -96,21 +96,50 @@ const faqs = [
 ];
 
 
-// Editorial-Collage: echte Screenshots aus Lauras Accounts.
-const proofSlots: {
-  label: string;
-  img: string | null;
-  span: string;
+// Chronologischer Beweis: Reichweite → Skalierung → Umsatz.
+const proofSteps: {
+  step: string;
+  when: string;
+  claim: string;
+  body: string;
+  img: string;
   ratio: string;
   fit: "cover" | "contain";
 }[] = [
-  { label: "Content-Performance", img: proofStatsAsset.url, span: "sm:col-span-7", ratio: "12 / 7", fit: "contain" },
-  { label: "Reels-Reichweite", img: proofGridAsset.url, span: "sm:col-span-5", ratio: "3 / 4", fit: "cover" },
-  { label: "Erste 30 Tage: 1,5 Mio. Views", img: proofViews15mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
-  { label: "Nach 60 Tagen: 6,9 Mio. Views", img: proofViews7mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
-  { label: "Und dann: die ersten Sales über Nacht", img: proofStripeAsset.url, span: "sm:col-span-5", ratio: "3 / 4", fit: "contain" },
-
+  {
+    step: "01",
+    when: "Monat 1",
+    claim: "1,5 Mio. Views",
+    body: "Neuer Account, null Startpublikum. Im ersten Monat die ersten Millionen Views und die ersten echten Follower.",
+    img: proofViews15mAsset.url,
+    ratio: "1 / 1",
+    fit: "contain",
+  },
+  {
+    step: "02",
+    when: "Monat 2",
+    claim: "6,9 Mio. Views",
+    body: "Kein Zufallstreffer. Das Format wiederholt sich, die Reichweite wächst weiter, weit über die Follower hinaus.",
+    img: proofViews7mAsset.url,
+    ratio: "1 / 1",
+    fit: "contain",
+  },
+  {
+    step: "03",
+    when: "Danach",
+    claim: "Die ersten Sales",
+    body: "Sobald ein eigenes Angebot dahinter steht, wird aus Aufmerksamkeit Umsatz. Dieser Screenshot ist von einem Morgen nach dem Aufstehen.",
+    img: proofStripeAsset.url,
+    ratio: "4 / 5",
+    fit: "contain",
+  },
 ];
+
+const proofContext: { label: string; img: string; ratio: string; fit: "cover" | "contain" }[] = [
+  { label: "Content-Performance", img: proofStatsAsset.url, ratio: "12 / 7", fit: "contain" },
+  { label: "Reels-Reichweite", img: proofGridAsset.url, ratio: "3 / 4", fit: "cover" },
+];
+
 
 
 
@@ -453,65 +482,93 @@ function HomePage() {
         >
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="rv max-w-3xl">
+              <p className="eyebrow rule-label text-[color:var(--muted-fg)]">Der Beweis</p>
               <h2
                 id="proof-title"
-                className="font-serif text-[2.1rem] leading-[1.08] text-[color:var(--ink)] sm:text-[3.25rem]"
+                className="mt-6 font-serif text-[2.1rem] leading-[1.08] text-[color:var(--ink)] sm:text-[3.25rem]"
               >
-                Ich habe nicht nur Reichweite aufgebaut.
+                Von null Followern zu den ersten Sales.
               </h2>
-              <div className="mt-8 space-y-5 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
-                <p>
-                  Ich habe Content genutzt, um in kurzer Zeit Follower, Anfragen und zahlende
-                  Kundinnen zu gewinnen, organisch, ohne großes Startpublikum.
-                </p>
-                <p>
-                  Millionen Views, Reichweite weit über meine Follower hinaus, und dahinter ein
-                  eigenes Angebot, das daraus ein echtes Geschäftsmodell macht.
-                </p>
-
-                <p className="text-[color:var(--ink)]">
-
-                  Nicht posten, um einfach nur sichtbar zu sein. Posten, um etwas aufzubauen.
-                </p>
-              </div>
+              <p className="mt-7 text-[1.02rem] leading-relaxed text-[color:var(--muted-fg)]">
+                Ein Account, bei null gestartet. Hier ist, was in den ersten Monaten passiert ist,
+                Schritt für Schritt und mit echten Screenshots.
+              </p>
             </div>
 
-            {/* Austauschbare Proof-Slots */}
-            <div className="rv d2 mt-14 grid grid-cols-1 gap-4 sm:grid-cols-12 sm:gap-5">
-              {proofSlots.map((slot) => (
-                <figure key={slot.label} className={"min-w-0 " + slot.span}>
-                  <div
-                    className="grain relative overflow-hidden rounded-[2px] bg-[color:var(--cream)] ring-1 ring-[color:var(--border)]"
-                    style={{ aspectRatio: slot.ratio }}
-                  >
-                    {slot.img ? (
+            {/* Chronologie: Reichweite → Skalierung → Umsatz */}
+            <ol className="mt-14 space-y-14 sm:space-y-20">
+              {proofSteps.map((s, i) => (
+                <li
+                  key={s.step}
+                  className={
+                    "rv grid items-center gap-8 sm:gap-12 lg:grid-cols-2 " + (i === 1 ? "d1" : i === 2 ? "d2" : "")
+                  }
+                >
+                  <div className={i % 2 === 1 ? "lg:order-2" : ""}>
+                    <div className="flex items-baseline gap-4">
+                      <span className="font-serif text-[1.6rem] leading-none text-[color:var(--rose)]">
+                        {s.step}
+                      </span>
+                      <span className="eyebrow text-[color:var(--muted-fg)]">{s.when}</span>
+                    </div>
+                    <p className="mt-5 font-serif text-[2.2rem] leading-[1.05] text-[color:var(--ink)] sm:text-[2.9rem]">
+                      {s.claim}
+                    </p>
+                    <p className="mt-4 max-w-md text-[0.98rem] leading-relaxed text-[color:var(--muted-fg)]">
+                      {s.body}
+                    </p>
+                  </div>
+                  <figure className={"min-w-0 " + (i % 2 === 1 ? "lg:order-1" : "")}>
+                    <div
+                      className="grain relative overflow-hidden rounded-[2px] bg-[color:var(--cream)] ring-1 ring-[color:var(--border)]"
+                      style={{ aspectRatio: s.ratio }}
+                    >
                       <img
-                        src={slot.img}
-                        alt={slot.label}
+                        src={s.img}
+                        alt={s.claim}
                         loading="lazy"
                         className={
                           "h-full w-full " +
-                          (slot.fit === "contain" ? "object-contain p-3 sm:p-5" : "object-cover")
+                          (s.fit === "contain" ? "object-contain p-3 sm:p-5" : "object-cover")
                         }
                       />
-                    ) : (
-                      <div className="grid h-full w-full place-items-center px-6 text-center">
-                        <span className="eyebrow text-[color:var(--muted-fg)]">
-                          Screenshot folgt
-                        </span>
-                      </div>
-                    )}
+                    </div>
+                  </figure>
+                </li>
+              ))}
+            </ol>
 
-
+            {/* Kontext-Screenshots */}
+            <div className="rv d2 mt-16 grid grid-cols-1 gap-5 border-t border-[color:var(--border)] pt-10 sm:grid-cols-2">
+              {proofContext.map((c) => (
+                <figure key={c.label} className="min-w-0">
+                  <div
+                    className="grain relative overflow-hidden rounded-[2px] bg-[color:var(--cream)] ring-1 ring-[color:var(--border)]"
+                    style={{ aspectRatio: c.ratio }}
+                  >
+                    <img
+                      src={c.img}
+                      alt={c.label}
+                      loading="lazy"
+                      className={
+                        "h-full w-full " +
+                        (c.fit === "contain" ? "object-contain p-3 sm:p-5" : "object-cover")
+                      }
+                    />
                   </div>
                   <figcaption className="mt-3 text-[0.72rem] uppercase tracking-[0.16em] text-[color:var(--muted-fg)]">
-                    {slot.label}
+                    {c.label}
                   </figcaption>
                 </figure>
               ))}
             </div>
+
+            <p className="rv d3 mt-12 max-w-2xl font-serif text-[1.35rem] leading-snug text-[color:var(--ink)] sm:text-[1.7rem]">
+              Reichweite allein zahlt nichts aus. Erst ein eigenes Angebot macht daraus Umsatz.
+            </p>
           </div>
         </section>
+
 
         {/* ── TCS-Methode ──────────────────────────────────── */}
         <section id="methode" aria-labelledby="build-title" className="scroll-mt-20 py-24 md:py-40">
