@@ -106,9 +106,9 @@ const proofSlots: {
 }[] = [
   { label: "Content-Performance", img: proofStatsAsset.url, span: "sm:col-span-7", ratio: "12 / 7", fit: "contain" },
   { label: "Reels-Reichweite", img: proofGridAsset.url, span: "sm:col-span-5", ratio: "3 / 4", fit: "cover" },
-  { label: "Views eines Formats", img: proofViews7mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
-  { label: "Reichweite außerhalb der Follower", img: proofViews15mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
-  { label: "Sales über Nacht", img: proofStripeAsset.url, span: "sm:col-span-5", ratio: "3 / 4", fit: "contain" },
+  { label: "Erste 30 Tage: 1,5 Mio. Views", img: proofViews15mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
+  { label: "Nach 60 Tagen: 6,9 Mio. Views", img: proofViews7mAsset.url, span: "sm:col-span-6", ratio: "1 / 1", fit: "contain" },
+  { label: "Und dann: die ersten Sales über Nacht", img: proofStripeAsset.url, span: "sm:col-span-5", ratio: "3 / 4", fit: "contain" },
 
 ];
 
