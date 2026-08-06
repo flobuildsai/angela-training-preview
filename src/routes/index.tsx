@@ -347,7 +347,7 @@ function HomePage() {
               <div className="rv d2 relative">
                 <div className="relative overflow-hidden rounded-[2rem] soft-shadow">
                   <img
-                    src={lauraImg}
+                    src={heroImg}
                     alt="Laura, Gründerin von Creating Society"
                     className="aspect-[4/5] w-full object-cover"
                     loading="eager"
