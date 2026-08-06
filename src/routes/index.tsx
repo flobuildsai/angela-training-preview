@@ -134,10 +134,12 @@ const proofSteps: {
   },
 ];
 
-const proofContext: { label: string; img: string; ratio: string; fit: "cover" | "contain" }[] = [
-  { label: "Content-Performance", img: proofStatsAsset.url, ratio: "12 / 7", fit: "contain" },
-  { label: "Reels-Reichweite", img: proofGridAsset.url, ratio: "3 / 4", fit: "cover" },
-];
+const proofLead = {
+  label: "Reels-Reichweite",
+  img: proofGridAsset.url,
+  ratio: "3 / 4",
+  fit: "cover" as const,
+};
 
 
 
