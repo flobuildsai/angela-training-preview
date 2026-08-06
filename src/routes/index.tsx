@@ -9,6 +9,7 @@ import proofStatsAsset from "@/assets/proof-stats.jpeg.asset.json";
 import proofGridAsset from "@/assets/proof-grid.jpeg.asset.json";
 import proofViews7mAsset from "@/assets/proof-views-7m.jpeg.asset.json";
 import proofViews15mAsset from "@/assets/proof-views-15m.jpeg.asset.json";
+import proofStripeAsset from "@/assets/proof-stripe.png.asset.json";
 
 const lauraImg = lauraPortrait.url;
 const lifestyleShots = [
