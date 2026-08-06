@@ -493,31 +493,13 @@ function HomePage() {
               </p>
             </div>
 
-            {/* Reels-Reichweite als Einstieg */}
-            <figure className="rv d1 mt-14 min-w-0">
-              <div
-                className="grain relative overflow-hidden rounded-[2px] bg-[color:var(--cream)] ring-1 ring-[color:var(--border)]"
-                style={{ aspectRatio: proofLead.ratio }}
-              >
-                <img
-                  src={proofLead.img}
-                  alt={proofLead.label}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <figcaption className="mt-3 text-[0.72rem] uppercase tracking-[0.16em] text-[color:var(--muted-fg)]">
-                {proofLead.label}
-              </figcaption>
-            </figure>
-
             {/* Chronologie: Reichweite → Skalierung → Umsatz */}
-            <ol className="mt-16 space-y-14 sm:space-y-20">
+            <ol className="mt-14 space-y-14 sm:space-y-20">
               {proofSteps.map((s, i) => (
                 <li
                   key={s.step}
                   className={
-                    "rv grid items-center gap-8 sm:gap-12 lg:grid-cols-2 " + (i === 1 ? "d1" : i === 2 ? "d2" : "")
+                    "rv grid items-start gap-8 sm:gap-12 lg:grid-cols-2 " + (i === 1 ? "d1" : i === 2 ? "d2" : "")
                   }
                 >
                   <div className={i % 2 === 1 ? "lg:order-2" : ""}>
@@ -534,22 +516,46 @@ function HomePage() {
                       {s.body}
                     </p>
                   </div>
-                  <figure className={"min-w-0 " + (i % 2 === 1 ? "lg:order-1" : "")}>
-                    <div
-                      className="grain relative overflow-hidden rounded-[2px] bg-[color:var(--cream)] ring-1 ring-[color:var(--border)]"
-                      style={{ aspectRatio: s.ratio }}
-                    >
-                      <img
-                        src={s.img}
-                        alt={s.claim}
-                        loading="lazy"
-                        className={
-                          "h-full w-full " +
-                          (s.fit === "contain" ? "object-contain p-3 sm:p-5" : "object-cover")
-                        }
-                      />
-                    </div>
-                  </figure>
+                  <div className={"min-w-0 space-y-4 " + (i % 2 === 1 ? "lg:order-1" : "")}>
+                    <figure>
+                      <div
+                        className="grain relative overflow-hidden rounded-[2px] bg-[color:var(--cream)] ring-1 ring-[color:var(--border)]"
+                        style={{ aspectRatio: s.ratio }}
+                      >
+                        <img
+                          src={s.img}
+                          alt={s.claim}
+                          loading="lazy"
+                          className={
+                            "h-full w-full " +
+                            (s.fit === "contain" ? "object-contain p-3 sm:p-5" : "object-cover")
+                          }
+                        />
+                      </div>
+                    </figure>
+                    {s.gallery && s.gallery.length > 0 && (
+                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        {s.gallery.map((g) => (
+                          <figure key={g.alt} className="min-w-0">
+                            <div
+                              className="grain relative overflow-hidden rounded-[2px] bg-[color:var(--cream)] ring-1 ring-[color:var(--border)]"
+                              style={{ aspectRatio: g.ratio }}
+                            >
+                              <img
+                                src={g.img}
+                                alt={g.alt}
+                                loading="lazy"
+                                className={
+                                  "h-full w-full " +
+                                  (g.fit === "contain" ? "object-contain p-3 sm:p-5" : "object-cover")
+                                }
+                              />
+                            </div>
+                          </figure>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </li>
               ))}
             </ol>
