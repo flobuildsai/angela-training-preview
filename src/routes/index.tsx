@@ -5,7 +5,6 @@ import proofAAsset from "@/assets/laura-work.jpg.asset.json";
 import proofBAsset from "@/assets/laura-walk.jpg.asset.json";
 import proofCAsset from "@/assets/laura-mykonos.jpg.asset.json";
 import proofDAsset from "@/assets/laura-villa.jpg.asset.json";
-import proofStatsAsset from "@/assets/proof-stats.jpeg.asset.json";
 import proofGridAsset from "@/assets/proof-grid.jpeg.asset.json";
 import proofViews7mAsset from "@/assets/proof-views-7m.jpeg.asset.json";
 import proofViews15mAsset from "@/assets/proof-views-15m.jpeg.asset.json";
@@ -135,10 +134,12 @@ const proofSteps: {
   },
 ];
 
-const proofContext: { label: string; img: string; ratio: string; fit: "cover" | "contain" }[] = [
-  { label: "Content-Performance", img: proofStatsAsset.url, ratio: "12 / 7", fit: "contain" },
-  { label: "Reels-Reichweite", img: proofGridAsset.url, ratio: "3 / 4", fit: "cover" },
-];
+const proofLead = {
+  label: "Reels-Reichweite",
+  img: proofGridAsset.url,
+  ratio: "3 / 4",
+  fit: "cover" as const,
+};
 
 
 
@@ -495,8 +496,26 @@ function HomePage() {
               </p>
             </div>
 
+            {/* Reels-Reichweite als Einstieg */}
+            <figure className="rv d1 mt-14 min-w-0">
+              <div
+                className="grain relative overflow-hidden rounded-[2px] bg-[color:var(--cream)] ring-1 ring-[color:var(--border)]"
+                style={{ aspectRatio: proofLead.ratio }}
+              >
+                <img
+                  src={proofLead.img}
+                  alt={proofLead.label}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <figcaption className="mt-3 text-[0.72rem] uppercase tracking-[0.16em] text-[color:var(--muted-fg)]">
+                {proofLead.label}
+              </figcaption>
+            </figure>
+
             {/* Chronologie: Reichweite → Skalierung → Umsatz */}
-            <ol className="mt-14 space-y-14 sm:space-y-20">
+            <ol className="mt-16 space-y-14 sm:space-y-20">
               {proofSteps.map((s, i) => (
                 <li
                   key={s.step}
@@ -537,31 +556,6 @@ function HomePage() {
                 </li>
               ))}
             </ol>
-
-            {/* Kontext-Screenshots */}
-            <div className="rv d2 mt-16 grid grid-cols-1 gap-5 border-t border-[color:var(--border)] pt-10 sm:grid-cols-2">
-              {proofContext.map((c) => (
-                <figure key={c.label} className="min-w-0">
-                  <div
-                    className="grain relative overflow-hidden rounded-[2px] bg-[color:var(--cream)] ring-1 ring-[color:var(--border)]"
-                    style={{ aspectRatio: c.ratio }}
-                  >
-                    <img
-                      src={c.img}
-                      alt={c.label}
-                      loading="lazy"
-                      className={
-                        "h-full w-full " +
-                        (c.fit === "contain" ? "object-contain p-3 sm:p-5" : "object-cover")
-                      }
-                    />
-                  </div>
-                  <figcaption className="mt-3 text-[0.72rem] uppercase tracking-[0.16em] text-[color:var(--muted-fg)]">
-                    {c.label}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
 
             <p className="rv d3 mt-12 max-w-2xl font-serif text-[1.35rem] leading-snug text-[color:var(--ink)] sm:text-[1.7rem]">
               Reichweite allein zahlt nichts aus. Erst ein eigenes Angebot macht daraus Umsatz.
