@@ -15,6 +15,7 @@ import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as MasterclassRouteImport } from './routes/masterclass'
 import { Route as ImpressumRouteImport } from './routes/impressum'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
+import { Route as ContentRouteImport } from './routes/content'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CallRouteImport } from './routes/call'
 import { Route as ApplyRouteImport } from './routes/apply'
@@ -50,6 +51,11 @@ const DatenschutzRoute = DatenschutzRouteImport.update({
   path: '/datenschutz',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContentRoute = ContentRouteImport.update({
+  id: '/content',
+  path: '/content',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CheckoutRoute = CheckoutRouteImport.update({
   id: '/checkout',
   path: '/checkout',
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/apply': typeof ApplyRoute
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
+  '/content': typeof ContentRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
   '/masterclass': typeof MasterclassRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/apply': typeof ApplyRoute
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
+  '/content': typeof ContentRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
   '/masterclass': typeof MasterclassRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/apply': typeof ApplyRoute
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
+  '/content': typeof ContentRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
   '/masterclass': typeof MasterclassRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/apply'
     | '/call'
     | '/checkout'
+    | '/content'
     | '/datenschutz'
     | '/impressum'
     | '/masterclass'
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/apply'
     | '/call'
     | '/checkout'
+    | '/content'
     | '/datenschutz'
     | '/impressum'
     | '/masterclass'
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/apply'
     | '/call'
     | '/checkout'
+    | '/content'
     | '/datenschutz'
     | '/impressum'
     | '/masterclass'
@@ -152,6 +164,7 @@ export interface RootRouteChildren {
   ApplyRoute: typeof ApplyRoute
   CallRoute: typeof CallRoute
   CheckoutRoute: typeof CheckoutRoute
+  ContentRoute: typeof ContentRoute
   DatenschutzRoute: typeof DatenschutzRoute
   ImpressumRoute: typeof ImpressumRoute
   MasterclassRoute: typeof MasterclassRoute
@@ -204,6 +217,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DatenschutzRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/content': {
+      id: '/content'
+      path: '/content'
+      fullPath: '/content'
+      preLoaderRoute: typeof ContentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/checkout': {
       id: '/checkout'
       path: '/checkout'
@@ -240,6 +260,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApplyRoute: ApplyRoute,
   CallRoute: CallRoute,
   CheckoutRoute: CheckoutRoute,
+  ContentRoute: ContentRoute,
   DatenschutzRoute: DatenschutzRoute,
   ImpressumRoute: ImpressumRoute,
   MasterclassRoute: MasterclassRoute,
