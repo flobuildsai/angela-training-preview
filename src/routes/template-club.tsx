@@ -2,19 +2,30 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 import logoDark from "@/assets/logo-dark.png";
 import tcHero from "@/assets/tc-hero.jpg";
-import tcGrid from "@/assets/tc-grid.jpg";
 import tcLaptop from "@/assets/tc-laptop.jpg";
+import colWellness from "@/assets/col-wellness.jpg";
+import colPink from "@/assets/col-pink.jpg";
+import colOldmoney from "@/assets/col-oldmoney.jpg";
+import colLifestyle from "@/assets/col-lifestyle.jpg";
+import colIos from "@/assets/col-ios.jpg";
+import colBeauty from "@/assets/col-beauty.jpg";
+import colPilates from "@/assets/col-pilates.jpg";
+import colBusiness from "@/assets/col-business.jpg";
+import lib1 from "@/assets/lib-1.jpg";
+import lib2 from "@/assets/lib-2.jpg";
+import lib3 from "@/assets/lib-3.jpg";
+import lib4 from "@/assets/lib-4.jpg";
 
 export const Route = createFileRoute("/template-club")({
   head: () => ({
     meta: [
-      { title: "Template Club | Creating Society" },
+      { title: "Templates | Creating Society" },
       {
         name: "description",
         content:
           "350+ Canva-Vorlagen und 350+ Bilder für deinen Instagram-Feed. Fertig gestaltet, in Minuten anpassbar, einmalig zahlen.",
       },
-      { property: "og:title", content: "Template Club | Creating Society" },
+      { property: "og:title", content: "Templates | Creating Society" },
       {
         property: "og:description",
         content:
@@ -36,15 +47,24 @@ const benefits = [
 ];
 
 const collections = [
-  { name: "Wellness", body: "Ruhige, erklärende Layouts für Coaches, Wellness-Creator und Lifestyle-Brands." },
-  { name: "Pink Digital", body: "Laute, scrollstoppende Vorlagen für Tipps, Zitate und Tutorials." },
-  { name: "Old Money", body: "Editoriale, elegante Designs mit ruhigem Luxus-Gefühl." },
-  { name: "Lifestyle", body: "Ästhetische Vorlagen für Alltags-Content und persönliches Storytelling." },
-  { name: "iOS Core", body: "Moderne iPhone-Optik für nahbaren, social-first Content." },
-  { name: "Beauty & Skin", body: "Hochwertige Layouts für Kosmetik, Studios und Beauty-Profis." },
-  { name: "Pilates & Movement", body: "Weiche, feminine Vorlagen für Studios und Bewegungs-Creator." },
-  { name: "Business Coach", body: "Klare, strategische Designs für Coaches und Online-Bildung." },
+  { name: "Wellness", img: colWellness, count: "45 Vorlagen", body: "Ruhige, erklärende Layouts für Coaches und Lifestyle-Brands." },
+  { name: "Pink Digital", img: colPink, count: "45 Vorlagen", body: "Laute, scrollstoppende Designs für Tipps, Zitate und Tutorials." },
+  { name: "Old Money", img: colOldmoney, count: "45 Vorlagen", body: "Editorial und elegant, mit ruhigem Luxus-Gefühl." },
+  { name: "Lifestyle", img: colLifestyle, count: "45 Vorlagen", body: "Ästhetische Vorlagen für Alltag und persönliches Storytelling." },
+  { name: "iOS Core", img: colIos, count: "40 Vorlagen", body: "Moderne iPhone-Optik für nahbaren, social-first Content." },
+  { name: "Beauty & Skin", img: colBeauty, count: "45 Vorlagen", body: "Hochwertige Layouts für Kosmetik, Studios und Beauty-Profis." },
+  { name: "Pilates & Movement", img: colPilates, count: "45 Vorlagen", body: "Weiche, feminine Vorlagen für Studios und Bewegungs-Creator." },
+  { name: "Business Coach", img: colBusiness, count: "45 Vorlagen", body: "Klare, strategische Designs für Coaching und Online-Bildung." },
 ];
+
+const libraryImages = [
+  { src: lib1, alt: "Eiskaffee und Notizbuch auf Marmortisch" },
+  { src: lib2, alt: "Frau am Laptop in hellem Apartment" },
+  { src: lib3, alt: "Flatlay mit Skincare-Produkten" },
+  { src: lib4, alt: "Detailaufnahme im Pilates-Studio" },
+];
+
+const libraryTags = ["Lifestyle", "Beauty", "Coaching", "Wellness", "Business", "Faceless", "Pilates", "Studio"];
 
 const imageFeatures = [
   { n: "01", head: "Kuratierte Bildbibliothek", body: "Ruhige, markentaugliche Bilder, die direkt in deine Vorlagen passen." },
@@ -105,6 +125,7 @@ const marqueeItems = [
   "Dienstleistung",
 ];
 
+
 function useReveal() {
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>(".rv"));
@@ -155,7 +176,7 @@ function TemplateClubPage() {
           <Link to="/" className="flex items-center gap-3">
             <img src={logoDark} alt="Creating Society" className="h-6 w-auto" />
           </Link>
-          <span className="pill hidden sm:inline-flex">Template Club</span>
+          <span className="pill hidden sm:inline-flex">Templates</span>
         </div>
       </header>
 
@@ -202,10 +223,11 @@ function TemplateClubPage() {
             <span className="serif-italic">Sie sollten auch so aussehen.</span>
           </h2>
           <p className="rv mt-5 max-w-2xl text-[color:var(--muted-fg)] leading-relaxed">
-            Neue Besucher entscheiden in Sekunden, ob sie dir folgen. Der
-            Template Club ist die Abkürzung zu einem Feed, der ruhig, stimmig
-            und professionell wirkt.
+            Neue Besucher entscheiden in Sekunden, ob sie dir folgen. Die
+            Templates sind die Abkürzung zu einem Feed, der ruhig, stimmig und
+            professionell wirkt.
           </p>
+
 
           <div className="mt-14 grid sm:grid-cols-3 gap-8 sm:gap-6">
             {benefits.map((b) => (
@@ -223,16 +245,34 @@ function TemplateClubPage() {
 
       {/* Introducing */}
       <section className="max-w-6xl mx-auto px-5 sm:px-8 py-20 sm:py-28 grid lg:grid-cols-2 gap-12 items-center">
-        <img
-          src={tcGrid}
-          alt="Vorschau der Vorlagen-Kollektionen"
-          width={1200}
-          height={1200}
-          loading="lazy"
-          className="rv w-full rounded-3xl object-cover"
-        />
+        <div className="rv grid grid-cols-3 gap-3">
+          <img
+            src={colLifestyle}
+            alt="Lifestyle-Vorlagen"
+            width={768}
+            height={1024}
+            loading="lazy"
+            className="w-full rounded-2xl object-cover aspect-[3/4] translate-y-4"
+          />
+          <img
+            src={colBeauty}
+            alt="Beauty-Vorlagen"
+            width={768}
+            height={1024}
+            loading="lazy"
+            className="w-full rounded-2xl object-cover aspect-[3/4]"
+          />
+          <img
+            src={colBusiness}
+            alt="Business-Vorlagen"
+            width={768}
+            height={1024}
+            loading="lazy"
+            className="w-full rounded-2xl object-cover aspect-[3/4] translate-y-4"
+          />
+        </div>
         <div className="rv">
-          <p className="eyebrow">Das ist der Template Club</p>
+          <p className="eyebrow">Das sind die Templates</p>
           <h2 className="mt-5 font-serif text-3xl sm:text-5xl leading-[1.08] tracking-tight text-[color:var(--wine)]">
             Eine private Bibliothek für deinen Content.
           </h2>
@@ -252,12 +292,27 @@ function TemplateClubPage() {
             8 Kollektionen. <span className="serif-italic">350+ Vorlagen.</span>{" "}
             350+ Bilder.
           </h2>
-          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+          <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8">
             {collections.map((c) => (
-              <div key={c.name} className="rv border-t border-white/20 pt-5">
-                <h3 className="font-serif text-2xl">{c.name}</h3>
-                <p className="mt-3 text-sm leading-relaxed opacity-70">{c.body}</p>
-              </div>
+              <article key={c.name} className="rv group">
+                <div className="overflow-hidden rounded-2xl bg-white/5">
+                  <img
+                    src={c.img}
+                    alt={`${c.name} Vorlagen-Kollektion`}
+                    width={768}
+                    height={1024}
+                    loading="lazy"
+                    className="w-full aspect-[3/4] object-cover transition duration-500 group-hover:scale-[1.04]"
+                  />
+                </div>
+                <div className="mt-4 flex items-baseline justify-between gap-3">
+                  <h3 className="font-serif text-xl sm:text-2xl">{c.name}</h3>
+                  <span className="text-[10px] uppercase tracking-[0.18em] opacity-60 whitespace-nowrap">
+                    {c.count}
+                  </span>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed opacity-70">{c.body}</p>
+              </article>
             ))}
           </div>
         </div>
@@ -280,6 +335,32 @@ function TemplateClubPage() {
           Vorlagen sind nur die halbe Arbeit.{" "}
           <span className="serif-italic">Die Bilder liegen schon bereit.</span>
         </h2>
+
+        <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          {libraryImages.map((img) => (
+            <img
+              key={img.alt}
+              src={img.src}
+              alt={img.alt}
+              width={768}
+              height={960}
+              loading="lazy"
+              className="rv w-full aspect-[4/5] object-cover rounded-2xl"
+            />
+          ))}
+        </div>
+
+        <div className="rv mt-6 flex flex-wrap gap-2">
+          {libraryTags.map((t) => (
+            <span
+              key={t}
+              className="rounded-full border border-[color:var(--border)] px-4 py-1.5 text-[11px] uppercase tracking-[0.16em] text-[color:var(--muted-fg)]"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
         <div className="mt-14 grid sm:grid-cols-3 gap-8">
           {imageFeatures.map((f) => (
             <div key={f.n} className="rv border-t border-[color:var(--border)] pt-5">
@@ -290,6 +371,7 @@ function TemplateClubPage() {
           ))}
         </div>
       </section>
+
 
       {/* Inside the library */}
       <section className="bg-[color:var(--cream2)] py-20 sm:py-28">
