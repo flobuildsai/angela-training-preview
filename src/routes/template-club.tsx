@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 import logoDark from "@/assets/logo-dark.png";
-import tcHero from "@/assets/tc-hero.jpg";
-import tcLaptop from "@/assets/tc-laptop.jpg";
 import colWellness from "@/assets/col-wellness.jpg";
 import colPink from "@/assets/col-pink.jpg";
 import colOldmoney from "@/assets/col-oldmoney.jpg";
