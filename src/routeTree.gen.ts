@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as WaitlistRouteImport } from './routes/waitlist'
 import { Route as QuizRouteImport } from './routes/quiz'
+import { Route as MasterclassRouteImport } from './routes/masterclass'
 import { Route as ImpressumRouteImport } from './routes/impressum'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as ContentRouteImport } from './routes/content'
@@ -33,6 +34,11 @@ const WaitlistRoute = WaitlistRouteImport.update({
 const QuizRoute = QuizRouteImport.update({
   id: '/quiz',
   path: '/quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MasterclassRoute = MasterclassRouteImport.update({
+  id: '/masterclass',
+  path: '/masterclass',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ImpressumRoute = ImpressumRouteImport.update({
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/content': typeof ContentRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
+  '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/content': typeof ContentRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
+  '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/content': typeof ContentRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
+  '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/content'
     | '/datenschutz'
     | '/impressum'
+    | '/masterclass'
     | '/quiz'
     | '/waitlist'
     | '/welcome'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/content'
     | '/datenschutz'
     | '/impressum'
+    | '/masterclass'
     | '/quiz'
     | '/waitlist'
     | '/welcome'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/content'
     | '/datenschutz'
     | '/impressum'
+    | '/masterclass'
     | '/quiz'
     | '/waitlist'
     | '/welcome'
@@ -155,6 +167,7 @@ export interface RootRouteChildren {
   ContentRoute: typeof ContentRoute
   DatenschutzRoute: typeof DatenschutzRoute
   ImpressumRoute: typeof ImpressumRoute
+  MasterclassRoute: typeof MasterclassRoute
   QuizRoute: typeof QuizRoute
   WaitlistRoute: typeof WaitlistRoute
   WelcomeRoute: typeof WelcomeRoute
@@ -181,6 +194,13 @@ declare module '@tanstack/react-router' {
       path: '/quiz'
       fullPath: '/quiz'
       preLoaderRoute: typeof QuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/masterclass': {
+      id: '/masterclass'
+      path: '/masterclass'
+      fullPath: '/masterclass'
+      preLoaderRoute: typeof MasterclassRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/impressum': {
@@ -243,6 +263,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContentRoute: ContentRoute,
   DatenschutzRoute: DatenschutzRoute,
   ImpressumRoute: ImpressumRoute,
+  MasterclassRoute: MasterclassRoute,
   QuizRoute: QuizRoute,
   WaitlistRoute: WaitlistRoute,
   WelcomeRoute: WelcomeRoute,
