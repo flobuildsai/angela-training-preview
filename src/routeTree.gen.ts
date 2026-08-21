@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as WaitlistRouteImport } from './routes/waitlist'
+import { Route as TemplateClubRouteImport } from './routes/template-club'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as MasterclassRouteImport } from './routes/masterclass'
 import { Route as ImpressumRouteImport } from './routes/impressum'
@@ -28,6 +29,11 @@ const WelcomeRoute = WelcomeRouteImport.update({
 const WaitlistRoute = WaitlistRouteImport.update({
   id: '/waitlist',
   path: '/waitlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemplateClubRoute = TemplateClubRouteImport.update({
+  id: '/template-club',
+  path: '/template-club',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QuizRoute = QuizRouteImport.update({
@@ -80,6 +86,7 @@ export interface FileRoutesByFullPath {
   '/impressum': typeof ImpressumRoute
   '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
+  '/template-club': typeof TemplateClubRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
 }
@@ -92,6 +99,7 @@ export interface FileRoutesByTo {
   '/impressum': typeof ImpressumRoute
   '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
+  '/template-club': typeof TemplateClubRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
 }
@@ -105,6 +113,7 @@ export interface FileRoutesById {
   '/impressum': typeof ImpressumRoute
   '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
+  '/template-club': typeof TemplateClubRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
 }
@@ -119,6 +128,7 @@ export interface FileRouteTypes {
     | '/impressum'
     | '/masterclass'
     | '/quiz'
+    | '/template-club'
     | '/waitlist'
     | '/welcome'
   fileRoutesByTo: FileRoutesByTo
@@ -131,6 +141,7 @@ export interface FileRouteTypes {
     | '/impressum'
     | '/masterclass'
     | '/quiz'
+    | '/template-club'
     | '/waitlist'
     | '/welcome'
   id:
@@ -143,6 +154,7 @@ export interface FileRouteTypes {
     | '/impressum'
     | '/masterclass'
     | '/quiz'
+    | '/template-club'
     | '/waitlist'
     | '/welcome'
   fileRoutesById: FileRoutesById
@@ -156,6 +168,7 @@ export interface RootRouteChildren {
   ImpressumRoute: typeof ImpressumRoute
   MasterclassRoute: typeof MasterclassRoute
   QuizRoute: typeof QuizRoute
+  TemplateClubRoute: typeof TemplateClubRoute
   WaitlistRoute: typeof WaitlistRoute
   WelcomeRoute: typeof WelcomeRoute
 }
@@ -174,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/waitlist'
       fullPath: '/waitlist'
       preLoaderRoute: typeof WaitlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/template-club': {
+      id: '/template-club'
+      path: '/template-club'
+      fullPath: '/template-club'
+      preLoaderRoute: typeof TemplateClubRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/quiz': {
@@ -244,6 +264,7 @@ const rootRouteChildren: RootRouteChildren = {
   ImpressumRoute: ImpressumRoute,
   MasterclassRoute: MasterclassRoute,
   QuizRoute: QuizRoute,
+  TemplateClubRoute: TemplateClubRoute,
   WaitlistRoute: WaitlistRoute,
   WelcomeRoute: WelcomeRoute,
 }
