@@ -170,10 +170,10 @@ function TemplateClubPage() {
 
           {/* Collage bleeding into the fold */}
           <div className="rv relative">
-            <div className="grid grid-cols-3 gap-3 sm:gap-4 items-end">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 items-end">
               <img src={colLifestyle} alt="Lifestyle-Vorlagen" width={768} height={1024} className="w-full rounded-t-2xl object-cover object-top aspect-[3/4] translate-y-6" />
               <img src={colPink} alt="Pink-Digital-Vorlagen" width={768} height={1024} className="w-full rounded-t-2xl object-cover object-top aspect-[3/4]" />
-              <img src={colOldmoney} alt="Old-Money-Vorlagen" width={768} height={1024} className="w-full rounded-t-2xl object-cover object-top aspect-[3/4] translate-y-10" />
+              <img src={colOldmoney} alt="Old-Money-Vorlagen" width={768} height={1024} className="hidden sm:block w-full rounded-t-2xl object-cover object-top aspect-[3/4] translate-y-10" />
             </div>
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[color:var(--wine)] to-transparent" />
           </div>
