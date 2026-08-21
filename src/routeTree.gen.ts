@@ -18,6 +18,7 @@ import { Route as ContentRouteImport } from './routes/content'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CallRouteImport } from './routes/call'
 import { Route as ApplyRouteImport } from './routes/apply'
+import { Route as IndexRouteImport } from './routes/index'
 
 const WelcomeRoute = WelcomeRouteImport.update({
   id: '/welcome',
@@ -64,8 +65,14 @@ const ApplyRoute = ApplyRouteImport.update({
   path: '/apply',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
   '/apply': typeof ApplyRoute
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
@@ -77,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/welcome': typeof WelcomeRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/apply': typeof ApplyRoute
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
@@ -89,6 +97,7 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
   '/apply': typeof ApplyRoute
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
@@ -102,6 +111,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/'
     | '/apply'
     | '/call'
     | '/checkout'
@@ -113,6 +123,7 @@ export interface FileRouteTypes {
     | '/welcome'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/'
     | '/apply'
     | '/call'
     | '/checkout'
@@ -124,6 +135,7 @@ export interface FileRouteTypes {
     | '/welcome'
   id:
     | '__root__'
+    | '/'
     | '/apply'
     | '/call'
     | '/checkout'
@@ -136,6 +148,7 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   ApplyRoute: typeof ApplyRoute
   CallRoute: typeof CallRoute
   CheckoutRoute: typeof CheckoutRoute
@@ -212,10 +225,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApplyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   ApplyRoute: ApplyRoute,
   CallRoute: CallRoute,
   CheckoutRoute: CheckoutRoute,
