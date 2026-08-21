@@ -282,13 +282,15 @@ function TemplateClubPage() {
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-5">
-            <img src={lib1} alt="Eiskaffee und Notizbuch auf Marmortisch" width={768} height={960} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5] lg:col-span-5" />
-            <img src={lib2} alt="Frau am Laptop in hellem Apartment" width={768} height={960} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5] lg:col-span-3 lg:translate-y-8" />
-            <img src={lib3} alt="Flatlay mit Skincare-Produkten" width={768} height={960} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5] lg:col-span-4" />
-            <img src={lib4} alt="Detailaufnahme im Pilates-Studio" width={768} height={960} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5] lg:col-span-4 lg:col-start-3 lg:translate-y-2" />
-            <img src={colPilates} alt="Pilates-Vorlagen" width={768} height={1024} loading="lazy" className="rv hidden lg:block w-full object-cover rounded-2xl aspect-[4/5] lg:col-span-3 lg:translate-y-10" />
-            <img src={colIos} alt="iOS-Core-Vorlagen" width={768} height={1024} loading="lazy" className="rv hidden lg:block w-full object-cover rounded-2xl aspect-[4/5] lg:col-span-3" />
+          <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 items-start">
+            <img src={lib1} alt="Eiskaffee und Notizbuch auf Marmortisch" width={768} height={960} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5]" />
+            <img src={lib2} alt="Frau am Laptop in hellem Apartment" width={768} height={960} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5] lg:translate-y-8" />
+            <img src={lib3} alt="Flatlay mit Skincare-Produkten" width={768} height={960} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5]" />
+            <img src={lib4} alt="Detailaufnahme im Pilates-Studio" width={768} height={960} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5] lg:translate-y-8" />
+            <img src={colPilates} alt="Pilates-Vorlagen" width={768} height={1024} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5]" />
+            <img src={colIos} alt="iOS-Core-Vorlagen" width={768} height={1024} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5] lg:translate-y-8" />
+            <img src={colBeauty} alt="Beauty-Vorlagen" width={768} height={1024} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5]" />
+            <img src={colWellness} alt="Wellness-Vorlagen" width={768} height={1024} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5] lg:translate-y-8" />
           </div>
         </div>
       </section>
