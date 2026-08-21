@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 import logoDark from "@/assets/logo-dark.png";
+import phone from "@/assets/tc-phone.jpg";
 import colWellness from "@/assets/col-wellness.jpg";
 import colPink from "@/assets/col-pink.jpg";
 import colOldmoney from "@/assets/col-oldmoney.jpg";
@@ -9,6 +10,7 @@ import colIos from "@/assets/col-ios.jpg";
 import colBeauty from "@/assets/col-beauty.jpg";
 import colPilates from "@/assets/col-pilates.jpg";
 import colBusiness from "@/assets/col-business.jpg";
+import tcGrid from "@/assets/tc-grid.jpg";
 import lib1 from "@/assets/lib-1.jpg";
 import lib2 from "@/assets/lib-2.jpg";
 import lib3 from "@/assets/lib-3.jpg";
@@ -27,7 +29,7 @@ export const Route = createFileRoute("/template-club")({
       {
         property: "og:description",
         content:
-          "Fertige Canva-Carousels, Bildbibliothek und Hook-Vorlagen. Einmalig 47 €.",
+          "Fertige Canva-Carousels, Bildbibliothek und neue Drops. Einmalig 47 €, zwölf Monate Zugang.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -39,51 +41,77 @@ export const Route = createFileRoute("/template-club")({
 const PRICE = "47 €";
 
 const collections = [
-  { name: "Wellness", img: colWellness, count: "45" },
-  { name: "Pink Digital", img: colPink, count: "45" },
-  { name: "Old Money", img: colOldmoney, count: "45" },
-  { name: "Lifestyle", img: colLifestyle, count: "45" },
-  { name: "iOS Core", img: colIos, count: "40" },
-  { name: "Beauty & Skin", img: colBeauty, count: "45" },
-  { name: "Pilates", img: colPilates, count: "45" },
-  { name: "Business", img: colBusiness, count: "45" },
+  {
+    name: "Wellness",
+    img: colWellness,
+    text: "Ruhige, erklärende Vorlagen für Coaches und Wellness-Marken.",
+  },
+  {
+    name: "Pink Digital",
+    img: colPink,
+    text: "Auffällige Carousels für Tipps, Zitate und Tutorials.",
+  },
+  {
+    name: "Old Money",
+    img: colOldmoney,
+    text: "Editorial und zurückhaltend, mit leiser Luxus-Anmutung.",
+  },
+  {
+    name: "Lifestyle",
+    img: colLifestyle,
+    text: "Ästhetische Vorlagen für Alltag, Storytelling und Personal Brand.",
+  },
+  {
+    name: "iOS Core",
+    img: colIos,
+    text: "iPhone-Optik für nahbaren, social-first Content.",
+  },
+  {
+    name: "Beauty & Skin",
+    img: colBeauty,
+    text: "Klare Skincare-Vorlagen für Studios und Beauty-Profis.",
+  },
+  {
+    name: "Pilates",
+    img: colPilates,
+    text: "Weiche, feminine Layouts für Studios und Bewegungs-Creator.",
+  },
+  {
+    name: "Business",
+    img: colBusiness,
+    text: "Strukturierte Vorlagen für Coaches und Dienstleisterinnen.",
+  },
 ];
 
-const included = [
-  ["350+", "Canva-Vorlagen in 8 Kollektionen"],
-  ["350+", "Bilder für Feed, Story und Pinterest"],
-  ["200", "Hook-Vorlagen für Carousels"],
-  ["∞", "Neue Drops während deiner Laufzeit"],
+const whyItems = [
+  ["01", "Sieht sofort", "professioneller aus"],
+  ["02", "Spart dir Stunden", "in Canva"],
+  ["03", "Macht Lust", "dir zu folgen"],
+];
+
+const libraryPoints = [
+  ["01", "Kuratierte Bilder", "Ruhige, markentaugliche Fotos, die direkt in die Vorlagen passen."],
+  ["02", "Für viele Nischen", "Lifestyle, Wellness, Beauty, Coaching, Dienstleistung und mehr."],
+  ["03", "Schneller fertig", "Für Carousels, Stories, Launches, Pinterest und E-Mails."],
 ];
 
 const faqs = [
   {
-    q: "Brauche ich Canva Pro?",
-    a: "Nein. Alles funktioniert mit der kostenlosen Canva-Version.",
+    q: "Was genau bekomme ich?",
+    a: "Acht Kollektionen mit über 350 Canva-Vorlagen, dazu 350+ Bilder und alle neuen Drops während deiner Laufzeit.",
   },
   {
     q: "Wie lange habe ich Zugang?",
-    a: "Zwölf Monate. Einmalzahlung, keine automatische Verlängerung.",
+    a: "Zwölf Monate ab Kauf. Einmalzahlung, keine automatische Verlängerung.",
   },
   {
-    q: "Brauche ich Design-Erfahrung?",
-    a: "Nein. Vorlage öffnen, Text ändern, Farben anpassen, posten.",
+    q: "Brauche ich Canva Pro oder Design-Erfahrung?",
+    a: "Nein. Alles läuft mit der kostenlosen Canva-Version: Vorlage öffnen, Text ändern, Farben anpassen, posten.",
   },
   {
     q: "Darf ich die Vorlagen für Kundinnen nutzen?",
-    a: "Ja, für fertige Designs. Weitergabe der bearbeitbaren Dateien nicht.",
+    a: "Ja, für fertige Designs. Die bearbeitbaren Dateien darfst du nicht weitergeben oder weiterverkaufen.",
   },
-];
-
-const marqueeItems = [
-  "Lifestyle",
-  "Beauty",
-  "Business",
-  "Wellness",
-  "Creator",
-  "Faceless",
-  "Coaching",
-  "Pilates",
 ];
 
 function useReveal() {
@@ -106,14 +134,14 @@ function useReveal() {
 }
 
 function Cta({
-  children = `Zugang für ${PRICE}`,
+  children = `Sofort-Zugang für ${PRICE}`,
   variant = "dark",
 }: {
   children?: string;
   variant?: "dark" | "light";
 }) {
   const base =
-    "inline-flex items-center justify-center rounded-full px-9 py-4 min-h-[56px] text-[12px] font-semibold tracking-[0.18em] uppercase transition duration-300 hover:opacity-90 active:scale-[0.98]";
+    "group inline-flex items-center gap-3 rounded-full px-9 py-4 min-h-[56px] text-[12px] font-semibold tracking-[0.18em] uppercase transition duration-300 hover:opacity-90 active:scale-[0.98]";
   const styles =
     variant === "dark"
       ? "bg-[color:var(--wine)] text-[color:var(--cream)]"
@@ -121,6 +149,9 @@ function Cta({
   return (
     <Link to="/checkout" search={{ produkt: "templates" as const }} className={`${base} ${styles}`}>
       {children}
+      <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+        →
+      </span>
     </Link>
   );
 }
@@ -146,142 +177,185 @@ function TemplateClubPage() {
         </div>
       </header>
 
-      {/* Hero — asymmetric, minimal copy */}
-      <section className="bg-[color:var(--wine)] text-[color:var(--cream)] overflow-hidden">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 pt-16 sm:pt-24 grid lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-20 items-end">
-          <div className="rv pb-16 sm:pb-24">
-            <p className="text-[11px] uppercase tracking-[0.24em] opacity-55">
-              Templates · Creating Society
-            </p>
-            <h1 className="mt-6 font-serif text-[2.7rem] sm:text-6xl lg:text-[4.4rem] leading-[0.95] tracking-tight">
-              Ein Feed, der{" "}
-              <span className="serif-italic">teuer aussieht.</span>
+      {/* Hero */}
+      <section className="bg-[color:var(--cream2)]">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 py-14 sm:py-20 lg:py-24 grid lg:grid-cols-[1fr_0.9fr] gap-12 lg:gap-16 items-center">
+          <div className="rv">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--wine)]/[0.06] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[color:var(--wine)]">
+              ✦ Fertiges Instagram-Feed-Kit
+            </span>
+            <h1 className="mt-7 font-serif text-[3rem] sm:text-6xl lg:text-[4.6rem] leading-[0.94] tracking-tight text-[color:var(--wine)]">
+              Bring deinen Feed auf Niveau.
             </h1>
-            <p className="mt-6 text-lg leading-relaxed opacity-70 max-w-sm">
-              350+ Canva-Vorlagen. 350+ Bilder. In Minuten deine.
+            <p className="mt-6 font-serif text-2xl sm:text-3xl leading-snug text-[color:var(--wine)]">
+              350+ Canva-Vorlagen und Bilder.{" "}
+              <span className="serif-italic">Anpassen, posten, fertig.</span>
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-5">
-              <Cta variant="light">{`Sofort-Zugang · ${PRICE}`}</Cta>
-              <span className="text-xs uppercase tracking-[0.16em] opacity-50">
-                12 Monate Zugang
-              </span>
+            <p className="mt-5 text-[color:var(--muted-fg)] leading-relaxed max-w-md">
+              Carousels, die aussehen, als hätte sie jemand für dich designt.
+            </p>
+
+            <ul className="mt-7 flex flex-wrap gap-2.5">
+              {["Keine Design-Kenntnisse", "Gratis-Canva reicht", "Einmalzahlung"].map((t) => (
+                <li
+                  key={t}
+                  className="rounded-full border border-[color:var(--border)] bg-[color:var(--cream)] px-4 py-2 text-[13px] text-[color:var(--muted-fg)]"
+                >
+                  {t}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-9">
+              <Cta>Sofort-Zugang sichern</Cta>
             </div>
           </div>
 
-          {/* Collage bleeding into the fold */}
           <div className="rv relative">
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 items-end">
-              <img src={colLifestyle} alt="Lifestyle-Vorlagen" width={768} height={1024} className="w-full rounded-t-2xl object-cover object-top aspect-[3/4] translate-y-6" />
-              <img src={colPink} alt="Pink-Digital-Vorlagen" width={768} height={1024} className="w-full rounded-t-2xl object-cover object-top aspect-[3/4]" />
-              <img src={colOldmoney} alt="Old-Money-Vorlagen" width={768} height={1024} className="hidden sm:block w-full rounded-t-2xl object-cover object-top aspect-[3/4] translate-y-10" />
-            </div>
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[color:var(--wine)] to-transparent" />
+            <div className="absolute -inset-6 rounded-[3rem] bg-[color:var(--rose)]/10 blur-2xl" aria-hidden="true" />
+            <img
+              src={phone}
+              alt="Instagram-Feed mit Vorlagen auf dem Smartphone"
+              width={1280}
+              height={1280}
+              className="relative w-full max-w-md mx-auto"
+            />
           </div>
         </div>
       </section>
 
-      {/* Marquee */}
-      <div className="py-5 border-b border-[color:var(--border)] overflow-hidden">
-        <div className="flex gap-10 whitespace-nowrap animate-[tcSlide_28s_linear_infinite] text-[11px] uppercase tracking-[0.25em] text-[color:var(--muted-fg)]">
-          {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((m, i) => (
-            <span key={i}>{m}</span>
-          ))}
-        </div>
-        <style>{`@keyframes tcSlide { from { transform: none } to { transform: translateX(-33.333%) } }`}</style>
-      </div>
-
-      {/* Statement + inhalt als Zeilen statt Karten */}
-      <section className="py-20 sm:py-28">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[1.15fr_1fr] gap-14 lg:gap-24 items-start">
-          <div>
-            <h2 className="rv font-serif text-3xl sm:text-5xl lg:text-[3.4rem] leading-[1.02] tracking-tight text-[color:var(--wine)]">
-              Neue Besucher entscheiden in drei Sekunden.{" "}
-              <span className="serif-italic">Gib ihnen etwas Schönes.</span>
-            </h2>
-            <div className="rv mt-10 lg:pl-[10%]">
-              <Cta>{`Alles für ${PRICE}`}</Cta>
-            </div>
-          </div>
-
-          <ul className="divide-y divide-[color:var(--border)] border-y border-[color:var(--border)]">
-            {included.map(([n, label]) => (
-              <li key={label} className="rv flex items-baseline gap-6 py-6">
-                <span className="font-serif text-3xl sm:text-4xl text-[color:var(--rose)] w-24 shrink-0">
-                  {n}
-                </span>
-                <span className="text-[color:var(--wine)] leading-snug">{label}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* Kollektionen — Bilder sprechen, kaum Text */}
+      {/* Why it matters — dark */}
       <section className="bg-[color:var(--wine)] text-[color:var(--cream)] py-20 sm:py-28">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 className="rv font-serif text-3xl sm:text-5xl leading-[1.05] tracking-tight max-w-md">
-              Acht Kollektionen.{" "}
-              <span className="serif-italic">Ein Stil für dich dabei.</span>
-            </h2>
-            <span className="rv text-[11px] uppercase tracking-[0.2em] opacity-55">
-              350+ Vorlagen
-            </span>
-          </div>
+          <p className="rv rule-label text-[10px] uppercase tracking-[0.22em] opacity-60">
+            Warum es zählt
+          </p>
+          <h2 className="rv mt-6 font-serif text-3xl sm:text-5xl lg:text-[3.6rem] leading-[1.02] tracking-tight max-w-3xl">
+            Deine Ideen sind gut.{" "}
+            <span className="serif-italic opacity-80">Dein Content sollte so aussehen.</span>
+          </h2>
+          <p className="rv mt-6 max-w-xl leading-relaxed opacity-65">
+            Neue Besucher entscheiden in Sekunden, ob sie dir folgen. Die Vorlagen sind die
+            Abkürzung zu einem Feed, der zusammenpasst.
+          </p>
 
-          <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {collections.map((c, i) => (
-              <article
-                key={c.name}
-                className={`rv group ${i % 2 === 1 ? "lg:translate-y-10" : ""}`}
-              >
-                <div className="overflow-hidden rounded-2xl ring-1 ring-white/10">
+          <div className="mt-14 grid sm:grid-cols-3 gap-px bg-white/10 rounded-2xl overflow-hidden">
+            {whyItems.map(([n, top, bottom]) => (
+              <div key={n} className="rv bg-[color:var(--wine)] p-8 sm:p-10">
+                <span className="text-[11px] tracking-[0.2em] opacity-45">{n}</span>
+                <p className="mt-6 text-[11px] uppercase tracking-[0.2em] opacity-55">{top}</p>
+                <h3 className="mt-2 font-serif text-3xl">{bottom}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Introducing */}
+      <section className="py-20 sm:py-28">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[0.85fr_1fr] gap-12 lg:gap-16 items-center">
+          <img
+            src={tcGrid}
+            alt="Übersicht der Canva-Vorlagen"
+            width={1024}
+            height={1024}
+            loading="lazy"
+            className="rv w-full rounded-2xl object-cover"
+          />
+          <div>
+            <h2 className="rv font-serif text-3xl sm:text-5xl leading-[1.03] tracking-tight text-[color:var(--wine)]">
+              Das ist die Vorlagen-Bibliothek.
+            </h2>
+            <p className="rv mt-6 text-lg leading-relaxed text-[color:var(--wine)]">
+              Eine private Sammlung fertiger Canva-Carousels und passender Bilder.
+            </p>
+            <p className="rv mt-4 leading-relaxed text-[color:var(--muted-fg)]">
+              Gemacht dafür, dass du klarer erzählst, öfter postest und keine Stunden mehr im
+              leeren Canva-Dokument verlierst.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Collections */}
+      <section className="bg-[color:var(--cream2)] py-20 sm:py-28">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <p className="rv rule-label text-[10px] uppercase tracking-[0.22em] text-[color:var(--muted-fg)]">
+            Was enthalten ist
+          </p>
+          <h2 className="rv mt-6 font-serif text-3xl sm:text-5xl leading-[1.03] tracking-tight text-[color:var(--wine)] max-w-3xl">
+            8 Kollektionen. <span className="serif-italic">350+ Vorlagen.</span> 350+ Bilder.
+          </h2>
+          <p className="rv mt-5 max-w-xl leading-relaxed text-[color:var(--muted-fg)]">
+            Fertig gestaltete Canva-Vorlagen plus Bildbibliothek in jeder Kollektion.
+          </p>
+
+          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {collections.map((c) => (
+              <article key={c.name} className="rv group">
+                <div className="overflow-hidden rounded-2xl bg-[color:var(--cream)]">
                   <img
                     src={c.img}
                     alt={`${c.name} Vorlagen`}
                     width={768}
                     height={1024}
                     loading="lazy"
-                    className="w-full aspect-[3/4] object-cover transition duration-500 group-hover:scale-[1.04]"
+                    className="w-full aspect-[4/5] object-cover transition duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
-                <div className="mt-3 flex items-baseline justify-between gap-3">
-                  <h3 className="font-serif text-xl">{c.name}</h3>
-                  <span className="text-[10px] uppercase tracking-[0.16em] opacity-50">
-                    {c.count}
-                  </span>
-                </div>
+                <h3 className="mt-5 font-serif text-2xl text-[color:var(--wine)]">{c.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[color:var(--muted-fg)]">{c.text}</p>
               </article>
             ))}
           </div>
 
-          <div className="rv mt-24 lg:mt-28">
-            <Cta variant="light">{`Alle Kollektionen · ${PRICE}`}</Cta>
+          <div className="rv mt-16">
+            <Cta>{`Alle Kollektionen · ${PRICE}`}</Cta>
           </div>
         </div>
       </section>
 
-      {/* Bildbibliothek — asymmetrisches Raster */}
+      {/* Image library */}
       <section className="py-20 sm:py-28">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-20 items-end">
-            <h2 className="rv font-serif text-3xl sm:text-5xl leading-[1.03] tracking-tight text-[color:var(--wine)]">
-              Plus 350+ Bilder.
-            </h2>
-            <p className="rv text-[color:var(--muted-fg)] leading-relaxed max-w-md lg:pb-3">
-              Für die Tage, an denen du nicht vor die Kamera willst.
-            </p>
-          </div>
+          <p className="rv rule-label text-[10px] uppercase tracking-[0.22em] text-[color:var(--muted-fg)]">
+            Ebenfalls dabei · 350+ Bilder
+          </p>
+          <h2 className="rv mt-6 font-serif text-3xl sm:text-5xl leading-[1.03] tracking-tight text-[color:var(--wine)] max-w-3xl">
+            Vorlagen sind die halbe Arbeit.{" "}
+            <span className="serif-italic">Die Bilder gibt es dazu.</span>
+          </h2>
 
-          <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 items-start">
-            <img src={lib1} alt="Eiskaffee und Notizbuch auf Marmortisch" width={768} height={960} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5]" />
-            <img src={lib2} alt="Frau am Laptop in hellem Apartment" width={768} height={960} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5] lg:translate-y-8" />
-            <img src={lib3} alt="Flatlay mit Skincare-Produkten" width={768} height={960} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5]" />
-            <img src={lib4} alt="Detailaufnahme im Pilates-Studio" width={768} height={960} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5] lg:translate-y-8" />
-            <img src={colPilates} alt="Pilates-Vorlagen" width={768} height={1024} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5]" />
-            <img src={colIos} alt="iOS-Core-Vorlagen" width={768} height={1024} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5] lg:translate-y-8" />
-            <img src={colBeauty} alt="Beauty-Vorlagen" width={768} height={1024} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5]" />
-            <img src={colWellness} alt="Wellness-Vorlagen" width={768} height={1024} loading="lazy" className="rv w-full object-cover rounded-2xl aspect-[4/5] lg:translate-y-8" />
+          <div className="mt-12 grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16 items-start">
+            <ul className="divide-y divide-[color:var(--border)] border-y border-[color:var(--border)]">
+              {libraryPoints.map(([n, title, text]) => (
+                <li key={n} className="rv py-6 flex gap-6">
+                  <span className="font-serif text-2xl text-[color:var(--rose)]">{n}</span>
+                  <div>
+                    <h3 className="font-medium text-[color:var(--wine)]">{title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-[color:var(--muted-fg)]">
+                      {text}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <div className="grid grid-cols-2 gap-4 sm:gap-5">
+              {[lib1, lib2, lib3, lib4, colLifestyle, colBeauty].map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt="Bild aus der Bildbibliothek"
+                  width={768}
+                  height={960}
+                  loading="lazy"
+                  className={`rv w-full object-cover rounded-2xl aspect-[4/5] ${
+                    i % 2 === 1 ? "sm:translate-y-6" : ""
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -290,14 +364,16 @@ function TemplateClubPage() {
       <section className="bg-[color:var(--cream2)] py-20 sm:py-28">
         <div className="max-w-3xl mx-auto px-5 sm:px-8">
           <h2 className="rv font-serif text-3xl sm:text-4xl tracking-tight text-[color:var(--wine)]">
-            Kurz geklärt
+            Häufige Fragen
           </h2>
           <div className="mt-10 divide-y divide-[color:var(--border)] border-y border-[color:var(--border)]">
             {faqs.map((f) => (
               <details key={f.q} className="group py-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-[color:var(--wine)]">
                   <span className="font-medium">{f.q}</span>
-                  <span className="text-[color:var(--muted-fg)] transition group-open:rotate-45">+</span>
+                  <span className="text-[color:var(--muted-fg)] transition group-open:rotate-45">
+                    +
+                  </span>
                 </summary>
                 <p className="mt-3 text-sm leading-relaxed text-[color:var(--muted-fg)]">{f.a}</p>
               </details>
@@ -307,32 +383,16 @@ function TemplateClubPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="bg-[color:var(--wine)] text-[color:var(--cream)] pt-20 sm:pt-28 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <h2 className="rv font-serif text-4xl sm:text-6xl lg:text-[4rem] leading-[0.98] tracking-tight max-w-2xl">
+      <section className="bg-[color:var(--wine)] text-[color:var(--cream)] py-20 sm:py-28">
+        <div className="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+          <h2 className="rv font-serif text-4xl sm:text-6xl leading-[0.98] tracking-tight">
             Dein nächster Post ist{" "}
             <span className="serif-italic">schon halb fertig.</span>
           </h2>
-          <div className="rv mt-9 flex flex-wrap items-center gap-5">
-            <Cta variant="light">{`Zugang für ${PRICE}`}</Cta>
-            <span className="text-xs uppercase tracking-[0.16em] opacity-50">
-              Einmalzahlung · 12 Monate
-            </span>
+          <p className="rv mt-6 opacity-65">Einmalig {PRICE} · 12 Monate Zugang · sofort verfügbar</p>
+          <div className="rv mt-9 flex justify-center">
+            <Cta variant="light">{`Sofort-Zugang für ${PRICE}`}</Cta>
           </div>
-        </div>
-        <div className="mt-16 flex gap-4 px-5 sm:px-8 opacity-90">
-          {[colWellness, colPink, colOldmoney, colLifestyle, colBeauty, colBusiness].map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              alt=""
-              aria-hidden="true"
-              width={768}
-              height={1024}
-              loading="lazy"
-              className="hidden sm:block w-1/6 rounded-t-2xl object-cover object-top aspect-[3/4]"
-            />
-          ))}
         </div>
       </section>
 
