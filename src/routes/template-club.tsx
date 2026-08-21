@@ -157,7 +157,7 @@ function Cta({
       ? "bg-[color:var(--wine)] text-[color:var(--cream)]"
       : "bg-[color:var(--cream)] text-[color:var(--wine)]";
   return (
-    <Link to="/checkout" className={`${base} ${styles}`}>
+    <Link to="/checkout" search={{ produkt: "templates" as const }} className={`${base} ${styles}`}>
       {children}
     </Link>
   );
@@ -180,6 +180,7 @@ function TemplateClubPage() {
             </span>
             <Link
               to="/checkout"
+              search={{ produkt: "templates" as const }}
               className="inline-flex items-center rounded-full bg-[color:var(--wine)] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--cream)] transition hover:opacity-90"
             >
               {PRICE} · Zugang
