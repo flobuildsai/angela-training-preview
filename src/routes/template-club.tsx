@@ -169,22 +169,13 @@ function TemplateClubPage() {
           </div>
 
           {/* Collage bleeding into the fold */}
-          <div className="rv relative h-[300px] sm:h-[420px] lg:h-[500px]">
-            <div className="absolute inset-x-0 bottom-0 grid grid-cols-3 gap-3 sm:gap-4 items-end">
-              <div className="space-y-3 sm:space-y-4 translate-y-8">
-                <img src={colLifestyle} alt="Lifestyle-Vorlagen" width={768} height={1024} className="w-full rounded-2xl object-cover aspect-[3/4]" />
-                <img src={colBeauty} alt="Beauty-Vorlagen" width={768} height={1024} className="w-full rounded-2xl object-cover aspect-[3/4]" />
-              </div>
-              <div className="space-y-3 sm:space-y-4 -translate-y-4">
-                <img src={colPink} alt="Pink-Digital-Vorlagen" width={768} height={1024} className="w-full rounded-2xl object-cover aspect-[3/4]" />
-                <img src={colWellness} alt="Wellness-Vorlagen" width={768} height={1024} className="w-full rounded-2xl object-cover aspect-[3/4]" />
-              </div>
-              <div className="space-y-3 sm:space-y-4 translate-y-12">
-                <img src={colOldmoney} alt="Old-Money-Vorlagen" width={768} height={1024} className="w-full rounded-2xl object-cover aspect-[3/4]" />
-                <img src={colBusiness} alt="Business-Vorlagen" width={768} height={1024} className="w-full rounded-2xl object-cover aspect-[3/4]" />
-              </div>
+          <div className="rv relative">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 items-end">
+              <img src={colLifestyle} alt="Lifestyle-Vorlagen" width={768} height={1024} className="w-full rounded-t-2xl object-cover object-top aspect-[3/4] translate-y-6" />
+              <img src={colPink} alt="Pink-Digital-Vorlagen" width={768} height={1024} className="w-full rounded-t-2xl object-cover object-top aspect-[3/4]" />
+              <img src={colOldmoney} alt="Old-Money-Vorlagen" width={768} height={1024} className="w-full rounded-t-2xl object-cover object-top aspect-[3/4] translate-y-10" />
             </div>
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[color:var(--wine)] to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[color:var(--wine)] to-transparent" />
           </div>
         </div>
       </section>
