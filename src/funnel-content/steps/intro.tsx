@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import lauraNew from "@/assets/laura-new.jpg.asset.json";
 import { useFunnel } from "../FunnelContext";
 import { NICHE_SUGGESTIONS } from "../niches";
-import { Card, Head, Micro, PrimaryCTA, StepLabel, Sub } from "../ui";
+import { Head, Micro, PrimaryCTA, StepLabel, Sub } from "../ui";
 import { trackEvent } from "@/lib/track";
 
 /** Step 1 — Hero + Nischen-Einstieg */
@@ -17,110 +17,62 @@ export function StepHero() {
     next();
   };
 
-  const nicheCTA = (
-    <section className="relative">
-      <div
-        aria-hidden
-        className="absolute inset-0 -mx-4 sm:-mx-8 rounded-[2rem] bg-gradient-to-b from-[color:var(--cream2)] to-transparent blur-2xl opacity-80"
-      />
-      <div className="relative space-y-5 max-w-lg mx-auto px-1 py-2">
-        <div className="space-y-2">
-          <p className="serif-italic text-[13px] text-[color:var(--muted-fg)]">
-            eine Sache noch, bevor ich dir etwas zeige …
-          </p>
-          <h2 className="serif-italic text-2xl sm:text-[1.75rem] leading-snug text-[color:var(--ink)]">
-            Schauen wir, wie das in deiner Nische aussehen könnte.
-          </h2>
-          <p className="text-[14px] leading-relaxed text-[color:var(--muted-fg)]">
-            Schreib einfach rein, worüber du postest. Ich zeige dir die echten
-            Zahlen für diesen Bereich.
-          </p>
-        </div>
-
-        <div className="relative">
-          <label htmlFor="niche" className="sr-only">
-            Deine Nische
-          </label>
-          <input
-            id="niche"
-            value={niche}
-            onChange={(e) => setNiche(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && start()}
-            placeholder="Fitness, Mindset, Beauty …"
-            className="w-full bg-transparent border-0 border-b border-[color:var(--border)] px-1 py-3 text-lg sm:text-xl text-[color:var(--ink)] placeholder:text-[color:var(--muted-fg)]/50 focus:outline-none focus:border-[color:var(--rose)] transition"
-          />
-        </div>
-
-        <div className="flex flex-wrap gap-2">
-          {NICHE_SUGGESTIONS.map((s) => (
-            <button
-              key={s}
-              type="button"
-              onClick={() => setNiche(s)}
-              className={`px-3.5 py-2 rounded-full text-xs border transition ${
-                niche === s
-                  ? "border-[color:var(--rose)] bg-[color:var(--rose)]/10 text-[color:var(--wine)]"
-                  : "border-[color:var(--border)] text-[color:var(--muted-fg)] hover:border-[color:var(--rose)]"
-              }`}
-            >
-              {s}
-            </button>
-          ))}
-        </div>
-
-        <PrimaryCTA onClick={start} disabled={!niche.trim()}>
-          Zeig mir, was möglich ist
-        </PrimaryCTA>
-
-        <Micro>
-          2 Minuten <span className="opacity-50">·</span> keine Anmeldung{" "}
-          <span className="opacity-50">·</span> auf deine Nische zugeschnitten
-        </Micro>
-      </div>
-    </section>
-  );
-
   return (
-    <div className="flex flex-col gap-10 sm:gap-14">
-      {/* 1. Reframe-Headline */}
-      <header className="text-center space-y-4 px-1 pt-2">
+    <div className="flex flex-col gap-16 sm:gap-24">
+      {/* 1. Hero — links gesetzt, asymmetrisch */}
+      <header className="space-y-6">
         <StepLabel>Ein neuer Weg mit Content</StepLabel>
-        <Head>
-          Verdiene 10.000&nbsp;€ pro Monat mit Content.
-          <span className="block text-[color:var(--muted-fg)] mt-1">
-            Ohne große Reichweite und ohne Brand Deals.
+        <h1 className="font-serif text-[2.6rem] sm:text-[4.25rem] leading-[0.98] tracking-[-0.03em] text-[color:var(--ink)]">
+          Verdiene 10.000&nbsp;€ pro Monat
+          <span className="block serif-italic text-[color:var(--muted-fg)]">
+            mit Content.
           </span>
-        </Head>
-        <Sub>
-          Die meisten glauben, sie brauchen erst Hunderttausende Follower, damit
-          Content Geld bringt. Stimmt nicht. Ich zeige dir das Modell, mit dem
-          ich mein eigenes Angebot aufgebaut habe, und wie du in 12 Wochen
-          startest.
-        </Sub>
+        </h1>
+        <div className="grid gap-6 sm:grid-cols-[1fr_auto] sm:items-end">
+          <p className="max-w-[46ch] text-[15px] sm:text-[17px] leading-[1.7] text-[color:var(--muted-fg)]">
+            Ohne große Reichweite und ohne Brand Deals. Ich zeige dir das
+            Modell, mit dem ich mein eigenes Angebot aufgebaut habe, und wie du
+            in 12 Wochen startest.
+          </p>
+          <div className="flex gap-6 border-t border-[color:var(--ink)]/12 pt-4 sm:border-t-0 sm:pt-0">
+            {[
+              ["2", "Minuten"],
+              ["6", "Fragen"],
+              ["12", "Wochen"],
+            ].map(([n, l]) => (
+              <div key={l}>
+                <p className="font-serif text-2xl leading-none tabular-nums text-[color:var(--ink)]">
+                  {n}
+                </p>
+                <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
+                  {l}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </header>
 
-      {/* 2. Story im Tagebuch-Stil */}
-      <section className="space-y-6">
-        <div className="flex items-center gap-4">
+      {/* 2. Story */}
+      <section className="grid gap-8 sm:grid-cols-[auto_1fr] sm:gap-10">
+        <div className="sm:sticky sm:top-28 sm:self-start">
           <img
             src={lauraNew.url}
             alt="Laura, Gründerin von Creating Society"
-            className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover object-[50%_30%] border border-[color:var(--border)] shrink-0"
+            className="h-24 w-24 rounded-full border border-[color:var(--ink)]/10 object-cover object-[50%_30%] sm:h-32 sm:w-32"
             loading="eager"
-            width={200}
-            height={200}
+            width={240}
+            height={240}
           />
-          <div>
-            <p className="text-lg sm:text-xl font-semibold text-[color:var(--ink)]">
-              Ganz ehrlich gesagt:
-            </p>
-            <p className="text-[13px] text-[color:var(--muted-fg)] mt-0.5">
-              Lies das kurz, bevor du weiterscrollst. Das sagt dir sonst niemand.
-            </p>
-          </div>
+          <p className="mt-4 text-[10px] uppercase tracking-[0.22em] text-[color:var(--muted-fg)]">
+            Laura, Gründerin
+          </p>
         </div>
 
-        <div className="space-y-4 text-[15px] sm:text-base leading-[1.75] text-[color:var(--ink)]/90 max-w-2xl">
+        <div className="space-y-5 text-[15px] sm:text-[16.5px] leading-[1.8] text-[color:var(--ink)]/90">
+          <p className="font-serif text-2xl leading-snug text-[color:var(--ink)] sm:text-[1.9rem]">
+            Ganz ehrlich gesagt: das sagt dir sonst niemand.
+          </p>
           <p>
             Ich habe nicht davon geträumt, Creatorin zu werden. Ich habe einfach
             angefangen zu posten, weil ich etwas zu sagen hatte. Und irgendwann
@@ -139,69 +91,107 @@ export function StepHero() {
             Was alles verändert hat, war etwas, das ich nebenbei gemerkt habe.
             Die Leute, die wirklich frei waren, die reisen, entspannt arbeiten
             und sich keine Gedanken über die nächste Kooperation machen, waren
-            nicht die mit den meisten Followern.{" "}
-            <span className="font-semibold text-[color:var(--ink)]">
-              Es waren die mit einem eigenen Angebot.
-            </span>{" "}
-            Kein Warten auf Brand Deals. Kein Algorithmus, der über den Monat
-            entscheidet. Einfach etwas Eigenes, das Menschen kaufen können.
+            nicht die mit den meisten Followern.
+          </p>
+          <p className="border-l-2 border-[color:var(--ink)] pl-5 font-serif text-xl leading-snug text-[color:var(--ink)] sm:text-2xl">
+            Es waren die mit einem eigenen Angebot.
           </p>
           <p>
-            Das hat mich härter getroffen, als ich zugeben will. Weil ich Jahre
+            Kein Warten auf Brand Deals. Kein Algorithmus, der über den Monat
+            entscheidet. Einfach etwas Eigenes, das Menschen kaufen können. Das
+            hat mich härter getroffen, als ich zugeben will. Weil ich Jahre
             damit verbracht hatte, Reichweite zu bauen, während der schnellere
             Weg die ganze Zeit direkt daneben lag.
           </p>
           <p>
-            Ich tue nicht so, als wäre das ein Knopf, den man drückt. Das ist ein
-            echtes Business. Aber es ist eins, das du wirklich starten kannst,
-            in deiner Nische, in den nächsten 12 Wochen, ohne 100.000 Follower.
-            Und du musst dafür nicht die Lauteste sein. Du brauchst nur jemanden,
-            der dir zeigt, wie es von innen funktioniert.
+            Ich tue nicht so, als wäre das ein Knopf, den man drückt. Das ist
+            ein echtes Business. Aber es ist eins, das du wirklich starten
+            kannst, in deiner Nische, in den nächsten 12 Wochen, ohne 100.000
+            Follower. Du brauchst nur jemanden, der dir zeigt, wie es von innen
+            funktioniert.
           </p>
-          <p>
-            Genau deshalb gibt es das hier. Ich habe es für die Version von mir
-            gebaut, die wusste, dass da mehr geht, aber niemanden hatte, der
-            erklärt, wie man anfängt. In den nächsten zwei Minuten zeige ich dir,
-            wie das für dich aussehen könnte.
+          <p className="serif-italic pt-2 text-xl text-[color:var(--ink)]">
+            Laura
           </p>
-
-          <div className="pt-3">
-            <p className="serif-italic text-xl text-[color:var(--ink)]">Laura</p>
-            <div className="h-px w-20 bg-[color:var(--ink)]/30 mt-3" />
-          </div>
         </div>
       </section>
 
-      {/* 3. Reframe-Block */}
-      <section className="grid sm:grid-cols-2 gap-3 sm:gap-4">
-        <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--cream2)] p-4 sm:p-5">
-          <p className="text-[11px] uppercase tracking-wider text-[color:var(--muted-fg)] font-medium mb-2">
+      {/* 3. Reframe */}
+      <section className="grid gap-px overflow-hidden rounded-[1.5rem] bg-[color:var(--ink)]/10 sm:grid-cols-2">
+        <div className="bg-[color:var(--cream2)] p-6 sm:p-8">
+          <p className="text-[10px] uppercase tracking-[0.24em] text-[color:var(--muted-fg)]">
             Was die meisten denken
           </p>
-          <p className="text-[14px] text-[color:var(--muted-fg)] line-through decoration-[color:var(--muted-fg)]/50">
-            Mehr Follower → Brand Deals → irgendwann davon leben
+          <p className="mt-4 text-[15px] leading-relaxed text-[color:var(--muted-fg)] line-through decoration-[color:var(--muted-fg)]/40">
+            Mehr Follower, dann Brand Deals, dann irgendwann davon leben
           </p>
         </div>
-        <div className="rounded-xl border-2 border-[color:var(--ink)]/15 bg-white p-4 sm:p-5">
-          <p className="text-[11px] uppercase tracking-wider text-[color:var(--ink)]/70 font-semibold mb-2">
+        <div className="bg-[color:var(--ink)] p-6 text-white sm:p-8">
+          <p className="text-[10px] uppercase tracking-[0.24em] text-white/55">
             Was wirklich funktioniert
           </p>
-          <p className="text-[14px] text-[color:var(--ink)] font-medium">
-            Eigenes Angebot → Content, der verkauft → Umsatz ab der ersten
-            Woche
+          <p className="mt-4 text-[15px] font-medium leading-relaxed">
+            Eigenes Angebot, Content der verkauft, Umsatz ab der ersten Woche
           </p>
         </div>
       </section>
 
-      {/* Haarlinie */}
-      <div className="h-px w-16 bg-[color:var(--ink)]/10 mx-auto" />
+      {/* 4. Nischen-Eingabe */}
+      <section className="space-y-6 border-t border-[color:var(--ink)]/12 pt-10">
+        <div className="space-y-3">
+          <StepLabel>Dein Start</StepLabel>
+          <h2 className="font-serif text-[1.9rem] leading-tight tracking-[-0.02em] text-[color:var(--ink)] sm:text-[2.4rem]">
+            Schauen wir, wie das in deiner Nische aussieht.
+          </h2>
+          <Sub>
+            Schreib einfach rein, worüber du postest. Ich zeige dir die echten
+            Zahlen für diesen Bereich.
+          </Sub>
+        </div>
 
-      {/* 4. Nischen-Eingabe + CTA */}
-      {nicheCTA}
+        <div>
+          <label htmlFor="niche" className="sr-only">
+            Deine Nische
+          </label>
+          <input
+            id="niche"
+            value={niche}
+            onChange={(e) => setNiche(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && start()}
+            placeholder="Fitness, Mindset, Beauty …"
+            className="w-full border-0 border-b border-[color:var(--ink)]/15 bg-transparent px-1 py-4 font-serif text-2xl text-[color:var(--ink)] transition placeholder:text-[color:var(--muted-fg)]/40 focus:border-[color:var(--ink)] focus:outline-none sm:text-3xl"
+          />
+        </div>
+
+        <div className="flex flex-wrap gap-2">
+          {NICHE_SUGGESTIONS.map((s) => (
+            <button
+              key={s}
+              type="button"
+              onClick={() => setNiche(s)}
+              className={`rounded-full border px-4 py-2 text-xs transition active:scale-[0.97] ${
+                niche === s
+                  ? "border-[color:var(--ink)] bg-[color:var(--ink)] text-white"
+                  : "border-[color:var(--ink)]/12 text-[color:var(--muted-fg)] hover:border-[color:var(--ink)]/40"
+              }`}
+            >
+              {s}
+            </button>
+          ))}
+        </div>
+
+        <PrimaryCTA onClick={start} disabled={!niche.trim()}>
+          Zeig mir, was möglich ist
+        </PrimaryCTA>
+
+        <Micro>
+          2 Minuten <span className="opacity-40">·</span> keine Anmeldung{" "}
+          <span className="opacity-40">·</span> auf deine Nische zugeschnitten
+        </Micro>
+      </section>
     </div>
   );
 }
-
 
 const STATUS = [
   "Nachfrage in deiner Nische prüfen",
@@ -227,41 +217,46 @@ export function StepAnalysis() {
   }, [next]);
 
   return (
-    <div className="space-y-8">
-      <div className="space-y-3">
+    <div className="space-y-10">
+      <div className="space-y-4">
         <StepLabel>Analyse</StepLabel>
         <Head>Ich schaue mir „{data.niche || profile.label}“ kurz an.</Head>
       </div>
 
-      <Card>
-        <ul className="space-y-4">
-          {STATUS.map((s, i) => {
-            const isDone = done.includes(i);
-            return (
-              <li key={s} className="flex items-center gap-3">
+      <ul className="divide-y divide-[color:var(--ink)]/10 border-y border-[color:var(--ink)]/10">
+        {STATUS.map((s, i) => {
+          const isDone = done.includes(i);
+          return (
+            <li key={s} className="flex items-center gap-4 py-5">
+              <span
+                className={`grid h-6 w-6 shrink-0 place-items-center rounded-full text-[11px] transition-all duration-500 ${
+                  isDone
+                    ? "scale-100 bg-[color:var(--ink)] text-white"
+                    : "scale-90 border border-[color:var(--ink)]/15 text-transparent"
+                }`}
+              >
+                ✓
+              </span>
+              <span
+                className={`text-[15px] transition-colors duration-500 sm:text-base ${
+                  isDone
+                    ? "text-[color:var(--ink)]"
+                    : "text-[color:var(--muted-fg)]/50"
+                }`}
+              >
+                {s}
+              </span>
+              {!isDone && (
                 <span
-                  className={`w-5 h-5 rounded-full grid place-items-center text-[11px] transition ${
-                    isDone
-                      ? "bg-[color:var(--wine)] text-[color:var(--cream)]"
-                      : "border border-[color:var(--border)] text-transparent"
-                  }`}
-                >
-                  ✓
-                </span>
-                <span
-                  className={`text-[15px] transition ${
-                    isDone
-                      ? "text-[color:var(--ink)]"
-                      : "text-[color:var(--muted-fg)]/60"
-                  }`}
-                >
-                  {s}
-                </span>
-              </li>
-            );
-          })}
-        </ul>
-      </Card>
+                  aria-hidden
+                  className="ml-auto h-px w-10 animate-pulse bg-[color:var(--ink)]/20"
+                />
+              )}
+            </li>
+          );
+        })}
+      </ul>
+
       <Micro>Einen Moment, das dauert nur wenige Sekunden.</Micro>
     </div>
   );
