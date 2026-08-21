@@ -169,7 +169,7 @@ function TemplateClubPage() {
           </div>
 
           {/* Collage bleeding into the fold */}
-          <div className="rv relative h-[360px] sm:h-[520px] lg:h-[660px]">
+          <div className="rv relative h-[300px] sm:h-[420px] lg:h-[500px]">
             <div className="absolute inset-x-0 bottom-0 grid grid-cols-3 gap-3 sm:gap-4 items-end">
               <div className="space-y-3 sm:space-y-4 translate-y-8">
                 <img src={colLifestyle} alt="Lifestyle-Vorlagen" width={768} height={1024} className="w-full rounded-2xl object-cover aspect-[3/4]" />
