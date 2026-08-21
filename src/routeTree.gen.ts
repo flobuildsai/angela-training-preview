@@ -12,14 +12,12 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as WaitlistRouteImport } from './routes/waitlist'
 import { Route as QuizRouteImport } from './routes/quiz'
-import { Route as MasterclassRouteImport } from './routes/masterclass'
 import { Route as ImpressumRouteImport } from './routes/impressum'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as ContentRouteImport } from './routes/content'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CallRouteImport } from './routes/call'
 import { Route as ApplyRouteImport } from './routes/apply'
-import { Route as IndexRouteImport } from './routes/index'
 
 const WelcomeRoute = WelcomeRouteImport.update({
   id: '/welcome',
@@ -34,11 +32,6 @@ const WaitlistRoute = WaitlistRouteImport.update({
 const QuizRoute = QuizRouteImport.update({
   id: '/quiz',
   path: '/quiz',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MasterclassRoute = MasterclassRouteImport.update({
-  id: '/masterclass',
-  path: '/masterclass',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ImpressumRoute = ImpressumRouteImport.update({
@@ -71,48 +64,37 @@ const ApplyRoute = ApplyRouteImport.update({
   path: '/apply',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
   '/apply': typeof ApplyRoute
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
   '/content': typeof ContentRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
-  '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/apply': typeof ApplyRoute
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
   '/content': typeof ContentRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
-  '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/apply': typeof ApplyRoute
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
   '/content': typeof ContentRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
-  '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
@@ -120,54 +102,46 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/apply'
     | '/call'
     | '/checkout'
     | '/content'
     | '/datenschutz'
     | '/impressum'
-    | '/masterclass'
     | '/quiz'
     | '/waitlist'
     | '/welcome'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/apply'
     | '/call'
     | '/checkout'
     | '/content'
     | '/datenschutz'
     | '/impressum'
-    | '/masterclass'
     | '/quiz'
     | '/waitlist'
     | '/welcome'
   id:
     | '__root__'
-    | '/'
     | '/apply'
     | '/call'
     | '/checkout'
     | '/content'
     | '/datenschutz'
     | '/impressum'
-    | '/masterclass'
     | '/quiz'
     | '/waitlist'
     | '/welcome'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   ApplyRoute: typeof ApplyRoute
   CallRoute: typeof CallRoute
   CheckoutRoute: typeof CheckoutRoute
   ContentRoute: typeof ContentRoute
   DatenschutzRoute: typeof DatenschutzRoute
   ImpressumRoute: typeof ImpressumRoute
-  MasterclassRoute: typeof MasterclassRoute
   QuizRoute: typeof QuizRoute
   WaitlistRoute: typeof WaitlistRoute
   WelcomeRoute: typeof WelcomeRoute
@@ -194,13 +168,6 @@ declare module '@tanstack/react-router' {
       path: '/quiz'
       fullPath: '/quiz'
       preLoaderRoute: typeof QuizRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/masterclass': {
-      id: '/masterclass'
-      path: '/masterclass'
-      fullPath: '/masterclass'
-      preLoaderRoute: typeof MasterclassRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/impressum': {
@@ -245,25 +212,16 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApplyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   ApplyRoute: ApplyRoute,
   CallRoute: CallRoute,
   CheckoutRoute: CheckoutRoute,
   ContentRoute: ContentRoute,
   DatenschutzRoute: DatenschutzRoute,
   ImpressumRoute: ImpressumRoute,
-  MasterclassRoute: MasterclassRoute,
   QuizRoute: QuizRoute,
   WaitlistRoute: WaitlistRoute,
   WelcomeRoute: WelcomeRoute,
