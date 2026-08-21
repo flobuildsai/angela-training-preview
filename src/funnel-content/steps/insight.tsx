@@ -1,32 +1,35 @@
 import { useMemo } from "react";
 import lauraWork from "@/assets/laura-work.jpg.asset.json";
 import { formatEur, useFunnel } from "../FunnelContext";
-import { Card, Head, PrimaryCTA, StepLabel, Sub } from "../ui";
+import { Head, PrimaryCTA, Stat, StepLabel, Sub } from "../ui";
 
 /** Step 8 — Opportunity Score + Nischen-Profil */
 export function StepScore() {
   const { next, score, profile, monthlyViews, data } = useFunnel();
 
   return (
-    <div className="space-y-8">
-      <div className="space-y-3">
+    <div className="space-y-12">
+      <div className="space-y-4">
         <StepLabel>Deine Auswertung</StepLabel>
         <Head>So steht dein Ausgangspunkt.</Head>
         <Sub>{profile.demand}</Sub>
       </div>
 
-      <Card>
-        <div className="flex items-end justify-between">
+      {/* Score — großes Zahlenstatement statt Karte */}
+      <section className="border-y border-[color:var(--ink)]/12 py-8">
+        <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
+            <p className="text-[10px] uppercase tracking-[0.24em] text-[color:var(--muted-fg)]">
               Startpotenzial
             </p>
-            <p className="mt-2 font-serif text-5xl text-[color:var(--wine)]">
+            <p className="mt-3 font-serif text-[4.5rem] leading-none tabular-nums tracking-[-0.03em] text-[color:var(--ink)] sm:text-[6rem]">
               {score}
-              <span className="text-2xl text-[color:var(--muted-fg)]">/100</span>
+              <span className="text-[1.75rem] text-[color:var(--muted-fg)]">
+                /100
+              </span>
             </p>
           </div>
-          <p className="text-right text-sm text-[color:var(--muted-fg)] max-w-[45%]">
+          <p className="max-w-[30ch] text-[15px] leading-relaxed text-[color:var(--muted-fg)]">
             {score >= 75
               ? "Du bringst fast alles mit. Dir fehlt nur das Angebot."
               : score >= 60
@@ -34,56 +37,52 @@ export function StepScore() {
                 : "Ehrlich: Du startest früh. Genau da ist der Aufbau am saubersten."}
           </p>
         </div>
-        <div className="mt-5 h-[3px] bg-[color:var(--border)] rounded-full overflow-hidden">
+        <div className="mt-8 h-[2px] overflow-hidden bg-[color:var(--ink)]/10">
           <div
-            className="h-full bg-[color:var(--rose)] transition-all duration-700"
+            className="h-full bg-[color:var(--ink)] transition-[width] duration-1000 ease-[cubic-bezier(.16,1,.3,1)]"
             style={{ width: `${score}%` }}
           />
         </div>
-      </Card>
+      </section>
 
-      <div className="grid sm:grid-cols-2 gap-4">
-        <Card>
-          <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
-            Deine Nische
-          </p>
-          <p className="mt-2 font-serif text-2xl text-[color:var(--wine)]">
-            {data.niche || profile.label}
-          </p>
-          <p className="mt-3 text-sm text-[color:var(--muted-fg)]">{profile.angle}</p>
-        </Card>
-        <Card>
-          <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
-            Realistische Reichweite pro Monat
-          </p>
-          <p className="mt-2 font-serif text-2xl text-[color:var(--wine)]">
-            {monthlyViews.toLocaleString("de-DE")} Views
-          </p>
-          <p className="mt-3 text-sm text-[color:var(--muted-fg)]">
-            Bei konstanten Formaten in den nächsten Wochen.
-          </p>
-        </Card>
-      </div>
+      <section className="grid gap-8 sm:grid-cols-2">
+        <Stat
+          label="Deine Nische"
+          value={
+            <span className="text-[1.75rem] sm:text-[2rem]">
+              {data.niche || profile.label}
+            </span>
+          }
+          note={profile.angle}
+        />
+        <Stat
+          label="Realistische Reichweite pro Monat"
+          value={`${monthlyViews.toLocaleString("de-DE")}`}
+          note="Views bei konstanten Formaten in den nächsten Wochen."
+        />
+      </section>
 
-      <Card>
-        <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
+      <section className="border-t border-[color:var(--ink)]/12 pt-7">
+        <p className="text-[10px] uppercase tracking-[0.24em] text-[color:var(--muted-fg)]">
           Was in deiner Nische gekauft wird
         </p>
-        <ul className="mt-4 space-y-3">
+        <ul className="mt-5 divide-y divide-[color:var(--ink)]/8">
           {profile.offers.map((o) => (
-            <li key={o} className="flex items-start gap-3 text-[15px] text-[color:var(--ink)]">
-              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[color:var(--rose)] shrink-0" />
+            <li
+              key={o}
+              className="py-4 text-[15px] leading-relaxed text-[color:var(--ink)] sm:text-base"
+            >
               {o}
             </li>
           ))}
         </ul>
-        <p className="mt-5 text-sm text-[color:var(--muted-fg)]">
+        <p className="mt-5 text-[14px] text-[color:var(--muted-fg)]">
           Übliche Preisspanne für ein erstes eigenes Angebot:{" "}
-          <span className="text-[color:var(--ink)]">
+          <span className="text-[color:var(--ink)] tabular-nums">
             {formatEur(profile.priceMin)} – {formatEur(profile.priceMax)}
           </span>
         </p>
-      </Card>
+      </section>
 
       <PrimaryCTA onClick={next}>Weiter</PrimaryCTA>
     </div>
@@ -116,35 +115,40 @@ const MYTHS = [
 export function StepBelief() {
   const { next } = useFunnel();
   return (
-    <div className="space-y-8">
-      <div className="rounded-2xl overflow-hidden">
+    <div className="space-y-12">
+      <div className="overflow-hidden rounded-[1.75rem]">
         <img
           src={lauraWork.url}
           alt="Laura beim Arbeiten"
-          className="w-full h-44 sm:h-56 object-cover"
+          className="h-52 w-full object-cover sm:h-72"
           loading="lazy"
           width={1200}
           height={800}
         />
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <StepLabel>Bevor wir rechnen</StepLabel>
         <Head>Was du nicht brauchst, um zu starten.</Head>
       </div>
 
-      <div className="space-y-4">
-        {MYTHS.map((m) => (
-          <Card key={m.myth}>
-            <p className="text-[15px] text-[color:var(--muted-fg)] line-through">
-              {m.myth}
-            </p>
-            <p className="mt-3 text-[15px] sm:text-base leading-relaxed text-[color:var(--ink)]">
-              {m.truth}
-            </p>
-          </Card>
+      <ul className="divide-y divide-[color:var(--ink)]/10 border-y border-[color:var(--ink)]/10">
+        {MYTHS.map((m, i) => (
+          <li key={m.myth} className="grid gap-3 py-7 sm:grid-cols-[auto_1fr] sm:gap-8">
+            <span className="font-serif text-2xl leading-none tabular-nums text-[color:var(--ink)]/20">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <p className="text-[15px] text-[color:var(--muted-fg)] line-through decoration-[color:var(--muted-fg)]/40">
+                {m.myth}
+              </p>
+              <p className="mt-3 text-[15px] leading-relaxed text-[color:var(--ink)] sm:text-[16.5px]">
+                {m.truth}
+              </p>
+            </div>
+          </li>
         ))}
-      </div>
+      </ul>
 
       <PrimaryCTA onClick={next}>Meine Zahlen berechnen</PrimaryCTA>
     </div>
@@ -166,107 +170,105 @@ export function StepCalculator() {
   const neededConversion = (buyersFor10k / Math.max(monthlyViews, 1)) * 100;
 
   return (
-    <div className="space-y-8">
-      <div className="space-y-3">
+    <div className="space-y-12">
+      <div className="space-y-4">
         <StepLabel>Dein Rechner</StepLabel>
         <Head>Was ein eigenes Angebot bei dir bedeutet.</Head>
         <Sub>Verschieb die Werte, bis es sich für dich realistisch anfühlt.</Sub>
       </div>
 
-      <Card>
-        <div className="space-y-8">
-          <div className="space-y-4">
-            <div className="flex items-baseline justify-between">
-              <label className="text-xs uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
-                Preis deines Angebots
-              </label>
-              <span className="font-serif text-3xl text-[color:var(--wine)]">
-                {formatEur(data.price)}
-              </span>
-            </div>
-            <input
-              type="range"
-              min={47}
-              max={4997}
-              step={50}
-              value={data.price}
-              onChange={(e) => update({ price: Number(e.target.value) })}
-              aria-label="Preis deines Angebots"
-              className="w-full accent-[color:var(--rose)]"
-            />
-            <div className="flex flex-wrap gap-2">
-              {presets.map((p) => (
-                <button
-                  key={p}
-                  type="button"
-                  onClick={() => update({ price: p })}
-                  className={`px-3.5 py-2 rounded-full text-xs border transition ${
-                    data.price === p
-                      ? "border-[color:var(--rose)] bg-[color:var(--rose)]/10 text-[color:var(--wine)]"
-                      : "border-[color:var(--border)] text-[color:var(--muted-fg)] hover:border-[color:var(--rose)]"
-                  }`}
-                >
-                  {formatEur(p)}
-                </button>
-              ))}
-            </div>
+      <section className="space-y-10 border-y border-[color:var(--ink)]/12 py-8">
+        <div className="space-y-4">
+          <div className="flex items-end justify-between gap-4">
+            <label className="text-[10px] uppercase tracking-[0.24em] text-[color:var(--muted-fg)]">
+              Preis deines Angebots
+            </label>
+            <span className="font-serif text-[2.5rem] leading-none tabular-nums text-[color:var(--ink)]">
+              {formatEur(data.price)}
+            </span>
           </div>
-
-          <div className="space-y-4">
-            <div className="flex items-baseline justify-between">
-              <label className="text-xs uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
-                Käufer pro Monat
-              </label>
-              <span className="font-serif text-3xl text-[color:var(--wine)]">
-                {data.buyers}
-              </span>
-            </div>
-            <input
-              type="range"
-              min={1}
-              max={100}
-              step={1}
-              value={data.buyers}
-              onChange={(e) => update({ buyers: Number(e.target.value) })}
-              aria-label="Käufer pro Monat"
-              className="w-full accent-[color:var(--rose)]"
-            />
+          <input
+            type="range"
+            min={47}
+            max={4997}
+            step={50}
+            value={data.price}
+            onChange={(e) => update({ price: Number(e.target.value) })}
+            aria-label="Preis deines Angebots"
+            className="w-full accent-[color:var(--ink)]"
+          />
+          <div className="flex flex-wrap gap-2">
+            {presets.map((p) => (
+              <button
+                key={p}
+                type="button"
+                onClick={() => update({ price: p })}
+                className={`rounded-full border px-4 py-2 text-xs tabular-nums transition active:scale-[0.97] ${
+                  data.price === p
+                    ? "border-[color:var(--ink)] bg-[color:var(--ink)] text-white"
+                    : "border-[color:var(--ink)]/12 text-[color:var(--muted-fg)] hover:border-[color:var(--ink)]/40"
+                }`}
+              >
+                {formatEur(p)}
+              </button>
+            ))}
           </div>
         </div>
-      </Card>
 
-      <div className="grid sm:grid-cols-2 gap-4">
-        <Card className="bg-[color:var(--cream2)] border-transparent">
-          <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
+        <div className="space-y-4">
+          <div className="flex items-end justify-between gap-4">
+            <label className="text-[10px] uppercase tracking-[0.24em] text-[color:var(--muted-fg)]">
+              Käufer pro Monat
+            </label>
+            <span className="font-serif text-[2.5rem] leading-none tabular-nums text-[color:var(--ink)]">
+              {data.buyers}
+            </span>
+          </div>
+          <input
+            type="range"
+            min={1}
+            max={100}
+            step={1}
+            value={data.buyers}
+            onChange={(e) => update({ buyers: Number(e.target.value) })}
+            aria-label="Käufer pro Monat"
+            className="w-full accent-[color:var(--ink)]"
+          />
+        </div>
+      </section>
+
+      <section className="grid gap-px overflow-hidden rounded-[1.5rem] bg-[color:var(--ink)]/10 sm:grid-cols-2">
+        <div className="bg-[color:var(--cream2)] p-7 sm:p-8">
+          <p className="text-[10px] uppercase tracking-[0.24em] text-[color:var(--muted-fg)]">
             Pro Monat
           </p>
-          <p className="mt-2 font-serif text-4xl text-[color:var(--wine)]">
+          <p className="mt-3 font-serif text-[2.75rem] leading-none tabular-nums text-[color:var(--ink)]">
             {formatEur(monthly)}
           </p>
-        </Card>
-        <Card className="bg-[color:var(--cream2)] border-transparent">
-          <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
+        </div>
+        <div className="bg-[color:var(--ink)] p-7 text-white sm:p-8">
+          <p className="text-[10px] uppercase tracking-[0.24em] text-white/55">
             Pro Jahr
           </p>
-          <p className="mt-2 font-serif text-4xl text-[color:var(--wine)]">
+          <p className="mt-3 font-serif text-[2.75rem] leading-none tabular-nums">
             {formatEur(yearly)}
           </p>
-        </Card>
-      </div>
+        </div>
+      </section>
 
-      <Card>
-        <p className="text-[15px] sm:text-base leading-relaxed text-[color:var(--ink)]">
-          Für <span className="font-serif text-xl">10.000 €</span> im Monat brauchst
-          du bei diesem Preis{" "}
-          <span className="font-serif text-xl">{buyersFor10k} Käufer</span>. Bei
-          deiner Reichweite von {monthlyViews.toLocaleString("de-DE")} Views
-          entspricht das{" "}
-          {neededConversion < 0.01
-            ? "unter 0,01 %"
-            : `${neededConversion.toFixed(2).replace(".", ",")} %`}{" "}
-          der Menschen, die dich sehen.
-        </p>
-      </Card>
+      <p className="border-l-2 border-[color:var(--ink)] pl-5 text-[15px] leading-[1.8] text-[color:var(--ink)] sm:text-[16.5px]">
+        Für <span className="font-serif text-xl">10.000 €</span> im Monat
+        brauchst du bei diesem Preis{" "}
+        <span className="font-serif text-xl tabular-nums">
+          {buyersFor10k} Käufer
+        </span>
+        . Bei deiner Reichweite von {monthlyViews.toLocaleString("de-DE")} Views
+        entspricht das{" "}
+        {neededConversion < 0.01
+          ? "unter 0,01 %"
+          : `${neededConversion.toFixed(2).replace(".", ",")} %`}{" "}
+        der Menschen, die dich sehen.
+      </p>
 
       <PrimaryCTA onClick={next}>Meinen 12-Wochen-Plan sehen</PrimaryCTA>
     </div>

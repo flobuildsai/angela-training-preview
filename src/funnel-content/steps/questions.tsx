@@ -24,15 +24,32 @@ function Question({
   onSelect: (i: number) => void;
 }) {
   return (
-    <div className="space-y-7">
-      <div className="space-y-3">
-        <StepLabel>Frage {n} von 6</StepLabel>
-        <Head>{title}</Head>
-        {hint && <Sub>{hint}</Sub>}
+    <div className="space-y-9">
+      <div className="grid gap-4 sm:grid-cols-[auto_1fr] sm:gap-8">
+        <p className="font-serif text-[3.5rem] leading-none tabular-nums text-[color:var(--ink)]/12 sm:text-[5rem]">
+          {String(n).padStart(2, "0")}
+        </p>
+        <div className="space-y-3 sm:pt-2">
+          <StepLabel>Frage {n} von 6</StepLabel>
+          <Head>{title}</Head>
+          {hint && <Sub>{hint}</Sub>}
+        </div>
       </div>
+
       <div className="space-y-3">
         {options.map((o, i) => (
-          <Choice key={o} label={o} selected={value === i} onClick={() => onSelect(i)} />
+          <div
+            key={o}
+            style={{ animationDelay: `${i * 60}ms` }}
+            className="animate-[stepIn_.5s_cubic-bezier(.16,1,.3,1)_both]"
+          >
+            <Choice
+              label={o}
+              index={i}
+              selected={value === i}
+              onClick={() => onSelect(i)}
+            />
+          </div>
         ))}
       </div>
     </div>
@@ -125,19 +142,24 @@ export function StepHours() {
 export function StepReadiness() {
   const { data, update, next } = useFunnel();
   return (
-    <div className="space-y-8">
-      <div className="space-y-3">
-        <StepLabel>Frage 6 von 6</StepLabel>
-        <Head>Wie ernst ist es dir, in den nächsten 12 Wochen zu starten?</Head>
-        <Sub>1 heißt „ich schaue mich nur um“, 10 heißt „ich fange sofort an“.</Sub>
+    <div className="space-y-10">
+      <div className="grid gap-4 sm:grid-cols-[auto_1fr] sm:gap-8">
+        <p className="font-serif text-[3.5rem] leading-none tabular-nums text-[color:var(--ink)]/12 sm:text-[5rem]">
+          06
+        </p>
+        <div className="space-y-3 sm:pt-2">
+          <StepLabel>Frage 6 von 6</StepLabel>
+          <Head>Wie ernst ist es dir, in den nächsten 12 Wochen zu starten?</Head>
+          <Sub>1 heißt „ich schaue mich nur um“, 10 heißt „ich fange sofort an“.</Sub>
+        </div>
       </div>
 
-      <div className="space-y-5">
-        <div className="flex items-baseline justify-between">
-          <span className="text-xs uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
+      <div className="space-y-6 border-y border-[color:var(--ink)]/12 py-8">
+        <div className="flex items-end justify-between">
+          <span className="text-[10px] uppercase tracking-[0.24em] text-[color:var(--muted-fg)]">
             Deine Antwort
           </span>
-          <span className="font-serif text-4xl text-[color:var(--wine)]">
+          <span className="font-serif text-[3.5rem] leading-none tabular-nums text-[color:var(--ink)]">
             {data.readiness}
           </span>
         </div>
@@ -149,9 +171,9 @@ export function StepReadiness() {
           value={data.readiness}
           onChange={(e) => update({ readiness: Number(e.target.value) })}
           aria-label="Bereitschaft von 1 bis 10"
-          className="w-full accent-[color:var(--rose)]"
+          className="w-full accent-[color:var(--ink)]"
         />
-        <div className="flex justify-between text-[11px] uppercase tracking-[0.15em] text-[color:var(--muted-fg)]">
+        <div className="flex justify-between text-[10px] uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
           <span>Nur umschauen</span>
           <span>Sofort starten</span>
         </div>

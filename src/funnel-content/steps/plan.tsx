@@ -1,5 +1,5 @@
 import { SKILL_OPTIONS, formatEur, useFunnel } from "../FunnelContext";
-import { Card, Head, PrimaryCTA, StepLabel, Sub } from "../ui";
+import { Head, PrimaryCTA, StepLabel, Sub } from "../ui";
 
 const OFFER_LABEL = [
   "dein Wissen als Kurs",
@@ -17,7 +17,7 @@ export function StepRoadmap() {
 
   const phases = [
     {
-      phase: "Phase 01",
+      n: "01",
       weeks: "Woche 1 – 4",
       title: "Fundament",
       lead: `Positionierung in ${niche} und ein Content-Format, das jede Woche funktioniert.`,
@@ -29,10 +29,10 @@ export function StepRoadmap() {
       ],
     },
     {
-      phase: "Phase 02",
+      n: "02",
       weeks: "Woche 5 – 8",
       title: "Produkt",
-      lead: `Wir bauen ${offer} — klein genug zum Starten, gut genug zum Bezahlen.`,
+      lead: `Wir bauen ${offer}, klein genug zum Starten, gut genug zum Bezahlen.`,
       tasks: [
         `Angebot definieren mit klarem Ergebnis (${formatEur(data.price)})`,
         "Inhalte und Ablauf strukturieren",
@@ -41,7 +41,7 @@ export function StepRoadmap() {
       ],
     },
     {
-      phase: "Phase 03",
+      n: "03",
       weeks: "Woche 9 – 12",
       title: "Verkauf",
       lead: "Aus Reichweite werden Verkäufe, die sich wiederholen lassen.",
@@ -55,8 +55,8 @@ export function StepRoadmap() {
   ];
 
   return (
-    <div className="space-y-8">
-      <div className="space-y-3">
+    <div className="space-y-12">
+      <div className="space-y-4">
         <StepLabel>Dein Plan</StepLabel>
         <Head>Deine nächsten 12 Wochen.</Head>
         <Sub>
@@ -67,33 +67,39 @@ export function StepRoadmap() {
         </Sub>
       </div>
 
-      <div className="space-y-4">
+      <div className="divide-y divide-[color:var(--ink)]/10 border-y border-[color:var(--ink)]/10">
         {phases.map((p) => (
-          <Card key={p.phase}>
-            <div className="flex items-baseline justify-between gap-4">
-              <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
-                {p.phase}
+          <section
+            key={p.n}
+            className="grid gap-5 py-9 sm:grid-cols-[7rem_1fr] sm:gap-10"
+          >
+            <div>
+              <p className="font-serif text-[3rem] leading-none tabular-nums text-[color:var(--ink)]/15 sm:text-[4rem]">
+                {p.n}
               </p>
-              <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--muted-fg)]">
+              <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-[color:var(--muted-fg)]">
                 {p.weeks}
               </p>
             </div>
-            <h2 className="mt-3 font-serif text-2xl text-[color:var(--wine)]">
-              {p.title}
-            </h2>
-            <p className="mt-2 text-sm text-[color:var(--muted-fg)]">{p.lead}</p>
-            <ul className="mt-4 space-y-3">
-              {p.tasks.map((t) => (
-                <li
-                  key={t}
-                  className="flex items-start gap-3 text-[15px] text-[color:var(--ink)]"
-                >
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[color:var(--rose)] shrink-0" />
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </Card>
+            <div>
+              <h2 className="font-serif text-[1.75rem] leading-tight tracking-[-0.02em] text-[color:var(--ink)] sm:text-[2.15rem]">
+                {p.title}
+              </h2>
+              <p className="mt-2 max-w-[52ch] text-[15px] leading-relaxed text-[color:var(--muted-fg)]">
+                {p.lead}
+              </p>
+              <ul className="mt-5 divide-y divide-[color:var(--ink)]/8 border-t border-[color:var(--ink)]/8">
+                {p.tasks.map((t) => (
+                  <li
+                    key={t}
+                    className="py-3 text-[15px] leading-relaxed text-[color:var(--ink)]"
+                  >
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
         ))}
       </div>
 
