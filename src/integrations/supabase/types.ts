@@ -14,16 +14,164 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      course_lessons: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          module: string
+          resource_url: string | null
+          sort_order: number
+          title: string
+          video_url: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          module: string
+          resource_url?: string | null
+          sort_order?: number
+          title: string
+          video_url?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          module?: string
+          resource_url?: string | null
+          sort_order?: number
+          title?: string
+          video_url?: string | null
+        }
+        Relationships: []
+      }
+      entitlements: {
+        Row: {
+          created_at: string
+          id: string
+          note: string | null
+          source: string
+          tier: Database["public"]["Enums"]["access_tier"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          note?: string | null
+          source?: string
+          tier: Database["public"]["Enums"]["access_tier"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          note?: string | null
+          source?: string
+          tier?: Database["public"]["Enums"]["access_tier"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
+      templates: {
+        Row: {
+          canva_url: string
+          category: string
+          created_at: string
+          description: string | null
+          id: string
+          sort_order: number
+          tier: Database["public"]["Enums"]["access_tier"]
+          title: string
+        }
+        Insert: {
+          canva_url: string
+          category?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          sort_order?: number
+          tier?: Database["public"]["Enums"]["access_tier"]
+          title: string
+        }
+        Update: {
+          canva_url?: string
+          category?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          sort_order?: number
+          tier?: Database["public"]["Enums"]["access_tier"]
+          title?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      has_tier: {
+        Args: {
+          _tier: Database["public"]["Enums"]["access_tier"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      access_tier: "template_club" | "community"
+      app_role: "admin" | "member"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +298,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      access_tier: ["template_club", "community"],
+      app_role: ["admin", "member"],
+    },
   },
 } as const
