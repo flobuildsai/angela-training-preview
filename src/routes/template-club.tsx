@@ -2,19 +2,30 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 import logoDark from "@/assets/logo-dark.png";
 import tcHero from "@/assets/tc-hero.jpg";
-import tcGrid from "@/assets/tc-grid.jpg";
 import tcLaptop from "@/assets/tc-laptop.jpg";
+import colWellness from "@/assets/col-wellness.jpg";
+import colPink from "@/assets/col-pink.jpg";
+import colOldmoney from "@/assets/col-oldmoney.jpg";
+import colLifestyle from "@/assets/col-lifestyle.jpg";
+import colIos from "@/assets/col-ios.jpg";
+import colBeauty from "@/assets/col-beauty.jpg";
+import colPilates from "@/assets/col-pilates.jpg";
+import colBusiness from "@/assets/col-business.jpg";
+import lib1 from "@/assets/lib-1.jpg";
+import lib2 from "@/assets/lib-2.jpg";
+import lib3 from "@/assets/lib-3.jpg";
+import lib4 from "@/assets/lib-4.jpg";
 
 export const Route = createFileRoute("/template-club")({
   head: () => ({
     meta: [
-      { title: "Template Club | Creating Society" },
+      { title: "Templates | Creating Society" },
       {
         name: "description",
         content:
           "350+ Canva-Vorlagen und 350+ Bilder für deinen Instagram-Feed. Fertig gestaltet, in Minuten anpassbar, einmalig zahlen.",
       },
-      { property: "og:title", content: "Template Club | Creating Society" },
+      { property: "og:title", content: "Templates | Creating Society" },
       {
         property: "og:description",
         content:
@@ -36,15 +47,24 @@ const benefits = [
 ];
 
 const collections = [
-  { name: "Wellness", body: "Ruhige, erklärende Layouts für Coaches, Wellness-Creator und Lifestyle-Brands." },
-  { name: "Pink Digital", body: "Laute, scrollstoppende Vorlagen für Tipps, Zitate und Tutorials." },
-  { name: "Old Money", body: "Editoriale, elegante Designs mit ruhigem Luxus-Gefühl." },
-  { name: "Lifestyle", body: "Ästhetische Vorlagen für Alltags-Content und persönliches Storytelling." },
-  { name: "iOS Core", body: "Moderne iPhone-Optik für nahbaren, social-first Content." },
-  { name: "Beauty & Skin", body: "Hochwertige Layouts für Kosmetik, Studios und Beauty-Profis." },
-  { name: "Pilates & Movement", body: "Weiche, feminine Vorlagen für Studios und Bewegungs-Creator." },
-  { name: "Business Coach", body: "Klare, strategische Designs für Coaches und Online-Bildung." },
+  { name: "Wellness", img: colWellness, count: "45 Vorlagen", body: "Ruhige, erklärende Layouts für Coaches und Lifestyle-Brands." },
+  { name: "Pink Digital", img: colPink, count: "45 Vorlagen", body: "Laute, scrollstoppende Designs für Tipps, Zitate und Tutorials." },
+  { name: "Old Money", img: colOldmoney, count: "45 Vorlagen", body: "Editorial und elegant, mit ruhigem Luxus-Gefühl." },
+  { name: "Lifestyle", img: colLifestyle, count: "45 Vorlagen", body: "Ästhetische Vorlagen für Alltag und persönliches Storytelling." },
+  { name: "iOS Core", img: colIos, count: "40 Vorlagen", body: "Moderne iPhone-Optik für nahbaren, social-first Content." },
+  { name: "Beauty & Skin", img: colBeauty, count: "45 Vorlagen", body: "Hochwertige Layouts für Kosmetik, Studios und Beauty-Profis." },
+  { name: "Pilates & Movement", img: colPilates, count: "45 Vorlagen", body: "Weiche, feminine Vorlagen für Studios und Bewegungs-Creator." },
+  { name: "Business Coach", img: colBusiness, count: "45 Vorlagen", body: "Klare, strategische Designs für Coaching und Online-Bildung." },
 ];
+
+const libraryImages = [
+  { src: lib1, alt: "Eiskaffee und Notizbuch auf Marmortisch" },
+  { src: lib2, alt: "Frau am Laptop in hellem Apartment" },
+  { src: lib3, alt: "Flatlay mit Skincare-Produkten" },
+  { src: lib4, alt: "Detailaufnahme im Pilates-Studio" },
+];
+
+const libraryTags = ["Lifestyle", "Beauty", "Coaching", "Wellness", "Business", "Faceless", "Pilates", "Studio"];
 
 const imageFeatures = [
   { n: "01", head: "Kuratierte Bildbibliothek", body: "Ruhige, markentaugliche Bilder, die direkt in deine Vorlagen passen." },
@@ -104,6 +124,7 @@ const marqueeItems = [
   "Pilates",
   "Dienstleistung",
 ];
+
 
 function useReveal() {
   useEffect(() => {
