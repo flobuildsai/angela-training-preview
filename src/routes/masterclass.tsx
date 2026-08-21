@@ -146,34 +146,60 @@ function TrainingPage() {
 
       {/* Die Chance */}
       <section className="max-w-6xl mx-auto px-5 sm:px-8 py-20 sm:py-32">
-        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-start">
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+          {/* Post-Karte */}
           <div className="rv">
-            <p className="eyebrow rule-label text-[color:var(--muted-fg)]">Die Chance</p>
-            <h2 className="mt-6 font-serif text-3xl sm:text-5xl leading-[1.08] text-[color:var(--wine)]">
-              Der neue Karriereweg beginnt <span className="serif-italic">online.</span>
-            </h2>
+            <div className="mx-auto max-w-sm rounded-[26px] bg-white p-3 soft-shadow rotate-[-2.5deg] transition-transform duration-500 hover:rotate-0">
+              <div className="flex items-center gap-3 px-2 py-3">
+                <img
+                  src={portraitImg}
+                  alt=""
+                  className="h-9 w-9 rounded-full object-cover"
+                  loading="lazy"
+                />
+                <span className="text-sm font-medium text-[color:var(--ink)]">Laura</span>
+              </div>
+              <img
+                src={workImg}
+                alt="Laura beim Content-Erstellen"
+                className="w-full rounded-[18px] object-cover aspect-[4/5]"
+                loading="lazy"
+              />
+            </div>
           </div>
-          <div className="space-y-6 text-[15px] sm:text-[17px] leading-relaxed text-[color:var(--muted-fg)] rv">
-            <p>
-              Deine Erfahrung, dein Blick auf die Dinge und das, was du kannst, sind heute
-              genug, um daraus ein echtes Business zu bauen. Nicht irgendwann, sondern mit
-              dem, was du jetzt schon hast.
-            </p>
-            <p>
-              Creator posten längst nicht mehr nur. Sie bauen Marken, starten eigene
-              Angebote, arbeiten mit Unternehmen zusammen und verkaufen digitale Produkte.
-            </p>
-            <p className="text-[color:var(--ink)]">
-              Der Unterschied liegt nicht darin, gesehen zu werden. Er liegt darin, dass
-              man dir vertraut.
-            </p>
-            <p>
-              Genau das zeige ich dir im Training: wie du eine Marke aufbaust, die
-              wächst, Türen öffnet und Einnahmen bringt.
-            </p>
+
+          <div className="rv">
+            <p className="pill">Die Chance</p>
+            <h2 className="mt-6 font-serif text-3xl sm:text-5xl leading-[1.05] text-[color:var(--wine)]">
+              Der neue Karriereweg beginnt{" "}
+              <span className="serif-italic">online.</span>
+            </h2>
+            <div className="mt-7 space-y-5 text-[15px] sm:text-[17px] leading-relaxed text-[color:var(--muted-fg)]">
+              <p>
+                Deine Erfahrung, dein Blick auf die Dinge und das, was du kannst, sind
+                heute genug, um daraus ein echtes Business zu bauen. Nicht irgendwann,
+                sondern mit dem, was du jetzt schon hast.
+              </p>
+              <p>
+                Creator posten längst nicht mehr nur. Sie bauen Marken, starten eigene
+                Angebote, arbeiten mit Unternehmen zusammen und verkaufen digitale
+                Produkte.
+              </p>
+              <p>
+                Der Unterschied liegt nicht darin, gesehen zu werden.{" "}
+                <strong className="font-semibold text-[color:var(--wine)]">
+                  Er liegt darin, dass man dir vertraut.
+                </strong>
+              </p>
+              <p>
+                Genau das zeige ich dir im Training: wie du eine Marke aufbaust, die
+                wächst, Türen öffnet und Einnahmen bringt.
+              </p>
+            </div>
           </div>
         </div>
       </section>
+
 
       {/* Marquee */}
       <div className="border-y border-[color:var(--border)] bg-[color:var(--wine)] text-[color:var(--cream)] py-4 overflow-hidden">
@@ -211,21 +237,30 @@ function TrainingPage() {
       </section>
 
       {/* Mentorin */}
-      <section className="bg-[color:var(--cream2)] py-20 sm:py-32">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <section className="bg-[color:var(--wine)] text-[color:var(--cream)] py-20 sm:py-32">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+          {/* Polaroid */}
           <div className="rv">
-            <img
-              src={portraitImg}
-              alt="Laura"
-              className="w-full rounded-2xl object-cover aspect-[4/5] soft-shadow"
-            />
+            <div className="relative mx-auto max-w-sm rotate-[-3deg] bg-[color:var(--cream)] p-4 pb-14 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)] transition-transform duration-500 hover:rotate-0">
+              <span className="absolute -top-4 left-1/2 h-8 w-28 -translate-x-1/2 rotate-[-2deg] bg-[color:var(--rose)]/35" />
+              <img
+                src={portraitImg}
+                alt="Laura"
+                className="w-full object-cover aspect-[4/5]"
+                loading="lazy"
+              />
+            </div>
           </div>
+
           <div className="space-y-6 rv">
-            <p className="eyebrow rule-label text-[color:var(--muted-fg)]">Deine Mentorin</p>
-            <h2 className="font-serif text-3xl sm:text-5xl leading-[1.08] text-[color:var(--wine)]">
+            <p className="pill bg-white/10 text-[color:var(--cream)] border-white/20">
+              Deine Mentorin
+            </p>
+            <h2 className="font-serif text-4xl sm:text-6xl leading-[1.02]">
               Hi, ich bin <span className="serif-italic">Laura.</span>
             </h2>
-            <div className="space-y-5 text-[15px] sm:text-[17px] leading-relaxed text-[color:var(--muted-fg)]">
+            <p className="text-lg sm:text-xl opacity-80">Ich habe das hier für dich gebaut.</p>
+            <div className="space-y-5 text-[15px] sm:text-[17px] leading-relaxed opacity-75">
               <p>
                 Ich bin Gründerin von Creating Society. Ich habe monatelang Content
                 gemacht, Millionen Views gesammelt und trotzdem kaum etwas verdient, weil
@@ -237,23 +272,25 @@ function TrainingPage() {
                 Schritt für Schritt.
               </p>
             </div>
-            <dl className="grid grid-cols-3 gap-6 pt-4 border-t border-[color:var(--border)]">
+            <dl className="grid grid-cols-3 gap-6 py-6 border-y border-white/20">
               {stats.map((s) => (
                 <div key={s.label}>
-                  <dt className="font-serif text-2xl sm:text-3xl text-[color:var(--wine)]">
-                    {s.value}
-                  </dt>
-                  <dd className="mt-1 text-[11px] uppercase tracking-[0.16em] text-[color:var(--muted-fg)]">
+                  <dt className="font-serif text-3xl sm:text-4xl">{s.value}</dt>
+                  <dd className="mt-1 text-[11px] uppercase tracking-[0.16em] opacity-60">
                     {s.label}
                   </dd>
                 </div>
               ))}
             </dl>
+            <p className="text-lg sm:text-xl">
+              Jetzt zeige ich dir, wie du denselben Weg gehst.
+            </p>
             <div className="pt-2">
-              <Cta />
+              <Cta variant="light" />
             </div>
           </div>
         </div>
+
       </section>
 
       {/* Abschluss-CTA */}
