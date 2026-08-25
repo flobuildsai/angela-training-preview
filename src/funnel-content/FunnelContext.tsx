@@ -26,7 +26,7 @@ export interface FunnelData {
   buyers: number;
   firstName: string;
   email: string;
-  instagram: string;
+  whatsapp: string;
 }
 
 export const FOLLOWER_BUCKETS = [
@@ -78,7 +78,7 @@ const defaultData: FunnelData = {
   buyers: 10,
   firstName: "",
   email: "",
-  instagram: "",
+  whatsapp: "",
 };
 
 interface Ctx {
