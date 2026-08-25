@@ -36,7 +36,23 @@ export function StepLead() {
     if (Object.keys(e).length) return;
 
     update({ firstName: firstName.trim(), email: email.trim(), whatsapp: phone });
-    // TODO: Lead an CRM / WhatsApp-Tool übergeben, sobald das Backend steht.
+    void pushLead({
+      data: {
+        firstName: firstName.trim(),
+        email: email.trim(),
+        whatsapp: phone,
+        niche: data.niche,
+        followers: FOLLOWER_BUCKETS[Math.max(data.followers, 0)]?.label ?? "",
+        posting: POSTING_OPTIONS[Math.max(data.posting, 0)] ?? "",
+        hours: HOURS_OPTIONS[Math.max(data.hours, 0)] ?? "",
+        skill: SKILL_OPTIONS[Math.max(data.skill, 0)] ?? "",
+        readiness: data.readiness,
+        score,
+        monthlyViews,
+        price: data.price,
+        buyers: data.buyers,
+      },
+    }).catch(() => undefined);
     trackEvent("content_funnel_lead", { niche: data.niche, price: data.price });
     next();
   };
