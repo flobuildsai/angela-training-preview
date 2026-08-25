@@ -74,6 +74,72 @@ export type Database = {
         }
         Relationships: []
       }
+      leads: {
+        Row: {
+          buyers: number | null
+          close_error: string | null
+          close_lead_id: string | null
+          close_synced_at: string | null
+          created_at: string
+          email: string
+          first_name: string | null
+          followers: string | null
+          hours: string | null
+          id: string
+          monthly_views: number | null
+          niche: string | null
+          posting: string | null
+          price: number | null
+          readiness: number | null
+          score: number | null
+          skill: string | null
+          source: string
+          whatsapp: string | null
+        }
+        Insert: {
+          buyers?: number | null
+          close_error?: string | null
+          close_lead_id?: string | null
+          close_synced_at?: string | null
+          created_at?: string
+          email: string
+          first_name?: string | null
+          followers?: string | null
+          hours?: string | null
+          id?: string
+          monthly_views?: number | null
+          niche?: string | null
+          posting?: string | null
+          price?: number | null
+          readiness?: number | null
+          score?: number | null
+          skill?: string | null
+          source?: string
+          whatsapp?: string | null
+        }
+        Update: {
+          buyers?: number | null
+          close_error?: string | null
+          close_lead_id?: string | null
+          close_synced_at?: string | null
+          created_at?: string
+          email?: string
+          first_name?: string | null
+          followers?: string | null
+          hours?: string | null
+          id?: string
+          monthly_views?: number | null
+          niche?: string | null
+          posting?: string | null
+          price?: number | null
+          readiness?: number | null
+          score?: number | null
+          skill?: string | null
+          source?: string
+          whatsapp?: string | null
+        }
+        Relationships: []
+      }
       orders: {
         Row: {
           amount_total: number | null
