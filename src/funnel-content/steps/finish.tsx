@@ -4,12 +4,15 @@ import lauraPortrait from "@/assets/laura-portrait.jpg.asset.json";
 import proofViews15m from "@/assets/proof-views-15m.jpeg.asset.json";
 import proofViews7m from "@/assets/proof-views-7m.jpeg.asset.json";
 import proofStripe from "@/assets/proof-stripe.png.asset.json";
+import { useServerFn } from "@tanstack/react-start";
 import { CalendlyEmbed } from "@/components/CalendlyEmbed";
 import { trackEvent } from "@/lib/track";
+import { sendLeadToClose } from "@/utils/leads.functions";
 import {
   FOLLOWER_BUCKETS,
   HOURS_OPTIONS,
   POSTING_OPTIONS,
+  SKILL_OPTIONS,
   formatEur,
   useFunnel,
 } from "../FunnelContext";
