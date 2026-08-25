@@ -4,12 +4,15 @@ import lauraPortrait from "@/assets/laura-portrait.jpg.asset.json";
 import proofViews15m from "@/assets/proof-views-15m.jpeg.asset.json";
 import proofViews7m from "@/assets/proof-views-7m.jpeg.asset.json";
 import proofStripe from "@/assets/proof-stripe.png.asset.json";
+import { useServerFn } from "@tanstack/react-start";
 import { CalendlyEmbed } from "@/components/CalendlyEmbed";
 import { trackEvent } from "@/lib/track";
+import { sendLeadToClose } from "@/utils/leads.functions";
 import {
   FOLLOWER_BUCKETS,
   HOURS_OPTIONS,
   POSTING_OPTIONS,
+  SKILL_OPTIONS,
   formatEur,
   useFunnel,
 } from "../FunnelContext";
@@ -17,7 +20,8 @@ import { Card, Head, Micro, PrimaryCTA, StepLabel, Sub } from "../ui";
 
 /** Step 12 — Lead-Capture */
 export function StepLead() {
-  const { next, data, update } = useFunnel();
+  const { next, data, update, monthlyViews, score } = useFunnel();
+  const pushLead = useServerFn(sendLeadToClose);
   const [firstName, setFirstName] = useState(data.firstName);
   const [email, setEmail] = useState(data.email);
   const [whatsapp, setWhatsapp] = useState(data.whatsapp);
@@ -35,7 +39,23 @@ export function StepLead() {
     if (Object.keys(e).length) return;
 
     update({ firstName: firstName.trim(), email: email.trim(), whatsapp: phone });
-    // TODO: Lead an CRM / WhatsApp-Tool übergeben, sobald das Backend steht.
+    void pushLead({
+      data: {
+        firstName: firstName.trim(),
+        email: email.trim(),
+        whatsapp: phone,
+        niche: data.niche,
+        followers: FOLLOWER_BUCKETS[Math.max(data.followers, 0)]?.label ?? "",
+        posting: POSTING_OPTIONS[Math.max(data.posting, 0)] ?? "",
+        hours: HOURS_OPTIONS[Math.max(data.hours, 0)] ?? "",
+        skill: SKILL_OPTIONS[Math.max(data.skill, 0)] ?? "",
+        readiness: data.readiness,
+        score,
+        monthlyViews,
+        price: data.price,
+        buyers: data.buyers,
+      },
+    }).catch(() => undefined);
     trackEvent("content_funnel_lead", { niche: data.niche, price: data.price });
     next();
   };
