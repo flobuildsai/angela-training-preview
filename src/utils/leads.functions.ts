@@ -38,57 +38,151 @@ function validate(input: unknown): FunnelLeadInput {
   };
 }
 
-/** Legt den Funnel-Lead als Lead + Kontakt in Close an. */
+/** Speichert den Funnel-Lead und legt ihn als Lead in Close an. */
 export const sendLeadToClose = createServerFn({ method: "POST" })
   .inputValidator(validate)
   .handler(async ({ data }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+
+    const row = {
+      first_name: data.firstName,
+      email: data.email,
+      whatsapp: data.whatsapp,
+      niche: data.niche,
+      followers: data.followers,
+      posting: data.posting,
+      hours: data.hours,
+      skill: data.skill,
+      readiness: data.readiness,
+      score: data.score,
+      monthly_views: data.monthlyViews,
+      price: data.price,
+      buyers: data.buyers,
+      source: "creator_funnel",
+    };
+
+    const { data: inserted, error } = await supabaseAdmin
+      .from("leads")
+      .insert(row)
+      .select("id")
+      .single();
+    if (error) console.error("Lead konnte nicht gespeichert werden:", error.message);
+
     const apiKey = process.env["CLOSE_API_KEY"];
     if (!apiKey) {
       console.error("CLOSE_API_KEY fehlt — Lead wurde nicht übertragen.");
       return { ok: false as const, reason: "missing_key" };
     }
 
-    const displayName = data.firstName || data.email;
-    const note = [
-      `Quelle: Creator-Funnel (creatingsociety.de)`,
-      `Nische: ${data.niche}`,
-      `Reichweite: ${data.followers}`,
-      `Postet: ${data.posting}`,
-      `Zeit pro Woche: ${data.hours}`,
-      `Startpunkt: ${data.skill}`,
-      `Bereitschaft: ${data.readiness}/10`,
-      `Score: ${data.score}/100`,
-      `Views pro Monat: ${data.monthlyViews}`,
-      `Angebot: ${data.price} EUR x ${data.buyers} Kunden = ${data.price * data.buyers} EUR/Monat`,
-      `WhatsApp: ${data.whatsapp}`,
-    ].join("\n");
+    const { createCloseLead, ensureCustomFields } = await import("@/lib/close.server");
+    try {
+      const fields = await ensureCustomFields(apiKey);
+      const closeId = await createCloseLead(
+        apiKey,
+        { ...data, source: "Creator-Funnel (creatingsociety.de)" },
+        fields,
+      );
+      if (inserted?.id) {
+        await supabaseAdmin
+          .from("leads")
+          .update({ close_lead_id: closeId, close_synced_at: new Date().toISOString() })
+          .eq("id", inserted.id);
+      }
+      return { ok: true as const };
+    } catch (e) {
+      const message = e instanceof Error ? e.message : String(e);
+      console.error(message);
+      if (inserted?.id) {
+        await supabaseAdmin
+          .from("leads")
+          .update({ close_error: message.slice(0, 500) })
+          .eq("id", inserted.id);
+      }
+      return { ok: false as const, reason: "close_error" };
+    }
+  });
 
-    const res = await fetch("https://api.close.com/api/v1/lead/", {
-      method: "POST",
-      headers: {
-        Authorization: `Basic ${btoa(`${apiKey}:`)}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: displayName,
-        description: note,
-        contacts: [
+/**
+ * Überträgt alle noch nicht synchronisierten Leads nach Close.
+ * Nur für Admins.
+ */
+export const backfillLeadsToClose = createServerFn({ method: "POST" }).handler(
+  async () => {
+    const { requireAdmin } = await import("@/lib/admin.server");
+    await requireAdmin();
+
+    const apiKey = process.env["CLOSE_API_KEY"];
+    if (!apiKey) throw new Error("CLOSE_API_KEY fehlt.");
+
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { createCloseLead, ensureCustomFields } = await import("@/lib/close.server");
+    const fields = await ensureCustomFields(apiKey);
+
+    const { data: rows, error } = await supabaseAdmin
+      .from("leads")
+      .select("*")
+      .is("close_synced_at", null)
+      .order("created_at", { ascending: true })
+      .limit(200);
+    if (error) throw new Error(error.message);
+
+    let synced = 0;
+    let failed = 0;
+    for (const r of rows ?? []) {
+      try {
+        const closeId = await createCloseLead(
+          apiKey,
           {
-            name: displayName,
-            emails: [{ email: data.email, type: "office" }],
-            phones: data.whatsapp
-              ? [{ phone: data.whatsapp, type: "mobile" }]
-              : [],
+            firstName: r.first_name ?? "",
+            email: r.email,
+            whatsapp: r.whatsapp ?? "",
+            niche: r.niche ?? "",
+            followers: r.followers ?? "",
+            posting: r.posting ?? "",
+            hours: r.hours ?? "",
+            skill: r.skill ?? "",
+            readiness: r.readiness ?? 0,
+            score: r.score ?? 0,
+            monthlyViews: r.monthly_views ?? 0,
+            price: r.price ?? 0,
+            buyers: r.buyers ?? 0,
+            source: r.source ?? "creator_funnel",
+            createdAt: r.created_at,
           },
-        ],
-      }),
-    });
-
-    if (!res.ok) {
-      const body = await res.text();
-      console.error(`Close API failed [${res.status}]: ${body}`);
-      return { ok: false as const, reason: `close_${res.status}` };
+          fields,
+        );
+        await supabaseAdmin
+          .from("leads")
+          .update({
+            close_lead_id: closeId,
+            close_synced_at: new Date().toISOString(),
+            close_error: null,
+          })
+          .eq("id", r.id);
+        synced++;
+      } catch (e) {
+        failed++;
+        const message = e instanceof Error ? e.message : String(e);
+        await supabaseAdmin
+          .from("leads")
+          .update({ close_error: message.slice(0, 500) })
+          .eq("id", r.id);
+      }
     }
 
-    return { ok: true as const };
-  });
+    return { synced, failed, remaining: (rows?.length ?? 0) - synced - failed };
+  },
+);
+
+/** Legt die Custom Fields in Close an (idempotent). Nur für Admins. */
+export const setupCloseCustomFields = createServerFn({ method: "POST" }).handler(
+  async () => {
+    const { requireAdmin } = await import("@/lib/admin.server");
+    await requireAdmin();
+    const apiKey = process.env["CLOSE_API_KEY"];
+    if (!apiKey) throw new Error("CLOSE_API_KEY fehlt.");
+    const { ensureCustomFields } = await import("@/lib/close.server");
+    const fields = await ensureCustomFields(apiKey);
+    return { fields: Object.keys(fields).length };
+  },
+);
