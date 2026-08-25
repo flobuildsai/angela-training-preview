@@ -103,17 +103,6 @@ export const sendLeadToClose = createServerFn({ method: "POST" })
     }
   });
 
-async function assertAdmin(context: {
-  supabase: { rpc: (fn: string, args: Record<string, unknown>) => Promise<{ data: unknown }> };
-  userId: string;
-}) {
-  const { data } = await context.supabase.rpc("has_role", {
-    _user_id: context.userId,
-    _role: "admin",
-  });
-  if (data !== true) throw new Error("Forbidden");
-}
-
 /**
  * Überträgt alle noch nicht synchronisierten Leads nach Close.
  * Nur für Admins.
@@ -121,6 +110,7 @@ async function assertAdmin(context: {
 export const backfillLeadsToClose = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
+    const { assertAdmin } = await import("@/lib/admin.server");
     await assertAdmin(context);
 
     const apiKey = process.env["CLOSE_API_KEY"];
@@ -189,6 +179,7 @@ export const backfillLeadsToClose = createServerFn({ method: "POST" })
 export const setupCloseCustomFields = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
+    const { assertAdmin } = await import("@/lib/admin.server");
     await assertAdmin(context);
     const apiKey = process.env["CLOSE_API_KEY"];
     if (!apiKey) throw new Error("CLOSE_API_KEY fehlt.");
