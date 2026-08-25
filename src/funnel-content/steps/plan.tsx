@@ -24,9 +24,9 @@ export function StepRoadmap() {
       tasks: [
         `Klare Positionierung: ${profile.angle}`,
         `Drei Formate testen: ${profile.formats.join(", ")}`,
-        "Profil, Bio und Hook-Struktur überarbeiten",
         "Feste Posting-Routine statt Zufall",
       ],
+      result: "Nach Woche 4 weißt du, was du sagst und für wen.",
     },
     {
       phase: "Phase 02",
@@ -34,11 +34,11 @@ export function StepRoadmap() {
       title: "Produkt",
       lead: `Wir bauen ${offer} — klein genug zum Starten, gut genug zum Bezahlen.`,
       tasks: [
-        `Angebot definieren mit klarem Ergebnis (${formatEur(data.price)})`,
-        "Inhalte und Ablauf strukturieren",
-        "Verkaufsseite und Zahlungsabwicklung aufsetzen",
+        `Angebot mit klarem Ergebnis (${formatEur(data.price)})`,
+        "Inhalte, Ablauf und Verkaufsseite aufsetzen",
         "Erste Interessenten sammeln, bevor alles fertig ist",
       ],
+      result: "Nach Woche 8 existiert dein Angebot und ist kaufbar.",
     },
     {
       phase: "Phase 03",
@@ -47,10 +47,10 @@ export function StepRoadmap() {
       lead: "Aus Reichweite werden Verkäufe, die sich wiederholen lassen.",
       tasks: [
         "Launch-Content und Story-Sequenz",
-        "Verkaufsgespräche oder Direktverkauf über die Seite",
-        `Ziel: die ersten ${data.buyers} Käufer`,
+        "Verkauf über Gespräche oder direkt über die Seite",
         "System dokumentieren und wiederholen",
       ],
+      result: `Nach Woche 12: deine ersten ${data.buyers} Käufer.`,
     },
   ];
 
@@ -93,11 +93,14 @@ export function StepRoadmap() {
                 </li>
               ))}
             </ul>
+            <p className="mt-5 border-t border-[color:var(--border)] pt-4 font-serif text-lg text-[color:var(--wine)]">
+              {p.result}
+            </p>
           </Card>
         ))}
       </div>
 
-      <PrimaryCTA onClick={next}>Plan freischalten</PrimaryCTA>
+      <PrimaryCTA onClick={next}>Weiter zu deiner Auswertung</PrimaryCTA>
     </div>
   );
 }
