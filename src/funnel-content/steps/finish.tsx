@@ -17,7 +17,8 @@ import { Card, Head, Micro, PrimaryCTA, StepLabel, Sub } from "../ui";
 
 /** Step 12 — Lead-Capture */
 export function StepLead() {
-  const { next, data, update } = useFunnel();
+  const { next, data, update, monthlyViews, score } = useFunnel();
+  const pushLead = useServerFn(sendLeadToClose);
   const [firstName, setFirstName] = useState(data.firstName);
   const [email, setEmail] = useState(data.email);
   const [whatsapp, setWhatsapp] = useState(data.whatsapp);
