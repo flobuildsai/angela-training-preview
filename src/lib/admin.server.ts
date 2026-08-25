@@ -1,8 +1,9 @@
+import type { SupabaseClient } from "@supabase/supabase-js";
+
 /** Prüft, ob der eingeloggte Nutzer Admin ist (server-only). */
 export async function assertAdmin(context: {
-  supabase: {
-    rpc: (fn: string, args: Record<string, unknown>) => Promise<{ data: unknown }>;
-  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  supabase: SupabaseClient<any, any, any>;
   userId: string;
 }) {
   const { data } = await context.supabase.rpc("has_role", {
