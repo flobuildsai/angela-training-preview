@@ -6,7 +6,7 @@ import { FreeFooter, FreeHeader, PrimaryButton, useReveal } from "@/components/F
 import { LESSONS, MODULES } from "@/config/freeCourse";
 import { readAccess, writeAccess } from "@/lib/freeAccess";
 import { trackEvent } from "@/lib/track";
-import { freeWhatsapp, type FreeAccess } from "@/utils/freeCourse.functions";
+import { freeOptin, freeWhatsapp, type FreeAccess } from "@/utils/freeCourse.functions";
 
 export const Route = createFileRoute("/free_/willkommen")({
   head: () => ({
@@ -15,6 +15,10 @@ export const Route = createFileRoute("/free_/willkommen")({
       { name: "description", content: "Modul 1 ist offen. So startest du." },
       { name: "robots", content: "noindex" },
     ],
+  }),
+  validateSearch: (search: Record<string, unknown>): { e?: string; n?: string } => ({
+    e: typeof search["e"] === "string" && search["e"].length <= 160 ? search["e"] : undefined,
+    n: typeof search["n"] === "string" && search["n"].length <= 80 ? search["n"] : undefined,
   }),
   component: WelcomePage,
 });
