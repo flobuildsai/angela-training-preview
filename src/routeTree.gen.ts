@@ -14,12 +14,16 @@ import { Route as WaitlistRouteImport } from './routes/waitlist'
 import { Route as TemplateClubRouteImport } from './routes/template-club'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as MasterclassRouteImport } from './routes/masterclass'
+import { Route as KursRouteImport } from './routes/kurs'
 import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as FreeRouteImport } from './routes/free'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CallRouteImport } from './routes/call'
 import { Route as ApplyRouteImport } from './routes/apply'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as KursLessonRouteImport } from './routes/kurs_.$lesson'
+import { Route as FreeWillkommenRouteImport } from './routes/free_.willkommen'
 import { Route as ApiPublicStripeWebhookRouteImport } from './routes/api/public/stripe-webhook'
 
 const WelcomeRoute = WelcomeRouteImport.update({
@@ -47,9 +51,19 @@ const MasterclassRoute = MasterclassRouteImport.update({
   path: '/masterclass',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KursRoute = KursRouteImport.update({
+  id: '/kurs',
+  path: '/kurs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ImpressumRoute = ImpressumRouteImport.update({
   id: '/impressum',
   path: '/impressum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreeRoute = FreeRouteImport.update({
+  id: '/free',
+  path: '/free',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DatenschutzRoute = DatenschutzRouteImport.update({
@@ -77,6 +91,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KursLessonRoute = KursLessonRouteImport.update({
+  id: '/kurs_/$lesson',
+  path: '/kurs/$lesson',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreeWillkommenRoute = FreeWillkommenRouteImport.update({
+  id: '/free_/willkommen',
+  path: '/free/willkommen',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicStripeWebhookRoute = ApiPublicStripeWebhookRouteImport.update({
   id: '/api/public/stripe-webhook',
   path: '/api/public/stripe-webhook',
@@ -89,12 +113,16 @@ export interface FileRoutesByFullPath {
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
   '/datenschutz': typeof DatenschutzRoute
+  '/free': typeof FreeRoute
   '/impressum': typeof ImpressumRoute
+  '/kurs': typeof KursRoute
   '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
   '/template-club': typeof TemplateClubRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
+  '/free/willkommen': typeof FreeWillkommenRoute
+  '/kurs/$lesson': typeof KursLessonRoute
   '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
 }
 export interface FileRoutesByTo {
@@ -103,12 +131,16 @@ export interface FileRoutesByTo {
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
   '/datenschutz': typeof DatenschutzRoute
+  '/free': typeof FreeRoute
   '/impressum': typeof ImpressumRoute
+  '/kurs': typeof KursRoute
   '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
   '/template-club': typeof TemplateClubRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
+  '/free/willkommen': typeof FreeWillkommenRoute
+  '/kurs/$lesson': typeof KursLessonRoute
   '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
 }
 export interface FileRoutesById {
@@ -118,12 +150,16 @@ export interface FileRoutesById {
   '/call': typeof CallRoute
   '/checkout': typeof CheckoutRoute
   '/datenschutz': typeof DatenschutzRoute
+  '/free': typeof FreeRoute
   '/impressum': typeof ImpressumRoute
+  '/kurs': typeof KursRoute
   '/masterclass': typeof MasterclassRoute
   '/quiz': typeof QuizRoute
   '/template-club': typeof TemplateClubRoute
   '/waitlist': typeof WaitlistRoute
   '/welcome': typeof WelcomeRoute
+  '/free_/willkommen': typeof FreeWillkommenRoute
+  '/kurs_/$lesson': typeof KursLessonRoute
   '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
 }
 export interface FileRouteTypes {
@@ -134,12 +170,16 @@ export interface FileRouteTypes {
     | '/call'
     | '/checkout'
     | '/datenschutz'
+    | '/free'
     | '/impressum'
+    | '/kurs'
     | '/masterclass'
     | '/quiz'
     | '/template-club'
     | '/waitlist'
     | '/welcome'
+    | '/free/willkommen'
+    | '/kurs/$lesson'
     | '/api/public/stripe-webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -148,12 +188,16 @@ export interface FileRouteTypes {
     | '/call'
     | '/checkout'
     | '/datenschutz'
+    | '/free'
     | '/impressum'
+    | '/kurs'
     | '/masterclass'
     | '/quiz'
     | '/template-club'
     | '/waitlist'
     | '/welcome'
+    | '/free/willkommen'
+    | '/kurs/$lesson'
     | '/api/public/stripe-webhook'
   id:
     | '__root__'
@@ -162,12 +206,16 @@ export interface FileRouteTypes {
     | '/call'
     | '/checkout'
     | '/datenschutz'
+    | '/free'
     | '/impressum'
+    | '/kurs'
     | '/masterclass'
     | '/quiz'
     | '/template-club'
     | '/waitlist'
     | '/welcome'
+    | '/free_/willkommen'
+    | '/kurs_/$lesson'
     | '/api/public/stripe-webhook'
   fileRoutesById: FileRoutesById
 }
@@ -177,12 +225,16 @@ export interface RootRouteChildren {
   CallRoute: typeof CallRoute
   CheckoutRoute: typeof CheckoutRoute
   DatenschutzRoute: typeof DatenschutzRoute
+  FreeRoute: typeof FreeRoute
   ImpressumRoute: typeof ImpressumRoute
+  KursRoute: typeof KursRoute
   MasterclassRoute: typeof MasterclassRoute
   QuizRoute: typeof QuizRoute
   TemplateClubRoute: typeof TemplateClubRoute
   WaitlistRoute: typeof WaitlistRoute
   WelcomeRoute: typeof WelcomeRoute
+  FreeWillkommenRoute: typeof FreeWillkommenRoute
+  KursLessonRoute: typeof KursLessonRoute
   ApiPublicStripeWebhookRoute: typeof ApiPublicStripeWebhookRoute
 }
 
@@ -223,11 +275,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MasterclassRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kurs': {
+      id: '/kurs'
+      path: '/kurs'
+      fullPath: '/kurs'
+      preLoaderRoute: typeof KursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/impressum': {
       id: '/impressum'
       path: '/impressum'
       fullPath: '/impressum'
       preLoaderRoute: typeof ImpressumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/free': {
+      id: '/free'
+      path: '/free'
+      fullPath: '/free'
+      preLoaderRoute: typeof FreeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/datenschutz': {
@@ -265,6 +331,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kurs_/$lesson': {
+      id: '/kurs_/$lesson'
+      path: '/kurs/$lesson'
+      fullPath: '/kurs/$lesson'
+      preLoaderRoute: typeof KursLessonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/free_/willkommen': {
+      id: '/free_/willkommen'
+      path: '/free/willkommen'
+      fullPath: '/free/willkommen'
+      preLoaderRoute: typeof FreeWillkommenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/stripe-webhook': {
       id: '/api/public/stripe-webhook'
       path: '/api/public/stripe-webhook'
@@ -281,12 +361,16 @@ const rootRouteChildren: RootRouteChildren = {
   CallRoute: CallRoute,
   CheckoutRoute: CheckoutRoute,
   DatenschutzRoute: DatenschutzRoute,
+  FreeRoute: FreeRoute,
   ImpressumRoute: ImpressumRoute,
+  KursRoute: KursRoute,
   MasterclassRoute: MasterclassRoute,
   QuizRoute: QuizRoute,
   TemplateClubRoute: TemplateClubRoute,
   WaitlistRoute: WaitlistRoute,
   WelcomeRoute: WelcomeRoute,
+  FreeWillkommenRoute: FreeWillkommenRoute,
+  KursLessonRoute: KursLessonRoute,
   ApiPublicStripeWebhookRoute: ApiPublicStripeWebhookRoute,
 }
 export const routeTree = rootRouteImport
