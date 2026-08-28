@@ -54,8 +54,8 @@ function WelcomePage() {
             Dein Zugang ist <span className="serif-italic text-[color:var(--rose)]">aktiv.</span>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-[color:var(--muted-fg)] sm:text-lg">
-            Modul 1 ist jetzt offen. Die weiteren Module schalten sich in den nächsten drei Tagen frei —
-            schnell genug, um dranzubleiben, langsam genug, um wirklich umzusetzen.
+            Start und Modul 1 sind jetzt offen. Die weiteren Module folgen im Takt deines 30-Tage-Plans —
+            schnell genug, um dranzubleiben, langsam genug, um wirklich zu bauen.
           </p>
         </div>
       </section>
@@ -67,7 +67,7 @@ function WelcomePage() {
             <div className="flex items-start gap-5">
               <span className="serif-italic text-3xl text-[color:var(--rose)]">01</span>
               <div className="flex-1">
-                <p className="eyebrow opacity-70">Jetzt · {first.duration}</p>
+                <p className="eyebrow opacity-70">Jetzt · Start here · {first.duration}</p>
                 <h2 className="mt-2 font-serif text-2xl leading-snug sm:text-3xl">{first.title}</h2>
                 <p className="mt-3 text-[15px] leading-relaxed opacity-75">{first.outcome}</p>
                 <div className="mt-6">
@@ -77,7 +77,7 @@ function WelcomePage() {
                     onClick={() => trackEvent("free_welcome_start_lesson")}
                     className="inline-flex min-h-[56px] w-full items-center justify-center rounded-full bg-[color:var(--cream)] px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-[color:var(--wine)] transition hover:opacity-90 sm:w-auto"
                   >
-                    Modul 1 starten
+                    Jetzt starten
                   </Link>
                 </div>
               </div>
@@ -131,11 +131,11 @@ function WelcomePage() {
           <ul className="mt-5 divide-y divide-[color:var(--border)] border-y border-[color:var(--border)]">
             {MODULES.map((m) => {
               const hours = Math.min(...LESSONS.filter((l) => l.module === m.n).map((l) => l.unlockAfterHours));
-              const when = hours === 0 ? "Jetzt" : `In ${hours / 24} Tag${hours > 24 ? "en" : ""}`;
+              const when = hours === 0 ? "Jetzt" : `Ab Tag ${hours / 24 + 1}`;
               return (
                 <li key={m.n} className="flex items-baseline justify-between gap-6 py-3.5">
                   <span className="text-[15px]">
-                    <span className="serif-italic text-[color:var(--rose)]">0{m.n}</span>{" "}
+                    <span className="serif-italic text-[color:var(--rose)]">{m.n === 0 ? "Start" : `0${m.n}`}</span>{" "}
                     <span className="ml-2">{m.title}</span>
                   </span>
                   <span className="shrink-0 text-[11px] uppercase tracking-[0.18em] text-[color:var(--muted-fg)]">{when}</span>
@@ -179,7 +179,7 @@ function WhatsappForm({ access, onSaved }: { access: FreeAccess; onSaved: (a: Fr
     return (
       <p className="mt-5 flex items-center gap-2 text-sm">
         <span className="h-2 w-2 rounded-full bg-[color:var(--rose)]" />
-        Gespeichert. Die erste Nachricht kommt, wenn Modul 2 offen ist.
+        Gespeichert. Die erste Nachricht kommt, wenn Modul 2 offen ist — morgen.
       </p>
     );
   }

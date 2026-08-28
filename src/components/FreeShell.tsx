@@ -4,8 +4,10 @@ import logoDark from "@/assets/logo-dark.png";
 
 /** Scroll-Reveal für `.rv`-Elemente — wie auf den bestehenden Seiten. */
 export function useReveal() {
+  // Ohne Dependency-Array: läuft nach jedem Render, damit auch .rv-Elemente
+  // erfasst werden, die erst nach async geladenem Zugang mounten.
   useEffect(() => {
-    const els = Array.from(document.querySelectorAll<HTMLElement>(".rv"));
+    const els = Array.from(document.querySelectorAll<HTMLElement>(".rv:not(.on)"));
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -19,7 +21,7 @@ export function useReveal() {
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, []);
+  });
 }
 
 export function FreeHeader({ right }: { right?: ReactNode }) {

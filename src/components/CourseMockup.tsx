@@ -28,14 +28,14 @@ export function CourseMockup({ className = "" }: { className?: string }) {
               </div>
             </div>
             <ul className="mt-4 divide-y divide-black/[0.08]">
-              {MODULES.slice(0, 5).map((m, i) => (
+              {MODULES.filter((m) => m.n > 0).slice(0, 5).map((m, i) => (
                 <li key={m.n} className="flex items-center gap-2.5 py-2">
                   <span className={`h-1.5 w-1.5 rounded-full ${i === 0 ? "bg-[#94897A]" : i === 1 ? "border border-black" : "border border-black/20"}`} />
                   <span className={`text-[9.5px] ${i > 1 ? "text-black/40" : ""}`}>
                     <span className="serif-italic text-[#94897A]">0{m.n}</span> {m.title}
                   </span>
                   <span className="ml-auto text-[6.5px] uppercase tracking-[0.16em] text-black/40">
-                    {i === 0 ? "offen" : i === 1 ? "morgen" : `Tag ${i}`}
+                    {i === 0 ? "offen" : i === 1 ? "morgen" : `Tag ${[3, 5, 7][i - 2]}`}
                   </span>
                 </li>
               ))}

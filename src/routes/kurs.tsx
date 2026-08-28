@@ -85,7 +85,7 @@ function CoursePage() {
             className="mt-10 block rounded-2xl bg-[color:var(--wine)] p-7 text-[color:var(--cream)] transition hover:opacity-95 sm:p-9 rv d1"
           >
             <p className="eyebrow opacity-70">
-              Als Nächstes · Modul {nextLesson.module} · {nextLesson.duration}
+              Als Nächstes · {nextLesson.module === 0 ? "Start here" : `Modul ${nextLesson.module}`} · {nextLesson.duration}
             </p>
             <p className="mt-2 font-serif text-2xl leading-snug sm:text-3xl">{nextLesson.title}</p>
             <p className="mt-3 max-w-xl text-[15px] leading-relaxed opacity-75">{nextLesson.outcome}</p>
@@ -105,9 +105,10 @@ function CoursePage() {
             <div key={m.n} className="border-t border-[color:var(--border)] py-10 rv">
               <div className="grid gap-6 md:grid-cols-[14rem_1fr] md:gap-12">
                 <div>
-                  <span className="serif-italic text-3xl text-[color:var(--rose)]">0{m.n}</span>
+                  <span className="serif-italic text-3xl text-[color:var(--rose)]">{m.n === 0 ? "Start" : `0${m.n}`}</span>
                   <h2 className="mt-2 font-serif text-2xl leading-snug">{m.title}</h2>
                   <p className="mt-1 serif-italic text-lg text-[color:var(--muted-fg)]">{m.italic}</p>
+                  <p className="mt-3 text-[12px] leading-snug text-[color:var(--muted-fg)]"><span className="uppercase tracking-[0.16em] text-[color:var(--rose)]">Ergebnis</span> · {m.result}</p>
                 </div>
                 <ul className="divide-y divide-[color:var(--border)]">
                   {lessons.map((l) => {
