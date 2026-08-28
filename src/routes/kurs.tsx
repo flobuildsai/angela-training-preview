@@ -21,8 +21,10 @@ export const Route = createFileRoute("/kurs")({
       { name: "robots", content: "noindex" },
     ],
   }),
-  validateSearch: (search: Record<string, unknown>): { t?: string } => ({
+  validateSearch: (search: Record<string, unknown>): { t?: string; e?: string; n?: string } => ({
     t: typeof search["t"] === "string" ? search["t"] : undefined,
+    e: typeof search["e"] === "string" && search["e"].length <= 160 ? search["e"] : undefined,
+    n: typeof search["n"] === "string" && search["n"].length <= 80 ? search["n"] : undefined,
   }),
   component: CoursePage,
 });
@@ -31,9 +33,9 @@ const fmt = new Intl.DateTimeFormat("de-DE", { weekday: "long", hour: "2-digit",
 
 function CoursePage() {
   useReveal();
-  const { t } = Route.useSearch();
+  const { t, e, n } = Route.useSearch();
   const navigate = useNavigate();
-  const { access, status } = useFreeAccess(t);
+  const { access, status } = useFreeAccess(t, { email: e, firstName: n });
   const [progress, setProgress] = useState<Record<string, "started" | "completed">>({});
 
   useEffect(() => {

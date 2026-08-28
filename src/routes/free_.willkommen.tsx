@@ -6,7 +6,7 @@ import { FreeFooter, FreeHeader, PrimaryButton, useReveal } from "@/components/F
 import { LESSONS, MODULES } from "@/config/freeCourse";
 import { readAccess, writeAccess } from "@/lib/freeAccess";
 import { trackEvent } from "@/lib/track";
-import { freeWhatsapp, type FreeAccess } from "@/utils/freeCourse.functions";
+import { freeOptin, freeWhatsapp, type FreeAccess } from "@/utils/freeCourse.functions";
 
 export const Route = createFileRoute("/free_/willkommen")({
   head: () => ({
@@ -16,25 +16,60 @@ export const Route = createFileRoute("/free_/willkommen")({
       { name: "robots", content: "noindex" },
     ],
   }),
+  validateSearch: (search: Record<string, unknown>): { e?: string; n?: string } => ({
+    e: typeof search["e"] === "string" && search["e"].length <= 160 ? search["e"] : undefined,
+    n: typeof search["n"] === "string" && search["n"].length <= 80 ? search["n"] : undefined,
+  }),
   component: WelcomePage,
 });
 
 function WelcomePage() {
   useReveal();
   const navigate = useNavigate();
+  const { e, n } = Route.useSearch();
+  const optIn = useServerFn(freeOptin);
   const [access, setAccess] = useState<FreeAccess | null>(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const a = readAccess();
-    if (!a) {
+    let cancelled = false;
+    (async () => {
+      const a = readAccess();
+      if (a) {
+        if (cancelled) return;
+        setAccess(a);
+        setReady(true);
+        trackEvent("free_welcome_view");
+        return;
+      }
+      // Hand-off von milou.bio: ?e=<email>&n=<firstName>
+      const email = e?.trim();
+      if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        const remote = await optIn({
+          data: {
+            firstName: n ?? "",
+            email,
+            utm: { source: "milou", medium: "store", campaign: "free-course" },
+          },
+        }).catch(() => null);
+        if (cancelled) return;
+        if (remote) {
+          writeAccess(remote);
+          setAccess(remote);
+          setReady(true);
+          trackEvent("free_welcome_view", { from: "milou" });
+          void navigate({ to: "/free/willkommen", replace: true });
+          return;
+        }
+      }
+      if (cancelled) return;
       void navigate({ to: "/free" });
-      return;
-    }
-    setAccess(a);
-    setReady(true);
-    trackEvent("free_welcome_view");
-  }, [navigate]);
+    })();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate, e, n]);
 
   if (!ready || !access) return <main className="min-h-screen bg-[color:var(--background)]" />;
 
