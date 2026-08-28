@@ -159,3 +159,22 @@ export async function createCloseLead(
   });
   return created.id;
 }
+
+/** Trägt eine Telefonnummer am ersten Kontakt eines Close-Leads nach. */
+export async function addCloseContactPhone(
+  apiKey: string,
+  leadId: string,
+  phone: string,
+): Promise<void> {
+  const lead = await closeFetch<{ contacts: { id: string; phones?: { phone: string }[] }[] }>(
+    apiKey,
+    `/lead/${leadId}/`,
+  );
+  const contact = lead.contacts?.[0];
+  if (!contact) return;
+  if (contact.phones?.some((p) => p.phone.replace(/\D/g, "") === phone.replace(/\D/g, ""))) return;
+  await closeFetch(apiKey, `/contact/${contact.id}/`, {
+    method: "PUT",
+    body: JSON.stringify({ phones: [...(contact.phones ?? []), { phone, type: "mobile" }] }),
+  });
+}
