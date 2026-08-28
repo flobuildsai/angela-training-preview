@@ -26,19 +26,50 @@ export const Route = createFileRoute("/free_/willkommen")({
 function WelcomePage() {
   useReveal();
   const navigate = useNavigate();
+  const { e, n } = Route.useSearch();
+  const optIn = useServerFn(freeOptin);
   const [access, setAccess] = useState<FreeAccess | null>(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const a = readAccess();
-    if (!a) {
+    let cancelled = false;
+    (async () => {
+      const a = readAccess();
+      if (a) {
+        if (cancelled) return;
+        setAccess(a);
+        setReady(true);
+        trackEvent("free_welcome_view");
+        return;
+      }
+      // Hand-off von milou.bio: ?e=<email>&n=<firstName>
+      const email = e?.trim();
+      if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        const remote = await optIn({
+          data: {
+            firstName: n ?? "",
+            email,
+            utm: { source: "milou", medium: "store", campaign: "free-course" },
+          },
+        }).catch(() => null);
+        if (cancelled) return;
+        if (remote) {
+          writeAccess(remote);
+          setAccess(remote);
+          setReady(true);
+          trackEvent("free_welcome_view", { from: "milou" });
+          void navigate({ to: "/free/willkommen", replace: true });
+          return;
+        }
+      }
+      if (cancelled) return;
       void navigate({ to: "/free" });
-      return;
-    }
-    setAccess(a);
-    setReady(true);
-    trackEvent("free_welcome_view");
-  }, [navigate]);
+    })();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate, e, n]);
 
   if (!ready || !access) return <main className="min-h-screen bg-[color:var(--background)]" />;
 
