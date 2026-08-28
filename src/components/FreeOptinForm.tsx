@@ -35,7 +35,7 @@ export function FreeOptinForm({ placement, light = false, cta = "Kostenlosen Zug
       const access = await optin({ data: { firstName: firstName.trim(), email: email.trim(), utm: readUtm() } });
       writeAccess(access);
       trackEvent("free_optin", { placement });
-      await navigate({ to: "/free/willkommen" });
+      await navigate({ to: "/free/willkommen" as "/apply" });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Das hat gerade nicht geklappt. Versuch es noch einmal.");
       setBusy(false);
