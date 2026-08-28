@@ -34,7 +34,7 @@ export const Route = createFileRoute("/free")({
       { property: "og:title", content: "Das Creating Society System — kostenlos" },
       {
         property: "og:description",
-        content: "7 Module, Vorlagen, Begleitung. Ohne große Reichweite, ohne Brand Deals. Modul 1 ist sofort offen.",
+        content: "6 Module, Build-with-me: in 30 Tagen von nichts zu Positionierung, Produkt und Store. Ohne große Reichweite, ohne Brand Deals.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -90,9 +90,9 @@ function FreePage() {
             <span className="serif-italic text-[color:var(--rose)]">ein Business machen.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-[15px] leading-relaxed text-[color:var(--muted-fg)] sm:text-lg">
-            Positionierung, Content, Produkt, Verkauf — die sieben Module, die bisher nur unsere
-            Programm-Teilnehmerinnen hatten. Ohne große Reichweite. Ohne Brand Deals. Ohne Haken,
-            den wir verstecken.
+            Du kommst mit nichts rein. Nach 30 Tagen hast du Positionierung, Personal Brand, Content-System,
+            dein erstes Produkt und einen Store, der verkauft. Sechs Module, Build-with-me — bisher nur für
+            unsere Programm-Teilnehmerinnen. Ohne große Reichweite. Ohne Brand Deals. Ohne Haken, den wir verstecken.
           </p>
         </div>
 
@@ -111,7 +111,7 @@ function FreePage() {
           {[
             ["6,9 Mio.", "Views in einem Monat"],
             ["0", "Follower zum Start"],
-            ["7", "Module, komplett"],
+            ["30", "Tage bis zum Store"],
           ].map(([v, l]) => (
             <div key={l}>
               <dt className="font-serif text-3xl sm:text-4xl">{v}</dt>
@@ -184,23 +184,23 @@ function FreePage() {
         </div>
       </section>
 
-      {/* ── Die 7 Module ───────────────────────────────────── */}
+      {/* ── Die 6 Module ───────────────────────────────────── */}
       <section className="bg-[color:var(--wine)] text-[color:var(--cream)]">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
             <div className="rv">
               <p className="eyebrow opacity-70">Was drin ist</p>
               <h2 className="mt-6 font-serif text-3xl leading-[1.06] sm:text-5xl">
-                {COURSE_NAME}. <span className="serif-italic">Alle sieben Module.</span>
+                {COURSE_NAME}. <span className="serif-italic">Sechs Module, ein Ergebnis.</span>
               </h2>
               <p className="mt-6 max-w-md text-[15px] leading-relaxed opacity-75 sm:text-[17px]">
-                Nicht als einzelne Tipps, sondern als ein zusammenhängendes Betriebssystem. Jede
-                Lektion endet mit einer Aufgabe, die du am selben Tag machen kannst.
+                Kein Kurs zum Anschauen. Jedes Modul endet mit einem Ergebnis — und du gehst erst
+                weiter, wenn du es hast. Du baust, während du schaust. Laura baut mit.
               </p>
               <CourseMockup className="mt-12 hidden lg:block" />
             </div>
             <ol className="divide-y divide-white/15 border-y border-white/15 rv d1">
-              {MODULES.map((m) => (
+              {MODULES.filter((m) => m.n > 0).map((m) => (
                 <li key={m.n} className="grid gap-2 py-6 sm:grid-cols-[3.5rem_1fr]">
                   <span className="serif-italic text-2xl text-[color:var(--rose)]">0{m.n}</span>
                   <div>
@@ -208,6 +208,7 @@ function FreePage() {
                       {m.title} <span className="serif-italic opacity-70">{m.italic}</span>
                     </h3>
                     <p className="mt-2 text-[14px] leading-relaxed opacity-70 sm:text-[15px]">{m.body}</p>
+                    <p className="mt-3 text-[12px] uppercase tracking-[0.16em] text-[color:var(--rose)]">Ergebnis: <span className="normal-case tracking-normal text-[color:var(--cream)]/85">{m.result}</span></p>
                   </div>
                 </li>
               ))}
@@ -269,8 +270,8 @@ function FreePage() {
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
             {[
               ["01", "E-Mail eintragen", "Vorname, E-Mail, fertig. Keine Karte, keine Telefonnummer."],
-              ["02", "Modul 1 sofort ansehen", "Der Zugang ist direkt offen. Die weiteren Module schalten sich in den nächsten drei Tagen frei."],
-              ["03", "Umsetzen — mit oder ohne uns", "Jede Lektion endet mit einer Aufgabe. Nach Modul 3 fragen wir einmal, ob du ein Gespräch willst."],
+              ["02", "Sofort anfangen zu bauen", "Start und Modul 1 sind direkt offen. Die weiteren Module folgen im Takt deines 30-Tage-Plans."],
+              ["03", "Mit Store rausgehen — mit oder ohne uns", "Nach 30 Tagen: Positionierung, Profil, Produkt, Store. Nach Modul 3 fragen wir einmal, ob du ein Gespräch willst."],
             ].map(([n, t, b], i) => (
               <div key={n} className={`rv d${i + 1} border-t border-[color:var(--wine)] pt-5`}>
                 <span className="serif-italic text-2xl text-[color:var(--rose)]">{n}</span>
@@ -411,8 +412,8 @@ function FreePage() {
               <span className="serif-italic">Jetzt kommt das System.</span>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-[15px] leading-relaxed opacity-80 sm:text-lg">
-              Sieben Module, alle Vorlagen, Modul 1 sofort. Trag dich ein und fang heute an — nicht
-              nächsten Monat.
+              Sechs Module, alle Vorlagen, Start sofort. In 30 Tagen hast du einen Store, der verkauft.
+              Trag dich ein und fang heute an — nicht nächsten Monat.
             </p>
           </div>
           <div className="mt-10 flex justify-center rv d1">

@@ -87,7 +87,7 @@ function LessonPage() {
       <article className="mx-auto max-w-4xl px-5 pb-24 pt-10 sm:px-8 sm:pt-14">
         <header className="rv">
           <p className="eyebrow text-[color:var(--rose)]">
-            Modul {module.n} · {module.title} · Lektion {index + 1} von {LESSONS.length}
+            {module.n === 0 ? "Start here" : `Modul ${module.n}`} · {module.title} · Video {index + 1} von {LESSONS.length}
           </p>
           <h1 className="mt-4 font-serif text-[2.2rem] leading-[1.05] sm:text-5xl">{lesson.title}</h1>
           <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[color:var(--muted-fg)] sm:text-[17px]">
@@ -112,7 +112,7 @@ function LessonPage() {
         {unlocked && (
           <section className="mt-12 grid gap-10 md:grid-cols-[1fr_16rem] md:gap-16 rv d2">
             <div>
-              <p className="eyebrow rule-label text-[color:var(--muted-fg)]">Deine Aufgabe</p>
+              <p className="eyebrow rule-label text-[color:var(--muted-fg)]">Dein Ergebnis-Gate</p>
               <p className="mt-5 font-serif text-2xl leading-snug sm:text-3xl">{lesson.task}</p>
               {lesson.resource && (
                 <a
@@ -131,7 +131,7 @@ function LessonPage() {
                     Erledigt.
                   </p>
                 ) : (
-                  <PrimaryButton onClick={complete}>Aufgabe gemacht</PrimaryButton>
+                  <PrimaryButton onClick={complete}>Hab ich — weiter</PrimaryButton>
                 )}
                 {next && (
                   nextOpen ? (
@@ -151,7 +151,7 @@ function LessonPage() {
               </div>
             </div>
             <aside className="border-t border-[color:var(--border)] pt-5 md:border-l md:border-t-0 md:pl-8 md:pt-0">
-              <p className="eyebrow text-[color:var(--muted-fg)]">In diesem Modul</p>
+              <p className="eyebrow text-[color:var(--muted-fg)]">{module.n === 0 ? "Start here" : "In diesem Modul"}</p>
               <ul className="mt-4 space-y-3">
                 {LESSONS.filter((l) => l.module === module.n).map((l) => (
                   <li key={l.slug} className={`text-[14px] leading-snug ${l.slug === lesson.slug ? "" : "text-[color:var(--muted-fg)]"}`}>

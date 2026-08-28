@@ -14,9 +14,10 @@ export function ApplicationCard({ name }: { name?: string }) {
             {name ? `${name}, du` : "Du"} bist weiter als 80 % hier.
           </p>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[color:var(--muted-fg)]">
-            Wer Modul 3 durcharbeitet, setzt um. Wenn du das Ganze schneller und mit Begleitung willst:
-            Im 12-Wochen-Programm bauen wir dein Produkt zusammen — und verkaufen es. 30 Minuten
-            Gespräch, kostenlos, ehrlich. Wenn nicht: einfach weitermachen, wir fragen nicht noch mal.
+            Du hast ein Produkt mit Preis. Das schaffen die wenigsten. Wenn du den Rest schneller und mit
+            Begleitung willst — Feedback auf Offer und Content, jemand, der beim Verkaufen daneben sitzt:
+            30 Minuten Gespräch mit Laura, kostenlos, ehrlich. Wenn nicht: einfach weiterbauen, wir fragen
+            nur noch einmal am Ende.
           </p>
           <div className="mt-6 flex flex-wrap gap-4">
             <Link
