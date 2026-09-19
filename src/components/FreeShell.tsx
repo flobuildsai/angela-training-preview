@@ -27,10 +27,10 @@ export function useReveal() {
 
 export function FreeHeader({ right, nav }: { right?: ReactNode; nav?: ReactNode }) {
   return (
-    <header className="sticky top-0 z-40 px-3 pt-3 sm:px-5">
-      <div className="mx-auto flex min-h-[64px] max-w-[1160px] items-center justify-between gap-5 rounded-[16px] border border-fog/80 bg-pure-white/92 px-4 shadow-xl backdrop-blur sm:px-5">
+    <header className="fixed inset-x-0 top-0 z-40 px-3 pt-3 sm:px-5">
+      <div className="mx-auto flex min-h-[64px] max-w-[1160px] items-center justify-between gap-5 rounded-[16px] border border-pure-white/15 bg-pressed-graphite/90 px-4 text-pure-white shadow-xl backdrop-blur sm:px-5">
         <Link to="/" className="flex items-center">
-          <img src={logoDark} alt="thecreatingsociety" className="h-4 w-auto sm:h-5" />
+          <img src={logoDark} alt="thecreatingsociety" className="h-4 w-auto invert sm:h-5" />
         </Link>
         <div className="hidden items-center gap-7 lg:flex">{nav}</div>
         <div className="ml-auto">{right}</div>
