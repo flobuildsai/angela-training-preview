@@ -121,4 +121,11 @@
   --radius-button: var(--radius-button);
   --radius-pill: var(--radius-pill);
   --shadow-xl: var(--shadow-xl);
+
+  --text-caption: 0.875rem;
+  --text-body: 1rem;
+  --text-subheading: 1.1875rem;
+  --text-heading-sm: 1.4375rem;
+  --text-heading: 1.75rem;
+  --text-display: 4.3125rem;
 }
