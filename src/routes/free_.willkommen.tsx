@@ -77,7 +77,6 @@ function WelcomePage() {
 
   if (!ready || !access) return <main className="min-h-screen bg-[color:var(--background)]" />;
 
-  const first = LESSONS[0];
   const name = access.firstName?.split(" ")[0];
 
   return (
