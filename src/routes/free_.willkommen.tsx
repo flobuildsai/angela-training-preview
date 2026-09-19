@@ -1,7 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import lauraPortrait from "@/assets/laura-portrait.jpg.asset.json";
 import { FreeFooter, FreeHeader, PrimaryButton, useReveal } from "@/components/FreeShell";
 import { LESSONS, MODULES } from "@/config/freeCourse";
 import { readAccess, writeAccess } from "@/lib/freeAccess";
