@@ -1,7 +1,7 @@
 @import "tailwindcss" source(none);
-@source "../src";
 @import "tw-animate-css";
 @import "./index.css";
+@source "../src";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -127,6 +127,7 @@
 }
 .animate-marquee        { animation: marquee 22s linear infinite; }
 .animate-marquee-reverse{ animation: marquee 22s linear infinite reverse; }
+.logo-marquee           { animation: marquee 24s linear infinite; }
 
 @keyframes scroll-line {
   0%,100% { height: 18px; opacity: .18; }

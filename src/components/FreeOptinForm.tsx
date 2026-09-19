@@ -42,16 +42,16 @@ export function FreeOptinForm({ placement, light = false, cta = "Kostenlosen Zug
     }
   };
 
-  const text = light ? "text-[color:var(--cream)]" : "text-[color:var(--ink)]";
-  const muted = light ? "text-[color:var(--cream)]/60" : "text-[color:var(--muted-fg)]";
-  const line = light ? "border-[color:var(--cream)]/30 focus:border-[color:var(--cream)]" : "border-[color:var(--border)] focus:border-[color:var(--rose)]";
-  const input = `w-full bg-transparent border-0 border-b px-0 py-3 text-lg ${text} placeholder:opacity-40 focus:outline-none transition ${line}`;
+  const text = light ? "text-pure-white" : "text-near-black";
+  const muted = light ? "text-pure-white/70" : "text-slate";
+  const line = light ? "border-pure-white/40 focus:border-pure-white bg-pure-white/10" : "border-fog focus:border-pressed-graphite bg-pure-white";
+  const input = `min-h-14 w-full rounded-input border px-4 text-body ${text} placeholder:text-stone focus:outline-none transition ${line}`;
 
   return (
     <form onSubmit={submit} className="w-full max-w-md space-y-6" noValidate>
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor={`${placement}-name`} className={`block text-[11px] uppercase tracking-[0.22em] ${muted}`}>
+          <label htmlFor={`${placement}-name`} className={`mb-2 block text-caption font-medium ${muted}`}>
             Vorname
           </label>
           <input
@@ -64,7 +64,7 @@ export function FreeOptinForm({ placement, light = false, cta = "Kostenlosen Zug
           />
         </div>
         <div>
-          <label htmlFor={`${placement}-email`} className={`block text-[11px] uppercase tracking-[0.22em] ${muted}`}>
+          <label htmlFor={`${placement}-email`} className={`mb-2 block text-caption font-medium ${muted}`}>
             E-Mail
           </label>
           <input
@@ -79,12 +79,12 @@ export function FreeOptinForm({ placement, light = false, cta = "Kostenlosen Zug
           />
         </div>
       </div>
-      {error && <p className={`text-sm ${light ? "text-[color:var(--cream)]" : "text-[color:var(--rose)]"}`}>{error}</p>}
+      {error && <p className={`text-caption ${light ? "text-pure-white" : "text-iron"}`}>{error}</p>}
       <div className="space-y-3">
         <PrimaryButton
           type="submit"
           disabled={busy}
-          className={light ? "!bg-[color:var(--cream)] !text-[color:var(--wine)]" : ""}
+          className={light ? "!bg-pure-white !text-pressed-graphite" : ""}
         >
           {busy ? "Einen Moment …" : cta}
         </PrimaryButton>
