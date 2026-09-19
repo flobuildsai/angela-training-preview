@@ -7,9 +7,7 @@ import proofViews15m from "@/assets/proof-views-15m.jpeg.asset.json";
 import proofViews7m from "@/assets/proof-views-7m.jpeg.asset.json";
 import proofStripe from "@/assets/proof-stripe.png.asset.json";
 import { CourseMockup } from "@/components/CourseMockup";
-import { CoursePlayer } from "@/components/CoursePlayer";
 import { FreeFooter, FreeHeader, useReveal } from "@/components/FreeShell";
-import { FreeOptinForm } from "@/components/FreeOptinForm";
 import { FreeOptinModal } from "@/components/funnel/FreeOptinModal";
 import { Button } from "@/components/ui/button";
 import {
@@ -44,9 +42,6 @@ export const Route = createFileRoute("/free")({
   }),
   component: FreePage,
 });
-
-/** VSL: Vimeo-ID hier eintragen, sobald das Video da ist. */
-const VSL: Parameters<typeof CoursePlayer>[0]["video"] = null;
 
 const PROOF_IMAGES: Record<(typeof PROOF)[number]["key"], string> = {
   views15m: proofViews15m.url,

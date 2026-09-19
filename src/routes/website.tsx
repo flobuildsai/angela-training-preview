@@ -40,7 +40,7 @@ function WebsitePage() {
     <FunnelShell partnerNotice={WEBSITE_COPY.partnerNotice}>
       <section className="relative mx-4 min-h-[88vh] overflow-hidden rounded-card text-pure-white lg:min-h-screen">
         <img src={lauraNew.url} alt="Laura Mercedes bei der Arbeit" className="absolute inset-0 h-full w-full object-cover object-[center_28%]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-pressed-graphite)_0%,color-mix(in_srgb,var(--color-pressed-graphite)_45%,transparent)_48%,transparent_80%)]" />
+        <div className="website-photo-scrim absolute inset-0" />
         <div className="relative mx-auto flex min-h-[88vh] max-w-[1120px] items-end px-5 pb-14 sm:px-8 sm:pb-20 lg:min-h-screen">
           <div className="max-w-[850px]">
             <p className="funnel-eyebrow text-pure-white/80">{WEBSITE_COPY.hero.eyebrow}</p>
