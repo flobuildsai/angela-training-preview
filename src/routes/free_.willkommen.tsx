@@ -138,31 +138,6 @@ function WelcomePage() {
               </div>
             </div>
           </li>
-
-          {/* 03 — Gespräch */}
-          <li className="rounded-card bg-pure-white p-7 shadow-xl sm:p-9 rv d2">
-            <div className="flex items-start gap-5">
-              <span className="text-3xl text-slate">03</span>
-              <div className="flex-1">
-                <p className="eyebrow text-[color:var(--muted-fg)]">Wenn du nicht warten willst</p>
-                <h2 className="mt-2 font-serif text-2xl leading-snug sm:text-3xl">Strategiegespräch mit Laura</h2>
-                <p className="mt-3 text-[15px] leading-relaxed text-[color:var(--muted-fg)]">
-                  Normalerweise fragen wir erst nach Modul 3. Wenn du schon weißt, dass du das mit
-                  Begleitung machen willst: 30 Minuten, kostenlos, ehrlich — und nicht für jede geeignet.
-                </p>
-                <div className="mt-5 flex items-center gap-4">
-                  <img src={lauraPortrait.url} alt="Laura" className="h-11 w-11 rounded-full object-cover" loading="lazy" />
-                  <Link
-                    to="/call"
-                    onClick={() => trackEvent("free_welcome_call_click")}
-                    className="text-[12px] font-semibold uppercase tracking-[0.16em] underline underline-offset-4 transition hover:text-[color:var(--rose)]"
-                  >
-                    Termin ansehen
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </li>
         </ol>
 
         <div className="mt-14 rv d3">
