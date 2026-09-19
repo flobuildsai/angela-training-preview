@@ -75,6 +75,38 @@ export const FREE_PAGE = {
     { title: "Optionaler Support", body: "Nach Modul 3 entscheidest du selbst, ob du persönliche Begleitung möchtest." },
     { title: "Dauerhafter Zugang", body: "Du kannst Lektionen und Vorlagen in deinem eigenen Tempo wiederholen." },
   ],
+  hero: {
+    badge: "Das System hinter Lauras Creator Business",
+    title: "Baue aus deinem Content ein digitales Business",
+    body: "Du bekommst das komplette System: Positionierung, Personal Brand, digitales Produkt, Creator Store und erste Verkäufe — Schritt für Schritt in 30 Tagen.",
+    primaryCta: "Kurs kostenlos freischalten",
+    secondaryCta: "Erst das Video ansehen",
+    note: "22 Videos · 6 Module · keine Kreditkarte",
+  },
+  video: {
+    eyebrow: "Sieh dir zuerst das an",
+    title: "Warum Views allein noch kein Business sind",
+    body: "Laura zeigt dir, welche fünf Bausteine aus Reichweite ein eigenes Angebot und aus einem Angebot erste Verkäufe machen.",
+    label: "Das Creating Society System",
+    duration: "Kostenlose Einführung",
+  },
+  partnerTitle: "Du baust mit den Tools, die Creatorinnen bereits jeden Tag nutzen",
+  ticker: ["POSITIONIERUNG", "PERSONAL BRAND", "CONTENT-SYSTEM", "DIGITALES PRODUKT", "CREATOR STORE", "VERKAUFSSYSTEM"],
+  course: {
+    eyebrow: "Der komplette Kurs",
+    title: "22 Videos. Sechs Module. Ein fertiges Business-System.",
+    body: "Kein Wissen zum Sammeln: Jede Lektion endet mit einer Aufgabe und jedes Modul mit einem konkreten Ergebnis.",
+  },
+  proof: {
+    eyebrow: "Echte Ergebnisse",
+    title: "Reichweite war der Anfang. Das eigene Angebot war der Wendepunkt.",
+    body: "Die Screenshots zeigen Lauras eigene Entwicklung. Sie sind keine Ergebnisgarantie — aber sie zeigen, was möglich wird, wenn Content, Produkt und Verkauf zusammenspielen.",
+  },
+  examples: {
+    eyebrow: "Ein System statt Einzelteile",
+    title: "Das baust du innerhalb von 30 Tagen auf",
+    items: ["Eine klare Positionierung", "Ein verkaufsstarkes Profil", "30 konkrete Content-Ideen", "Dein erstes digitales Produkt", "Einen live geschalteten Store", "Deinen ersten 7-Tage-Launch"],
+  },
 } as const;
 
 /** Start + sechs Module — als zusammenhängendes Build-with-me-Programm. */
