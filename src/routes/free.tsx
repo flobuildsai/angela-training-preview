@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { ArrowRight, Check, CircleCheck, Clock3, Globe2, Layers3, PackageOpen, Sparkles, Store, Users2 } from "lucide-react";
 import lauraNew from "@/assets/laura-new.jpg.asset.json";
 import lauraPortrait from "@/assets/laura-portrait.jpg.asset.json";
 import lauraWork from "@/assets/laura-work.jpg.asset.json";
@@ -13,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import {
   COURSE_NAME,
   FAQ,
+  FREE_PAGE,
   FOR_WHOM,
   MODULES,
   NOT_FOR_WHOM,
@@ -52,6 +54,18 @@ const PROOF_IMAGES: Record<(typeof PROOF)[number]["key"], string> = {
 const totalWorth = VALUE_STACK.reduce((sum, v) => sum + Number(v.worth.replace(/[^\d]/g, "")), 0);
 const eur = (n: number) => `${n.toLocaleString("de-DE")} €`;
 
+const benefitIcons = [PackageOpen, Globe2, Users2, Clock3, Store, Layers3];
+
+function SectionIntro({ eyebrow, title, body, light = false }: { eyebrow: string; title: ReactNode; body?: string; light?: boolean }) {
+  return (
+    <div className="max-w-[650px] rv">
+      <p className={`funnel-eyebrow ${light ? "text-pure-white/60" : ""}`}>{eyebrow}</p>
+      <h2 className="mt-4 font-display text-[36px] font-medium leading-[1.06] sm:text-[48px]">{title}</h2>
+      {body ? <p className={`mt-5 max-w-[620px] text-[17px] leading-relaxed ${light ? "text-pure-white/70" : "text-slate"}`}>{body}</p> : null}
+    </div>
+  );
+}
+
 function FreePage() {
   useReveal();
   const [optinOpen, setOptinOpen] = useState(false);
@@ -62,6 +76,7 @@ function FreePage() {
   return (
     <main className="bg-[color:var(--background)] text-[color:var(--ink)]">
       <FreeHeader
+        nav={FREE_PAGE.nav.map((item) => <a key={item.href} href={item.href} className="text-sm font-medium text-slate transition hover:text-near-black">{item.label}</a>)}
         right={
           <Button
             type="button"
@@ -74,10 +89,10 @@ function FreePage() {
       />
 
       {/* ── Hero ───────────────────────────────────────────── */}
-      <section className="relative mx-4 min-h-[88vh] overflow-hidden rounded-card text-pure-white lg:min-h-screen">
+      <section className="relative mx-4 mt-4 min-h-[calc(88vh-80px)] overflow-hidden rounded-card text-pure-white lg:min-h-[calc(100vh-96px)]">
         <img src={lauraNew.url} alt="Laura Mercedes bei der Arbeit" className="absolute inset-0 h-full w-full object-cover object-[center_25%]" />
         <div className="website-photo-scrim absolute inset-0" />
-        <div className="relative mx-auto flex min-h-[88vh] max-w-[1120px] items-end px-5 pb-14 sm:px-8 sm:pb-20 lg:min-h-screen">
+        <div className="relative mx-auto flex min-h-[calc(88vh-80px)] max-w-[1120px] items-end px-5 pb-12 sm:px-8 sm:pb-16 lg:min-h-[calc(100vh-96px)]">
           <div className="max-w-[850px] rv">
           <p className="funnel-eyebrow text-pure-white/80">
             Teil unseres {eur(PROGRAM_PRICE)}-Programms · jetzt kostenlos
@@ -95,75 +110,39 @@ function FreePage() {
             <Button id="zugang" type="button" onClick={() => setOptinOpen(true)} size="lg" className="bg-pure-white px-[18px] py-3 text-near-black hover:bg-pure-white/90">Kostenlosen Zugang holen</Button>
             <a href="#warum-kostenlos" className="text-sm font-medium text-pure-white underline-offset-4 hover:underline">Warum ist das kostenlos? ↓</a>
           </div>
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-t border-pure-white/20 pt-5">
+            {FREE_PAGE.trust.map((item) => <span key={item} className="flex items-center gap-2 text-sm text-pure-white/85"><CircleCheck className="h-4 w-4" />{item}</span>)}
+          </div>
           </div>
         </div>
       </section>
 
-      {/* ── Warum kostenlos ────────────────────────────────── */}
-      <section id="warum-kostenlos" className="scroll-mt-8">
-        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <div className="rv">
-            <div className="flex items-center gap-4">
-              <img src={lauraPortrait.url} alt="Laura" className="h-16 w-16 rounded-full object-cover" loading="lazy" />
-              <div>
-                <p className="font-serif text-xl">Ganz ehrlich gesagt:</p>
-                <p className="text-sm text-[color:var(--muted-fg)]">Lies das, bevor du dich einträgst.</p>
-              </div>
-            </div>
-            <h2 className="mt-8 font-serif text-3xl leading-[1.08] sm:text-5xl">
-              Warum wir verschenken, wofür andere{" "}
-               <span>{eur(PROGRAM_PRICE)} bezahlt haben</span><span className="ember-dot">.</span>
-            </h2>
-          </div>
-          <div className="space-y-5 text-[15px] leading-relaxed text-[color:var(--muted-fg)] sm:text-[17px] rv d1">
-            <p>
-              Jeder wittert bei „kostenlos" einen Haken. Deshalb nenne ich ihn selbst: Ein Teil der
-              Frauen, die dieses System durcharbeiten, will danach mit uns weitermachen — im
-              12-Wochen-Programm, mit persönlicher Begleitung. Das ist unser Geschäft.
-            </p>
-            <p>
-              Aber ich habe keine Lust mehr auf Webinare, die 45 Minuten lang nichts sagen und dann
-              verkaufen. Ich zeige lieber, wie wir arbeiten. Wenn du das System allein umsetzt, hast du
-              alles, was du brauchst. Wenn du es schneller willst, reden wir. Nach Modul 3, einmal,
-              ohne Countdown.
-            </p>
-            <p className="font-medium text-[color:var(--ink)]">
-              Keine Anrufe. Keine Kreditkarte. Kein „nur noch heute". Nur das System — und die
-              Entscheidung, es zu benutzen.
-            </p>
-            <p className="pt-2 font-serif text-2xl">— Laura</p>
-          </div>
+      <section className="border-b border-fog bg-pure-white py-8">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-10 gap-y-4 px-5 text-sm font-medium text-slate sm:px-8">
+          <span className="funnel-eyebrow">Das System verbindet</span>
+          {['Positionierung', 'Content', 'Produkt', 'Store', 'Verkauf'].map((item) => <span key={item}>{item}</span>)}
         </div>
       </section>
 
       {/* ── Belief Shift ───────────────────────────────────── */}
-      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-          <div className="rv">
-            <p className="eyebrow rule-label text-[color:var(--muted-fg)]">Was die meisten denken</p>
-            <ol className="mt-6 space-y-3 font-serif text-2xl text-[color:var(--muted-fg)] line-through decoration-[color:var(--rose)]/60 sm:text-3xl">
-              <li>Follower sammeln</li>
-              <li>Auf Brand Deals warten</li>
-              <li>Irgendwann davon leben</li>
-            </ol>
-          </div>
-          <div className="rv d1">
-            <p className="eyebrow rule-label text-[color:var(--rose)]">Was wirklich funktioniert</p>
-            <ol className="mt-6 space-y-3 font-serif text-2xl sm:text-3xl">
-              <li>Positionierung, die man versteht</li>
-              <li>Ein eigenes Produkt, das gekauft wird</li>
-              <li>Ein Verkaufssystem, das ohne dich läuft</li>
-            </ol>
-            <p className="mt-6 max-w-md text-[15px] leading-relaxed text-[color:var(--muted-fg)]">
-              2.000 richtige Follower sind mehr wert als 200.000 falsche. Der Gegner ist nicht der
-              Algorithmus. Der Gegner ist fehlende Strategie.
-            </p>
+      <section id="vorteile" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-20 sm:px-8 sm:py-28">
+        <SectionIntro eyebrow="Warum dieses Modell" title={<>Kein Warten auf Brand Deals. Ein Business, das dir gehört<span className="ember-dot">.</span></>} body="Du brauchst keine riesige Community. Du brauchst ein klares Problem, ein eigenes Angebot und einen Weg, es zu verkaufen." />
+        <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {FREE_PAGE.modelBenefits.map((item, i) => { const Icon = benefitIcons[i]; return <article key={item.title} className={`rv d${(i % 3) + 1} min-h-[220px] rounded-card border border-fog bg-pure-white p-8 transition duration-200 hover:-translate-y-0.5 hover:shadow-xl`}><span className="flex h-10 w-10 items-center justify-center rounded-icon border border-fog"><Icon className="h-5 w-5" /></span><h3 className="mt-8 text-xl font-medium">{item.title}</h3><p className="mt-3 text-[15px] leading-relaxed text-slate">{item.body}</p></article> })}
+        </div>
+      </section>
+
+      <section className="bg-pure-white">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+          <SectionIntro eyebrow="Was du bekommst" title={<>Alles, was aus Content ein Geschäft macht<span className="ember-dot">.</span></>} body="Kein loses Wissen. Sechs Teile, die am Ende zu einem funktionierenden System zusammenkommen." />
+          <div className="mt-12 grid gap-px overflow-hidden rounded-card border border-fog bg-fog md:grid-cols-2 lg:grid-cols-3">
+            {FREE_PAGE.included.map((item, i) => <article key={item.title} className="rv bg-pure-white p-8"><span className="text-caption font-medium text-stone">0{i + 1}</span><h3 className="mt-8 text-xl font-medium">{item.title}</h3><p className="mt-3 text-[15px] leading-relaxed text-slate">{item.body}</p></article>)}
           </div>
         </div>
       </section>
 
       {/* ── Die 6 Module ───────────────────────────────────── */}
-      <section className="bg-pressed-graphite text-pure-white">
+      <section id="kurs" className="scroll-mt-20 bg-pressed-graphite text-pure-white">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
             <div className="rv">
@@ -195,8 +174,17 @@ function FreePage() {
         </div>
       </section>
 
+      <section className="bg-pure-white">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+          <SectionIntro eyebrow="Nicht allein vor Videos" title={<>Gebaut für Umsetzung, nicht fürs nächste Browser-Tab<span className="ember-dot">.</span></>} />
+          <div className="mt-12 grid gap-4 md:grid-cols-2">
+            {FREE_PAGE.support.map((item, i) => <article key={item.title} className="rv flex gap-5 rounded-card border border-fog bg-cream-paper p-7 sm:p-8"><span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-pressed-graphite text-pure-white"><Check className="h-4 w-4" /></span><div><h3 className="text-xl font-medium">{item.title}</h3><p className="mt-2 text-[15px] leading-relaxed text-slate">{item.body}</p></div></article>)}
+          </div>
+        </div>
+      </section>
+
       {/* ── Value Stack ────────────────────────────────────── */}
-      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+      <section id="ergebnisse" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-3xl rv">
           <p className="eyebrow rule-label text-[color:var(--muted-fg)]">Was du bekommst</p>
           <h2 className="mt-6 font-serif text-3xl leading-[1.08] sm:text-5xl">
@@ -236,8 +224,18 @@ function FreePage() {
         </div>
       </section>
 
+      <section id="warum-kostenlos" className="scroll-mt-24 bg-pure-white">
+        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+          <div className="rv">
+            <div className="flex items-center gap-4"><img src={lauraPortrait.url} alt="Laura" className="h-16 w-16 rounded-full object-cover" loading="lazy" /><div><p className="text-xl font-medium">Ganz ehrlich gesagt:</p><p className="text-sm text-slate">Lies das, bevor du dich einträgst.</p></div></div>
+            <h2 className="mt-8 text-[36px] font-medium leading-[1.06] sm:text-[48px]">Warum wir verschenken, wofür andere {eur(PROGRAM_PRICE)} bezahlt haben<span className="ember-dot">.</span></h2>
+          </div>
+          <div className="space-y-5 text-[15px] leading-relaxed text-slate sm:text-[17px] rv d1"><p>Jeder wittert bei „kostenlos“ einen Haken. Deshalb nenne ich ihn selbst: Ein Teil der Frauen, die dieses System durcharbeiten, will danach mit uns weitermachen — im 12-Wochen-Programm, mit persönlicher Begleitung. Das ist unser Geschäft.</p><p>Aber ich habe keine Lust mehr auf Webinare, die 45 Minuten lang nichts sagen und dann verkaufen. Ich zeige lieber, wie wir arbeiten. Wenn du das System allein umsetzt, hast du alles, was du brauchst. Wenn du es schneller willst, reden wir. Nach Modul 3, einmal, ohne Countdown.</p><p className="font-medium text-near-black">Keine Anrufe. Keine Kreditkarte. Kein „nur noch heute“. Nur das System — und die Entscheidung, es zu benutzen.</p><p className="pt-2 text-xl font-medium">— Laura</p></div>
+        </div>
+      </section>
+
       {/* ── So läuft es ────────────────────────────────────── */}
-      <section>
+      <section id="faq" className="scroll-mt-24">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <div className="max-w-2xl rv">
             <p className="eyebrow rule-label text-[color:var(--muted-fg)]">So läuft es</p>
@@ -395,7 +393,7 @@ function FreePage() {
             </p>
           </div>
           <div className="mt-10 flex justify-center rv d1">
-             <Button type="button" size="lg" className="bg-pure-white text-pressed-graphite hover:bg-pure-white/90" onClick={() => setOptinOpen(true)}>Kostenlosen Zugang holen</Button>
+              <Button type="button" size="lg" className="bg-pure-white text-pressed-graphite hover:bg-pure-white/90" onClick={() => setOptinOpen(true)}>Kostenlosen Zugang holen <ArrowRight /></Button>
           </div>
           <p className="mt-10 text-sm opacity-60">
             Du bist schon dabei?{" "}

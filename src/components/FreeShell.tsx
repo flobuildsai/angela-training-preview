@@ -25,14 +25,15 @@ export function useReveal() {
   });
 }
 
-export function FreeHeader({ right }: { right?: ReactNode }) {
+export function FreeHeader({ right, nav }: { right?: ReactNode; nav?: ReactNode }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-fog/70 bg-cream-paper/90 backdrop-blur">
-      <div className="mx-auto flex min-h-[74px] max-w-[1120px] items-center justify-between px-5 sm:px-8">
+    <header className="sticky top-0 z-40 px-3 pt-3 sm:px-5">
+      <div className="mx-auto flex min-h-[64px] max-w-[1160px] items-center justify-between gap-5 rounded-[16px] border border-fog/80 bg-pure-white/92 px-4 shadow-xl backdrop-blur sm:px-5">
         <Link to="/" className="flex items-center">
           <img src={logoDark} alt="thecreatingsociety" className="h-4 w-auto sm:h-5" />
         </Link>
-        {right}
+        <div className="hidden items-center gap-7 lg:flex">{nav}</div>
+        <div className="ml-auto">{right}</div>
       </div>
     </header>
   );
