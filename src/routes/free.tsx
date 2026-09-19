@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import { ArrowRight, Check, CircleCheck, Clock3, Globe2, Layers3, PackageOpen, Play, Store, Users2 } from "lucide-react";
 import lauraNew from "@/assets/laura-new.jpg.asset.json";
