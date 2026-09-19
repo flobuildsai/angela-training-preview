@@ -184,7 +184,7 @@ function FreePage() {
       </section>
 
       {/* ── Value Stack ────────────────────────────────────── */}
-      <section id="ergebnisse" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-20 sm:px-8 sm:py-28">
+      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-3xl rv">
           <p className="eyebrow rule-label text-[color:var(--muted-fg)]">Was du bekommst</p>
           <h2 className="mt-6 font-serif text-3xl leading-[1.08] sm:text-5xl">
@@ -235,7 +235,7 @@ function FreePage() {
       </section>
 
       {/* ── So läuft es ────────────────────────────────────── */}
-      <section id="faq" className="scroll-mt-24">
+      <section>
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <div className="max-w-2xl rv">
             <p className="eyebrow rule-label text-[color:var(--muted-fg)]">So läuft es</p>
@@ -260,7 +260,7 @@ function FreePage() {
       </section>
 
       {/* ── Beweis ─────────────────────────────────────────── */}
-      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+      <section id="ergebnisse" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-20 sm:px-8 sm:py-28">
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div className="rv">
             <p className="eyebrow rule-label text-[color:var(--muted-fg)]">Ein Account, bei null gestartet</p>
@@ -290,7 +290,7 @@ function FreePage() {
       </section>
 
       {/* ── Für wen / nicht ────────────────────────────────── */}
-      <section>
+      <section id="faq" className="scroll-mt-24">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-2 lg:gap-20">
           <div className="rv">
             <p className="eyebrow rule-label text-[color:var(--rose)]">Für dich, wenn</p>
