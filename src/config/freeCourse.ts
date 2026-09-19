@@ -2,7 +2,7 @@
  * Das kostenlose Creating-Society-System — Inhalt und Copy des Free-Funnels.
  *
  * Build-with-me-Programm: 6 Module + Start, 22 Videos, 30-Tage-Plan.
- * Eine Quelle für /free, /free/willkommen und /kurs. Videos werden über
+ * Eine Quelle für /free und /free/willkommen. Videos werden über
  * `video` eingehängt (Vimeo-ID, YouTube-ID oder MP4-URL); bis dahin zeigt
  * der Player ein „folgt"-Cover. `unlockAfterHours` steuert das Drip:
  * 0 = sofort nach Anmeldung verfügbar.

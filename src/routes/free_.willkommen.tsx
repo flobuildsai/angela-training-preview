@@ -1,7 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import lauraPortrait from "@/assets/laura-portrait.jpg.asset.json";
 import { FreeFooter, FreeHeader, PrimaryButton, useReveal } from "@/components/FreeShell";
 import { LESSONS, MODULES } from "@/config/freeCourse";
 import { readAccess, writeAccess } from "@/lib/freeAccess";
@@ -77,7 +76,6 @@ function WelcomePage() {
 
   if (!ready || !access) return <main className="min-h-screen bg-[color:var(--background)]" />;
 
-  const first = LESSONS[0];
   const name = access.firstName?.split(" ")[0];
 
   return (
@@ -93,30 +91,31 @@ function WelcomePage() {
             Dein Zugang ist aktiv<span className="ember-dot">.</span>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-[color:var(--muted-fg)] sm:text-lg">
-            Start und Modul 1 sind jetzt offen. Die weiteren Module folgen im Takt deines 30-Tage-Plans —
-            schnell genug, um dranzubleiben, langsam genug, um wirklich zu bauen.
+            Deine Anmeldung ist da. Hier sind deine nächsten Schritte.
           </p>
         </div>
       </section>
 
       <section className="mx-auto max-w-3xl px-5 pb-20 sm:px-8 sm:pb-28">
         <ol className="space-y-6">
-          {/* 01 — Modul 1 */}
+          {/* 01 — Strategiegespräch */}
           <li className="rounded-card bg-pressed-graphite p-7 text-pure-white shadow-xl sm:p-9 rv">
             <div className="flex items-start gap-5">
               <span className="text-3xl text-pure-white/60">01</span>
               <div className="flex-1">
-                <p className="eyebrow opacity-70">Jetzt · Start here · {first.duration}</p>
-                <h2 className="mt-2 font-serif text-2xl leading-snug sm:text-3xl">{first.title}</h2>
-                <p className="mt-3 text-[15px] leading-relaxed opacity-75">{first.outcome}</p>
+                <p className="eyebrow opacity-70">Jetzt · 30 Minuten · kostenlos</p>
+                <h2 className="mt-2 font-serif text-2xl leading-snug sm:text-3xl">Strategiegespräch mit Laura</h2>
+                <p className="mt-3 text-[15px] leading-relaxed opacity-75">
+                  Ihr schaut euch deine Situation an, was du aufbauen willst und ob das Programm
+                  dazu passt. Ehrlich, ohne Verkaufsdruck — und nicht für jede geeignet.
+                </p>
                 <div className="mt-6">
                   <Link
-                    to="/kurs/$lesson"
-                    params={{ lesson: first.slug }}
-                    onClick={() => trackEvent("free_welcome_start_lesson")}
+                    to="/call"
+                    onClick={() => trackEvent("free_welcome_call_click")}
                     className="inline-flex min-h-14 w-full items-center justify-center rounded-button bg-pure-white px-8 text-sm font-medium text-pressed-graphite transition hover:opacity-90 sm:w-auto"
                   >
-                    Jetzt starten
+                    Termin ansehen
                   </Link>
                 </div>
               </div>
@@ -135,31 +134,6 @@ function WelcomePage() {
                   gemacht ist. Kein Newsletter, keine Werbung. Wer das hat, setzt dreimal so oft um.
                 </p>
                 <WhatsappForm access={access} onSaved={(a) => setAccess(a)} />
-              </div>
-            </div>
-          </li>
-
-          {/* 03 — Gespräch */}
-          <li className="rounded-card bg-pure-white p-7 shadow-xl sm:p-9 rv d2">
-            <div className="flex items-start gap-5">
-              <span className="text-3xl text-slate">03</span>
-              <div className="flex-1">
-                <p className="eyebrow text-[color:var(--muted-fg)]">Wenn du nicht warten willst</p>
-                <h2 className="mt-2 font-serif text-2xl leading-snug sm:text-3xl">Strategiegespräch mit Laura</h2>
-                <p className="mt-3 text-[15px] leading-relaxed text-[color:var(--muted-fg)]">
-                  Normalerweise fragen wir erst nach Modul 3. Wenn du schon weißt, dass du das mit
-                  Begleitung machen willst: 30 Minuten, kostenlos, ehrlich — und nicht für jede geeignet.
-                </p>
-                <div className="mt-5 flex items-center gap-4">
-                  <img src={lauraPortrait.url} alt="Laura" className="h-11 w-11 rounded-full object-cover" loading="lazy" />
-                  <Link
-                    to="/call"
-                    onClick={() => trackEvent("free_welcome_call_click")}
-                    className="text-[12px] font-semibold uppercase tracking-[0.16em] underline underline-offset-4 transition hover:text-[color:var(--rose)]"
-                  >
-                    Termin ansehen
-                  </Link>
-                </div>
               </div>
             </div>
           </li>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
 import lauraPortrait from "@/assets/laura-portrait.jpg.asset.json";
 import proofViews15m from "@/assets/proof-views-15m.jpeg.asset.json";
 import proofViews7m from "@/assets/proof-views-7m.jpeg.asset.json";
@@ -406,18 +405,6 @@ export function StepResult() {
           ))}
         </div>
       </section>
-
-      <div className="space-y-3 text-center">
-        <p className="text-sm text-[color:var(--muted-fg)]">
-          Lieber erst schriftlich bewerben?
-        </p>
-        <Link
-          to="/apply"
-          className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-[color:var(--wine)] px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.15em] text-[color:var(--wine)] transition hover:bg-[color:var(--wine)] hover:text-[color:var(--cream)]"
-        >
-          Zur Bewerbung
-        </Link>
-      </div>
     </div>
   );
 }
