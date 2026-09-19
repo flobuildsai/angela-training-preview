@@ -18,6 +18,11 @@ export const Route = createFileRoute("/kurs")({
   head: () => ({
     meta: [
       { title: `${COURSE_NAME} | Creating Society` },
+      { name: "description", content: "Dein kostenloser Creating Society Kurs und persönlicher 30-Tage-Plan." },
+      { property: "og:title", content: `${COURSE_NAME} | Creating Society` },
+      { property: "og:description", content: "Dein kostenloser Creating Society Kurs und persönlicher 30-Tage-Plan." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -71,11 +76,11 @@ function CoursePage() {
           <h1 className="mt-4 font-serif text-4xl leading-[1.03] sm:text-6xl">
             {name ? `${name}, ` : ""}
             {completed === 0 ? (
-              <>hier fängt es <span className="serif-italic text-[color:var(--rose)]">an.</span></>
+               <>hier fängt es an<span className="ember-dot">.</span></>
             ) : completed === LESSONS.length ? (
-              <>du hast alles <span className="serif-italic text-[color:var(--rose)]">durch.</span></>
+               <>du hast alles durch<span className="ember-dot">.</span></>
             ) : (
-              <>weiter geht's mit <span className="serif-italic text-[color:var(--rose)]">Lektion {completed + 1}.</span></>
+               <>weiter geht's mit Lektion {completed + 1}<span className="ember-dot">.</span></>
             )}
           </h1>
         </div>
@@ -84,7 +89,7 @@ function CoursePage() {
           <Link
             to="/kurs/$lesson"
             params={{ lesson: nextLesson.slug }}
-            className="mt-10 block rounded-2xl bg-[color:var(--wine)] p-7 text-[color:var(--cream)] transition hover:opacity-95 sm:p-9 rv d1"
+            className="mt-10 block rounded-card bg-pressed-graphite p-7 text-pure-white shadow-xl transition hover:opacity-95 sm:p-9 rv d1"
           >
             <p className="eyebrow opacity-70">
               Als Nächstes · {nextLesson.module === 0 ? "Start here" : `Modul ${nextLesson.module}`} · {nextLesson.duration}
@@ -122,7 +127,7 @@ function CoursePage() {
                         <span
                           className={`mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full ${
                             state === "completed"
-                              ? "bg-[color:var(--rose)]"
+                              ? "bg-ember"
                               : open
                                 ? "border border-[color:var(--ink)]"
                                 : "border border-[color:var(--border)]"

@@ -23,6 +23,11 @@ export const Route = createFileRoute("/kurs_/$lesson")({
     return {
       meta: [
         { title: `${lesson?.title ?? "Lektion"} | Creating Society` },
+        { name: "description", content: lesson?.outcome ?? "Deine nächste Lektion im Creating Society Kurs." },
+        { property: "og:title", content: `${lesson?.title ?? "Lektion"} | Creating Society` },
+        { property: "og:description", content: lesson?.outcome ?? "Deine nächste Lektion im Creating Society Kurs." },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
         { name: "robots", content: "noindex" },
       ],
     };
@@ -99,7 +104,7 @@ function LessonPage() {
           {unlocked ? (
             <CoursePlayer video={lesson.video} title={lesson.title} onPlay={() => trackEvent("free_lesson_play", { lesson: lesson.slug })} />
           ) : (
-            <div className="grid aspect-video place-items-center rounded-2xl bg-[color:var(--cream2)] text-center">
+            <div className="grid aspect-video place-items-center rounded-card bg-pure-white text-center shadow-xl">
               <div className="px-6">
                 <p className="eyebrow text-[color:var(--muted-fg)]">Noch nicht offen</p>
                 <p className="mt-2 font-serif text-2xl">Offen ab {fmt.format(unlocksAt(lesson, signedUpAt))}</p>
@@ -127,7 +132,7 @@ function LessonPage() {
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
                 {done ? (
                   <p className="flex items-center gap-2 text-sm">
-                    <span className="h-2 w-2 rounded-full bg-[color:var(--rose)]" />
+                     <span className="h-2 w-2 rounded-full bg-ember" />
                     Erledigt.
                   </p>
                 ) : (

@@ -10,6 +10,7 @@ import { CourseMockup } from "@/components/CourseMockup";
 import { CoursePlayer } from "@/components/CoursePlayer";
 import { FreeFooter, FreeHeader, useReveal } from "@/components/FreeShell";
 import { FreeOptinForm } from "@/components/FreeOptinForm";
+import { Button } from "@/components/ui/button";
 import {
   COURSE_NAME,
   FAQ,
@@ -69,13 +70,13 @@ function FreePage() {
     <main className="bg-[color:var(--background)] text-[color:var(--ink)]">
       <FreeHeader
         right={
-          <button
+          <Button
             type="button"
             onClick={scrollToForm}
-            className="rounded-full bg-[color:var(--wine)] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--cream)] transition hover:opacity-90"
+            size="sm"
           >
             Kostenlos starten
-          </button>
+          </Button>
         }
       />
 
@@ -87,7 +88,7 @@ function FreePage() {
           </p>
           <h1 className="mt-6 font-serif text-[2.6rem] leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.4rem]">
             Das komplette System, mit dem Frauen aus Social Media{" "}
-            <span className="serif-italic text-[color:var(--rose)]">ein Business machen.</span>
+            <span>ein Business machen</span><span className="ember-dot">.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-[15px] leading-relaxed text-[color:var(--muted-fg)] sm:text-lg">
             Du kommst mit nichts rein. Nach 30 Tagen hast du Positionierung, Personal Brand, Content-System,
@@ -122,7 +123,7 @@ function FreePage() {
       </section>
 
       {/* ── Warum kostenlos ────────────────────────────────── */}
-      <section className="bg-[color:var(--cream2)]">
+      <section>
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div className="rv">
             <div className="flex items-center gap-4">
@@ -134,7 +135,7 @@ function FreePage() {
             </div>
             <h2 className="mt-8 font-serif text-3xl leading-[1.08] sm:text-5xl">
               Warum wir verschenken, wofür andere{" "}
-              <span className="serif-italic text-[color:var(--rose)]">{eur(PROGRAM_PRICE)} bezahlt haben.</span>
+               <span>{eur(PROGRAM_PRICE)} bezahlt haben</span><span className="ember-dot">.</span>
             </h2>
           </div>
           <div className="space-y-5 text-[15px] leading-relaxed text-[color:var(--muted-fg)] sm:text-[17px] rv d1">
@@ -185,7 +186,7 @@ function FreePage() {
       </section>
 
       {/* ── Die 6 Module ───────────────────────────────────── */}
-      <section className="bg-[color:var(--wine)] text-[color:var(--cream)]">
+      <section className="bg-pressed-graphite text-pure-white">
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
             <div className="rv">
@@ -202,13 +203,13 @@ function FreePage() {
             <ol className="divide-y divide-white/15 border-y border-white/15 rv d1">
               {MODULES.filter((m) => m.n > 0).map((m) => (
                 <li key={m.n} className="grid gap-2 py-6 sm:grid-cols-[3.5rem_1fr]">
-                  <span className="serif-italic text-2xl text-[color:var(--rose)]">0{m.n}</span>
+                   <span className="text-2xl text-pure-white/60">0{m.n}</span>
                   <div>
                     <h3 className="font-serif text-2xl leading-snug sm:text-[1.75rem]">
                       {m.title} <span className="serif-italic opacity-70">{m.italic}</span>
                     </h3>
                     <p className="mt-2 text-[14px] leading-relaxed opacity-70 sm:text-[15px]">{m.body}</p>
-                    <p className="mt-3 text-[12px] uppercase tracking-[0.16em] text-[color:var(--rose)]">Ergebnis: <span className="normal-case tracking-normal text-[color:var(--cream)]/85">{m.result}</span></p>
+                     <p className="mt-3 text-caption font-medium text-pure-white/70">Ergebnis: <span className="text-pure-white/85">{m.result}</span></p>
                   </div>
                 </li>
               ))}
@@ -223,7 +224,7 @@ function FreePage() {
           <p className="eyebrow rule-label text-[color:var(--muted-fg)]">Was du bekommst</p>
           <h2 className="mt-6 font-serif text-3xl leading-[1.08] sm:text-5xl">
             Alles zusammen: <span className="serif-italic text-[color:var(--rose)]">{eur(totalWorth)}.</span>{" "}
-            Heute: 0 €.
+             Heute: 0 €<span className="ember-dot">.</span>
           </h2>
           <div className="mt-10 divide-y divide-[color:var(--border)] border-y border-[color:var(--border)]">
             {VALUE_STACK.map((v) => (
@@ -239,7 +240,7 @@ function FreePage() {
             ))}
             <div className="grid gap-1 py-6 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-8">
               <p className="font-serif text-2xl">Dein Preis</p>
-              <p className="font-serif text-4xl text-[color:var(--rose)]">0 €</p>
+                 <p className="font-display text-4xl font-medium">0 €</p>
             </div>
           </div>
           <p className="mt-6 text-sm leading-relaxed text-[color:var(--muted-fg)]">
@@ -247,19 +248,19 @@ function FreePage() {
             Einzelpreisen für Vorlagen und Gespräche. Kein erfundener Streichpreis.
           </p>
           <div className="mt-10 flex justify-center">
-            <button
+             <Button
               type="button"
               onClick={scrollToForm}
-              className="inline-flex min-h-[56px] items-center justify-center rounded-full bg-[color:var(--wine)] px-9 text-[12px] font-semibold uppercase tracking-[0.18em] text-[color:var(--cream)] transition hover:opacity-90"
+               size="lg"
             >
               Kostenlosen Zugang holen
-            </button>
+             </Button>
           </div>
         </div>
       </section>
 
       {/* ── So läuft es ────────────────────────────────────── */}
-      <section className="bg-[color:var(--cream2)]">
+      <section>
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <div className="max-w-2xl rv">
             <p className="eyebrow rule-label text-[color:var(--muted-fg)]">So läuft es</p>
@@ -273,8 +274,8 @@ function FreePage() {
               ["02", "Sofort anfangen zu bauen", "Start und Modul 1 sind direkt offen. Die weiteren Module folgen im Takt deines 30-Tage-Plans."],
               ["03", "Mit Store rausgehen — mit oder ohne uns", "Nach 30 Tagen: Positionierung, Profil, Produkt, Store. Nach Modul 3 fragen wir einmal, ob du ein Gespräch willst."],
             ].map(([n, t, b], i) => (
-              <div key={n} className={`rv d${i + 1} border-t border-[color:var(--wine)] pt-5`}>
-                <span className="serif-italic text-2xl text-[color:var(--rose)]">{n}</span>
+               <div key={n} className={`rv d${i + 1} rounded-card bg-pure-white p-8 shadow-xl`}>
+                 <span className="text-caption font-medium text-slate">{n}</span>
                 <h3 className="mt-3 font-serif text-2xl">{t}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-[color:var(--muted-fg)]">{b}</p>
               </div>
@@ -300,7 +301,7 @@ function FreePage() {
           <div className="grid grid-cols-3 gap-3 sm:gap-4 rv d1">
             {PROOF.map((p) => (
               <figure key={p.key} className="min-w-0">
-                <div className="aspect-[4/5] overflow-hidden rounded-xl bg-[color:var(--cream2)] ring-1 ring-[color:var(--border)]">
+                 <div className="aspect-[4/5] overflow-hidden rounded-card bg-pure-white shadow-xl">
                   <img src={PROOF_IMAGES[p.key]} alt={p.claim} loading="lazy" className="h-full w-full object-contain p-2" />
                 </div>
                 <figcaption className="mt-2">
@@ -314,14 +315,14 @@ function FreePage() {
       </section>
 
       {/* ── Für wen / nicht ────────────────────────────────── */}
-      <section className="bg-[color:var(--cream2)]">
+      <section>
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-2 lg:gap-20">
           <div className="rv">
             <p className="eyebrow rule-label text-[color:var(--rose)]">Für dich, wenn</p>
             <ul className="mt-6 space-y-4">
               {FOR_WHOM.map((t) => (
                 <li key={t} className="flex items-start gap-3 text-[15px] leading-relaxed sm:text-[17px]">
-                  <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--rose)]" />
+                   <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ember" />
                   {t}
                 </li>
               ))}
@@ -349,14 +350,14 @@ function FreePage() {
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="rv">
-            <div className="mx-auto max-w-sm overflow-hidden rounded-[26px] soft-shadow">
+             <div className="mx-auto max-w-sm overflow-hidden rounded-card soft-shadow">
               <img src={lauraNew.url} alt="Laura, Gründerin von Creating Society" className="aspect-[4/5] w-full object-cover" loading="lazy" />
             </div>
           </div>
           <div className="space-y-6 rv d1">
             <p className="pill">Wer das gebaut hat</p>
             <h2 className="font-serif text-4xl leading-[1.02] sm:text-6xl">
-              Hi, ich bin <span className="serif-italic text-[color:var(--rose)]">Laura.</span>
+               Hi, ich bin Laura<span className="ember-dot">.</span>
             </h2>
             <div className="space-y-5 text-[15px] leading-relaxed text-[color:var(--muted-fg)] sm:text-[17px]">
               <p>
@@ -378,7 +379,7 @@ function FreePage() {
       </section>
 
       {/* ── FAQ ────────────────────────────────────────────── */}
-      <section className="bg-[color:var(--cream2)]">
+      <section>
         <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8 sm:py-28">
           <div className="rv">
             <p className="eyebrow rule-label text-[color:var(--muted-fg)]">Bevor du dich einträgst</p>
@@ -431,14 +432,14 @@ function FreePage() {
       <FreeFooter />
 
       {/* Mobile: fester CTA */}
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[color:var(--border)] bg-[color:var(--background)]/95 p-3 backdrop-blur sm:hidden">
-        <button
+       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-fog bg-cream-paper/95 p-3 backdrop-blur sm:hidden">
+         <Button
           type="button"
           onClick={scrollToForm}
-          className="inline-flex min-h-[52px] w-full items-center justify-center rounded-full bg-[color:var(--wine)] text-[12px] font-semibold uppercase tracking-[0.18em] text-[color:var(--cream)]"
+           className="w-full"
         >
           Kostenlosen Zugang holen
-        </button>
+         </Button>
       </div>
     </main>
   );

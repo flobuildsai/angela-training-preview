@@ -1,57 +1,18 @@
 @import "tailwindcss" source(none);
-@source "../src";
 @import "tw-animate-css";
+@import "./index.css";
+@source "../src";
 
 @custom-variant dark (&:is(.dark *));
-
-@theme inline {
-  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-
-  --color-background:        var(--background);
-  --color-foreground:        var(--foreground);
-  --color-cream:             var(--cream);
-  --color-cream2:            var(--cream2);
-  --color-ink:               var(--ink);
-  --color-wine:              var(--wine);
-  --color-wine-accent:       var(--wine-accent);
-  --color-rose:              var(--rose);
-  --color-muted-fg:          var(--muted-fg);
-  --color-border:            var(--border);
-  --color-primary:           var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-muted:             var(--muted);
-  --color-muted-foreground:  var(--muted-foreground);
-  --color-accent:            var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-ring:              var(--wine-accent);
-}
-
-:root {
-  --background:          #FFFFFF;
-  --foreground:          #101010;
-  --cream:               #FFFFFF;
-  --cream2:              #F7F6F4;
-  --ink:                 #101010;
-  --wine:                #0E0E0E;
-  --wine-accent:         #0E0E0E;
-  --rose:                #94897A;
-  --muted-fg:            #6E6E6E;
-  --border:              rgba(17,17,17,0.08);
-  --primary:             #0E0E0E;
-  --primary-foreground:  #FFFFFF;
-  --muted:               #F7F6F4;
-  --muted-foreground:    #6E6E6E;
-  --accent:              #F7F6F4;
-  --accent-foreground:   #101010;
-}
 
 @layer base {
   *, *::before, *::after { border-color: var(--border); box-sizing: border-box; }
   html, body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: var(--font-sans);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    letter-spacing: var(--tracking-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -59,34 +20,34 @@
     scroll-behavior: smooth;
   }
   h1, h2, h3 {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    letter-spacing: -0.015em;
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.02em;
     text-wrap: balance;
   }
   p { text-wrap: pretty; }
   a:focus-visible, button:focus-visible, [role="button"]:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
-    outline: 1.5px solid var(--rose);
+    outline: 2px solid var(--color-pressed-graphite);
     outline-offset: 4px;
     border-radius: 2px;
   }
   ::-webkit-scrollbar { width: 3px; }
-  ::-webkit-scrollbar-thumb { background: rgba(17,17,17,.12); border-radius: 2px; }
-  ::selection { background: var(--wine); color: #fff; }
+  ::-webkit-scrollbar-thumb { background: var(--color-stone); border-radius: 2px; }
+  ::selection { background: var(--color-pressed-graphite); color: var(--color-pure-white); }
 }
 
 
 /* ── Utilities ──────────────────────────────────────────── */
 @utility serif-italic {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 500;
 }
 
 @utility eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.66rem;
-  letter-spacing: 0.22em;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-caption);
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -105,7 +66,7 @@
 }
 
 @utility soft-shadow {
-  box-shadow: 0 40px 90px -50px rgba(16, 16, 16, 0.45);
+  box-shadow: var(--shadow-xl);
 }
 
 
@@ -114,12 +75,12 @@
   align-items: center;
   padding: 5px 13px;
   border-radius: 9999px;
-  background: rgba(17,17,17,0.06);
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: #111111;
+  background: var(--color-pure-white);
+  border: 1px solid var(--color-fog);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caption);
+  color: var(--color-near-black);
 }
 
 @utility headline-measure {
@@ -143,7 +104,20 @@
 }
 
 @utility hero-glow {
-  background: radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.10), transparent 62%);
+  background: transparent;
+}
+
+@utility ember-dot {
+  color: var(--color-ember);
+}
+
+@utility funnel-section {
+  padding-block: clamp(6rem, 9vw, 7.5rem);
+}
+
+@utility funnel-container {
+  width: min(100% - 2.5rem, var(--funnel-max));
+  margin-inline: auto;
 }
 
 /* ── Animations ─────────────────────────────────────────── */
@@ -153,6 +127,7 @@
 }
 .animate-marquee        { animation: marquee 22s linear infinite; }
 .animate-marquee-reverse{ animation: marquee 22s linear infinite reverse; }
+.logo-marquee           { animation: marquee 24s linear infinite; }
 
 @keyframes scroll-line {
   0%,100% { height: 18px; opacity: .18; }
