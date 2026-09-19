@@ -13,6 +13,10 @@ export const Route = createFileRoute("/free_/willkommen")({
     meta: [
       { title: "Dein Zugang ist aktiv | Creating Society" },
       { name: "description", content: "Modul 1 ist offen. So startest du." },
+      { property: "og:title", content: "Dein Zugang ist aktiv | Creating Society" },
+      { property: "og:description", content: "Modul 1 ist offen. So startest du." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -86,7 +90,7 @@ function WelcomePage() {
         <div className="rv">
           <p className="eyebrow text-[color:var(--rose)]">Willkommen{name ? `, ${name}` : ""}</p>
           <h1 className="mt-5 font-serif text-[2.6rem] leading-[1.02] tracking-tight sm:text-6xl">
-            Dein Zugang ist <span className="serif-italic text-[color:var(--rose)]">aktiv.</span>
+            Dein Zugang ist aktiv<span className="ember-dot">.</span>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-[color:var(--muted-fg)] sm:text-lg">
             Start und Modul 1 sind jetzt offen. Die weiteren Module folgen im Takt deines 30-Tage-Plans —
@@ -98,9 +102,9 @@ function WelcomePage() {
       <section className="mx-auto max-w-3xl px-5 pb-20 sm:px-8 sm:pb-28">
         <ol className="space-y-6">
           {/* 01 — Modul 1 */}
-          <li className="rounded-2xl border border-[color:var(--wine)] bg-[color:var(--wine)] p-7 text-[color:var(--cream)] sm:p-9 rv">
+          <li className="rounded-card bg-pressed-graphite p-7 text-pure-white shadow-xl sm:p-9 rv">
             <div className="flex items-start gap-5">
-              <span className="serif-italic text-3xl text-[color:var(--rose)]">01</span>
+              <span className="text-3xl text-pure-white/60">01</span>
               <div className="flex-1">
                 <p className="eyebrow opacity-70">Jetzt · Start here · {first.duration}</p>
                 <h2 className="mt-2 font-serif text-2xl leading-snug sm:text-3xl">{first.title}</h2>
@@ -110,7 +114,7 @@ function WelcomePage() {
                     to="/kurs/$lesson"
                     params={{ lesson: first.slug }}
                     onClick={() => trackEvent("free_welcome_start_lesson")}
-                    className="inline-flex min-h-[56px] w-full items-center justify-center rounded-full bg-[color:var(--cream)] px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-[color:var(--wine)] transition hover:opacity-90 sm:w-auto"
+                    className="inline-flex min-h-14 w-full items-center justify-center rounded-button bg-pure-white px-8 text-sm font-medium text-pressed-graphite transition hover:opacity-90 sm:w-auto"
                   >
                     Jetzt starten
                   </Link>
@@ -120,9 +124,9 @@ function WelcomePage() {
           </li>
 
           {/* 02 — WhatsApp */}
-          <li className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--cream2)] p-7 sm:p-9 rv d1">
+          <li className="rounded-card bg-pure-white p-7 shadow-xl sm:p-9 rv d1">
             <div className="flex items-start gap-5">
-              <span className="serif-italic text-3xl text-[color:var(--rose)]">02</span>
+              <span className="text-3xl text-slate">02</span>
               <div className="flex-1">
                 <p className="eyebrow text-[color:var(--muted-fg)]">Optional · 20 Sekunden</p>
                 <h2 className="mt-2 font-serif text-2xl leading-snug sm:text-3xl">Begleitung per WhatsApp</h2>
@@ -136,9 +140,9 @@ function WelcomePage() {
           </li>
 
           {/* 03 — Gespräch */}
-          <li className="rounded-2xl border border-[color:var(--border)] p-7 sm:p-9 rv d2">
+          <li className="rounded-card bg-pure-white p-7 shadow-xl sm:p-9 rv d2">
             <div className="flex items-start gap-5">
-              <span className="serif-italic text-3xl text-[color:var(--rose)]">03</span>
+              <span className="text-3xl text-slate">03</span>
               <div className="flex-1">
                 <p className="eyebrow text-[color:var(--muted-fg)]">Wenn du nicht warten willst</p>
                 <h2 className="mt-2 font-serif text-2xl leading-snug sm:text-3xl">Strategiegespräch mit Laura</h2>
@@ -213,7 +217,7 @@ function WhatsappForm({ access, onSaved }: { access: FreeAccess; onSaved: (a: Fr
   if (state === "done") {
     return (
       <p className="mt-5 flex items-center gap-2 text-sm">
-        <span className="h-2 w-2 rounded-full bg-[color:var(--rose)]" />
+        <span className="h-2 w-2 rounded-full bg-ember" />
         Gespeichert. Die erste Nachricht kommt, wenn Modul 2 offen ist — morgen.
       </p>
     );
@@ -233,7 +237,7 @@ function WhatsappForm({ access, onSaved }: { access: FreeAccess; onSaved: (a: Fr
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder="+49 170 1234567"
-          className="w-full border-0 border-b border-[color:var(--border)] bg-transparent px-0 py-3 text-lg placeholder:opacity-40 transition focus:border-[color:var(--rose)] focus:outline-none"
+          className="min-h-14 w-full rounded-input border border-fog bg-pure-white px-4 text-body placeholder:text-stone transition focus:border-pressed-graphite focus:outline-none"
         />
         {state === "error" && (
           <p className="mt-2 text-xs text-[color:var(--rose)]">Bitte mit Ländervorwahl, z. B. +49 170 1234567.</p>

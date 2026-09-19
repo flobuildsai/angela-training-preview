@@ -5,7 +5,7 @@ import { trackEvent } from "@/lib/track";
 /** Die eine Frage nach Modul 3 — Application zum Strategiegespräch. */
 export function ApplicationCard({ name }: { name?: string }) {
   return (
-    <div className="mt-8 rounded-2xl border border-[color:var(--border)] bg-[color:var(--cream2)] p-7 sm:p-9 rv d2">
+    <div className="mt-8 rounded-card bg-pure-white p-7 shadow-xl sm:p-9 rv d2">
       <div className="flex items-start gap-5">
         <img src={lauraPortrait.url} alt="Laura" className="h-12 w-12 shrink-0 rounded-full object-cover" loading="lazy" />
         <div>
@@ -23,13 +23,13 @@ export function ApplicationCard({ name }: { name?: string }) {
             <Link
               to="/call"
               onClick={() => trackEvent("free_application_click", { from: "course" })}
-              className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-[color:var(--wine)] px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-[color:var(--cream)] transition hover:opacity-90"
+              className="inline-flex min-h-[52px] items-center justify-center rounded-button bg-pressed-graphite px-8 text-sm font-medium text-pure-white transition hover:opacity-90"
             >
               Gespräch ansehen
             </Link>
             <Link
               to="/apply"
-              className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-[color:var(--wine)] px-8 text-[12px] font-semibold uppercase tracking-[0.18em] transition hover:bg-[color:var(--wine)] hover:text-[color:var(--cream)]"
+              className="inline-flex min-h-[52px] items-center justify-center rounded-button border border-fog bg-pure-white px-8 text-sm font-medium transition hover:bg-cream-paper"
             >
               Lieber schriftlich
             </Link>
