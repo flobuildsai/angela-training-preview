@@ -8,3 +8,4 @@
 - [x] Typecheck, Build und responsive Vorschau prüfen
 
 - [x] /free Aufbau und Sektionen an aistorebuilder.com angleichen; bestehende Inhalte und Datenfluss bewahren
+- [ ] /free als enge strukturelle Adaption der Referenz neu aufbauen, inklusive Video, Logo-Marquee, Proof-Galerien und wiederkehrenden CTAs
