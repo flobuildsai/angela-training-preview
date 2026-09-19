@@ -1,8 +1,8 @@
 # Roadmap
 
-- [ ] Globales TCS-Design-System und Fonts einführen
-- [ ] Gemeinsame Funnel-Komponenten erstellen
-- [ ] Free-Kurs-Seiten und unterstützende Bausteine visuell umstellen
-- [ ] Impressum und Datenschutz mit gemeinsamem Layout überarbeiten
-- [ ] Cookie-Einwilligung und Meta-Consent-Gate ergänzen
-- [ ] Typecheck, Build und responsive Vorschau prüfen
+- [x] Globales TCS-Design-System und Fonts einführen
+- [x] Gemeinsame Funnel-Komponenten erstellen
+- [x] Free-Kurs-Seiten und unterstützende Bausteine visuell umstellen
+- [x] Impressum und Datenschutz mit gemeinsamem Layout überarbeiten
+- [x] Cookie-Einwilligung und Meta-Consent-Gate ergänzen
+- [x] Typecheck, Build und responsive Vorschau prüfen
