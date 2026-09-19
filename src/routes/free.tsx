@@ -299,7 +299,7 @@ function FreePage() {
             <ul className="mt-6 space-y-4">
               {FOR_WHOM.map((t) => (
                 <li key={t} className="flex items-start gap-3 text-[15px] leading-relaxed sm:text-[17px]">
-                   <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ember" />
+                   <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-pressed-graphite" />
                   {t}
                 </li>
               ))}
