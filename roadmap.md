@@ -7,4 +7,4 @@
 - [x] Cookie-Einwilligung und Meta-Consent-Gate ergänzen
 - [x] Typecheck, Build und responsive Vorschau prüfen
 
-- [ ] /free Aufbau und Sektionen an aistorebuilder.com angleichen; bestehende Inhalte und Datenfluss bewahren
+- [x] /free Aufbau und Sektionen an aistorebuilder.com angleichen; bestehende Inhalte und Datenfluss bewahren

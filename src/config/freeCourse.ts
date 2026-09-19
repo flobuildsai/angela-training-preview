@@ -45,6 +45,38 @@ export const COURSE_NAME = "Das Creating Society System";
 /** Preis des begleiteten Programms — Anker auf /free. Muss zum Angebot im Call passen. */
 export const PROGRAM_PRICE = 1500;
 
+export const FREE_PAGE = {
+  nav: [
+    { label: "Vorteile", href: "#vorteile" },
+    { label: "Kurs", href: "#kurs" },
+    { label: "Ergebnisse", href: "#ergebnisse" },
+    { label: "FAQ", href: "#faq" },
+  ],
+  trust: ["22 Videos", "6 Module", "Keine Kreditkarte"],
+  modelBenefits: [
+    { title: "Kein Lager", body: "Du verkaufst Wissen und Ergebnisse statt physischer Produkte." },
+    { title: "Von überall", body: "Content, Produkt und Store funktionieren remote — in deinem Tempo." },
+    { title: "Kleine Reichweite reicht", body: "Ein klares Problem und die richtigen Menschen schlagen leere Views." },
+    { title: "Nebenbei startbar", body: "Der 30-Tage-Plan ist für fünf konzentrierte Stunden pro Woche gebaut." },
+    { title: "Dein eigenes Angebot", body: "Du wartest nicht auf Marken, Deals oder die nächste Algorithmus-Laune." },
+    { title: "Ein System", body: "Positionierung, Content, Produkt, Store und Verkauf greifen ineinander." },
+  ],
+  included: [
+    { title: "Positionierung", body: "Ein verständlicher Satz, der zeigt, wem du wobei hilfst." },
+    { title: "Personal Brand", body: "Profil, Content-Pillars, Hooks und 30 konkrete Content-Ideen." },
+    { title: "Digitales Produkt", body: "Von der validierten Idee bis zur fertigen Datei und ihrem Preis." },
+    { title: "Creator Store", body: "Produktseite, Checkout und Link in der Bio — gemeinsam aufgebaut." },
+    { title: "Verkaufssystem", body: "Erste Kundinnen, 7-Tage-Launch und Stories ohne Verkaufsdruck." },
+    { title: "Vorlagen", body: "Gameplan, Worksheets, Content-Plan, Produkt-Blueprint und Launch-Sequenz." },
+  ],
+  support: [
+    { title: "Build-with-me", body: "Du baust parallel zu Laura und beendest jedes Modul mit einem sichtbaren Ergebnis." },
+    { title: "30-Tage-Gameplan", body: "Vier Wochen, klare Meilensteine und ein Launch-Datum statt offener Tabs." },
+    { title: "Optionaler Support", body: "Nach Modul 3 entscheidest du selbst, ob du persönliche Begleitung möchtest." },
+    { title: "Dauerhafter Zugang", body: "Du kannst Lektionen und Vorlagen in deinem eigenen Tempo wiederholen." },
+  ],
+} as const;
+
 /** Start + sechs Module — als zusammenhängendes Build-with-me-Programm. */
 export const MODULES: CourseModule[] = [
   {
