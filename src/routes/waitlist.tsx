@@ -8,6 +8,8 @@ export const Route = createFileRoute("/waitlist")({
       { name: "description", content: "Creating Society kommt bald auf Deutsch. Trag dich in die Warteliste ein." },
       { property: "og:title", content: "Warteliste — Creating Society" },
       { property: "og:description", content: "Creating Society kommt bald auf Deutsch." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: WaitlistPage,

@@ -8,6 +8,8 @@ export const Route = createFileRoute("/apply")({
       { name: "description", content: "Apply for The Inner Circle by Creating Society." },
       { property: "og:title", content: "Apply — The Inner Circle" },
       { property: "og:description", content: "12 weeks. Small cohort. We build your offer with you." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ApplyPage,
