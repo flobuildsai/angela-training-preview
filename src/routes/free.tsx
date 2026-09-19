@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import lauraNew from "@/assets/laura-new.jpg.asset.json";
 import lauraPortrait from "@/assets/laura-portrait.jpg.asset.json";
 import lauraWork from "@/assets/laura-work.jpg.asset.json";
@@ -10,6 +10,7 @@ import { CourseMockup } from "@/components/CourseMockup";
 import { CoursePlayer } from "@/components/CoursePlayer";
 import { FreeFooter, FreeHeader, useReveal } from "@/components/FreeShell";
 import { FreeOptinForm } from "@/components/FreeOptinForm";
+import { FreeOptinModal } from "@/components/funnel/FreeOptinModal";
 import { Button } from "@/components/ui/button";
 import {
   COURSE_NAME,
@@ -56,12 +57,9 @@ const PROOF_IMAGES: Record<(typeof PROOF)[number]["key"], string> = {
 const totalWorth = VALUE_STACK.reduce((sum, v) => sum + Number(v.worth.replace(/[^\d]/g, "")), 0);
 const eur = (n: number) => `${n.toLocaleString("de-DE")} €`;
 
-function scrollToForm() {
-  document.getElementById("zugang")?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
 function FreePage() {
   useReveal();
+  const [optinOpen, setOptinOpen] = useState(false);
   useEffect(() => {
     trackEvent("free_page_view");
   }, []);
@@ -72,7 +70,7 @@ function FreePage() {
         right={
           <Button
             type="button"
-            onClick={scrollToForm}
+            onClick={() => setOptinOpen(true)}
             size="sm"
           >
             Kostenlos starten
@@ -81,49 +79,33 @@ function FreePage() {
       />
 
       {/* ── Hero ───────────────────────────────────────────── */}
-      <section className="mx-auto max-w-6xl px-5 pb-16 pt-14 sm:px-8 sm:pt-20">
-        <div className="mx-auto max-w-3xl text-center rv">
-          <p className="eyebrow text-[color:var(--rose)]">
+      <section className="relative mx-4 min-h-[88vh] overflow-hidden rounded-card text-pure-white lg:min-h-screen">
+        <img src={lauraNew.url} alt="Laura Mercedes bei der Arbeit" className="absolute inset-0 h-full w-full object-cover object-[center_25%]" />
+        <div className="website-photo-scrim absolute inset-0" />
+        <div className="relative mx-auto flex min-h-[88vh] max-w-[1120px] items-end px-5 pb-14 sm:px-8 sm:pb-20 lg:min-h-screen">
+          <div className="max-w-[850px] rv">
+          <p className="funnel-eyebrow text-pure-white/80">
             Teil unseres {eur(PROGRAM_PRICE)}-Programms · jetzt kostenlos
           </p>
-          <h1 className="mt-6 font-serif text-[2.6rem] leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.4rem]">
+          <h1 className="mt-5 max-w-[13ch] font-display text-[38px] font-medium leading-[1.02] tracking-[-0.02em] sm:text-[52px] lg:text-[64px]">
             Das komplette System, mit dem Frauen aus Social Media{" "}
             <span>ein Business machen</span><span className="ember-dot">.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-[15px] leading-relaxed text-[color:var(--muted-fg)] sm:text-lg">
+          <p className="mt-6 max-w-[680px] text-[19px] leading-[1.5] text-pure-white/90">
             Du kommst mit nichts rein. Nach 30 Tagen hast du Positionierung, Personal Brand, Content-System,
             dein erstes Produkt und einen Store, der verkauft. Sechs Module, Build-with-me — bisher nur für
             unsere Programm-Teilnehmerinnen. Ohne große Reichweite. Ohne Brand Deals. Ohne Haken, den wir verstecken.
           </p>
+          <div className="mt-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+            <Button id="zugang" type="button" onClick={() => setOptinOpen(true)} size="lg" className="bg-pure-white px-[18px] py-3 text-near-black hover:bg-pure-white/90">Kostenlosen Zugang holen</Button>
+            <a href="#warum-kostenlos" className="text-sm font-medium text-pure-white underline-offset-4 hover:underline">Warum ist das kostenlos? ↓</a>
+          </div>
+          </div>
         </div>
-
-        <div className="mx-auto mt-12 max-w-4xl rv d1">
-          <CoursePlayer video={VSL} title="Warum wir das verschenken" poster={lauraWork.url} onPlay={() => trackEvent("free_vsl_play")} />
-          <p className="mt-3 text-center text-xs tracking-wide text-[color:var(--muted-fg)]">
-            Drei Minuten. Laura erklärt, was drin ist und warum es nichts kostet.
-          </p>
-        </div>
-
-        <div id="zugang" className="mx-auto mt-12 flex max-w-md scroll-mt-24 flex-col items-center rv d2">
-          <FreeOptinForm placement="hero" />
-        </div>
-
-        <dl className="mx-auto mt-14 grid max-w-3xl grid-cols-3 gap-6 border-y border-[color:var(--border)] py-6 text-center rv d3">
-          {[
-            ["6,9 Mio.", "Views in einem Monat"],
-            ["0", "Follower zum Start"],
-            ["30", "Tage bis zum Store"],
-          ].map(([v, l]) => (
-            <div key={l}>
-              <dt className="font-serif text-3xl sm:text-4xl">{v}</dt>
-              <dd className="mt-1 text-[10px] uppercase tracking-[0.16em] text-[color:var(--muted-fg)] sm:text-[11px]">{l}</dd>
-            </div>
-          ))}
-        </dl>
       </section>
 
       {/* ── Warum kostenlos ────────────────────────────────── */}
-      <section>
+      <section id="warum-kostenlos" className="scroll-mt-8">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div className="rv">
             <div className="flex items-center gap-4">
@@ -250,7 +232,7 @@ function FreePage() {
           <div className="mt-10 flex justify-center">
              <Button
               type="button"
-              onClick={scrollToForm}
+              onClick={() => setOptinOpen(true)}
                size="lg"
             >
               Kostenlosen Zugang holen
@@ -418,7 +400,7 @@ function FreePage() {
             </p>
           </div>
           <div className="mt-10 flex justify-center rv d1">
-            <FreeOptinForm placement="bottom" light />
+             <Button type="button" size="lg" className="bg-pure-white text-pressed-graphite hover:bg-pure-white/90" onClick={() => setOptinOpen(true)}>Kostenlosen Zugang holen</Button>
           </div>
           <p className="mt-10 text-sm opacity-60">
             Du bist schon dabei?{" "}
@@ -435,12 +417,13 @@ function FreePage() {
        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-fog bg-cream-paper/95 p-3 backdrop-blur sm:hidden">
          <Button
           type="button"
-          onClick={scrollToForm}
+          onClick={() => setOptinOpen(true)}
            className="w-full"
         >
           Kostenlosen Zugang holen
          </Button>
       </div>
+       <FreeOptinModal open={optinOpen} onOpenChange={setOptinOpen} />
     </main>
   );
 }
